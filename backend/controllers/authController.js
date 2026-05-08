@@ -88,12 +88,12 @@ export const registerUser = async (req, res) => {
     }
     const token = generateToken(user._id, user.role);
 
-    // Send welcome notifications
+    // Send welcome notifications in the background
     try {
-      await sendWelcomeEmail(user);
-      await sendWelcomeWhatsApp(user);
+      sendWelcomeEmail(user).catch(err => console.error('⚠️ Welcome email background failed:', err.message));
+      sendWelcomeWhatsApp(user).catch(err => console.error('⚠️ Welcome WhatsApp background failed:', err.message));
     } catch (notifyError) {
-      console.error('⚠️ Welcome notifications failed:', notifyError.message);
+      console.error('⚠️ Welcome notifications trigger failed:', notifyError.message);
     }
 
     res.status(201).json({

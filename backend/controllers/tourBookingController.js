@@ -103,19 +103,20 @@ export const createTourBooking = async (req, res) => {
       .populate('package', 'title coverImage tourCategory basePrice pricing location')
       .populate('user', 'firstName lastName email phone');
 
-    // Send WhatsApp notification to user and admin
+    // Send WhatsApp and Email notification in the background
     try {
-      await sendTourBookingNotification(populated, populated.user);
-      // Also send email confirmation
-      try {
-        const { sendBookingConfirmationEmail } = await import('../services/emailService.js');
-        await sendBookingConfirmationEmail(populated, populated.user);
-      } catch (emailErr) {
-        console.error('⚠️ Tour Email notification failed:', emailErr.message);
-      }
+      sendTourBookingNotification(populated, populated.user).catch(err => console.error('⚠️ Tour WhatsApp background failed:', err.message));
+      
+      // Send email confirmation in the background
+      import('../services/emailService.js').then(({ sendBookingConfirmationEmail }) => {
+        sendBookingConfirmationEmail(populated, populated.user).catch(emailErr => {
+          console.error('⚠️ Tour Email background notification failed:', emailErr.message);
+        });
+      }).catch(importErr => {
+        console.error('⚠️ Failed to import emailService for background task:', importErr.message);
+      });
     } catch (whatsappError) {
-      console.error('⚠️ WhatsApp notification failed:', whatsappError.message);
-      // Don't fail the booking if WhatsApp fails - just log it
+      console.error('⚠️ WhatsApp notification trigger failed:', whatsappError.message);
     }
 
     res.status(201).json({
