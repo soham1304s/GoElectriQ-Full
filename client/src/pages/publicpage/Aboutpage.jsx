@@ -111,7 +111,7 @@ const AboutUsPage = () => {
             <motion.div {...fadeIn} className="relative group">
               <div className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl">
                 <img 
-                  src="/car/car1.jpeg" 
+                  src="/car/about-fleet.png" 
                   alt="Our Fleet" 
                   className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-110"
                 />

@@ -160,13 +160,17 @@ export const loginUser = async (req, res) => {
       });
     }
 
-    // Validate email format
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    // Check if input is email or phone
+    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const isPhone = /^[6-9]\d{9}$/.test(email.replace(/\D/g, '').slice(-10));
+
+    if (!isEmail && !isPhone) {
       return res.status(400).json({
         success: false,
-        message: 'Please provide a valid email address',
+        message: 'Please provide a valid email address or 10-digit mobile number',
       });
     }
+
 
     const emailLower = String(email).toLowerCase().trim();
 
