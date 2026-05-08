@@ -162,6 +162,7 @@ app.use('/api/drivers', driverRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/packages', packageRoutes);
 app.use('/api/tour-bookings', tourBookingRoutes);
+app.use('/api/tours', tourBookingRoutes); // Alias for compatibility
 app.use('/api/payments', paymentRoutes);
 app.use('/api/pricing', pricingRoutes);
 app.use('/api/location', locationRoutes);

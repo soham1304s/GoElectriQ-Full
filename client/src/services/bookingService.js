@@ -28,12 +28,12 @@ export const getDriverBookings = async () => {
 };
 
 export const getMyTourBookings = async () => {
-  const { data } = await api.get('/tours/my-bookings');
+  const { data } = await api.get('/tour-bookings/my-bookings');
   return data;
 };
 
 export const getTourBookingById = async (id) => {
-  const { data } = await api.get(`/tours/${id}`);
+  const { data } = await api.get(`/tour-bookings/${id}`);
   return data;
 };
 
