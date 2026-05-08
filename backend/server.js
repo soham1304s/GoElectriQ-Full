@@ -1,5 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Load environment variables immediately
+dotenv.config({ path: path.join(path.dirname(fileURLToPath(import.meta.url)), '.env') });
+
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -7,12 +13,7 @@ import compression from 'compression';
 // express-mongo-sanitize is incompatible with Express 5 (req.query/params getters)
 // TODO: switch to mongo-sanitizer when ready, or downgrade to Express 4
 // import mongoSanitize from 'express-mongo-sanitize';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import mongoose from 'mongoose';
-
-// Load environment variables (from server directory so .env is found when run from project root)
-dotenv.config({ path: path.join(path.dirname(fileURLToPath(import.meta.url)), '.env') });
 
 // Import configurations
 import connectDB from './config/database.js';
@@ -149,6 +150,7 @@ app.get('/health', (req, res) => {
     message: 'Server is running',
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV,
+    dbConnected: mongoose.connection.readyState === 1,
   });
 });
 

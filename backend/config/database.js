@@ -14,36 +14,45 @@ if (!process.env.MONGODB_URI) {
  */
 const connectDB = async () => {
   try {
-    const uri = process.env.MONGODB_URI;
+    const uri = process.env.MONGODB_URI || process.env.MONGO_URI;
 
     if (!uri) {
-      console.error("❌ MONGODB_URI is not defined in .env file");
-      process.exit(1);
+      console.error("❌ MONGODB_URI is not defined. Please check your environment variables.");
+      if (process.env.NODE_ENV === 'production') {
+        process.exit(1);
+      }
+      return;
     }
 
-    console.log('🔍 Connecting to MongoDB...');
+    console.log('🔍 Connecting to MongoDB Atlas...');
+    
+    // Mongoose 7+ defaults to strictQuery: true, but explicitly setting it is good practice
+    mongoose.set('strictQuery', false);
+
     const conn = await mongoose.connect(uri, {
-      serverSelectionTimeoutMS: 15000,
-      connectTimeoutMS: 15000,
+      serverSelectionTimeoutMS: 20000, // Increase timeout for live mode
+      connectTimeoutMS: 20000,
+      socketTimeoutMS: 45000,
+      family: 4, // Force IPv4 to avoid potential Railway network issues
     });
 
-    const maskedUri = uri.replace(/\/\/.*@/, '//****:****@');
     console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
     console.log(`📊 Database: ${conn.connection.name}`);
+    console.log(`🚀 Readiness: OK`);
 
     mongoose.connection.on("error", (err) => {
-      console.error("❌ MongoDB connection error:", err.message);
+      console.error("❌ MongoDB runtime connection error:", err.message);
     });
 
     mongoose.connection.on("disconnected", () => {
-      console.log("⚠️ MongoDB disconnected");
+      console.log("⚠️ MongoDB connection lost. Attempting to reconnect...");
     });
 
   } catch (error) {
-    console.error(`❌ Error connecting to MongoDB: ${error.message}`);
-    console.log("💡 Tip: Make sure your MONGODB_URI is correct in the backend/.env file.");
-    // Don't exit in dev mode so nodemon can retry
+    console.error(`❌ CRITICAL: Error connecting to MongoDB: ${error.message}`);
+    
     if (process.env.NODE_ENV === 'production') {
+      console.error("💀 Production environment detected. Terminating process to trigger restart.");
       process.exit(1);
     }
   }
