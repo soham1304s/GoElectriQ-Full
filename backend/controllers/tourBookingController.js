@@ -63,21 +63,7 @@ export const createTourBooking = async (req, res) => {
     }
 
     // Detailed pricing calculation logging
-    console.log('\n💰 TOUR BOOKING PRICING CALCULATION:');
-    console.log('Package ID:', packageId);
-    console.log('Package Title:', pkg.title);
-    console.log('Package Base Price:', pkg.basePrice);
-    console.log('Package Pricing Object:', pkg.pricing);
-    console.log('\nCalculation:');
-    console.log('  car type selected:', selectedCarType);
-    console.log('  pricing field used:', pricingField);
-    console.log('  car-specific price:', packagePrice);
-    console.log('  subtotal:', subtotal);
-    console.log('  payment option:', paymentOption);
-    console.log('  discount (10% for full payment):', discount);
-    console.log('  totalAmount:', totalAmount);
-    console.log('  paidAmount:', paidAmount);
-    console.log('  paymentStatus:', paymentStatus);
+    console.log(`💰 Tour booking created for ${pkg.title}: Total ₹${totalAmount}`);
 
     const booking = await TourBooking.create({
       user: userId,
@@ -165,31 +151,8 @@ export const getMyTourBookings = async (req, res) => {
       .limit(parseInt(limit));
 
     // Detailed logging for debugging pricing issues
-    console.log('📊 Fetching tour bookings:', { 
-      userId: req.user._id, 
-      query,
-      count: bookings.length,
-    });
-    
-    if (bookings.length > 0) {
-      console.log('\n🔍 DETAILED TOUR BOOKING DATA:');
-      bookings.forEach((booking, idx) => {
-        console.log(`\n--- Tour ${idx + 1} ---`);
-        console.log('Booking ID:', booking._id);
-        console.log('Package Title:', booking.package?.title);
-        console.log('Package Base Price:', booking.package?.basePrice);
-        console.log('Package Pricing Object:', booking.package?.pricing);
-        console.log('Booking Pricing:', {
-          packagePrice: booking.pricing?.packagePrice,
-          carUpgradeCharge: booking.pricing?.carUpgradeCharge,
-          discount: booking.pricing?.discount,
-          totalAmount: booking.pricing?.totalAmount,
-          paidAmount: booking.pricing?.paidAmount,
-        });
-        console.log('Payment Status:', booking.paymentStatus);
-        console.log('Car Type:', booking.carType);
-      });
-    }
+    // Logging simplified
+    console.log(`📊 Fetching ${bookings.length} tour bookings for user ${userId}`);
 
     const total = await TourBooking.countDocuments(query);
 
@@ -203,30 +166,8 @@ export const getMyTourBookings = async (req, res) => {
     });
 
     // Log exact response being sent to frontend
-    console.log('\n✅ SENDING TO FRONTEND:');
-    console.log('Response structure:', {
-      success: true,
-      dataArray: Array.isArray(transformedBookings),
-      dataLength: transformedBookings.length,
-      firstItemPricing: transformedBookings[0]?.pricing || null,
-    });
-    
-    if (transformedBookings.length > 0) {
-      console.log('\n📤 First tour booking EXACT data being sent:');
-      const firstItem = transformedBookings[0];
-      console.log(JSON.stringify({
-        _id: firstItem._id,
-        type: 'tour',
-        package: {
-          title: firstItem.package?.title,
-          basePrice: firstItem.package?.basePrice,
-        },
-        carType: firstItem.carType,
-        pricing: firstItem.pricing,
-        paymentStatus: firstItem.paymentStatus,
-        status: firstItem.status,
-      }, null, 2));
-    }
+    // Simplified frontend logging
+    console.log(`✅ Sending ${transformedBookings.length} bookings to frontend`);
 
     res.json({
       success: true,

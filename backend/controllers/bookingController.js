@@ -104,36 +104,8 @@ export const createBooking = async (req, res) => {
 
     console.log('✅ All validations passed - proceeding with booking creation');
 
-    let distanceData = { distance: parsedDistance || 0, duration: 0 };
-
-    // Option: Re-calculate distance if coordinates available (optional verification)
-    if (pickupLocation.coordinates && dropLocation.coordinates) {
-      try {
-        const recalulatedDistance = await calculateDistanceWithGoogleMaps(
-          pickupLocation.coordinates,
-          dropLocation.coordinates
-        );
-        console.log('✅ Distance recalculated via Google Maps (verification):', recalulatedDistance);
-
-        // Only use recalculated if significantly different (more than 10%)
-        if (recalulatedDistance.distance &&
-          Math.abs(recalulatedDistance.distance - parsedDistance) > parsedDistance * 0.1) {
-          console.warn('⚠️ Recalculated distance differs by >10% from provided:', {
-            provided: parsedDistance,
-            recalculated: recalulatedDistance.distance,
-          });
-          // Log warning but use provided distance (frontend was already validated)
-        }
-        distanceData = recalulatedDistance;
-      } catch (error) {
-        console.log('⚠️ Distance recalculation failed, using provided distance:', parsedDistance);
-        distanceData.distance = parsedDistance;
-      }
-    } else {
-      distanceData.distance = parsedDistance;
-    }
-
-    console.log('📊 Final distance data:', { distance: distanceData.distance, duration: distanceData.duration });
+    const distanceData = { distance: parsedDistance || 0, duration: 0 };
+    console.log('📊 Final distance used:', distanceData.distance);
 
     // Get pricing for cab type
     let pricing = await Pricing.findOne({ cabType, isActive: true });

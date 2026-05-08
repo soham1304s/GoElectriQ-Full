@@ -31,8 +31,10 @@ const connectDB = async () => {
 
     const conn = await mongoose.connect(uri, {
       serverSelectionTimeoutMS: 20000, // Increase timeout for live mode
-      connectTimeoutMS: 20000,
+      connectTimeoutMS: 30000,
       socketTimeoutMS: 45000,
+      maxPoolSize: 10,
+      minPoolSize: 2,
       family: 4, // Force IPv4 to avoid potential Railway network issues
     });
 
