@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const isDev = import.meta.env.DEV;
 const apiURL = import.meta.env.VITE_API_URL || '';
-const baseURL = isDev ? '/api' : (apiURL ? `${apiURL.replace(/\/+$/, '')}/api` : 'https://goelectricnew-production.up.railway.app/api');
+const baseURL = isDev ? '/api' : (apiURL ? `${apiURL.replace(/\/+$/, '')}/api` : 'https://modest-inspiration-production-223d.up.railway.app/api');
 
 const api = axios.create({
   baseURL,
