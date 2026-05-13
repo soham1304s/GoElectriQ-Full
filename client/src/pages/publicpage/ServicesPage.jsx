@@ -82,7 +82,7 @@ const ServicesPage = () => {
         keywords="electric cab services, city ride, intercity electric taxi, airport transfer service, EV tours"
         url="/services"
       />
-      <div className="pt-24 md:pt-32 font-['Inter',sans-serif] transition-colors duration-500 bg-[#fafafa] dark:bg-black">
+      <div className="pt-24 md:pt-28 font-['Inter',sans-serif] transition-colors duration-500 bg-[#fafafa] dark:bg-black">
         {/* Header Section */}
         <section className="max-w-7xl mx-auto px-4 mb-16 md:mb-24">
           <div className="text-center max-w-4xl mx-auto">

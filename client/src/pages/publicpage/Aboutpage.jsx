@@ -67,7 +67,7 @@ const AboutUsPage = () => {
         keywords="about GoElectric, electric vehicle company, sustainable transport India, green mobility mission"
         url="/about"
       />
-    <div className="pt-24 md:pt-32 overflow-hidden transition-colors duration-500 dark:bg-[#020617]">
+    <div className="pt-24 md:pt-28 overflow-hidden transition-colors duration-500 dark:bg-[#020617]">
       {/* Hero Section */}
       <section className="relative px-4 mb-24 md:mb-32">
         <div className="max-w-7xl mx-auto text-center relative z-10">

@@ -87,7 +87,7 @@ export default function ReviewsPage() {
         keywords="GoElectriQ reviews, electric cab feedback, Jaipur taxi testimonials, premium EV ride reviews"
         url="/reviews"
       />
-      <div className="min-h-screen bg-[#fafafa] dark:bg-[#020617] pt-24 md:pt-32 font-['Inter',sans-serif]">
+      <div className="min-h-screen bg-[#fafafa] dark:bg-[#020617] pt-24 md:pt-28 font-['Inter',sans-serif]">
         <section className="max-w-7xl mx-auto px-4 mb-20">
           <div className="text-center max-w-4xl mx-auto">
             <motion.div

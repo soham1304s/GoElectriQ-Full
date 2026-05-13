@@ -55,6 +55,14 @@ app.set('trust proxy', 1);
 // Connect to database
 connectDB();
 
+// Diagnostic logs for environment variables (obfuscated)
+console.log('📡 Environment Diagnostic:');
+console.log(`   NODE_ENV: ${process.env.NODE_ENV}`);
+console.log(`   MONGODB_URI: ${process.env.MONGODB_URI ? '✅ Defined' : '❌ UNDEFINED'}`);
+console.log(`   MONGO_URI: ${process.env.MONGO_URI ? '✅ Defined' : '❌ UNDEFINED'}`);
+console.log(`   CLIENT_URL: ${process.env.CLIENT_URL ? '✅ Defined' : '❌ UNDEFINED'}`);
+console.log(`   JWT_SECRET: ${process.env.JWT_SECRET ? '✅ Defined' : '❌ UNDEFINED'}`);
+
 verifyEmailConfig();
 verifyWhatsAppConfig();
 verifyCloudinaryConfig();

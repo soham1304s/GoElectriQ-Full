@@ -87,7 +87,7 @@ const ContactPage = () => {
         keywords="contact GoElectric, ride support, electric cab help, customer service taxi"
         url="/contact"
       />
-    <div className="pt-24 md:pt-32 transition-colors duration-500 dark:bg-[#020617]">
+    <div className="pt-24 md:pt-28 transition-colors duration-500 dark:bg-[#020617]">
       {/* Header */}
       <section className="max-w-7xl mx-auto px-4 mb-20 md:mb-32">
         <div className="text-center max-w-4xl mx-auto">

@@ -101,7 +101,7 @@ function PublicLayout() {
     <>
       <Navbar />
 
-      <main className="pt-14 md:pt-0 min-h-screen pb-16 md:pb-0 bg-[#fafafa] dark:bg-black text-slate-900 dark:text-zinc-100 transition-colors duration-300">
+      <main className="min-h-screen pb-16 md:pb-0 bg-[#fafafa] dark:bg-black text-slate-900 dark:text-zinc-100 transition-colors duration-300">
         <Outlet />
       </main>
     </>

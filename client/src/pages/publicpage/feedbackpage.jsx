@@ -98,7 +98,7 @@ export default function FeedbackPage() {
         keywords="GoElectriQ feedback, customer review, ride experience, electric taxi suggestions"
         url="/feedback"
       />
-      <div className="min-h-screen bg-[#fafafa] dark:bg-[#020617] pt-24 md:pt-32 font-['Inter',sans-serif]">
+      <div className="min-h-screen bg-[#fafafa] dark:bg-[#020617] pt-24 md:pt-28 font-['Inter',sans-serif]">
         <div className="max-w-7xl mx-auto px-4 pb-32">
 
           <div className="grid lg:grid-cols-5 gap-16 items-start">

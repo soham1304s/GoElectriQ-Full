@@ -97,7 +97,7 @@ export default function ToursPage() {
         url="/tours"
       />
       {/* Hero Section */}
-      <div className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+      <div className="relative pt-24 pb-16 md:pt-28 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-emerald-600/5 dark:bg-emerald-500/10 mix-blend-multiply dark:mix-blend-lighten" />
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl opacity-50" />

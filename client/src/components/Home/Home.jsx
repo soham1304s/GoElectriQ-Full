@@ -1276,7 +1276,7 @@ const GoelectriqLanding = () => {
         {/* Hero Section Redesigned */}
         <header
           id="home"
-          className={`relative overflow-hidden pt-28 pb-16 md:pt-40 md:pb-32 ${darkMode ? "bg-[#020617]" : "bg-white"}`}
+          className={`relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-32 ${darkMode ? "bg-[#020617]" : "bg-white"}`}
         >
           {/* Background Decorative Elements */}
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-emerald-500/5 to-transparent pointer-events-none" />

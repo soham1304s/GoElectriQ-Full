@@ -4,7 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 // Load env if not already loaded (e.g. when running this file directly)
-if (!process.env.MONGODB_URI) {
+if (!process.env.MONGODB_URI && !process.env.MONGO_URI) {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   dotenv.config({ path: path.join(__dirname, '../.env') });
 }
@@ -17,14 +17,18 @@ const connectDB = async () => {
     const uri = process.env.MONGODB_URI || process.env.MONGO_URI;
 
     if (!uri) {
-      console.error("❌ MONGODB_URI is not defined. Please check your environment variables.");
+      console.error("❌ ERROR: MONGODB_URI/MONGO_URI is not defined in environment variables.");
+      console.log("   Available Env Vars (Keys):", Object.keys(process.env).filter(k => !k.includes('SECRET') && !k.includes('KEY') && !k.includes('TOKEN') && !k.includes('PASS')));
+      
       if (process.env.NODE_ENV === 'production') {
         process.exit(1);
       }
       return;
     }
 
-    console.log('🔍 Connecting to MongoDB Atlas...');
+    // Obfuscate URI for logging
+    const safeUri = uri.replace(/\/\/[^:]+:[^@]+@/, '//***:***@');
+    console.log(`🔍 Attempting MongoDB connection: ${safeUri}`);
     
     // Mongoose 7+ defaults to strictQuery: true, but explicitly setting it is good practice
     mongoose.set('strictQuery', false);
@@ -51,7 +55,16 @@ const connectDB = async () => {
     });
 
   } catch (error) {
-    console.error(`❌ CRITICAL: Error connecting to MongoDB: ${error.message}`);
+    console.error(`❌ CRITICAL ERROR connecting to MongoDB: ${error.name}`);
+    console.error(`📝 Message: ${error.message}`);
+    
+    if (error.name === 'MongoNetworkError') {
+      console.error("💡 Hint: This usually means the IP is not whitelisted or the database is unreachable.");
+    } else if (error.name === 'MongoParseError') {
+      console.error("💡 Hint: Check your connection string format.");
+    } else if (error.message.includes('authentication failed')) {
+      console.error("💡 Hint: Check your database username and password.");
+    }
     
     if (process.env.NODE_ENV === 'production') {
       console.error("💀 Production environment detected. Terminating process to trigger restart.");
