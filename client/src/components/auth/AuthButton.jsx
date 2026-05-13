@@ -13,10 +13,8 @@ export default function AuthButton({
   const { theme } = useTheme();
 
   const variants = {
-    default: theme === 'light'
-      ? 'bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white'
-      : 'bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white',
-    admin: 'bg-gradient-to-r from-slate-700 to-slate-900 dark:from-slate-600 dark:to-slate-800 hover:from-slate-800 dark:hover:from-slate-700 hover:to-black dark:hover:to-slate-900 text-white',
+    default: 'bg-emerald-600 hover:bg-emerald-700 text-white',
+    admin: 'bg-[#022c22] hover:bg-black text-white',
     outline: theme === 'light'
       ? 'border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-50'
       : 'border-2 border-purple-500 text-purple-400 dark:hover:bg-purple-900/20',

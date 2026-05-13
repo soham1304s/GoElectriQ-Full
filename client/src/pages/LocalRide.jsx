@@ -397,7 +397,7 @@ export default function LocalRidePage() {
                 <span>100% Electric Fleet</span>
               </div>
               <h1 className={`text-3xl font-black tracking-tight sm:text-4xl md:text-5xl ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                Local Ride <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Booking</span>
+                Local Ride <span className="text-emerald-600">Booking</span>
               </h1>
               <p className={`mt-3 text-sm leading-relaxed sm:text-base md:text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                 Quick, convenient, and zero-emission rides within your city.

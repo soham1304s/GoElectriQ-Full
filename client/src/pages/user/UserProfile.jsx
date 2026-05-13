@@ -165,7 +165,7 @@ export default function UserProfile() {
             <div className="relative group">
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="w-40 h-40 rounded-[3rem] bg-gradient-to-br from-emerald-400 to-teal-500 p-1.5 shadow-2xl overflow-hidden"
+                className="w-40 h-40 rounded-[3rem] bg-gradient-to-br from-emerald-400 to-emerald-500 p-1.5 shadow-2xl overflow-hidden"
               >
                 <div className="w-full h-full rounded-[2.7rem] bg-white overflow-hidden flex items-center justify-center text-5xl font-black text-emerald-500">
                   {user?.profileImage ? (
@@ -239,7 +239,7 @@ export default function UserProfile() {
               {!isEditing && (
                 <button
                   onClick={() => setIsEditing(true)}
-                  className="px-6 py-3 bg-slate-900 text-white rounded-2xl text-xs font-black hover:bg-black transition-all flex items-center gap-2 shadow-lg"
+                  className="px-6 py-3 bg-[#022c22] text-white rounded-2xl text-xs font-black hover:bg-black transition-all flex items-center gap-2 shadow-lg"
                 >
                   <Edit2 size={14} />
                   Edit Profile
@@ -403,7 +403,7 @@ export default function UserProfile() {
             </div>
           </div>
           <div className="bg-white p-6 rounded-[2rem] border border-slate-100 flex items-center gap-5">
-            <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-500 shrink-0">
+            <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-500 shrink-0">
               <Calendar size={24} />
             </div>
             <div>

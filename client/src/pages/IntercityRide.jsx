@@ -402,7 +402,7 @@ export default function IntercityRidePage() {
                 <span>100% Electric Intercity Travel</span>
               </div>
               <h1 className={`text-4xl font-black tracking-tight md:text-5xl ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                Intercity <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Rides</span>
+                Intercity <span className="text-emerald-600">Rides</span>
               </h1>
               <p className={`mt-3 text-base md:text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                 Premium, long-distance travel between cities in zero-emission comfort.

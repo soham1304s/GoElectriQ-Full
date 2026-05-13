@@ -100,7 +100,7 @@ const ServicesPage = () => {
               className="text-3xl sm:text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 tracking-tight leading-tight"
             >
               Premium Mobility, <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">100% Electric.</span>
+              <span className="text-emerald-600">100% Electric.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -128,7 +128,7 @@ const ServicesPage = () => {
                   <div className="p-6 sm:p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] h-full flex flex-col transition-all duration-300 border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-500/5 relative overflow-hidden">
 
                     {/* Background Glow on Hover */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-500/10 to-teal-500/5 dark:from-emerald-900/20 dark:to-teal-900/10 rounded-bl-full transition-transform duration-500 translate-x-8 -translate-y-8 group-hover:translate-x-0 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 -z-0"></div>
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 dark:from-emerald-900/20 dark:to-emerald-900/10 rounded-bl-full transition-transform duration-500 translate-x-8 -translate-y-8 group-hover:translate-x-0 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 -z-0"></div>
 
                     <div className="relative z-10 flex flex-col h-full">
                       <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 transition-transform duration-300 group-hover:scale-110">
@@ -206,7 +206,7 @@ const ServicesPage = () => {
             <div className={`rounded-[2.5rem] md:rounded-[3.5rem] p-6 sm:p-8 md:p-20 relative overflow-hidden transition-all duration-500 border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 shadow-2xl shadow-emerald-500/5 group`}>
               
               {/* Background Accents */}
-              <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-emerald-500/5 to-blue-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700"></div>
+              <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-emerald-500/5 to-emerald-600/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700"></div>
               
               <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
                 <div>
@@ -215,7 +215,7 @@ const ServicesPage = () => {
                   </div>
                   <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 tracking-tight leading-tight">
                     Drive with Purpose. <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Earn with Pride.</span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">Earn with Pride.</span>
                   </h2>
                   <p className="text-xl text-slate-500 dark:text-zinc-400 font-medium mb-10 leading-relaxed">
                     We aren't just looking for drivers; we are looking for EV Pilots. Be part of Jaipur's most premium electric fleet and take home better earnings every week.
@@ -240,7 +240,7 @@ const ServicesPage = () => {
 
                   <button
                     onClick={() => navigate('/partner/driver')}
-                    className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-lg transition-all hover:scale-[1.02] active:scale-[0.98] shadow-2xl hover:shadow-emerald-500/20"
+                    className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-[#022c22] dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-lg transition-all hover:scale-[1.02] active:scale-[0.98] shadow-2xl hover:shadow-emerald-500/20"
                   >
                     Start Your Application
                     <ArrowRight className="transition-transform group-hover:translate-x-2" size={20} />
@@ -282,7 +282,7 @@ const ServicesPage = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-5xl mx-auto p-8 sm:p-12 md:p-24 rounded-[3rem] md:rounded-[4rem] bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 text-center border border-slate-200 dark:border-slate-700 shadow-2xl"
+            className="max-w-5xl mx-auto p-8 sm:p-12 md:p-24 rounded-[3rem] md:rounded-[4rem] bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-[#022c22] text-center border border-slate-200 dark:border-slate-700 shadow-2xl"
           >
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 tracking-tight">Need a Custom Plan?</h2>
             <p className="text-xl md:text-2xl text-slate-500 dark:text-gray-400 font-medium mb-12 max-w-2xl mx-auto">
@@ -291,7 +291,7 @@ const ServicesPage = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <button
                 onClick={() => navigate('/contact')}
-                className="px-10 py-5 bg-gradient-to-r from-emerald-500 to-blue-600 text-white rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl hover:shadow-emerald-500/20 transition-all hover:-translate-y-1 flex items-center gap-2"
+                className="px-10 py-5 bg-emerald-600 text-white rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl hover:shadow-emerald-500/20 transition-all hover:-translate-y-1 flex items-center gap-2"
               >
                 Contact Sales <ChevronRight size={18} />
               </button>

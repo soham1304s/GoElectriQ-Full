@@ -489,7 +489,7 @@ export default function AirportRidePage() {
                   <span>100% Electric Airport Transfers</span>
                 </div>
                 <h1 className={`text-4xl font-black tracking-tight md:text-5xl ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                  Airport <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Transfers</span>
+                  Airport <span className="text-emerald-600">Transfers</span>
                 </h1>
                 <p className={`mt-3 text-base md:text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                   Premium, zero-emission rides to and from Jaipur International Airport.
@@ -545,25 +545,25 @@ export default function AirportRidePage() {
                       type="button"
                       onClick={() => setRideType('drop')}
                       className={`group relative rounded-2xl border p-5 text-left transition-all overflow-hidden ${rideType === 'drop'
-                        ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/10 shadow-sm ring-1 ring-teal-500'
+                        ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/10 shadow-sm ring-1 ring-emerald-500'
                         : isDark
                           ? 'border-zinc-800 bg-zinc-800/50 hover:border-zinc-600 hover:bg-zinc-800'
                           : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'
                         }`}
                     >
                       {rideType === 'drop' && (
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-teal-100 dark:bg-teal-900/30 rounded-bl-[100px] -z-0"></div>
+                        <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-bl-[100px] -z-0"></div>
                       )}
                       <div className="relative z-10">
                         <div className="flex items-center gap-3 mb-3">
-                          <div className={`p-2.5 rounded-xl ${rideType === 'drop' ? 'bg-teal-100 dark:bg-teal-900/50 text-teal-600 dark:text-teal-400' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-500'}`}>
+                          <div className={`p-2.5 rounded-xl ${rideType === 'drop' ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-500'}`}>
                             <Plane className="h-5 w-5" />
                           </div>
-                          <span className={`font-bold text-base ${rideType === 'drop' ? 'text-teal-600 dark:text-teal-400' : isDark ? 'text-white' : 'text-slate-900'}`}>
+                          <span className={`font-bold text-base ${rideType === 'drop' ? 'text-emerald-600 dark:text-emerald-400' : isDark ? 'text-white' : 'text-slate-900'}`}>
                             To Airport
                           </span>
                         </div>
-                        <p className={`text-sm ${rideType === 'drop' ? 'text-teal-700 dark:text-teal-500' : isDark ? 'text-zinc-400' : 'text-slate-600'}`}>
+                        <p className={`text-sm ${rideType === 'drop' ? 'text-emerald-700 dark:text-emerald-500' : isDark ? 'text-zinc-400' : 'text-slate-600'}`}>
                           Travel from your location to airport
                         </p>
                       </div>
@@ -621,7 +621,7 @@ export default function AirportRidePage() {
                           type="button"
                           onClick={handleFetchCurrentLocation}
                           disabled={fetchingLocation}
-                          className={`rounded-xl p-3.5 flex-shrink-0 transition-all border ${fetchingLocation ? 'bg-slate-100 border-slate-200 cursor-not-allowed text-slate-400' : isDark ? 'border-zinc-700 bg-zinc-800 hover:bg-zinc-700 text-teal-400' : 'border-slate-200 bg-slate-50 hover:bg-slate-100 text-teal-600'}`}
+                          className={`rounded-xl p-3.5 flex-shrink-0 transition-all border ${fetchingLocation ? 'bg-slate-100 border-slate-200 cursor-not-allowed text-slate-400' : isDark ? 'border-zinc-700 bg-zinc-800 hover:bg-zinc-700 text-emerald-400' : 'border-slate-200 bg-slate-50 hover:bg-slate-100 text-emerald-600'}`}
                           title="Use current location"
                         >
                           {fetchingLocation ? (
@@ -722,7 +722,7 @@ export default function AirportRidePage() {
                       <span className={`font-medium ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>Ride Type</span>
                       <span className={`font-bold px-2 py-1 rounded-md text-xs ${rideType === 'pickup'
                         ? isDark ? 'bg-emerald-900/30 text-emerald-300' : 'bg-emerald-100 text-emerald-700'
-                        : isDark ? 'bg-teal-900/30 text-teal-300' : 'bg-teal-100 text-teal-700'
+                        : isDark ? 'bg-emerald-900/30 text-emerald-300' : 'bg-emerald-100 text-emerald-700'
                         }`}>
                         {rideType === 'pickup' ? 'From Airport' : 'To Airport'}
                       </span>

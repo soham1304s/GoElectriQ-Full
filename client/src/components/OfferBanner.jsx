@@ -125,7 +125,7 @@ const OfferBanner = () => {
                 <div className="absolute bottom-0 right-0 w-32 h-32 bg-emerald-500/10 blur-[60px] rounded-full translate-x-1/2 translate-y-1/2" />
 
                 {/* Header */}
-                <div className="relative h-32 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center overflow-hidden">
+                <div className="relative h-32 bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center overflow-hidden">
                   <motion.div 
                     animate={{ rotate: [0, 10, -10, 0] }}
                     transition={{ duration: 4, repeat: Infinity }}
@@ -173,7 +173,7 @@ const OfferBanner = () => {
                     </div>
                     
                     <div className={`p-4 rounded-2xl flex flex-col justify-center ${isDark ? 'bg-slate-800/50' : 'bg-slate-50'}`}>
-                      <span className="text-[10px] font-bold text-teal-500 uppercase tracking-wider mb-1">Valid On</span>
+                      <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-wider mb-1">Valid On</span>
                       <div className={`text-xs font-bold leading-tight ${isDark ? 'text-white' : 'text-slate-800'}`}>
                         {offer.applicableOn?.[0] === 'both' ? 'Rides & Tours' : offer.applicableOn?.[0] || 'All Services'}
                       </div>
@@ -325,7 +325,7 @@ const OfferBanner = () => {
                           transition={{ delay: 0.2 }}
                         >
                           <label className={`block text-sm font-semibold mb-2 flex items-center gap-2 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
-                            <Phone size={16} className="text-teal-500" />
+                            <Phone size={16} className="text-emerald-500" />
                             Phone Number
                           </label>
                           <div className="flex gap-2">
@@ -341,8 +341,8 @@ const OfferBanner = () => {
                               maxLength="10"
                               className={`flex-1 px-4 py-3.5 rounded-xl border-2 transition-all ${
                                 isDark 
-                                  ? 'bg-slate-800 border-slate-700 text-white placeholder-slate-500 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20' 
-                                  : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20'
+                                  ? 'bg-slate-800 border-slate-700 text-white placeholder-slate-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20' 
+                                  : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20'
                               } outline-none`}
                             />
                           </div>
@@ -372,7 +372,7 @@ const OfferBanner = () => {
                           whileTap={{ scale: 0.98 }}
                           onClick={sendViaWhatsApp}
                           disabled={isLoading}
-                          className="py-3.5 rounded-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                          className="py-3.5 rounded-xl font-bold bg-gradient-to-r from-emerald-600 to-emerald-600 hover:from-emerald-700 hover:to-emerald-700 text-white transition-all disabled:opacity-50 flex items-center justify-center gap-2"
                         >
                           {isLoading ? (
                             <>
@@ -404,7 +404,7 @@ const OfferBanner = () => {
                       <motion.div
                         animate={{ scale: [0, 1.2, 1] }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full flex items-center justify-center"
+                        className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-full flex items-center justify-center"
                       >
                         <Check size={32} className="text-white" />
                       </motion.div>

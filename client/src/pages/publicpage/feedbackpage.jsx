@@ -119,7 +119,7 @@ export default function FeedbackPage() {
                   className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 tracking-tight leading-tight"
                 >
                   Help Us <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-500">Refine the Future.</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">Refine the Future.</span>
                 </motion.h1>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
@@ -142,7 +142,7 @@ export default function FeedbackPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 + (i * 0.1) }}
-                    className="flex gap-6 p-6 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-sm"
+                    className="flex gap-6 p-6 rounded-3xl bg-white dark:bg-[#022c22]/50 border border-slate-100 dark:border-slate-800 shadow-sm"
                   >
                     <div className="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
                       <item.icon size={24} />
@@ -159,9 +159,9 @@ export default function FeedbackPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="p-8 rounded-[2.5rem] bg-slate-900 text-white relative overflow-hidden group shadow-2xl"
+                className="p-8 rounded-[2.5rem] bg-[#022c22] text-white relative overflow-hidden group shadow-2xl"
               >
-                <div className="absolute -right-4 -top-4 w-24 h-24 bg-blue-600/20 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700" />
+                <div className="absolute -right-4 -top-4 w-24 h-24 bg-emerald-600/20 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700" />
                 <h4 className="text-xl font-black mb-4 relative z-10">Direct Priority Line</h4>
                 <p className="text-slate-400 text-sm font-medium mb-6 relative z-10">For immediate assistance with an active ride, use our 24/7 hotline.</p>
                 <a href="tel:+918690366601" className="inline-flex items-center gap-2 font-black text-emerald-400 hover:text-emerald-300 transition-colors relative z-10">
@@ -175,7 +175,7 @@ export default function FeedbackPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white dark:bg-slate-900 rounded-[3rem] md:rounded-[4rem] p-8 md:p-16 border border-slate-200 dark:border-slate-800 shadow-2xl relative"
+                className="bg-white dark:bg-[#022c22] rounded-[3rem] md:rounded-[4rem] p-8 md:p-16 border border-slate-200 dark:border-slate-800 shadow-2xl relative"
               >
                 <AnimatePresence mode="wait">
                   {submitted ? (
@@ -195,7 +195,7 @@ export default function FeedbackPage() {
                       </p>
                       <button
                         onClick={() => setSubmitted(false)}
-                        className="px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all"
+                        className="px-10 py-5 bg-[#022c22] dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all"
                       >
                         Submit Another Entry
                       </button>
@@ -316,7 +316,7 @@ export default function FeedbackPage() {
             {feedbackLoading ? (
               <div className="grid md:grid-cols-2 gap-8">
                 {[1, 2].map(i => (
-                  <div key={i} className="h-48 rounded-[2.5rem] bg-slate-100 dark:bg-slate-900 animate-pulse" />
+                  <div key={i} className="h-48 rounded-[2.5rem] bg-slate-100 dark:bg-[#022c22] animate-pulse" />
                 ))}
               </div>
             ) : (
@@ -327,7 +327,7 @@ export default function FeedbackPage() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="p-8 rounded-[2.5rem] bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-xl group hover:border-emerald-500/30 transition-all"
+                    className="p-8 rounded-[2.5rem] bg-white dark:bg-[#022c22] border border-slate-100 dark:border-slate-800 shadow-xl group hover:border-emerald-500/30 transition-all"
                   >
                     <div className="flex justify-between items-start mb-6">
                       <div className="flex items-center gap-4">

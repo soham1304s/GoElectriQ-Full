@@ -12,7 +12,7 @@ export default function AuthLayout({ children, title, subtitle, showSlider = tru
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 md:p-8 overflow-hidden transition-colors duration-500">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-500/5 rounded-full blur-[120px] -mr-96 -mt-96 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[100px] -ml-48 -mb-48 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[100px] -ml-48 -mb-48 pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -22,7 +22,7 @@ export default function AuthLayout({ children, title, subtitle, showSlider = tru
       >
         {/* Visual Showcase - Left Side */}
         {showSlider && (
-          <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-slate-900 min-h-[400px] lg:min-h-full">
+          <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-[#022c22] min-h-[400px] lg:min-h-full">
             <div className="absolute inset-0 z-0">
               <AuthImageSlider />
             </div>
@@ -55,7 +55,7 @@ export default function AuthLayout({ children, title, subtitle, showSlider = tru
               animate={{ opacity: 1, scale: 1 }}
               src={darkMode ? logoWhite : logo}
               alt="GoElectriQ"
-              className="h-8 lg:h-10 w-auto mb-6 lg:mb-10 object-contain mx-auto lg:mx-0"
+              className="h-33 lg:h-40 w-auto mb-8 lg:mb-12 object-contain mx-auto lg:mx-0"
             />
             {title && <h1 className="text-2xl lg:text-4xl font-black text-slate-900 tracking-tighter mb-2 lg:mb-3 text-center lg:text-left">{title}</h1>}
             {subtitle && <p className="text-slate-500 font-bold text-[10px] uppercase tracking-widest text-center lg:text-left">{subtitle}</p>}

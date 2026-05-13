@@ -56,7 +56,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
 
   const features = [
     { icon: <Zap size={20} className="text-emerald-500" />, title: "Instant Booking", desc: "Get a ride in seconds" },
-    { icon: <Shield size={20} className="text-blue-500" />, title: "Secure Travel", desc: "Verified drivers only" },
+    { icon: <Shield size={20} className="text-emerald-500" />, title: "Secure Travel", desc: "Verified drivers only" },
     { icon: <Clock size={20} className="text-purple-500" />, title: "24/7 Support", desc: "We are always here" },
   ];
 
@@ -87,7 +87,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
       {!isHero && (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-7xl pointer-events-none">
           <div className={`absolute top-0 left-1/4 w-96 h-96 rounded-full blur-[120px] ${darkMode ? 'bg-emerald-500/10' : 'bg-emerald-500/5'}`} />
-          <div className={`absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-[120px] ${darkMode ? 'bg-blue-500/10' : 'bg-blue-500/5'}`} />
+          <div className={`absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-[120px] ${darkMode ? 'bg-emerald-500/10' : 'bg-emerald-500/5'}`} />
         </div>
       )}
 
@@ -134,7 +134,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
             {/* The Screen / Chassis */}
             <div className={`relative rounded-t-[2.5rem] p-2 md:p-3 shadow-2xl transition-all duration-700 ${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-slate-300 border-slate-400'} border-x-4 border-t-4`}>
               {/* Screen Content */}
-              <div className={`relative aspect-[4/3] rounded-[1.2rem] md:rounded-[1.5rem] overflow-hidden ${darkMode ? 'bg-slate-900' : 'bg-white shadow-inner'}`}>
+              <div className={`relative aspect-[4/3] rounded-[1.2rem] md:rounded-[1.5rem] overflow-hidden ${darkMode ? 'bg-[#022c22]' : 'bg-white shadow-inner'}`}>
                 {/* Simulated UI Navbar */}
                 <div className={`h-10 border-b flex items-center px-4 justify-between ${darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-slate-50 border-slate-200'}`}>
                   <div className="flex gap-1.5">
@@ -166,7 +166,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                         key={type}
                         onClick={() => setActiveTab(type === 'Intercity Ride' ? 'Intercity' : type)}
                         className={`flex-1 py-2 rounded-lg text-[10px] font-black transition-all ${(activeTab === type || (activeTab === 'Intercity' && type === 'Intercity Ride'))
-                          ? 'bg-gradient-to-r from-emerald-500 to-blue-600 text-white shadow-md scale-105'
+                          ? 'bg-emerald-600 text-white shadow-md scale-105'
                           : 'text-slate-500 hover:text-slate-700 hover:scale-105'
                           }`}
                       >
@@ -184,7 +184,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                         onSelectLocation={(loc) => setPickup(loc)}
                         placeholder="Pickup location"
                         darkMode={darkMode}
-                        inputClassName="!py-3 !rounded-xl !text-[11px] !font-bold"
+                        inputClassName="!py-3 !rounded-xl !text-[6px] !font-bold"
                       />
                       <LocationPickerComponent
                         value={dest.address}
@@ -192,7 +192,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                         onSelectLocation={(loc) => setDest(loc)}
                         placeholder="Destination"
                         darkMode={darkMode}
-                        inputClassName="!py-3 !rounded-xl !text-[11px] !font-bold"
+                        inputClassName="!py-3 !rounded-xl !text-[6px] !font-bold"
                       />
                     </div>
                   </div>
@@ -209,7 +209,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                       />
                     </div>
                     <div className={`relative flex items-center gap-2 p-3 rounded-xl border transition-all ${darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-slate-50 border-slate-100 shadow-sm'}`}>
-                      <Clock size={16} className="text-blue-500" />
+                      <Clock size={16} className="text-emerald-500" />
                       <input
                         type="time"
                         value={bookingTime}
@@ -223,7 +223,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                   <button
                     onClick={handleSearch}
                     disabled={isSearching}
-                    className="w-full py-4 md:py-4 rounded-[1.2rem] bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-black text-xs md:text-sm shadow-lg shadow-emerald-500/20 hover:scale-[1.01] active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-70 mt-auto"
+                    className="w-full py-4 md:py-4 rounded-[1.2rem] bg-emerald-600 text-white font-black text-xs md:text-sm shadow-lg shadow-emerald-500/20 hover:scale-[1.01] active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-70 mt-auto"
                   >
                     {isSearching ? (
                       <div className="flex items-center gap-2">
@@ -253,11 +253,11 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="md:hidden relative mx-auto w-[270px] max-w-[82vw] sm:w-[310px] z-20 group animate-float-phone"
           >
-            <div className={`relative rounded-[2.35rem] p-2 shadow-[0_30px_90px_rgba(15,23,42,0.25)] border-[7px] ${darkMode ? 'bg-slate-950 border-slate-800' : 'bg-slate-950 border-slate-800'}`}>
+            <div className={`relative rounded-[2.35rem] p-2 shadow-[0_30px_90px_rgba(15,23,42,0.25)] border-[7px] ${darkMode ? 'bg-[#022c22] border-slate-800' : 'bg-[#022c22] border-slate-800'}`}>
               <div className="absolute -left-[10px] top-24 h-12 w-1.5 rounded-l-full bg-slate-800" />
               <div className="absolute -right-[10px] top-32 h-16 w-1.5 rounded-r-full bg-slate-800" />
               {/* Speaker / Notch */}
-              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 bg-slate-950 rounded-full border border-white/5 z-30" />
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 bg-[#022c22] rounded-full border border-white/5 z-30" />
 
               {/* Screen Content */}
               <div className="aspect-[9/19.25] rounded-[1.85rem] overflow-hidden bg-slate-50 relative">
@@ -269,23 +269,23 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                     <div className="flex items-center gap-1.5 text-slate-900">
                       <TrendingUp size={10} strokeWidth={3} />
                       <div className="flex items-center gap-0.5">
-                        <div className="h-1.5 w-3 rounded-[2px] bg-slate-900" />
-                        <div className="h-1.5 w-1.5 rounded-full bg-slate-900" />
+                        <div className="h-1.5 w-3 rounded-[2px] bg-[#022c22]" />
+                        <div className="h-1.5 w-1.5 rounded-full bg-[#022c22]" />
                       </div>
                     </div>
                   </div>
 
                   {/* Header */}
-                  <div className="mb-3 shrink-0 overflow-hidden rounded-[1.35rem] bg-slate-950 p-3 text-white shadow-xl shadow-slate-900/15">
+                  <div className="mb-3 shrink-0 overflow-hidden rounded-[1.35rem] bg-[#022c22] p-3 text-white shadow-xl shadow-slate-900/15">
                     <div className="flex items-center gap-2.5">
                       <div className="min-w-0 flex-1">
-                        <div className="mb-1.5 inline-flex items-center gap-1.5 rounded-full bg-emerald-400/15 px-2 py-0.5 text-[7px] font-black uppercase tracking-wider text-emerald-200">
+                        <div className="mb-1 inline-flex items-center gap-1.5 rounded-full bg-emerald-400/15 px-2 py-0.5 text-[7px] font-black uppercase tracking-wider text-emerald-200">
                           <Zap size={9} className="fill-current" /> Smart Booking
                         </div>
                         <h4 className="text-[19px] font-black leading-[1.05] tracking-tight">
                           Plan Your Ride
                         </h4>
-                        <p className="mt-1.5 max-w-[120px] text-[8.5px] font-medium leading-relaxed text-slate-300">
+                        <p className="mt-1.5 max-w-[120px] text-[6.5px] font-medium leading-relaxed text-slate-300">
                           Choose route, date, and time in one clean flow.
                         </p>
                       </div>
@@ -307,8 +307,8 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                       <button
                         key={type.id}
                         onClick={() => setActiveTab(type.id)}
-                        className={`flex min-h-[38px] min-w-0 items-center justify-center gap-1.5 rounded-2xl px-1.5 text-[8.5px] font-extrabold transition-all ${activeTab === type.id
-                            ? 'bg-slate-950 text-white shadow-md shadow-slate-900/20'
+                        className={`flex min-h-[38px] min-w-0 items-center justify-center gap-1.5 rounded-2xl px-1.5 text-[6.5px] font-extrabold transition-all ${activeTab === type.id
+                            ? 'bg-[#022c22] text-white shadow-md shadow-slate-900/20'
                             : 'text-slate-500 hover:bg-slate-50 hover:text-emerald-600'
                           }`}
                       >
@@ -339,7 +339,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                           darkMode={false}
                           compact={true}
                           naked={true}
-                          inputClassName="!p-0 !h-auto !bg-transparent !text-[11px] !font-bold !text-slate-900 placeholder:!text-slate-400 border-none ring-0 focus:ring-0"
+                          inputClassName="!p-0 !h-auto !bg-transparent !text-[9px] !font-bold !text-slate-900 placeholder:!text-slate-400 border-none ring-0 focus:ring-0"
                         />
                       </div>
                       <button type="button" className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-xl bg-slate-50 text-emerald-600 transition-colors hover:bg-emerald-50">
@@ -348,7 +348,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                     </div>
 
                     <div className="relative mt-2 flex min-h-[52px] items-center gap-2.5 border-t border-slate-100 pt-2">
-                      <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600">
+                      <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
                         <MapPin size={14} className="fill-current" />
                       </div>
                       <div className="min-w-0 flex-1">
@@ -361,7 +361,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                           darkMode={false}
                           compact={true}
                           naked={true}
-                          inputClassName="!p-0 !h-auto !bg-transparent !text-[11px] !font-bold !text-slate-900 placeholder:!text-slate-400 border-none ring-0 focus:ring-0"
+                          inputClassName="!p-0 !h-auto !bg-transparent !text-[9px] !font-bold !text-slate-900 placeholder:!text-slate-400 border-none ring-0 focus:ring-0"
                         />
                       </div>
                       <button type="button" className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-xl bg-slate-50 text-emerald-600 transition-colors hover:bg-emerald-50">
@@ -372,8 +372,8 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
 
                   {/* Unified Date/Time Card */}
                   <div className="mb-3 grid shrink-0 grid-cols-2 gap-1.5">
-                    <label className="rounded-[1rem] border border-slate-200 bg-white px-2.5 py-2 shadow-sm shadow-slate-200/70">
-                      <span className="mb-1.5 flex items-center justify-between text-[7.5px] font-black uppercase tracking-wider text-slate-500">
+                    <label className="rounded-[1rem] border border-slate-200 bg-white px-2.5 py-1.5 shadow-sm shadow-slate-200/70">
+                      <span className="mb-1 flex items-center justify-between text-[6px] font-black uppercase tracking-wider text-slate-500">
                         Date
                         <Calendar size={12} className="text-emerald-600" />
                       </span>
@@ -381,11 +381,11 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                         type="date"
                         value={bookingDate}
                         onChange={(e) => setBookingDate(e.target.value)}
-                        className="w-full min-w-0 bg-transparent text-[8.5px] font-bold text-slate-900 outline-none [color-scheme:light]"
+                        className="w-full min-w-0 bg-transparent text-[6.5px] font-bold text-slate-900 outline-none [color-scheme:light]"
                       />
                     </label>
-                    <label className="rounded-[1rem] border border-slate-200 bg-white px-2.5 py-2 shadow-sm shadow-slate-200/70">
-                      <span className="mb-1.5 flex items-center justify-between text-[7.5px] font-black uppercase tracking-wider text-slate-500">
+                    <label className="rounded-[1rem] border border-slate-200 bg-white px-2.5 py-1.5 shadow-sm shadow-slate-200/70">
+                      <span className="mb-1 flex items-center justify-between text-[6px] font-black uppercase tracking-wider text-slate-500">
                         Time
                         <Clock size={12} className="text-emerald-600" />
                       </span>
@@ -393,7 +393,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                         type="time"
                         value={bookingTime}
                         onChange={(e) => setBookingTime(e.target.value)}
-                        className="w-full min-w-0 bg-transparent text-[8.5px] font-bold text-slate-900 outline-none [color-scheme:light]"
+                        className="w-full min-w-0 bg-transparent text-[6.5px] font-bold text-slate-900 outline-none [color-scheme:light]"
                       />
                     </label>
                   </div>
@@ -402,7 +402,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                   <button
                     onClick={handleSearch}
                     disabled={isSearching}
-                    className="mt-auto flex w-full shrink-0 items-center justify-center gap-2 rounded-[1rem] bg-emerald-600 px-4 py-3.5 text-[11px] font-black text-white shadow-lg shadow-emerald-600/25 transition-all hover:bg-emerald-700 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                    className="mt-auto flex w-full shrink-0 items-center justify-center gap-2 rounded-[1rem] bg-emerald-600 px-4 py-3.5 text-[9px] font-black text-white shadow-lg shadow-emerald-600/25 transition-all hover:bg-emerald-700 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {isSearching ? (
                       <div className="h-3.5 w-3.5 rounded-full border-2 border-white border-t-transparent animate-spin" />
@@ -434,7 +434,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                   : 'bg-white border-slate-100 shadow-xl shadow-slate-200/40 hover:shadow-emerald-200/20'
                   }`}
               >
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${darkMode ? 'bg-slate-900' : 'bg-slate-50'}`}>
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${darkMode ? 'bg-[#022c22]' : 'bg-slate-50'}`}>
                   {feature.icon}
                 </div>
                 <h3 className={`text-xl font-black mb-2 ${darkMode ? 'text-white' : 'text-slate-900'}`}>{feature.title}</h3>

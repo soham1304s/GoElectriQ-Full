@@ -166,7 +166,7 @@ const ChargingBookingPage = () => {
         
         {/* Hero Section */}
         <section className="max-w-7xl mx-auto px-4 mb-24 md:mb-32">
-          <div className="relative rounded-[3rem] md:rounded-[4rem] overflow-hidden bg-slate-900 p-8 md:p-20 text-center text-white">
+          <div className="relative rounded-[3rem] md:rounded-[4rem] overflow-hidden bg-[#022c22] p-8 md:p-20 text-center text-white">
             <div className="absolute top-0 right-0 w-full h-full opacity-20 pointer-events-none">
               <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-500/30 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
               <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
@@ -220,7 +220,7 @@ const ChargingBookingPage = () => {
                 key={i}
                 {...fadeIn}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-[2.5rem] bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm relative group"
+                className="p-8 rounded-[2.5rem] bg-white dark:bg-[#022c22] border border-slate-100 dark:border-slate-800 shadow-sm relative group"
               >
                 <div className="text-4xl font-black text-slate-100 dark:text-slate-800 absolute right-8 top-8 transition-colors group-hover:text-emerald-500/10">
                   {s.step}
@@ -248,7 +248,7 @@ const ChargingBookingPage = () => {
                 key={s.id}
                 {...fadeIn}
                 transition={{ delay: i * 0.1 }}
-                className="group p-8 md:p-12 rounded-[3rem] bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-emerald-500/30 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-emerald-500/5 flex flex-col h-full"
+                className="group p-8 md:p-12 rounded-[3rem] bg-white dark:bg-[#022c22] border border-slate-100 dark:border-slate-800 hover:border-emerald-500/30 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-emerald-500/5 flex flex-col h-full"
               >
                 <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-10 group-hover:scale-110 transition-transform">
                   <s.icon size={32} />
@@ -274,7 +274,7 @@ const ChargingBookingPage = () => {
                   </div>
                   <button
                     onClick={toggleModal}
-                    className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all"
+                    className="w-full py-4 bg-[#022c22] dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all"
                   >
                     Initiate Setup
                   </button>
@@ -318,7 +318,7 @@ const ChargingBookingPage = () => {
             ].map((faq, idx) => (
               <div
                 key={idx}
-                className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden transition-all hover:border-emerald-500/30"
+                className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#022c22] overflow-hidden transition-all hover:border-emerald-500/30"
               >
                 <button
                   onClick={() => setExpandedFAQ(expandedFAQ === idx ? null : idx)}
@@ -355,16 +355,16 @@ const ChargingBookingPage = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+                className="absolute inset-0 bg-[#022c22]/60 backdrop-blur-sm"
                 onClick={toggleModal}
               ></motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                className="bg-white dark:bg-slate-900 w-full max-w-lg rounded-[3rem] shadow-2xl relative z-10 overflow-hidden"
+                className="bg-white dark:bg-[#022c22] w-full max-w-lg rounded-[3rem] shadow-2xl relative z-10 overflow-hidden"
               >
-                <div className="bg-slate-900 p-8 md:p-10 text-white relative">
+                <div className="bg-[#022c22] p-8 md:p-10 text-white relative">
                   <div className="absolute top-0 right-0 p-4">
                     <button onClick={toggleModal} className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
                       <ChevronDown size={24} className="rotate-90" />

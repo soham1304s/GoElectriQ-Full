@@ -419,7 +419,7 @@ const ChargingBookingDashboard = () => {
         {/* Modal Form */}
         {isModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onClick={toggleModal}></div>
+            <div className="absolute inset-0 bg-[#022c22]/60 backdrop-blur-sm" onClick={toggleModal}></div>
             <div className="bg-white dark:bg-slate-800 w-full max-w-2xl rounded-2xl shadow-2xl relative z-10 overflow-hidden">
               {/* Modal Header */}
               <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-6 text-white flex justify-between items-center">

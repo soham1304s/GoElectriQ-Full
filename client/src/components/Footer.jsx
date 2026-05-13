@@ -14,12 +14,12 @@ const Footer = ({ darkMode }) => {
       id="contact"
       className={`relative w-full px-6 md:px-16 py-10 lg:py-20 overflow-hidden transition-colors duration-500 ${
         isDarkMode
-          ? 'bg-slate-950 text-white'
+          ? 'bg-[#022c22] text-white'
           : 'bg-white text-slate-900 border-t border-slate-100'
       }`}
     >
       {/* Glow Background */}
-      <div className="absolute inset-0 -z-10 opacity-20 blur-3xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-400"></div>
+      <div className="absolute inset-0 -z-10 opacity-20 blur-3xl bg-gradient-to-r from-emerald-500 via-emerald-500 to-emerald-400"></div>
 
       <div className="max-w-7xl mx-auto">
         {/* Grid */}
@@ -51,7 +51,7 @@ const Footer = ({ darkMode }) => {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-emerald-500 hover:text-white transition-all duration-300"
+                  className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#022c22] hover:bg-emerald-500 hover:text-white transition-all duration-300"
                 >
                   <item.Icon className="w-4 h-4" />
                 </a>
@@ -134,7 +134,7 @@ const Footer = ({ darkMode }) => {
             </div>
 
             {/* Newsletter */}
-            <div className="w-full max-w-xs flex items-center p-1 bg-slate-100 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+            <div className="w-full max-w-xs flex items-center p-1 bg-slate-100 dark:bg-[#022c22] rounded-2xl border border-slate-200 dark:border-slate-800">
               <input
                 type="email"
                 placeholder="Updates via email"

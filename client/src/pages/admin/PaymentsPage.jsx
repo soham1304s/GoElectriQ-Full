@@ -399,7 +399,7 @@ const PaymentsPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#022c22]/60 backdrop-blur-sm"
               onClick={() => setSelectedPayment(null)}
             />
             <motion.div
@@ -463,7 +463,7 @@ const PaymentsPage = () => {
                       <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Stakeholder</p>
                       <div className="p-6 bg-white border border-slate-100 rounded-[2rem] shadow-sm">
                         <div className="flex items-center gap-4 mb-4">
-                          <div className="w-12 h-12 bg-slate-900 rounded-2xl flex items-center justify-center text-white font-black">
+                          <div className="w-12 h-12 bg-[#022c22] rounded-2xl flex items-center justify-center text-white font-black">
                             {selectedPayment.user?.name?.charAt(0)}
                           </div>
                           <div>
@@ -495,7 +495,7 @@ const PaymentsPage = () => {
 
                 <button
                   onClick={() => setSelectedPayment(null)}
-                  className="w-full mt-10 py-5 bg-slate-900 text-white rounded-[1.5rem] font-black hover:bg-black transition-all flex items-center justify-center gap-3 shadow-xl active:scale-[0.98]"
+                  className="w-full mt-10 py-5 bg-[#022c22] text-white rounded-[1.5rem] font-black hover:bg-black transition-all flex items-center justify-center gap-3 shadow-xl active:scale-[0.98]"
                 >
                   Close Document
                 </button>

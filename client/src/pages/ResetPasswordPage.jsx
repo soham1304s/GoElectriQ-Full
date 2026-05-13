@@ -113,7 +113,7 @@ export default function ResetPasswordPage() {
           <button 
             type="submit" 
             disabled={loading} 
-            className="w-full py-5 bg-slate-900 text-white rounded-[1.5rem] font-black text-xs uppercase tracking-[0.2em] hover:bg-black transition-all shadow-2xl active:scale-[0.98] flex items-center justify-center gap-3"
+            className="w-full py-5 bg-[#022c22] text-white rounded-[1.5rem] font-black text-xs uppercase tracking-[0.2em] hover:bg-black transition-all shadow-2xl active:scale-[0.98] flex items-center justify-center gap-3"
           >
             {loading ? (
               <div className="flex items-center gap-3">
@@ -149,7 +149,7 @@ export default function ResetPasswordPage() {
 
           <Link 
             to="/login"
-            className="w-full py-5 bg-slate-900 text-white rounded-[1.5rem] font-black text-xs uppercase tracking-[0.2em] hover:bg-black transition-all flex items-center justify-center gap-3"
+            className="w-full py-5 bg-[#022c22] text-white rounded-[1.5rem] font-black text-xs uppercase tracking-[0.2em] hover:bg-black transition-all flex items-center justify-center gap-3"
           >
             Go to Login
             <ArrowRight size={18} />

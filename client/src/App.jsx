@@ -77,7 +77,7 @@ const AdminProtectedRoute = ({ children }) => {
 
   if (loading)
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-900">
+      <div className="min-h-screen flex items-center justify-center bg-[#022c22]">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
           <p className="text-white font-semibold">Loading dashboard...</p>

@@ -23,7 +23,7 @@ const ReviewAvatar = ({ profileImage, name }) => {
 
   return (
     <div className="flex-shrink-0 relative group">
-      <div className="absolute -inset-1 bg-gradient-to-tr from-emerald-500 to-blue-500 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
+      <div className="absolute -inset-1 bg-gradient-to-tr from-emerald-500 to-emerald-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
       {!showDefault && profileImage ? (
         <img
           src={getImageUrl(profileImage)}
@@ -103,7 +103,7 @@ export default function ReviewsPage() {
               className="text-4xl md:text-7xl font-black text-slate-900 dark:text-white mb-8 tracking-tight leading-tight"
             >
               Real Stories. <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-500">Exceptional Journeys.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">Exceptional Journeys.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -120,14 +120,14 @@ export default function ReviewsPage() {
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[1, 2, 3, 4, 5, 6].map(i => (
-                <div key={i} className="h-64 rounded-[2.5rem] bg-slate-100 dark:bg-slate-900 animate-pulse border border-slate-200 dark:border-slate-800" />
+                <div key={i} className="h-64 rounded-[2.5rem] bg-slate-100 dark:bg-[#022c22] animate-pulse border border-slate-200 dark:border-slate-800" />
               ))}
             </div>
           ) : reviews.length === 0 ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-32 bg-white dark:bg-slate-900/50 rounded-[3.5rem] border border-dashed border-slate-200 dark:border-slate-800"
+              className="text-center py-32 bg-white dark:bg-[#022c22]/50 rounded-[3.5rem] border border-dashed border-slate-200 dark:border-slate-800"
             >
               <MessageSquare size={48} className="mx-auto text-slate-300 dark:text-slate-700 mb-6" />
               <p className="text-xl font-bold text-slate-400">Our wall is waiting for your story.</p>
@@ -151,7 +151,7 @@ export default function ReviewsPage() {
                   variants={item}
                   className="group relative"
                 >
-                  <div className="h-full p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-500/5 flex flex-col relative overflow-hidden">
+                  <div className="h-full p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] bg-white dark:bg-[#022c22] border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-500/5 flex flex-col relative overflow-hidden">
                     {/* Quote Icon Background */}
                     <div className="absolute -right-4 -top-4 text-slate-50 dark:text-slate-800/50 group-hover:text-emerald-50 dark:group-hover:text-emerald-900/10 transition-colors duration-500">
                       <Quote size={120} />
@@ -187,7 +187,7 @@ export default function ReviewsPage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-20 p-10 md:p-20 rounded-[3rem] md:rounded-[4rem] bg-gradient-to-br from-slate-900 to-slate-800 text-center relative overflow-hidden group shadow-2xl"
+            className="mt-20 p-10 md:p-20 rounded-[3rem] md:rounded-[4rem] bg-[#022c22] text-center relative overflow-hidden group shadow-2xl"
           >
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700"></div>
 

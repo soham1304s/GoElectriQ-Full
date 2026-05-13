@@ -26,8 +26,8 @@ const AboutUsPage = () => {
 
   const stats = [
     { label: "CO2 Saved", value: "450k+", sub: "kg of emissions", icon: <Leaf className="text-emerald-500" /> },
-    { label: "Active EVs", value: "200+", sub: "Premium fleet", icon: <Zap className="text-blue-500" /> },
-    { label: "Happy Riders", value: "50k+", sub: "Across the city", icon: <Users className="text-purple-500" /> },
+    { label: "Active EVs", value: "200+", sub: "Premium fleet", icon: <Zap className="text-emerald-500" /> },
+    { label: "Happy Riders", value: "50k+", sub: "Across the city", icon: <Users className="text-emerald-500" /> },
     { label: "Availability", value: "24/7", sub: "Support & booking", icon: <Clock className="text-amber-500" /> },
   ];
 
@@ -42,7 +42,7 @@ const AboutUsPage = () => {
       title: "Innovation",
       desc: "We leverage cutting-edge technology to make booking, tracking, and riding as seamless as possible.",
       icon: <TrendingUp size={32} />,
-      color: "blue"
+      color: "emerald"
     },
     {
       title: "Safety",
@@ -85,7 +85,7 @@ const AboutUsPage = () => {
             className="text-4xl sm:text-5xl md:text-8xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter"
           >
             Clean Travel. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-blue-600">Smart Future.</span>
+            <span className="text-emerald-600">Smart Future.</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -100,7 +100,7 @@ const AboutUsPage = () => {
         {/* Decorative elements */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none -z-10">
           <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] animate-pulse delay-700" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] animate-pulse delay-700" />
         </div>
       </section>
 
@@ -147,7 +147,7 @@ const AboutUsPage = () => {
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Emissions</p>
                 </div>
                 <div className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700">
-                  <h4 className="text-3xl font-black text-blue-600 mb-1">100%</h4>
+                  <h4 className="text-3xl font-black text-emerald-600 mb-1">100%</h4>
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Electric</p>
                 </div>
               </div>
@@ -157,14 +157,14 @@ const AboutUsPage = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-24 md:py-32 bg-slate-50 dark:bg-slate-900/50">
+      <section className="py-24 md:py-32 bg-slate-50 dark:bg-[#022c22]/50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div 
               {...fadeIn}
               className="p-12 rounded-[3rem] bg-white dark:bg-slate-800 shadow-xl border border-slate-100 dark:border-slate-700 group hover:-translate-y-2 transition-all duration-500"
             >
-              <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg shadow-blue-500/20 group-hover:rotate-12 transition-transform">
+              <div className="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg shadow-emerald-500/20 group-hover:rotate-12 transition-transform">
                 <Target size={32} />
               </div>
               <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Our Mission</h3>
@@ -207,8 +207,7 @@ const AboutUsPage = () => {
                 className="p-10 rounded-[3rem] glass-card border border-slate-100 dark:border-slate-800"
               >
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 ${
-                  v.color === 'emerald' ? 'bg-emerald-500/10 text-emerald-500' : 
-                  v.color === 'blue' ? 'bg-blue-500/10 text-blue-500' : 'bg-red-500/10 text-red-500'
+                  v.color === 'emerald' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-red-500/10 text-red-500'
                 }`}>
                   {v.icon}
                 </div>
@@ -223,7 +222,7 @@ const AboutUsPage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 md:py-32 bg-slate-900 relative overflow-hidden">
+      <section className="py-24 md:py-32 bg-[#022c22] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,#10b981_0%,transparent_50%)]" />
         </div>
@@ -256,7 +255,7 @@ const AboutUsPage = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-5xl mx-auto p-8 sm:p-12 md:p-24 rounded-[3rem] md:rounded-[4rem] bg-gradient-to-br from-emerald-600 to-blue-700 text-center text-white relative overflow-hidden shadow-2xl"
+          className="max-w-5xl mx-auto p-8 sm:p-12 md:p-24 rounded-[3rem] md:rounded-[4rem] bg-emerald-600 text-center text-white relative overflow-hidden shadow-2xl"
         >
           {/* Shine effect */}
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_5s_infinite] pointer-events-none" />

@@ -157,7 +157,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       {showMobileMenu && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-slate-900 shadow-xl border-t border-gray-100 dark:border-white/10 animate-fadeIn">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-[#022c22] shadow-xl border-t border-gray-100 dark:border-white/10 animate-fadeIn">
           <div className="flex flex-col p-6 space-y-4">
             {currentNavLinks.map((link) => (
               link.action ? (

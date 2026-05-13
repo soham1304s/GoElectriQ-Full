@@ -297,7 +297,7 @@ const PendingPaymentsDashboard = () => {
                               e.stopPropagation();
                               handleOpenCollectModal(booking);
                             }}
-                            className="px-5 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-black hover:bg-black transition-all flex items-center gap-2 shadow-lg active:scale-95"
+                            className="px-5 py-2.5 bg-[#022c22] text-white rounded-xl text-xs font-black hover:bg-black transition-all flex items-center gap-2 shadow-lg active:scale-95"
                           >
                             <CreditCard size={14} />
                             Reconcile
@@ -395,7 +395,7 @@ const PendingPaymentsDashboard = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#022c22]/60 backdrop-blur-sm"
               onClick={() => setShowCollectModal(false)}
             />
             <motion.div
@@ -466,7 +466,7 @@ const PendingPaymentsDashboard = () => {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="w-full py-5 bg-slate-900 text-white rounded-[1.5rem] font-black hover:bg-black transition-all flex items-center justify-center gap-3 shadow-xl active:scale-[0.98] disabled:opacity-50"
+                    className="w-full py-5 bg-[#022c22] text-white rounded-[1.5rem] font-black hover:bg-black transition-all flex items-center justify-center gap-3 shadow-xl active:scale-[0.98] disabled:opacity-50"
                   >
                     {submitting ? (
                       <RefreshCw size={20} className="animate-spin" />

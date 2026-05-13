@@ -280,7 +280,7 @@ export default function RidesPage() {
               <div className="flex gap-4">
                 <button 
                   onClick={() => navigate('/services')}
-                  className="px-8 py-4 bg-slate-900 text-white rounded-2xl font-black text-sm hover:bg-black transition-all flex items-center gap-2 group/btn"
+                  className="px-8 py-4 bg-[#022c22] text-white rounded-2xl font-black text-sm hover:bg-black transition-all flex items-center gap-2 group/btn"
                 >
                   Initiate New Journey
                   <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
@@ -302,7 +302,7 @@ export default function RidesPage() {
                 <p className="text-xs font-bold text-slate-500 uppercase tracking-tight mt-1">Net CO2 Offset</p>
               </div>
             </div>
-            <div className="bg-slate-900 rounded-[2.5rem] p-8 text-white flex flex-col justify-between">
+            <div className="bg-[#022c22] rounded-[2.5rem] p-8 text-white flex flex-col justify-between">
               <div className="flex justify-between items-start">
                 <div className="p-3 bg-white/10 rounded-2xl backdrop-blur-md text-emerald-400">
                   <Navigation size={24} />
@@ -325,7 +325,7 @@ export default function RidesPage() {
                 key={status}
                 onClick={() => setFilterStatus(status)}
                 className={`px-8 py-3 rounded-2xl text-xs font-black transition-all duration-500 uppercase tracking-widest ${filterStatus === status
-                  ? 'bg-slate-900 text-white shadow-2xl scale-105'
+                  ? 'bg-[#022c22] text-white shadow-2xl scale-105'
                   : 'text-slate-500 hover:bg-slate-200/50 hover:text-slate-900'
                   }`}
               >
@@ -440,7 +440,7 @@ export default function RidesPage() {
                         ) : (
                           <button
                             onClick={() => navigate(`/user/booking-confirmation?id=${ride._id}`)}
-                            className="px-6 py-3.5 bg-slate-900 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-black transition-all shadow-xl active:scale-95 flex items-center gap-2"
+                            className="px-6 py-3.5 bg-[#022c22] text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-black transition-all shadow-xl active:scale-95 flex items-center gap-2"
                           >
                             Analysis
                             <ArrowUpRight size={14} />
@@ -486,7 +486,7 @@ export default function RidesPage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowCancelModal(false)}
-              className="absolute inset-0 bg-slate-900/80 backdrop-blur-md"
+              className="absolute inset-0 bg-[#022c22]/80 backdrop-blur-md"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}

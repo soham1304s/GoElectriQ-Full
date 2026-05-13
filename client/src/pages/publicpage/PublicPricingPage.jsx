@@ -36,7 +36,7 @@ export default function PublicPricingPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-cyan-50 to-slate-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-emerald-50 to-emerald-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
       <SEO 
         title="Pricing & Packages" 
         description="Transparent and affordable pricing for electric cab rides. Check our local, airport and intercity fare details with no hidden charges."
@@ -61,7 +61,7 @@ export default function PublicPricingPage() {
               key={plan.name}
               className={`rounded-3xl border p-6 sm:p-7 shadow-md transition-transform hover:-translate-y-1 ${
                 plan.featured
-                  ? 'bg-gradient-to-b from-emerald-500 to-cyan-500 text-white border-emerald-300'
+                  ? 'bg-gradient-to-b from-emerald-500 to-emerald-600 text-white border-emerald-300'
                   : 'bg-white/90 dark:bg-gray-900 dark:border-white/10 border-slate-200 text-slate-900 dark:text-white'
               }`}
             >
@@ -98,7 +98,7 @@ export default function PublicPricingPage() {
                 className={`mt-7 w-full rounded-xl py-3 text-sm font-semibold transition ${
                   plan.featured
                     ? 'bg-white text-emerald-700 hover:bg-emerald-50'
-                    : 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90'
+                    : 'bg-[#022c22] text-white dark:bg-white dark:text-slate-900 hover:opacity-90'
                 }`}
               >
                 Book this plan

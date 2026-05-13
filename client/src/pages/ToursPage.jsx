@@ -190,7 +190,7 @@ export default function ToursPage() {
               >
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
-                  <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                  <div className="absolute inset-0 bg-[#022c22]/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                   <img 
                     src={pkg.coverImage || pkg.image} 
                     alt={pkg.title}

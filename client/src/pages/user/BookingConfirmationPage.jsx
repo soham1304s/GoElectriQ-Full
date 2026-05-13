@@ -250,7 +250,7 @@ export default function BookingConfirmationPage() {
       completed: {
         title: "Ride Completed",
         icon: CheckCircle,
-        bgColor: "from-emerald-50 to-teal-50",
+        bgColor: "from-emerald-50 to-emerald-50",
         borderColor: "border-emerald-200",
         badgeColor: "bg-emerald-600",
         textColor: "text-emerald-900",
@@ -303,7 +303,7 @@ export default function BookingConfirmationPage() {
     const status = booking.status?.toLowerCase() || "pending";
     const colors = {
       confirmed: "from-green-600 to-emerald-600",
-      completed: "from-emerald-600 to-teal-600",
+      completed: "from-emerald-600 to-emerald-600",
       cancelled: "from-red-600 to-rose-600",
       pending: "from-yellow-600 to-amber-600",
       ongoing: "from-purple-600 to-indigo-600",
@@ -476,7 +476,7 @@ export default function BookingConfirmationPage() {
                       className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${booking.status?.toLowerCase() === "confirmed"
                           ? "bg-green-100 text-green-700"
                           : booking.status?.toLowerCase() === "completed"
-                            ? "bg-blue-100 text-blue-700"
+                            ? "bg-emerald-100 text-emerald-700"
                             : booking.status?.toLowerCase() === "cancelled"
                               ? "bg-red-100 text-red-700"
                               : booking.status?.toLowerCase() === "pending"

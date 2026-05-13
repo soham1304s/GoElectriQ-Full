@@ -28,7 +28,7 @@ import apiConfig from '../config/api.config.json';
 const StatusBadge = ({ children, type = 'emerald' }) => {
   const colors = {
     emerald: 'bg-emerald-50 text-emerald-600 border-emerald-100',
-    teal: 'bg-teal-50 text-teal-600 border-teal-100',
+    teal: 'bg-emerald-50 text-emerald-600 border-emerald-100',
     violet: 'bg-violet-50 text-violet-600 border-violet-100',
     amber: 'bg-amber-50 text-amber-600 border-amber-100',
   };
@@ -126,9 +126,9 @@ export default function DriverPartnerPage() {
       <div className="max-w-[1400px] mx-auto space-y-16">
         
         {/* ===== HERO SECTION ===== */}
-        <div className="relative bg-slate-900 rounded-[4rem] p-12 md:p-20 text-white overflow-hidden shadow-2xl">
+        <div className="relative bg-[#022c22] rounded-[4rem] p-12 md:p-20 text-white overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[120px] -mr-48 -mt-48" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[100px] -ml-48 -mb-48" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[100px] -ml-48 -mb-48" />
           
           <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -206,8 +206,8 @@ export default function DriverPartnerPage() {
               value: `₹${apiConfig.driver.earningsWeekly.min.toLocaleString()} - ₹${apiConfig.driver.earningsWeekly.max.toLocaleString()}`, 
               sub: '5-6 Days Active',
               icon: Zap,
-              color: 'text-teal-500',
-              bg: 'bg-teal-50',
+              color: 'text-emerald-500',
+              bg: 'bg-emerald-50',
               popular: true
             },
             { 
@@ -281,7 +281,7 @@ export default function DriverPartnerPage() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setShowModal(false)}
-                className="absolute inset-0 bg-slate-900/60 backdrop-blur-xl"
+                className="absolute inset-0 bg-[#022c22]/60 backdrop-blur-xl"
               />
               
               <motion.div
@@ -291,7 +291,7 @@ export default function DriverPartnerPage() {
                 className="relative w-full max-w-3xl bg-white rounded-[3.5rem] shadow-2xl overflow-hidden"
               >
                 {/* Modal Header */}
-                <div className="bg-slate-900 p-10 md:p-14 text-white relative">
+                <div className="bg-[#022c22] p-10 md:p-14 text-white relative">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                   <div className="relative z-10">
                     <div className="flex justify-between items-start mb-6">
@@ -449,7 +449,7 @@ export default function DriverPartnerPage() {
                       <button
                         type="submit"
                         disabled={loading}
-                        className="flex-[2] py-5 bg-slate-900 text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-black transition-all shadow-2xl disabled:opacity-50 flex items-center justify-center gap-3"
+                        className="flex-[2] py-5 bg-[#022c22] text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-black transition-all shadow-2xl disabled:opacity-50 flex items-center justify-center gap-3"
                       >
                         {loading ? <Loader className="animate-spin" size={16} /> : <Zap size={16} />}
                         {loading ? 'Processing...' : 'Establish Link'}

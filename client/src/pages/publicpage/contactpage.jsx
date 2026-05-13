@@ -35,7 +35,7 @@ const ContactPage = () => {
       subText: 'Response within 12-24 hours',
       href: 'mailto:support@goelectrq.com',
       icon: Mail,
-      color: 'blue'
+      color: 'emerald'
     },
     {
       title: 'Headquarters',
@@ -94,7 +94,7 @@ const ContactPage = () => {
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 bg-blue-500/10 text-blue-600 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6"
+            className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6"
           >
             Support Center
           </motion.div>
@@ -105,7 +105,7 @@ const ContactPage = () => {
             className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-8 tracking-tight"
           >
             We're here to <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">Help You Move.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-500">Help You Move.</span>
           </motion.h1>
           <p className="text-lg md:text-xl text-slate-500 dark:text-gray-400 font-medium leading-relaxed">
             Have a question or need assistance with a ride? Our dedicated team is just a message away.
@@ -131,7 +131,7 @@ const ContactPage = () => {
                       type="text" 
                       required
                       placeholder="John Doe"
-                      className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-blue-500/50 transition-all font-bold text-sm"
+                      className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-[#022c22]/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-emerald-500/50 transition-all font-bold text-sm"
                     />
                   </div>
                   <div className="space-y-2">
@@ -140,13 +140,13 @@ const ContactPage = () => {
                       type="email" 
                       required
                       placeholder="john@example.com"
-                      className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-blue-500/50 transition-all font-bold text-sm"
+                      className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-[#022c22]/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-emerald-500/50 transition-all font-bold text-sm"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Subject</label>
-                  <select className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-blue-500/50 transition-all font-bold text-sm appearance-none">
+                  <select className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-[#022c22]/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-emerald-500/50 transition-all font-bold text-sm appearance-none">
                     <option>General Inquiry</option>
                     <option>Booking Issue</option>
                     <option>Partner with Us</option>
@@ -159,14 +159,14 @@ const ContactPage = () => {
                     rows="5"
                     required
                     placeholder="How can we help you today?"
-                    className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-blue-500/50 transition-all font-bold text-sm resize-none"
+                    className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-[#022c22]/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-emerald-500/50 transition-all font-bold text-sm resize-none"
                   ></textarea>
                 </div>
 
                 <button 
                   type="submit"
                   disabled={formState !== 'idle'}
-                  className="w-full py-5 bg-gradient-to-r from-blue-600 to-emerald-500 text-white rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl hover:shadow-blue-500/20 transition-all active:scale-95 flex items-center justify-center gap-3 disabled:opacity-70"
+                  className="w-full py-5 bg-emerald-600 text-white rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl hover:shadow-emerald-500/20 transition-all active:scale-95 flex items-center justify-center gap-3 disabled:opacity-70"
                 >
                   {formState === 'idle' && <><Send size={18} /> Send Message</>}
                   {formState === 'sending' && <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />}
@@ -188,20 +188,19 @@ const ContactPage = () => {
                   className="block p-8 rounded-[2.5rem] bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-xl hover:-translate-y-2 transition-all duration-500 group"
                 >
                   <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${
-                    m.color === 'emerald' ? 'bg-emerald-500/10 text-emerald-500' : 
-                    m.color === 'blue' ? 'bg-blue-500/10 text-blue-500' : 'bg-purple-500/10 text-purple-500'
+                    m.color === 'emerald' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-purple-500/10 text-purple-500'
                   }`}>
                     <Icon size={24} />
                   </div>
                   <h3 className="text-sm font-black text-slate-400 uppercase tracking-[0.2em] mb-2">{m.title}</h3>
-                  <p className="text-xl font-black text-slate-900 dark:text-white mb-2 tracking-tight group-hover:text-blue-500 transition-colors">{m.value}</p>
+                  <p className="text-xl font-black text-slate-900 dark:text-white mb-2 tracking-tight group-hover:text-emerald-500 transition-colors">{m.value}</p>
                   <p className="text-sm text-slate-500 dark:text-gray-400 font-medium">{m.subText}</p>
                 </motion.a>
               );
             })}
 
             {/* Quick Badge */}
-            <motion.div {...fadeIn} transition={{ delay: 0.4 }} className="p-8 rounded-[2.5rem] bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden">
+            <motion.div {...fadeIn} transition={{ delay: 0.4 }} className="p-8 rounded-[2.5rem] bg-[#022c22] text-white relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-10">
                 <Headset size={80} />
               </div>
@@ -215,7 +214,7 @@ const ContactPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 md:py-32 bg-slate-50 dark:bg-slate-900/50">
+      <section className="py-24 md:py-32 bg-slate-50 dark:bg-[#022c22]/50">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">Common Questions</h2>

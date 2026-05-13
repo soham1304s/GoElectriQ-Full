@@ -69,7 +69,7 @@ const DriverStatusPage = () => {
   if (!driverData && user?.role !== 'driver') {
     return (
       <UserLayout>
-        <div className="max-w-4xl mx-auto text-center py-24 px-6 bg-white dark:bg-slate-900 rounded-[3.5rem] border border-slate-100 dark:border-slate-800 shadow-2xl relative overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center py-24 px-6 bg-white dark:bg-[#022c22] rounded-[3.5rem] border border-slate-100 dark:border-slate-800 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
           
           <div className="relative z-10">
@@ -100,7 +100,7 @@ const DriverStatusPage = () => {
       <div className="max-w-6xl mx-auto space-y-10">
         
         {/* Header Protocol Card */}
-        <div className="bg-white dark:bg-slate-900 rounded-[3rem] md:rounded-[4rem] p-8 md:p-16 shadow-2xl border border-slate-100 dark:border-slate-800 relative overflow-hidden group">
+        <div className="bg-white dark:bg-[#022c22] rounded-[3rem] md:rounded-[4rem] p-8 md:p-16 shadow-2xl border border-slate-100 dark:border-slate-800 relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px] pointer-events-none" />
           
           <div className="relative z-10 flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
@@ -144,7 +144,7 @@ const DriverStatusPage = () => {
           
           {/* Detailed Protocol Cards */}
           <div className="lg:col-span-2 space-y-10">
-            <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-10 shadow-2xl border border-slate-100 dark:border-slate-800">
+            <div className="bg-white dark:bg-[#022c22] rounded-[3rem] p-10 shadow-2xl border border-slate-100 dark:border-slate-800">
               <h3 className="text-xl font-black text-slate-900 dark:text-white mb-8 flex items-center gap-3">
                 <UserIcon size={22} className="text-emerald-600 dark:text-emerald-400" />
                 Pilot Profile Protocol
@@ -165,7 +165,7 @@ const DriverStatusPage = () => {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-10 shadow-2xl border border-slate-100 dark:border-slate-800">
+            <div className="bg-white dark:bg-[#022c22] rounded-[3rem] p-10 shadow-2xl border border-slate-100 dark:border-slate-800">
               <h3 className="text-xl font-black text-slate-900 dark:text-white mb-8 flex items-center gap-3">
                 <Car size={22} className="text-emerald-600 dark:text-emerald-400" />
                 Hardware Assignment
@@ -189,7 +189,7 @@ const DriverStatusPage = () => {
 
           {/* Sidebar / Timeline */}
           <div className="space-y-10">
-            <div className="bg-slate-900 rounded-[3rem] p-10 shadow-2xl text-white relative overflow-hidden group">
+            <div className="bg-[#022c22] rounded-[3rem] p-10 shadow-2xl text-white relative overflow-hidden group">
               <div className="absolute -right-4 -top-4 w-32 h-32 bg-emerald-600/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-700" />
 
               <h3 className="text-lg font-black mb-10 relative z-10 flex items-center gap-3">
@@ -244,7 +244,7 @@ const DriverStatusPage = () => {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-10 shadow-2xl border border-slate-100 dark:border-slate-800 relative overflow-hidden group">
+            <div className="bg-white dark:bg-[#022c22] rounded-[3rem] p-10 shadow-2xl border border-slate-100 dark:border-slate-800 relative overflow-hidden group">
               <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               <h3 className="text-xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Technical Support</h3>
               <p className="text-sm text-slate-500 dark:text-slate-400 mb-10 font-medium leading-relaxed">If your verification protocol exceeds 72 hours, initiate a priority support request.</p>

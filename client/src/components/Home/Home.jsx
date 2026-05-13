@@ -71,7 +71,7 @@ const ReviewAvatar = ({ profileImage, name, darkMode }) => {
           }}
         />
       ) : (
-        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center border-2 border-emerald-200 dark:border-emerald-400/30 overflow-hidden">
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center border-2 border-emerald-200 dark:border-emerald-400/30 overflow-hidden">
           <img
             src={DEFAULT_AVATAR}
             alt="default"
@@ -954,9 +954,9 @@ const GoelectriqLanding = () => {
   const renderTempleTourCard = (tour, key, className) => (
     <div
       key={key}
-      className={`${className} h-[320px] md:h-[340px] snap-start rounded-3xl overflow-hidden ${darkMode ? "bg-gray-800 border-gray-700" : "bg-white border-slate-100"} border shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer flex flex-col`}
+      className={`${className} h-[380px] md:h-[400px] snap-start rounded-[2rem] overflow-hidden ${darkMode ? "bg-gray-800 border-gray-700" : "bg-white border-slate-100"} border shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer flex flex-col`}
     >
-      <div className="relative h-28 md:h-32 overflow-hidden">
+      <div className="relative h-40 md:h-44 overflow-hidden">
         <img
           src={
             tour.coverImage ||
@@ -970,27 +970,27 @@ const GoelectriqLanding = () => {
           ₹{Math.min(tour.pricing?.premium || tour.basePrice || 0, tour.pricing?.economy || tour.basePrice || 0)}
         </div>
       </div>
-      <div className="p-5 flex-1 flex flex-col">
+      <div className="p-6 flex-1 flex flex-col">
         <div className="flex items-center gap-2 mb-3">
-          <span className={`flex items-center gap-1 px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider ${darkMode ? "bg-emerald-500/20 text-emerald-400" : "bg-emerald-50 text-emerald-600"}`}>
-            <Clock size={10} />
+          <span className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${darkMode ? "bg-gray-700 text-emerald-400" : "bg-emerald-50 text-emerald-700"}`}>
+            <Clock size={12} />
             {typeof tour.duration === "object" ? `${tour.duration.days || 1}d` : "4h"}
           </span>
-          <span className={`flex items-center gap-1 px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider ${darkMode ? "bg-emerald-500/20 text-emerald-400" : "bg-emerald-50 text-emerald-600"}`}>
-            <Zap size={10} /> EV
+          <span className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${darkMode ? "bg-gray-700 text-emerald-400" : "bg-emerald-50 text-emerald-700"}`}>
+            <Zap size={12} /> EV
           </span>
         </div>
-        <h4 className={`font-bold text-base mb-2 line-clamp-1 ${darkMode ? "text-white" : "text-slate-900"}`}>
+        <h4 className={`font-black text-xl mb-3 line-clamp-1 ${darkMode ? "text-white" : "text-slate-900"}`}>
           {tour.title}
         </h4>
-        <p className={`text-[12px] leading-relaxed mb-4 line-clamp-2 ${darkMode ? "text-gray-400" : "text-slate-500"}`}>
+        <p className={`text-sm leading-relaxed mb-6 line-clamp-2 font-medium ${darkMode ? "text-gray-400" : "text-slate-500"}`}>
           {tour.shortDescription || "Explore heritage in premium electric comfort"}
         </p>
-        <div className="mt-auto flex gap-2">
+        <div className="mt-auto grid grid-cols-2 gap-3">
           <button
             type="button"
             onClick={() => handleTourDetailsClick(tour)}
-            className={`flex-1 py-2 rounded-xl text-[11px] font-black border transition-all duration-300 ${darkMode
+            className={`py-3 rounded-2xl font-black text-[11px] uppercase tracking-widest border transition-all duration-300 ${darkMode
               ? "border-gray-700 text-gray-300 hover:bg-gray-700"
               : "border-slate-200 text-slate-600 hover:bg-slate-50"
               }`}
@@ -1000,7 +1000,7 @@ const GoelectriqLanding = () => {
           <button
             type="button"
             onClick={() => handleBookTourClick(tour)}
-            className="flex-1 py-2 bg-gradient-to-r from-emerald-500 to-blue-600 text-white rounded-xl text-[11px] font-black hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300"
+            className="py-3 bg-emerald-600 text-white rounded-2xl font-black text-[11px] uppercase tracking-widest hover:shadow-xl hover:shadow-emerald-500/20 transition-all duration-300"
           >
             Book
           </button>
@@ -1012,7 +1012,7 @@ const GoelectriqLanding = () => {
   const renderTravelTourCard = (tour, key, className) => (
     <div
       key={key}
-      className={`${className} h-[380px] md:h-[400px] snap-start rounded-[2.5rem] overflow-hidden ${darkMode ? "bg-gray-800 border-gray-700" : "bg-white border-slate-100"} border shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-3 group cursor-pointer flex flex-col`}
+      className={`${className} h-[380px] md:h-[400px] snap-start rounded-[2rem] overflow-hidden ${darkMode ? "bg-gray-800 border-gray-700" : "bg-white border-slate-100"} border shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-3 group cursor-pointer flex flex-col`}
     >
       <div className="relative h-40 md:h-44 overflow-hidden">
         <img
@@ -1061,7 +1061,7 @@ const GoelectriqLanding = () => {
           <button
             type="button"
             onClick={() => handleBookTourClick(tour)}
-            className="py-3 bg-gradient-to-r from-emerald-600 to-teal-500 text-white rounded-2xl font-black text-[11px] uppercase tracking-widest hover:shadow-xl hover:shadow-emerald-500/20 transition-all duration-300"
+            className="py-3 bg-emerald-600 text-white rounded-2xl font-black text-[11px] uppercase tracking-widest hover:shadow-xl hover:shadow-emerald-500/20 transition-all duration-300"
           >
             Book Now
           </button>
@@ -1292,7 +1292,7 @@ const GoelectriqLanding = () => {
 
               <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[1.1] tracking-tight">
                 Ride <span className="text-emerald-600">Green.</span> <br />
-                Ride <span className="bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">Smart.</span>
+                Ride <span className="text-emerald-600">Smart.</span>
               </h1>
 
               <p
@@ -1353,7 +1353,7 @@ const GoelectriqLanding = () => {
               <h2 className={`text-3xl sm:text-4xl md:text-6xl font-black ${darkMode ? "text-white" : "text-slate-900"} mb-6`}>
                 Premium <span className="text-emerald-600">Electric</span> Mobility
               </h2>
-              <div className="w-24 h-1.5 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full mb-8" />
+              <div className="w-24 h-1.5 bg-emerald-600 rounded-full mb-8" />
               <p className={`max-w-2xl text-lg font-medium ${darkMode ? "text-gray-400" : "text-slate-500"}`}>
                 Choose from our curated range of sustainable transport services designed for the modern traveler in Jaipur.
               </p>
@@ -1367,7 +1367,7 @@ const GoelectriqLanding = () => {
                   sub: "Reliable airport transfers to and from Jaipur International Airport.",
                   color: "emerald",
                   path: "/airport",
-                  gradient: "from-emerald-500 to-teal-500"
+                  gradient: "from-emerald-500 to-emerald-500"
                 },
                 {
                   icon: <Landmark size={32} />,
@@ -1375,7 +1375,7 @@ const GoelectriqLanding = () => {
                   sub: "Immersive guided tours through the heritage of the Pink City.",
                   color: "emerald",
                   path: "/tours",
-                  gradient: "from-emerald-500 to-teal-500"
+                  gradient: "from-emerald-500 to-emerald-500"
                 },
                 {
                   icon: <MapPin size={32} />,
@@ -1391,7 +1391,7 @@ const GoelectriqLanding = () => {
                   sub: "Long-distance electric travel without the carbon footprint.",
                   color: "teal",
                   path: "/intercity-ride",
-                  gradient: "from-teal-400 to-emerald-600"
+                  gradient: "from-emerald-400 to-emerald-600"
                 },
               ].map((item, i) => (
                 <div
@@ -1402,7 +1402,7 @@ const GoelectriqLanding = () => {
                     : "bg-white border-slate-100 hover:border-emerald-200 shadow-2xl shadow-slate-200/40 hover:shadow-emerald-200/20"
                     } border`}
                 >
-                  <div className={`w-20 h-20 rounded-[1.8rem] mb-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 bg-gradient-to-br ${item.gradient} text-white shadow-lg`}>
+                  <div className={`w-20 h-20 rounded-[1.8rem] mb-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 bg-emerald-600 text-white shadow-lg`}>
                     {item.icon}
                   </div>
                   <h3 className={`text-2xl font-black mb-4 ${darkMode ? "text-white" : "text-slate-900"}`}>
@@ -1416,7 +1416,7 @@ const GoelectriqLanding = () => {
                   </div>
 
                   {/* Hover Glow Effect */}
-                  <div className={`absolute -inset-2 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-[0.03] blur-2xl rounded-[4rem] transition-opacity duration-500`} />
+                  <div className={`absolute -inset-2 bg-emerald-600 opacity-0 group-hover:opacity-[0.03] blur-2xl rounded-[4rem] transition-opacity duration-500`} />
                 </div>
               ))}
             </div>
@@ -1426,9 +1426,10 @@ const GoelectriqLanding = () => {
         {/* Touring Packages */}
         <section
           id="tours"
-          className={`px-4 md:px-12 py-16 md:py-20 ${darkMode ? "bg-gray-900" : "bg-white"} transition-colors duration-300`}
+          className={`px-4 md:px-12 py-16 md:py-24 ${darkMode ? "bg-gray-900" : "bg-white"} transition-colors duration-300`}
         >
-          <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-10 gap-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-10 gap-4">
             <div>
               <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-4">
                 Spiritual Journeys
@@ -1445,7 +1446,7 @@ const GoelectriqLanding = () => {
             <button
               type="button"
               onClick={() => navigate('/tours?type=temple_tour')}
-              className="flex items-center text-sm font-bold text-emerald-600 hover:text-teal-600 transition gap-2 cursor-pointer"
+              className="flex items-center text-sm font-bold text-emerald-600 hover:text-emerald-600 transition gap-2 cursor-pointer"
             >
               View all packages <ChevronRight size={18} />
             </button>
@@ -1517,25 +1518,27 @@ const GoelectriqLanding = () => {
 
               <div
                 ref={templeToursSliderRef}
-                className="hidden md:flex gap-4 overflow-x-hidden pb-2"
+                className="hidden md:flex gap-6 overflow-x-hidden pb-2"
               >
                 {desktopTempleTours.map((tour, i) =>
                   renderTempleTourCard(
                     tour,
                     `${tour._id || tour.id || tour.title}-desktop-${i}`,
-                    "w-[260px] min-w-[260px] max-w-[260px]",
+                    "w-[320px] min-w-[320px] max-w-[320px]",
                   ),
                 )}
               </div>
             </>
           )}
+          </div>
         </section>
 
         {/* Travel Tour Packages */}
         <section
-          className={`px-4 md:px-12 py-16 md:py-20 ${darkMode ? "bg-gray-800" : "bg-gray-50"} transition-colors duration-300`}
+          className={`px-4 md:px-12 py-16 md:py-24 ${darkMode ? "bg-gray-800" : "bg-gray-50"} transition-colors duration-300`}
         >
-          <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-10 gap-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-10 gap-4">
             <div>
               <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-4">
                 Discover Rajasthan
@@ -1553,7 +1556,7 @@ const GoelectriqLanding = () => {
             <button
               type="button"
               onClick={() => navigate('/tours?type=travel_tour')}
-              className="flex items-center text-sm font-bold text-emerald-600 hover:text-teal-600 transition gap-2 cursor-pointer"
+              className="flex items-center text-sm font-bold text-emerald-600 hover:text-emerald-600 transition gap-2 cursor-pointer"
             >
               View all packages <ChevronRight size={18} />
             </button>
@@ -1625,7 +1628,7 @@ const GoelectriqLanding = () => {
 
               <div
                 ref={travelToursSliderRef}
-                className="hidden md:flex gap-5 overflow-x-hidden pb-2"
+                className="hidden md:flex gap-6 overflow-x-hidden pb-2"
               >
                 {desktopTravelTours.map((tour, i) =>
                   renderTravelTourCard(
@@ -1637,6 +1640,7 @@ const GoelectriqLanding = () => {
               </div>
             </>
           )}
+          </div>
         </section>
 
 
@@ -1680,7 +1684,7 @@ const GoelectriqLanding = () => {
                       </p>
                     )}
                   </div>
-                  <span className="shrink-0 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold text-lg">
+                  <span className="shrink-0 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-lg">
                     From ₹{Math.min(selectedTourDetails.pricing?.premium || selectedTourDetails.basePrice || 0, selectedTourDetails.pricing?.economy || selectedTourDetails.basePrice || 0)}
                   </span>
                 </div>
@@ -1698,7 +1702,7 @@ const GoelectriqLanding = () => {
                       : typeof selectedTourDetails.duration === "string" ? selectedTourDetails.duration : "1 Day"}
                   </span>
                   <span className={`${darkMode ? "bg-gray-800" : "bg-gray-100"} px-4 py-2 rounded-full flex items-center gap-2`}>
-                    <UserCheck size={16} className="text-teal-500" />
+                    <UserCheck size={16} className="text-emerald-500" />
                     {selectedTourDetails.tourCategory === "travel_tour" ? <><Users size={16} /> Group Tour</> : <><Car size={16} /> 4 Seater</>}
                   </span>
                   {selectedTourDetails.distance && (
@@ -1724,8 +1728,8 @@ const GoelectriqLanding = () => {
                         ₹{selectedTourDetails.pricing?.economy || selectedTourDetails.basePrice || 0}
                       </p>
                     </div>
-                    <div className={`text-center p-3 rounded-lg ${darkMode ? "bg-teal-900/30" : "bg-white"} border ${darkMode ? "border-teal-500/40" : "border-teal-300"}`}>
-                      <p className={`text-xs font-semibold ${darkMode ? "text-teal-300" : "text-teal-700"} mb-1 flex items-center gap-1`}><Sparkles size={12} /> Premium</p>
+                    <div className={`text-center p-3 rounded-lg ${darkMode ? "bg-emerald-900/30" : "bg-white"} border ${darkMode ? "border-emerald-500/40" : "border-emerald-300"}`}>
+                      <p className={`text-xs font-semibold ${darkMode ? "text-emerald-300" : "text-emerald-700"} mb-1 flex items-center gap-1`}><Sparkles size={12} /> Premium</p>
                       <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg">
                         ₹{selectedTourDetails.pricing?.premium || selectedTourDetails.basePrice || 0}
                       </p>
@@ -1735,8 +1739,8 @@ const GoelectriqLanding = () => {
 
                 {/* Short Description */}
                 {selectedTourDetails.shortDescription && (
-                  <div className={`p-5 rounded-xl ${darkMode ? "bg-teal-900/20" : "bg-teal-50"}`}>
-                    <h4 className={`font-bold text-base mb-3 ${darkMode ? "text-teal-300" : "text-teal-700"} flex items-center gap-2`}><Sparkles size={18} /> Overview</h4>
+                  <div className={`p-5 rounded-xl ${darkMode ? "bg-emerald-900/20" : "bg-emerald-50"}`}>
+                    <h4 className={`font-bold text-base mb-3 ${darkMode ? "text-emerald-300" : "text-emerald-700"} flex items-center gap-2`}><Sparkles size={18} /> Overview</h4>
                     <p className={`${darkMode ? "text-gray-300" : "text-gray-700"} text-sm leading-relaxed italic`}>
                       {selectedTourDetails.shortDescription}
                     </p>
@@ -1791,7 +1795,7 @@ const GoelectriqLanding = () => {
                           {item.activities && item.activities.length > 0 && (
                             <div className="mt-2 flex flex-wrap gap-2">
                               {item.activities.map((activity, aidx) => (
-                                <span key={aidx} className={`text-xs px-2 py-1 rounded-full ${darkMode ? "bg-teal-900/40 text-teal-300" : "bg-teal-100 text-teal-700"}`}>
+                                <span key={aidx} className={`text-xs px-2 py-1 rounded-full ${darkMode ? "bg-emerald-900/40 text-emerald-300" : "bg-emerald-100 text-emerald-700"}`}>
                                   {activity}
                                 </span>
                               ))}
@@ -1852,11 +1856,11 @@ const GoelectriqLanding = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {selectedTourDetails.pickupLocations && selectedTourDetails.pickupLocations.length > 0 && (
                     <div className={`p-5 rounded-xl ${darkMode ? "bg-gray-800/60" : "bg-gray-50"}`}>
-                      <h4 className={`font-bold text-base mb-3 ${darkMode ? "text-blue-300" : "text-blue-700"}`}>Pickup Locations</h4>
+                      <h4 className={`font-bold text-base mb-3 ${darkMode ? "text-emerald-300" : "text-emerald-700"}`}>Pickup Locations</h4>
                       <ul className="space-y-2">
                         {selectedTourDetails.pickupLocations.map((location, idx) => (
                           <li key={idx} className="flex items-center gap-2">
-                            <MapPin size={16} className="text-teal-500 flex-shrink-0" />
+                            <MapPin size={16} className="text-emerald-500 flex-shrink-0" />
                             <span className={`text-sm ${darkMode ? "text-gray-300" : "text-gray-700"}`}>{location}</span>
                           </li>
                         ))}
@@ -1937,7 +1941,7 @@ const GoelectriqLanding = () => {
                   <button
                     type="button"
                     onClick={handleBookFromDetails}
-                    className="py-3 rounded-lg bg-gradient-to-r from-blue-500 to-emerald-600 text-white font-bold text-sm hover:shadow-lg transition"
+                    className="py-3 rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-sm hover:shadow-lg transition"
                   >
                     Book Now
                   </button>
@@ -2206,7 +2210,7 @@ const GoelectriqLanding = () => {
                   <button
                     onClick={handleAirportPayment}
                     disabled={airportPaymentLoading}
-                    className={`flex-1 py-3 rounded-lg font-bold bg-gradient-to-r from-emerald-500 to-teal-600 text-white hover:shadow-lg transition ${airportPaymentLoading ? "opacity-50 cursor-not-allowed" : ""
+                    className={`flex-1 py-3 rounded-lg font-bold bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:shadow-lg transition ${airportPaymentLoading ? "opacity-50 cursor-not-allowed" : ""
                       }`}
                   >
                     {airportPaymentLoading ? (
@@ -2266,7 +2270,7 @@ const GoelectriqLanding = () => {
                   <div key={i} className="relative z-10 flex flex-col items-center text-center group">
                     <div className={`w-24 h-24 rounded-full ${darkMode ? "bg-gray-700" : "bg-white"} shadow-2xl flex items-center justify-center mb-8 border-4 ${darkMode ? "border-emerald-500/20" : "border-emerald-50"} transition-all duration-500 group-hover:scale-110 group-hover:border-emerald-500`}>
                       <Icon size={40} className="text-emerald-600" />
-                      <div className="absolute -top-2 -right-2 w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-full flex items-center justify-center font-black text-sm shadow-lg">
+                      <div className="absolute -top-2 -right-2 w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-full flex items-center justify-center font-black text-sm shadow-lg">
                         {item.step}
                       </div>
                     </div>
@@ -2284,7 +2288,7 @@ const GoelectriqLanding = () => {
         {/* Traveler Reviews */}
         <section
           id="reviews"
-          className={`py-16 md:py-20 px-4 md:px-12 ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-emerald-50 via-teal-50 to-emerald-100"} transition-colors duration-300`}
+          className={`py-16 md:py-20 px-4 md:px-12 ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-emerald-50 via-emerald-50 to-emerald-100"} transition-colors duration-300`}
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-12 md:mb-16 text-emerald-600">
             Traveler Reviews

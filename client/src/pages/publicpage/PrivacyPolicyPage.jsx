@@ -7,7 +7,7 @@ export default function PrivacyPolicyPage() {
   const isDark = theme === 'dark';
 
   return (
-    <div className={`min-h-screen ${isDark ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50'}`}>
+    <div className={`min-h-screen ${isDark ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-slate-50 via-emerald-50 to-emerald-50'}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
  
 
@@ -27,8 +27,8 @@ export default function PrivacyPolicyPage() {
         {/* Privacy Policy Content */}
         <div className={`rounded-2xl shadow-lg p-6 sm:p-8 mb-8 border ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-emerald-100'}`}>
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-              <FileText className="w-5 h-5 text-blue-600" />
+            <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+              <FileText className="w-5 h-5 text-emerald-600" />
             </div>
             <h2 className={`text-xl sm:text-2xl font-bold ${isDark ? 'text-white' : 'text-[#212121]'}`}>Privacy Policy</h2>
           </div>
@@ -67,7 +67,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         {/* Contact Section */}
-        <div className="bg-gradient-to-r from-emerald-500 to-blue-600 rounded-2xl p-6 sm:p-8 text-center shadow-lg">
+        <div className="bg-emerald-600 rounded-2xl p-6 sm:p-8 text-center shadow-lg">
           <h2 className="text-xl sm:text-2xl font-bold mb-3 text-white">Questions About Our Privacy Policy?</h2>
           <p className="mb-6 text-white/90 text-sm sm:text-base">
             If you have any concerns about how we handle your data, please contact us.

@@ -66,7 +66,7 @@ export default function Loader() {
                 opacity: [0.05, 0.15, 0.05]
               }}
               transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-              className="absolute -bottom-1/4 -left-1/4 w-full h-full bg-blue-500/10 rounded-full blur-[120px]"
+              className="absolute -bottom-1/4 -left-1/4 w-full h-full bg-emerald-500/10 rounded-full blur-[120px]"
             />
           </div>
 
@@ -133,7 +133,7 @@ export default function Loader() {
               
               <div className="h-[2px] w-full bg-slate-800 rounded-full overflow-hidden relative">
                 <motion.div 
-                  className="absolute top-0 left-0 h-full bg-gradient-to-r from-emerald-500 to-blue-500"
+                  className="absolute top-0 left-0 h-full bg-gradient-to-r from-emerald-500 to-emerald-500"
                   initial={{ width: 0 }}
                   animate={{ width: `${progress}%` }}
                   transition={{ type: "spring", stiffness: 50, damping: 15 }}
