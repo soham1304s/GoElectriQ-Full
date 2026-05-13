@@ -55,7 +55,7 @@ export default function AuthLayout({ children, title, subtitle, showSlider = tru
               animate={{ opacity: 1, scale: 1 }}
               src={darkMode ? logoWhite : logo}
               alt="GoElectriQ"
-              className="h-33 lg:h-40 w-auto mb-8 lg:mb-12 object-contain mx-auto lg:mx-0"
+              className="h-40 lg:h-48 w-auto mb-8 lg:mb-12 object-contain mx-auto lg:mx-0"
             />
             {title && <h1 className="text-2xl lg:text-4xl font-black text-slate-900 tracking-tighter mb-2 lg:mb-3 text-center lg:text-left">{title}</h1>}
             {subtitle && <p className="text-slate-500 font-bold text-[10px] uppercase tracking-widest text-center lg:text-left">{subtitle}</p>}

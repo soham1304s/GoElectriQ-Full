@@ -134,7 +134,7 @@ const AdminLayout = ({ children }) => {
             <img
               src={darkMode ? logoDark : logoLight}
               alt="GoElectriQ"
-              className="h-32 md:h-40 w-auto object-contain mb-2"
+              className="h-40 md:h-48 w-auto object-contain mb-2"
             />
           </div>
         </button>

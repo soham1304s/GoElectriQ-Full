@@ -23,14 +23,14 @@ const Footer = ({ darkMode }) => {
 
       <div className="max-w-7xl mx-auto">
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12 text-center sm:text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 mb-12 text-center sm:text-left">
 
           {/* Brand */}
-          <div className="flex flex-col items-center sm:items-start space-y-4">
+          <div className="flex flex-col items-center sm:items-start space-y-3 lg:space-y-4">
             <img 
               src={isDarkMode ? logoDark : logoLight} 
               alt="GoElectriQ" 
-              className="h-12 lg:h-16 w-auto object-contain"
+              className="h-16 lg:h-24 w-auto object-contain"
             />
 
             <p className={`text-xs lg:text-sm leading-relaxed max-w-xs ${
@@ -65,7 +65,7 @@ const Footer = ({ darkMode }) => {
               Services
             </h4>
 
-            <ul className={`space-y-3 lg:space-y-4 text-sm font-bold ${
+            <ul className={`space-y-1.5 lg:space-y-4 text-sm font-bold ${
               isDarkMode ? 'text-slate-400' : 'text-slate-600'
             }`}>
               {[
@@ -92,7 +92,7 @@ const Footer = ({ darkMode }) => {
               Company
             </h4>
 
-            <ul className={`space-y-3 lg:space-y-4 text-sm font-bold ${
+            <ul className={`space-y-1.5 lg:space-y-4 text-sm font-bold ${
               isDarkMode ? 'text-slate-400' : 'text-slate-600'
             }`}>
               {[
@@ -116,7 +116,7 @@ const Footer = ({ darkMode }) => {
               Stay Connected
             </h4>
 
-            <div className={`space-y-3 text-sm font-bold mb-8 ${
+            <div className={`space-y-1.5 lg:space-y-3 text-sm font-bold mb-8 ${
               isDarkMode ? 'text-slate-400' : 'text-slate-600'
             }`}>
               <p className="flex items-center justify-center sm:justify-start gap-2">
@@ -151,7 +151,7 @@ const Footer = ({ darkMode }) => {
         <div className="h-px bg-slate-200 dark:bg-slate-800 mb-8"></div>
 
         {/* Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black uppercase tracking-widest">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6 text-[10px] font-black uppercase tracking-widest">
           <p className={`${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`}>
             © 2026 Goelectriq
           </p>
