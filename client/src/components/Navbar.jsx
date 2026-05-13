@@ -55,13 +55,13 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-      ? "bg-white/80 dark:bg-black/80 backdrop-blur-xl shadow-lg shadow-slate-200/20 dark:shadow-none py-2"
-      : "bg-transparent py-4"
+      ? "bg-white/80 dark:bg-black/80 backdrop-blur-xl shadow-lg shadow-slate-200/20 dark:shadow-none py-1"
+      : "bg-transparent py-2"
       }`}>
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src={darkMode ? logoWhite : logo} alt="GoElectric" className="h-20 md:h-28 w-auto object-contain" />
+          <img src={darkMode ? logoWhite : logo} alt="GoElectric" className="h-24 md:h-32 w-auto object-contain" />
         </Link>
 
         {/* Desktop Nav Links */}

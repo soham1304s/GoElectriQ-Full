@@ -30,7 +30,7 @@ const Footer = ({ darkMode }) => {
             <img 
               src={isDarkMode ? logoDark : logoLight} 
               alt="GoElectriQ" 
-              className="h-16 lg:h-24 w-auto object-contain"
+              className="h-40 lg:h-39 w-auto object-contain"
             />
 
             <p className={`text-xs lg:text-sm leading-relaxed max-w-xs ${
@@ -53,7 +53,7 @@ const Footer = ({ darkMode }) => {
                   rel="noopener noreferrer"
                   className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#022c22] hover:bg-emerald-500 hover:text-white transition-all duration-300"
                 >
-                  <item.Icon className="w-4 h-4" />
+                  <item.Icon className="w-5 h-5" />
                 </a>
               ))}
             </div>
@@ -141,7 +141,7 @@ const Footer = ({ darkMode }) => {
                 className="flex-1 px-4 py-2 bg-transparent outline-none text-xs font-bold"
               />
               <button className="p-2.5 bg-emerald-500 text-white rounded-xl hover:bg-emerald-600 transition shadow-lg shadow-emerald-500/20">
-                <Send size={14} />
+                <Send size={18} />
               </button>
             </div>
           </div>
@@ -157,7 +157,7 @@ const Footer = ({ darkMode }) => {
           </p>
 
           <p className={`flex items-center gap-2 ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`}>
-            Made with <Zap size={14} className="text-emerald-500 animate-pulse" /> for Jaipur
+            Made with <Zap size={18} className="text-emerald-500 animate-pulse" /> for Jaipur
           </p>
 
           <div className="flex gap-6">

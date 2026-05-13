@@ -151,7 +151,7 @@ const UserLayout = ({ children }) => {
             <img
               src={darkMode ? logoDark : logoLight}
               alt="GoElectriQ Logo"
-              className="h-20 sm:h-24 md:h-32 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-28 sm:h-24 md:h-32 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
           {isMobile && (

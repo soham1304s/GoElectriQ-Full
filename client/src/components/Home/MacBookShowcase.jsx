@@ -165,7 +165,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                       <button
                         key={type}
                         onClick={() => setActiveTab(type === 'Intercity Ride' ? 'Intercity' : type)}
-                        className={`flex-1 py-2 rounded-lg text-[10px] font-black transition-all ${(activeTab === type || (activeTab === 'Intercity' && type === 'Intercity Ride'))
+                        className={`flex-1 py-2 rounded-lg text-xs font-black transition-all ${(activeTab === type || (activeTab === 'Intercity' && type === 'Intercity Ride'))
                           ? 'bg-emerald-600 text-white shadow-md scale-105'
                           : 'text-slate-500 hover:text-slate-700 hover:scale-105'
                           }`}
@@ -184,7 +184,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                         onSelectLocation={(loc) => setPickup(loc)}
                         placeholder="Pickup location"
                         darkMode={darkMode}
-                        inputClassName="!py-3 !rounded-xl !text-[6px] !font-bold"
+                        inputClassName="!py-3 !rounded-xl !text-sm !font-bold"
                       />
                       <LocationPickerComponent
                         value={dest.address}
@@ -192,7 +192,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                         onSelectLocation={(loc) => setDest(loc)}
                         placeholder="Destination"
                         darkMode={darkMode}
-                        inputClassName="!py-3 !rounded-xl !text-[6px] !font-bold"
+                        inputClassName="!py-3 !rounded-xl !text-sm !font-bold"
                       />
                     </div>
                   </div>
@@ -205,7 +205,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                         type="date"
                         value={bookingDate}
                         onChange={(e) => setBookingDate(e.target.value)}
-                        className="bg-transparent border-none outline-none text-[10px] font-bold text-slate-900 dark:text-white w-full cursor-pointer [color-scheme:light]"
+                        className="bg-transparent border-none outline-none text-sm font-bold text-slate-900 dark:text-white w-full cursor-pointer [color-scheme:light]"
                       />
                     </div>
                     <div className={`relative flex items-center gap-2 p-3 rounded-xl border transition-all ${darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-slate-50 border-slate-100 shadow-sm'}`}>
@@ -214,7 +214,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                         type="time"
                         value={bookingTime}
                         onChange={(e) => setBookingTime(e.target.value)}
-                        className="bg-transparent border-none outline-none text-[10px] font-bold text-slate-900 dark:text-white w-full cursor-pointer [color-scheme:light]"
+                        className="bg-transparent border-none outline-none text-sm font-bold text-slate-900 dark:text-white w-full cursor-pointer [color-scheme:light]"
                       />
                     </div>
                   </div>
@@ -308,8 +308,8 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                         key={type.id}
                         onClick={() => setActiveTab(type.id)}
                         className={`flex min-h-[38px] min-w-0 items-center justify-center gap-1.5 rounded-2xl px-1.5 text-[6.5px] font-extrabold transition-all ${activeTab === type.id
-                            ? 'bg-[#022c22] text-white shadow-md shadow-slate-900/20'
-                            : 'text-slate-500 hover:bg-slate-50 hover:text-emerald-600'
+                          ? 'bg-[#022c22] text-white shadow-md shadow-slate-900/20'
+                          : 'text-slate-500 hover:bg-slate-50 hover:text-emerald-600'
                           }`}
                       >
                         <span className={`flex-shrink-0 ${activeTab === type.id ? 'text-emerald-300' : 'text-slate-400'}`}>
@@ -324,7 +324,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                   <div className="relative z-[60] mb-3 shrink-0 rounded-[1.35rem] border border-slate-200 bg-white p-2.5 shadow-sm shadow-slate-200/70">
                     {/* Connection Line */}
                     <div className="pointer-events-none absolute left-[24px] top-[50px] bottom-[50px] w-px border-l border-dashed border-emerald-300" />
-                    
+
                     <div className="relative flex min-h-[52px] items-center gap-2.5">
                       <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
                         <div className="h-3 w-3 rounded-full border-[2.5px] border-emerald-500" />

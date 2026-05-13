@@ -28,10 +28,10 @@ import apiConfig from '../config/api.config.json';
 
 const StatusBadge = ({ children, type = 'emerald' }) => {
   const colors = {
-    emerald: 'bg-emerald-50 text-emerald-600 border-emerald-100',
-    teal: 'bg-emerald-50 text-emerald-600 border-emerald-100',
-    violet: 'bg-violet-50 text-violet-600 border-violet-100',
-    amber: 'bg-amber-50 text-amber-600 border-amber-100',
+    emerald: 'bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20',
+    teal: 'bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20',
+    violet: 'bg-violet-50 text-violet-600 border-violet-100 dark:bg-violet-500/10 dark:text-violet-400 dark:border-violet-500/20',
+    amber: 'bg-amber-50 text-amber-600 border-amber-100 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20',
   };
   return (
     <div className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border ${colors[type]}`}>
@@ -126,7 +126,7 @@ export default function CabPartnerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-32 pb-24 px-4 md:px-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pt-32 pb-24 px-4 md:px-8 transition-colors duration-500">
       <div className="max-w-[1400px] mx-auto space-y-16">
         
         {/* ===== HERO SECTION ===== */}
@@ -229,7 +229,7 @@ export default function CabPartnerPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className={`relative bg-white rounded-[3rem] p-10 shadow-sm border border-slate-100 overflow-hidden ${stat.popular ? 'ring-2 ring-emerald-500/20' : ''}`}
+              className={`relative bg-white dark:bg-slate-900 rounded-[3rem] p-10 shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden ${stat.popular ? 'ring-2 ring-emerald-500/20' : ''}`}
             >
               {stat.popular && (
                 <div className="absolute top-8 right-8">
@@ -240,17 +240,17 @@ export default function CabPartnerPage() {
                 <stat.icon size={28} />
               </div>
               <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">{stat.title}</p>
-              <h3 className="text-3xl font-black text-slate-900 mb-2">{stat.value}</h3>
-              <p className="text-xs font-bold text-slate-500">{stat.sub}</p>
+              <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-2">{stat.value}</h3>
+              <p className="text-xs font-bold text-slate-500 dark:text-slate-400">{stat.sub}</p>
             </motion.div>
           ))}
         </div>
 
         {/* ===== COMMISSION STRUCTURE GRID ===== */}
         <div className="grid lg:grid-cols-2 gap-8">
-          <div className="bg-white rounded-[4rem] p-12 shadow-sm border border-slate-100">
-            <h3 className="text-2xl font-black text-slate-900 tracking-tighter mb-10 flex items-center gap-4">
-              <div className="p-3 bg-emerald-50 text-emerald-600 rounded-2xl"><Zap size={24}/></div>
+          <div className="bg-white dark:bg-slate-900 rounded-[4rem] p-12 shadow-sm border border-slate-100 dark:border-slate-800">
+            <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter mb-10 flex items-center gap-4">
+              <div className="p-3 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl"><Zap size={24}/></div>
               Commission Protocol
             </h3>
             <div className="space-y-6">
@@ -259,20 +259,20 @@ export default function CabPartnerPage() {
                 { label: apiConfig.cab.commission.standardCommission.label, value: `${apiConfig.cab.commission.standardCommission.percentage}%`, sub: 'Enterprise Standard' },
                 { label: apiConfig.cab.commission.bonus.label, value: `+₹${apiConfig.cab.commission.bonus.max}`, sub: 'Peak Network Performance' }
               ].map((item, idx) => (
-                <div key={idx} className="flex items-center justify-between p-6 bg-slate-50 rounded-3xl border border-slate-100">
+                <div key={idx} className="flex items-center justify-between p-6 bg-slate-50 dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-800">
                   <div>
-                    <p className="text-sm font-black text-slate-900 mb-1">{item.label}</p>
-                    <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{item.sub}</p>
+                    <p className="text-sm font-black text-slate-900 dark:text-white mb-1">{item.label}</p>
+                    <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{item.sub}</p>
                   </div>
-                  <div className="text-xl font-black text-emerald-600">{item.value}</div>
+                  <div className="text-xl font-black text-emerald-600 dark:text-emerald-400">{item.value}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="bg-white rounded-[4rem] p-12 shadow-sm border border-slate-100">
-            <h3 className="text-2xl font-black text-slate-900 tracking-tighter mb-10 flex items-center gap-4">
-              <div className="p-3 bg-emerald-50 text-emerald-600 rounded-2xl"><Clock size={24}/></div>
+          <div className="bg-white dark:bg-slate-900 rounded-[4rem] p-12 shadow-sm border border-slate-100 dark:border-slate-800">
+            <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter mb-10 flex items-center gap-4">
+              <div className="p-3 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl"><Clock size={24}/></div>
               Settlement Protocol
             </h3>
             <div className="space-y-6">
@@ -281,12 +281,12 @@ export default function CabPartnerPage() {
                 { label: 'Processing Window', value: apiConfig.cab.payment.processingHours, sub: 'Network Reconciliation Time' },
                 { label: 'Withdrawal Access', value: apiConfig.cab.payment.withdrawalPolicy, sub: 'On-demand Liquidity' }
               ].map((item, idx) => (
-                <div key={idx} className="flex items-center justify-between p-6 bg-slate-50 rounded-3xl border border-slate-100">
+                <div key={idx} className="flex items-center justify-between p-6 bg-slate-50 dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-800">
                   <div>
-                    <p className="text-sm font-black text-slate-900 mb-1">{item.label}</p>
-                    <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{item.sub}</p>
+                    <p className="text-sm font-black text-slate-900 dark:text-white mb-1">{item.label}</p>
+                    <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{item.sub}</p>
                   </div>
-                  <div className="text-sm font-black text-emerald-600 uppercase tracking-widest">{item.value}</div>
+                  <div className="text-sm font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">{item.value}</div>
                 </div>
               ))}
             </div>
@@ -309,7 +309,7 @@ export default function CabPartnerPage() {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative w-full max-w-3xl bg-white rounded-[3.5rem] shadow-2xl overflow-hidden"
+                className="relative w-full max-w-3xl bg-white dark:bg-slate-900 rounded-[3.5rem] shadow-2xl overflow-hidden"
               >
                 {/* Modal Header */}
                 <div className="bg-[#022c22] p-10 md:p-14 text-white relative">
@@ -359,7 +359,7 @@ export default function CabPartnerPage() {
                             value={formData.ownerName}
                             onChange={handleInputChange}
                             placeholder="Full Name"
-                            className="w-full pl-14 pr-6 py-5 bg-slate-50 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all"
+                            className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all dark:text-white dark:placeholder:text-slate-500"
                             disabled={loading}
                           />
                         </div>
@@ -377,7 +377,7 @@ export default function CabPartnerPage() {
                             value={formData.phone}
                             onChange={handleInputChange}
                             placeholder="10-digit Phone"
-                            className="w-full pl-14 pr-6 py-5 bg-slate-50 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all"
+                            className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all dark:text-white dark:placeholder:text-slate-500"
                             disabled={loading}
                           />
                         </div>
@@ -395,12 +395,12 @@ export default function CabPartnerPage() {
                             name="evType"
                             value={formData.evType}
                             onChange={handleInputChange}
-                            className="w-full pl-14 pr-6 py-5 bg-slate-50 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all appearance-none"
+                            className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all appearance-none dark:text-white"
                             disabled={loading}
                           >
-                            <option value="">Select EV Tier</option>
+                            <option value="" className="dark:bg-slate-900">Select EV Tier</option>
                             {evTypes.map(ev => (
-                              <option key={ev.value} value={ev.value}>{ev.label}</option>
+                              <option key={ev.value} value={ev.value} className="dark:bg-slate-900">{ev.label}</option>
                             ))}
                           </select>
                         </div>
@@ -418,7 +418,7 @@ export default function CabPartnerPage() {
                             value={formData.vehicleModel}
                             onChange={handleInputChange}
                             placeholder="Model / Year (e.g. Nexon EV 2024)"
-                            className="w-full pl-14 pr-6 py-5 bg-slate-50 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all"
+                            className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all dark:text-white dark:placeholder:text-slate-500"
                             disabled={loading}
                           />
                         </div>
@@ -439,17 +439,17 @@ export default function CabPartnerPage() {
                           />
                           <label
                             htmlFor="rcInput"
-                            className="flex flex-col items-center justify-center w-full py-10 bg-slate-50 border-2 border-dashed border-slate-200 rounded-[2rem] cursor-pointer hover:border-emerald-500 hover:bg-emerald-50 transition-all group"
+                            className="flex flex-col items-center justify-center w-full py-10 bg-slate-50 dark:bg-slate-800 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-[2rem] cursor-pointer hover:border-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-500/5 transition-all group"
                           >
                             {filePreview.rc ? (
                               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center">
                                 <img src={filePreview.rc} alt="RC Preview" className="max-h-32 mx-auto mb-4 rounded-2xl shadow-lg" />
-                                <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">RC Secured</p>
+                                <p className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">RC Secured</p>
                               </motion.div>
                             ) : (
                               <div className="text-center">
                                 <Upload size={20} className="mx-auto mb-3 text-slate-400" />
-                                <p className="text-xs font-black text-slate-900 mb-1">Upload RC</p>
+                                <p className="text-xs font-black text-slate-900 dark:text-white mb-1">Upload RC</p>
                                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">MAX 5MB</p>
                               </div>
                             )}
@@ -470,17 +470,17 @@ export default function CabPartnerPage() {
                           />
                           <label
                             htmlFor="insuranceInput"
-                            className="flex flex-col items-center justify-center w-full py-10 bg-slate-50 border-2 border-dashed border-slate-200 rounded-[2rem] cursor-pointer hover:border-emerald-500 hover:bg-emerald-50 transition-all group"
+                            className="flex flex-col items-center justify-center w-full py-10 bg-slate-50 dark:bg-slate-800 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-[2rem] cursor-pointer hover:border-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-500/5 transition-all group"
                           >
                             {filePreview.insurance ? (
                               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center">
                                 <img src={filePreview.insurance} alt="Insurance Preview" className="max-h-32 mx-auto mb-4 rounded-2xl shadow-lg" />
-                                <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Policy Secured</p>
+                                <p className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Policy Secured</p>
                               </motion.div>
                             ) : (
                               <div className="text-center">
                                 <Upload size={20} className="mx-auto mb-3 text-slate-400" />
-                                <p className="text-xs font-black text-slate-900 mb-1">Upload Policy</p>
+                                <p className="text-xs font-black text-slate-900 dark:text-white mb-1">Upload Policy</p>
                                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">MAX 5MB</p>
                               </div>
                             )}
@@ -493,7 +493,7 @@ export default function CabPartnerPage() {
                       <button
                         type="button"
                         onClick={() => setShowModal(false)}
-                        className="flex-1 py-5 bg-slate-50 text-slate-500 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-100 transition-all"
+                        className="flex-1 py-5 bg-slate-50 dark:bg-slate-800 text-slate-500 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-100 dark:hover:bg-slate-700 transition-all"
                       >
                         Abort
                       </button>

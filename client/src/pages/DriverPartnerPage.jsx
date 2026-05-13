@@ -27,10 +27,10 @@ import apiConfig from '../config/api.config.json';
 
 const StatusBadge = ({ children, type = 'emerald' }) => {
   const colors = {
-    emerald: 'bg-emerald-50 text-emerald-600 border-emerald-100',
-    teal: 'bg-emerald-50 text-emerald-600 border-emerald-100',
-    violet: 'bg-violet-50 text-violet-600 border-violet-100',
-    amber: 'bg-amber-50 text-amber-600 border-amber-100',
+    emerald: 'bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20',
+    teal: 'bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20',
+    violet: 'bg-violet-50 text-violet-600 border-violet-100 dark:bg-violet-500/10 dark:text-violet-400 dark:border-violet-500/20',
+    amber: 'bg-amber-50 text-amber-600 border-amber-100 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20',
   };
   return (
     <div className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border ${colors[type]}`}>
@@ -122,7 +122,7 @@ export default function DriverPartnerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-32 pb-24 px-4 md:px-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pt-32 pb-24 px-4 md:px-8 transition-colors duration-500">
       <div className="max-w-[1400px] mx-auto space-y-16">
         
         {/* ===== HERO SECTION ===== */}
@@ -225,29 +225,29 @@ export default function DriverPartnerPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className={`relative bg-white rounded-[3rem] p-10 shadow-sm border border-slate-100 overflow-hidden ${stat.popular ? 'ring-2 ring-emerald-500/20' : ''}`}
+              className={`relative bg-white dark:bg-slate-900 rounded-[3rem] p-10 shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden ${stat.popular ? 'ring-2 ring-emerald-500/20' : ''}`}
             >
               {stat.popular && (
                 <div className="absolute top-8 right-8">
                   <StatusBadge type="emerald">Optimal</StatusBadge>
                 </div>
               )}
-              <div className={`p-5 ${stat.bg} ${stat.color} rounded-2xl w-fit mb-8`}>
+              <div className={`p-5 ${stat.bg} dark:bg-emerald-500/10 ${stat.color} dark:text-emerald-400 rounded-2xl w-fit mb-8`}>
                 <stat.icon size={28} />
               </div>
               <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">{stat.title}</p>
-              <h3 className="text-3xl font-black text-slate-900 mb-2">{stat.value}</h3>
-              <p className="text-xs font-bold text-slate-500">{stat.sub}</p>
+              <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-2">{stat.value}</h3>
+              <p className="text-xs font-bold text-slate-500 dark:text-slate-400">{stat.sub}</p>
             </motion.div>
           ))}
         </div>
 
         {/* ===== REQUIREMENTS GRID ===== */}
-        <div className="bg-white rounded-[4rem] p-12 md:p-20 shadow-sm border border-slate-100">
+        <div className="bg-white dark:bg-slate-900 rounded-[4rem] p-12 md:p-20 shadow-sm border border-slate-100 dark:border-slate-800">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-black text-slate-900 tracking-tighter mb-4">Pilot Requirements</h2>
-              <p className="text-slate-500 font-bold text-xs uppercase tracking-widest">Verify your credentials against our protocol</p>
+              <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter mb-4">Pilot Requirements</h2>
+              <p className="text-slate-500 dark:text-slate-400 font-bold text-xs uppercase tracking-widest">Verify your credentials against our protocol</p>
             </div>
             
             <div className="grid md:grid-cols-2 gap-10">
@@ -259,12 +259,12 @@ export default function DriverPartnerPage() {
                 { title: 'Communication Node', desc: 'High-level customer interaction capacity.', icon: Briefcase }
               ].map((req, idx) => (
                 <div key={idx} className="flex gap-6">
-                  <div className="p-4 bg-slate-50 text-slate-900 rounded-2xl h-fit">
+                  <div className="p-4 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white rounded-2xl h-fit">
                     <req.icon size={20} />
                   </div>
                   <div>
-                    <h4 className="text-lg font-black text-slate-900 tracking-tight mb-1">{req.title}</h4>
-                    <p className="text-sm font-medium text-slate-500 leading-relaxed">{req.desc}</p>
+                    <h4 className="text-lg font-black text-slate-900 dark:text-white tracking-tight mb-1">{req.title}</h4>
+                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400 leading-relaxed">{req.desc}</p>
                   </div>
                 </div>
               ))}
@@ -288,7 +288,7 @@ export default function DriverPartnerPage() {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative w-full max-w-3xl bg-white rounded-[3.5rem] shadow-2xl overflow-hidden"
+                className="relative w-full max-w-3xl bg-white dark:bg-slate-900 rounded-[3.5rem] shadow-2xl overflow-hidden"
               >
                 {/* Modal Header */}
                 <div className="bg-[#022c22] p-10 md:p-14 text-white relative">
@@ -338,7 +338,7 @@ export default function DriverPartnerPage() {
                             value={formData.name}
                             onChange={handleInputChange}
                             placeholder="Full Name"
-                            className="w-full pl-14 pr-6 py-5 bg-slate-50 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all"
+                            className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all dark:text-white dark:placeholder:text-slate-500"
                             disabled={loading}
                           />
                         </div>
@@ -356,7 +356,7 @@ export default function DriverPartnerPage() {
                             value={formData.email}
                             onChange={handleInputChange}
                             placeholder="Email Address"
-                            className="w-full pl-14 pr-6 py-5 bg-slate-50 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all"
+                            className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all dark:text-white dark:placeholder:text-slate-500"
                             disabled={loading}
                           />
                         </div>
@@ -376,7 +376,7 @@ export default function DriverPartnerPage() {
                             value={formData.phone}
                             onChange={handleInputChange}
                             placeholder="10-digit Phone"
-                            className="w-full pl-14 pr-6 py-5 bg-slate-50 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all"
+                            className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all dark:text-white dark:placeholder:text-slate-500"
                             disabled={loading}
                           />
                         </div>
@@ -392,14 +392,14 @@ export default function DriverPartnerPage() {
                             name="experience"
                             value={formData.experience}
                             onChange={handleInputChange}
-                            className="w-full pl-14 pr-6 py-5 bg-slate-50 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all appearance-none"
+                            className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all appearance-none dark:text-white"
                             disabled={loading}
                           >
-                            <option value="">Select telemetry</option>
-                            <option value="0-1">0-1 Cycles</option>
-                            <option value="1-3">1-3 Cycles</option>
-                            <option value="3-5">3-5 Cycles</option>
-                            <option value="5+">5+ Senior Pilot</option>
+                            <option value="" className="dark:bg-slate-900">Select telemetry</option>
+                            <option value="0-1" className="dark:bg-slate-900">0-1 Cycles</option>
+                            <option value="1-3" className="dark:bg-slate-900">1-3 Cycles</option>
+                            <option value="3-5" className="dark:bg-slate-900">3-5 Cycles</option>
+                            <option value="5+" className="dark:bg-slate-900">5+ Senior Pilot</option>
                           </select>
                         </div>
                       </div>
@@ -418,19 +418,19 @@ export default function DriverPartnerPage() {
                         />
                         <label
                           htmlFor="licenseInput"
-                          className="flex flex-col items-center justify-center w-full py-12 bg-slate-50 border-2 border-dashed border-slate-200 rounded-[2rem] cursor-pointer hover:border-emerald-500 hover:bg-emerald-50 transition-all group"
+                          className="flex flex-col items-center justify-center w-full py-12 bg-slate-50 dark:bg-slate-800 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-[2rem] cursor-pointer hover:border-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-500/5 transition-all group"
                         >
                           {filePreview ? (
                             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center">
                               <img src={filePreview} alt="Auth Preview" className="max-h-40 mx-auto mb-6 rounded-2xl shadow-xl" />
-                              <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Document Secured</p>
+                              <p className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Document Secured</p>
                             </motion.div>
                           ) : (
                             <div className="text-center">
-                              <div className="p-5 bg-white text-slate-400 rounded-2xl shadow-sm mb-4 inline-block group-hover:scale-110 transition-transform">
+                              <div className="p-5 bg-white dark:bg-slate-900 text-slate-400 rounded-2xl shadow-sm mb-4 inline-block group-hover:scale-110 transition-transform">
                                 <Upload size={24} />
                               </div>
-                              <p className="text-sm font-black text-slate-900 mb-1">Click to Upload Entity ID</p>
+                              <p className="text-sm font-black text-slate-900 dark:text-white mb-1">Click to Upload Entity ID</p>
                               <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">PDF, JPG, PNG (MAX 5MB)</p>
                             </div>
                           )}
@@ -442,7 +442,7 @@ export default function DriverPartnerPage() {
                       <button
                         type="button"
                         onClick={() => setShowModal(false)}
-                        className="flex-1 py-5 bg-slate-50 text-slate-500 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-100 transition-all"
+                        className="flex-1 py-5 bg-slate-50 dark:bg-slate-800 text-slate-500 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-100 dark:hover:bg-slate-700 transition-all"
                       >
                         Abort
                       </button>
