@@ -23,10 +23,10 @@ const Footer = ({ darkMode }) => {
 
       <div className="max-w-7xl mx-auto">
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 mb-12 text-center sm:text-left">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 mb-12 text-left">
 
           {/* Brand */}
-          <div className="flex flex-col items-center sm:items-start space-y-3 lg:space-y-4">
+          <div className="col-span-2 sm:col-span-1 flex flex-col items-center sm:items-start space-y-3 lg:space-y-4">
             <img 
               src={isDarkMode ? logoDark : logoLight} 
               alt="GoElectriQ" 
@@ -111,7 +111,7 @@ const Footer = ({ darkMode }) => {
           </div>
 
           {/* Contact + Newsletter */}
-          <div className="flex flex-col items-center sm:items-start">
+          <div className="col-span-2 sm:col-span-1 flex flex-col items-center sm:items-start">
             <h4 className="font-black text-[10px] uppercase tracking-widest mb-6 text-emerald-500">
               Stay Connected
             </h4>
