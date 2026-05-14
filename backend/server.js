@@ -151,6 +151,11 @@ app.use('/uploads', (req, res, next) => {
 }, express.static(path.join(__dirname, 'uploads')));
 
 
+// Welcome route
+app.get('/', (req, res) => {
+  res.send('<h1>GoElectriQ API is Live</h1><p>Visit <a href="/health">/health</a> for system status.</p>');
+});
+
 // Health check route
 app.get('/health', (req, res) => {
   res.status(200).json({
