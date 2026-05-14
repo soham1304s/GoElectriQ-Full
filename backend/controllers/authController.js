@@ -2,7 +2,7 @@ import User from '../models/User.js';
 import Driver from '../models/Driver.js';
 import { generateToken } from '../middleware/auth.js';
 import { OAuth2Client } from 'google-auth-library';
-import { sendWelcomeEmail } from '../services/emailService.js';
+import { sendWelcomeEmail, sendPasswordResetEmail } from '../services/emailService.js';
 import { sendWelcomeWhatsApp } from '../services/whatsappService.js';
 import crypto from 'crypto';
 
@@ -692,7 +692,7 @@ export const googleAuth = async (req, res) => {
  */
 export const forgotPassword = async (req, res) => {
   try {
-    const { email } = req.body;
+    const email = String(req.body.email).toLowerCase().trim();
 
     const user = await User.findOne({ email });
 
@@ -713,15 +713,41 @@ export const forgotPassword = async (req, res) => {
     // Create reset URL
     const resetUrl = `${process.env.CLIENT_URL || 'http://localhost:5173'}/reset-password/${resetToken}`;
 
-    // Send email
-    await sendPasswordResetEmail(user, resetUrl);
+    // For development, log the reset URL to terminal
+    if (process.env.NODE_ENV === 'development') {
+      console.log('🔗 Password Reset URL:', resetUrl);
+    }
 
+    // Send email
+    try {
+      await sendPasswordResetEmail(user, resetUrl);
+    } catch (emailError) {
+      console.error('⚠️ Email sending failed:', emailError.message);
+      // In development, we proceed so the user can use the logged URL
+      if (process.env.NODE_ENV !== 'development') {
+        throw emailError;
+      }
+    }
+
+    const emailSent = true;
     res.status(200).json({
       success: true,
       message: 'Password reset link sent to your email',
+      emailSent
     });
   } catch (error) {
     console.error('Forgot password error:', error);
+    
+    // Handle the case where email failed but we are in dev mode
+    if (process.env.NODE_ENV === 'development' && error.message === 'Failed to send email') {
+      return res.status(200).json({
+        success: true,
+        message: 'Reset protocol initiated. (Note: Email failed, check terminal for link)',
+        emailSent: false,
+        devMode: true
+      });
+    }
+
     res.status(500).json({
       success: false,
       message: 'Error processing forgot password request',

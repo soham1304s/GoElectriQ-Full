@@ -44,6 +44,7 @@ import { ridePaymentService } from "../../services/ridePaymentService.js";
 import TourBookingModal from "../TourBookingModal.jsx";
 import RideBookingModal from "../RideBookingModal_NEW.jsx";
 import LocationPickerComponent from "../LocationPickerComponent.jsx";
+import GoogleMapComponent from "../GoogleMapComponent.jsx";
 import Footer from "../Footer.jsx";
 import { estimateDistance, formatDistance, formatDuration, calculateFare, getReverseGeocodedAddress } from "../../services/googleMapsService.js";
 import OfferBanner from "../OfferBanner.jsx";
@@ -53,6 +54,7 @@ import { getImageUrl } from "../../utils/imageUrl";
 
 
 const DEFAULT_AVATAR = '/review/image.png';
+const AIRPORT_LOCATION = { latitude: 26.8289, longitude: 75.8056 }; // Jaipur International Airport
 
 const ReviewAvatar = ({ profileImage, name, darkMode }) => {
   const [imageError, setImageError] = useState(false);
@@ -120,7 +122,9 @@ const GoelectriqLanding = () => {
   const [rideType, setRideType] = useState("Local Ride");
   const [airportRideType, setAirportRideType] = useState("pickup"); // For airport: pickup or drop
   const [pickupLocation, setPickupLocation] = useState("");
+  const [pickupCoordinates, setPickupCoordinates] = useState(null);
   const [destination, setDestination] = useState("");
+  const [destinationCoordinates, setDestinationCoordinates] = useState(null);
   const [bookingDate, setBookingDate] = useState("");
   const [bookingTime, setBookingTime] = useState("");
   const [isSearching, setIsSearching] = useState(false);
@@ -2018,6 +2022,15 @@ const GoelectriqLanding = () => {
                   <p className={`text-lg font-bold ${darkMode ? "text-emerald-400" : "text-emerald-600"}`}>
                     {airportLocation}
                   </p>
+                </div>
+
+                {/* Map Visualization */}
+                <div className="h-[200px] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-inner">
+                  <GoogleMapComponent
+                    pickupCoords={airportRideType === "pickup" ? AIRPORT_LOCATION : (airportRideType === "drop" ? pickupCoordinates : null)}
+                    dropCoords={airportRideType === "pickup" ? destinationCoordinates : (airportRideType === "drop" ? AIRPORT_LOCATION : null)}
+                    isDark={darkMode}
+                  />
                 </div>
 
                 {/* Date and Time */}

@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext.jsx';
 import { useTheme } from '../context/ThemeContext.jsx';
 import { createTourBooking } from '../services/packageService.js';
 import ridePaymentService from '../services/ridePaymentService.js';
-import LocationPickerComponent from './LocationPickerComponent.jsx';
+import GoogleMapComponent from './GoogleMapComponent.jsx';
 
 export default function TourBookingModal({ isOpen, onClose, tourName, packagePrice, packageId, carTypes = [], pricing = {} }) {
   const navigate = useNavigate();
@@ -14,6 +14,7 @@ export default function TourBookingModal({ isOpen, onClose, tourName, packagePri
   const [selectedCar, setSelectedCar] = useState('economy');
   const [selectedTime, setSelectedTime] = useState('');
   const [pickupLocation, setPickupLocation] = useState('');
+  const [pickupCoordinates, setPickupCoordinates] = useState(null);
   const [passengers, setPassengers] = useState(4);
   const [paymentOption, setPaymentOption] = useState('confirmation');
   const [dateInput, setDateInput] = useState(() => {
@@ -41,8 +42,13 @@ export default function TourBookingModal({ isOpen, onClose, tourName, packagePri
   const confirmationAmount = Math.round(totalAmount * 0.2);
 
   // Handle location selection
-  const handleLocationSelect = () => {
-    // Location is updated via onChange callback
+  const handleLocationSelect = (location) => {
+    if (location && (location.lat || location.latitude)) {
+      setPickupCoordinates({
+        lat: location.lat || location.latitude,
+        lng: location.lng || location.longitude,
+      });
+    }
   };
 
   const handlePayNow = async () => {
@@ -242,6 +248,14 @@ export default function TourBookingModal({ isOpen, onClose, tourName, packagePri
               onSelectLocation={handleLocationSelect}
               placeholder="Search pickup location in Jaipur..."
               showMap={false}
+            />
+          </div>
+
+          {/* Map Section */}
+          <div className="mb-6 h-[200px] rounded-xl overflow-hidden border border-[#e5e7eb] dark:border-[#3f4a61]">
+            <GoogleMapComponent
+              pickupCoords={pickupCoordinates}
+              isDark={theme === 'dark'}
             />
           </div>
 

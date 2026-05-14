@@ -6,6 +6,7 @@ import { bookingService } from '../services/bookingService.js';
 import { ridePaymentService } from '../services/ridePaymentService.js';
 import { estimateDistance } from '../services/googleMapsService.js';
 import bookingValidator from '../utils/bookingValidator.js';
+import GoogleMapComponent from './GoogleMapComponent.jsx';
 
 /**
  * RideBookingModal - NEW VERSION (No Payment at Booking)
@@ -365,6 +366,15 @@ export default function RideBookingModal({
                 <p className="font-semibold text-gray-900 dark:text-white">{destination}</p>
               </div>
             </div>
+          </div>
+
+          {/* Map Visualization */}
+          <div className="h-[250px] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-inner">
+            <GoogleMapComponent
+              pickupCoords={pickupCoordinates}
+              dropCoords={destinationCoordinates}
+              isDark={document.documentElement.classList.contains('dark')}
+            />
           </div>
 
           {/* Error Messages */}

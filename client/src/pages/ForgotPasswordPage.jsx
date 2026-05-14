@@ -30,7 +30,7 @@ export default function ForgotPasswordPage() {
         setError(result.message || 'Protocol failure. Unable to send reset link.');
       }
     } catch (err) {
-      setError('Neural link synchronization failed. Try again.');
+      setError(err.response?.data?.message || 'Neural link synchronization failed. Try again.');
     } finally {
       setLoading(false);
     }

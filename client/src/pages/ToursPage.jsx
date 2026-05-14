@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import SEO from '../components/SEO';
 import TourBookingModal from '../components/TourBookingModal.jsx';
 import { getPackages } from '../services/packageService.js';
+import GoogleMapComponent from '../components/GoogleMapComponent.jsx';
 
 export default function ToursPage() {
   const navigate = useNavigate();
@@ -173,6 +174,22 @@ export default function ToursPage() {
             </span>
           </div>
         )}
+      </div>
+
+      {/* Map Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] shadow-xl border border-slate-100 dark:border-zinc-800 p-2 overflow-hidden">
+          <div className="h-[400px] rounded-[2rem] overflow-hidden">
+            <GoogleMapComponent
+              pickupCoords={{ latitude: 26.9124, longitude: 75.7873 }} // Jaipur Center
+              isDark={document.documentElement.classList.contains('dark')}
+            />
+          </div>
+          <div className="p-6 text-center">
+            <h3 className="text-xl font-black text-slate-900 dark:text-white mb-2">Our Coverage</h3>
+            <p className="text-slate-600 dark:text-slate-400 font-medium">Explore all heritage sites and tourist destinations across the Pink City with our premium fleet.</p>
+          </div>
+        </div>
       </div>
 
       {/* Tours Grid Section */}

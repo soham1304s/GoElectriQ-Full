@@ -123,12 +123,12 @@ const AdminLayout = ({ children }) => {
       {/* SIDEBAR */}
       <aside
         className={`${sidebarOpen ? 'w-64' : 'w-0'
-          } bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 shadow-2xl transition-all duration-300 flex flex-col overflow-hidden md:w-64 md:z-0 z-50`}
+          } bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950 dark:from-black dark:via-emerald-950 dark:to-black shadow-2xl transition-all duration-300 flex flex-col overflow-hidden md:w-64 md:z-0 z-50`}
       >
         {/* Logo */}
         <button
           onClick={() => navigate('/')}
-          className="p-6 border-b border-gray-700 flex justify-center hover:bg-gray-800 transition"
+          className="p-6 border-b border-emerald-800/50 flex justify-center hover:bg-emerald-800/30 transition"
         >
           <div className="flex flex-col items-center">
             <img
@@ -148,7 +148,7 @@ const AdminLayout = ({ children }) => {
             onClick={() => isMobile && setSidebarOpen(false)}
             className={`flex items-center px-4 py-3 rounded-lg transition font-medium ${isActive('/admin')
               ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20'
-              : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+              : 'text-gray-300 hover:bg-emerald-800/40 hover:text-white'
               }`}
           >
             <LayoutDashboard size={18} />
@@ -157,7 +157,7 @@ const AdminLayout = ({ children }) => {
 
           {/* Divider */}
           <div className="my-3 px-4">
-            <div className="h-px bg-gray-700"></div>
+            <div className="h-px bg-emerald-800/50"></div>
           </div>
 
           {navItems.map((section, index) => (
@@ -166,7 +166,7 @@ const AdminLayout = ({ children }) => {
               {/* SECTION HEADER */}
               <button
                 onClick={() => toggleMenu(section.title)}
-                className="w-full flex justify-between items-center px-4 py-2 font-semibold text-gray-400 hover:text-gray-200 hover:bg-gray-700 rounded-lg transition text-sm uppercase tracking-wide"
+                className="w-full flex justify-between items-center px-4 py-2 font-semibold text-emerald-400/80 hover:text-emerald-100 hover:bg-emerald-800/30 rounded-lg transition text-sm uppercase tracking-wide"
               >
                 {section.title}
 
@@ -192,7 +192,7 @@ const AdminLayout = ({ children }) => {
                       onClick={() => isMobile && setSidebarOpen(false)}
                       className={`flex items-center ml-2 px-4 py-2 rounded-lg transition text-sm ${isActive(item.path)
                         ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                        : 'text-gray-300 hover:bg-emerald-800/40 hover:text-white'
                         }`}
                     >
                       <Icon size={18} />
@@ -207,7 +207,7 @@ const AdminLayout = ({ children }) => {
         </nav>
 
         {/* BOTTOM */}
-        <div className="p-4 border-t border-gray-700 space-y-2">
+        <div className="p-4 border-t border-emerald-800/50 space-y-2">
           <button
             onClick={() => navigate('/')}
             className="w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white rounded-lg transition font-medium shadow-lg"
@@ -238,7 +238,7 @@ const AdminLayout = ({ children }) => {
       <div className="flex flex-col flex-1 overflow-hidden bg-gray-50 dark:bg-gray-900">
 
         {/* MOBILE HEADER */}
-        <div className="md:hidden bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-950 dark:to-gray-900 border-b border-gray-700 flex justify-between p-4 shadow-lg">
+        <div className="md:hidden bg-gradient-to-r from-emerald-900 to-emerald-950 dark:from-black dark:to-emerald-950 border-b border-emerald-800/50 flex justify-between p-4 shadow-lg">
           <button onClick={() => setSidebarOpen(!sidebarOpen)} className="text-white">
             {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
