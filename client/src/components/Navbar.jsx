@@ -61,7 +61,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src={darkMode ? logoWhite : logo} alt="GoElectric" className="h-24 md:h-32 w-auto object-contain" />
+          <img src={darkMode ? logoWhite : logo} alt="GoElectric" className="h-16 md:h-20 w-auto object-contain" />
         </Link>
 
         {/* Desktop Nav Links */}

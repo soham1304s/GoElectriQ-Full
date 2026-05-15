@@ -33,7 +33,7 @@ export default function AuthLayout({ children, title, subtitle, showSlider = tru
             <MotionImg
               src={darkMode ? logoWhite : logo}
               alt="GoElectriQ"
-              className="h-12 sm:h-16 lg:h-20 w-auto object-contain"
+              className="h-20 sm:h-16 lg:h-20 w-auto object-contain"
               initial={{ y: -10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
             />
