@@ -49,9 +49,17 @@ export const uploadFile = async (file, folder = 'misc') => {
   }
 
   // 2. Fallback to local storage
-  const targetDir = path.join(UPLOAD_ROOT, folder);
+  const isVercel = process.env.VERCEL || process.env.NOW_BUILDER;
+  const targetDir = isVercel 
+    ? path.join('/tmp/uploads', folder) 
+    : path.join(UPLOAD_ROOT, folder);
+
   if (!fs.existsSync(targetDir)) {
-    fs.mkdirSync(targetDir, { recursive: true });
+    try {
+      fs.mkdirSync(targetDir, { recursive: true });
+    } catch (err) {
+      console.warn(`⚠️ Could not create local target directory on Vercel: ${err.message}`);
+    }
   }
 
   const ext = path.extname(file.originalname) || '.jpg';

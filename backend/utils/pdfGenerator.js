@@ -8,10 +8,17 @@ import path from 'path';
 export const generateInvoicePDF = async (booking, user) => {
   return new Promise((resolve, reject) => {
     try {
-      // Create uploads directory if it doesn't exist
-      const uploadsDir = path.join(process.cwd(), 'uploads', 'invoices');
-      if (!fs.existsSync(uploadsDir)) {
-        fs.mkdirSync(uploadsDir, { recursive: true });
+      const isVercel = process.env.VERCEL || process.env.NOW_BUILDER;
+      const uploadsDir = isVercel 
+        ? '/tmp/uploads/invoices' 
+        : path.join(process.cwd(), 'uploads', 'invoices');
+        
+      if (!isVercel && !fs.existsSync(uploadsDir)) {
+        try {
+          fs.mkdirSync(uploadsDir, { recursive: true });
+        } catch (err) {
+          console.warn('Warning: Could not create invoices directory on Vercel');
+        }
       }
 
       // Generate invoice number if not exists
@@ -193,9 +200,17 @@ export const generateInvoicePDF = async (booking, user) => {
 export const generateRideReceiptPDF = async (booking, user, driver) => {
   return new Promise((resolve, reject) => {
     try {
-      const uploadsDir = path.join(process.cwd(), 'uploads', 'receipts');
-      if (!fs.existsSync(uploadsDir)) {
-        fs.mkdirSync(uploadsDir, { recursive: true });
+      const isVercel = process.env.VERCEL || process.env.NOW_BUILDER;
+      const uploadsDir = isVercel 
+        ? '/tmp/uploads/receipts' 
+        : path.join(process.cwd(), 'uploads', 'receipts');
+        
+      if (!isVercel && !fs.existsSync(uploadsDir)) {
+        try {
+          fs.mkdirSync(uploadsDir, { recursive: true });
+        } catch (err) {
+          console.warn('Warning: Could not create receipts directory on Vercel');
+        }
       }
 
       const receiptNumber = `REC-${booking.bookingId}`;

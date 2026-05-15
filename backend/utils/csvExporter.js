@@ -7,9 +7,17 @@ import fs from 'fs';
  */
 export const exportBookingsToCSV = async (bookings) => {
   try {
-    const uploadsDir = path.join(process.cwd(), 'uploads', 'exports');
-    if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true });
+    const isVercel = process.env.VERCEL || process.env.NOW_BUILDER;
+    const uploadsDir = isVercel 
+      ? '/tmp/uploads/exports' 
+      : path.join(process.cwd(), 'uploads', 'exports');
+      
+    if (!isVercel && !fs.existsSync(uploadsDir)) {
+      try {
+        fs.mkdirSync(uploadsDir, { recursive: true });
+      } catch (err) {
+        console.warn('Warning: Could not create exports directory on Vercel');
+      }
     }
 
     const timestamp = Date.now();
@@ -69,9 +77,17 @@ export const exportBookingsToCSV = async (bookings) => {
  */
 export const exportUsersToCSV = async (users) => {
   try {
-    const uploadsDir = path.join(process.cwd(), 'uploads', 'exports');
-    if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true });
+    const isVercel = process.env.VERCEL || process.env.NOW_BUILDER;
+    const uploadsDir = isVercel 
+      ? '/tmp/uploads/exports' 
+      : path.join(process.cwd(), 'uploads', 'exports');
+      
+    if (!isVercel && !fs.existsSync(uploadsDir)) {
+      try {
+        fs.mkdirSync(uploadsDir, { recursive: true });
+      } catch (err) {
+        console.warn('Warning: Could not create exports directory on Vercel');
+      }
     }
 
     const timestamp = Date.now();
@@ -119,9 +135,17 @@ export const exportUsersToCSV = async (users) => {
  */
 export const exportRevenueToCSV = async (revenueData) => {
   try {
-    const uploadsDir = path.join(process.cwd(), 'uploads', 'exports');
-    if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true });
+    const isVercel = process.env.VERCEL || process.env.NOW_BUILDER;
+    const uploadsDir = isVercel 
+      ? '/tmp/uploads/exports' 
+      : path.join(process.cwd(), 'uploads', 'exports');
+      
+    if (!isVercel && !fs.existsSync(uploadsDir)) {
+      try {
+        fs.mkdirSync(uploadsDir, { recursive: true });
+      } catch (err) {
+        console.warn('Warning: Could not create exports directory on Vercel');
+      }
     }
 
     const timestamp = Date.now();
