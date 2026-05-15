@@ -41,6 +41,7 @@ import offerRoutes from './routes/offerRoutes.js';
 import partnerRoutes from './routes/partnerRoutes.js';
 import chargingBookingRoutes from './routes/chargingBookingRoutes.js';
 import chargingEnquiryRoutes from './routes/chargingEnquiryRoutes.js';
+import contactRoutes from './routes/contactRoutes.js';
 
 // Get __dirname equivalent in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -49,7 +50,7 @@ const __dirname = path.dirname(__filename);
 // Initialize express app
 const app = express();
 
-// Enable trust proxy for rate limiting behind Railway's load balancer
+// Enable trust proxy for rate limiting behind a load balancer (Render/Vercel)
 app.set('trust proxy', 1);
 
 // Connect to database
@@ -107,9 +108,14 @@ const allowedOrigins = [
 
 const uniqueAllowedOrigins = [...new Set(allowedOrigins)];
 
+const isLocalDevOrigin = (origin) => {
+  if (process.env.NODE_ENV === 'production') return false;
+  return /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(cleanOrigin(origin));
+};
+
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || uniqueAllowedOrigins.includes(cleanOrigin(origin))) {
+    if (!origin || uniqueAllowedOrigins.includes(cleanOrigin(origin)) || isLocalDevOrigin(origin)) {
       callback(null, true);
       return;
     }
@@ -151,11 +157,6 @@ app.use('/uploads', (req, res, next) => {
 }, express.static(path.join(__dirname, 'uploads')));
 
 
-// Welcome route
-app.get('/', (req, res) => {
-  res.send('<h1>GoElectriQ API is Live</h1><p>Visit <a href="/health">/health</a> for system status.</p>');
-});
-
 // Health check route
 app.get('/health', (req, res) => {
   res.status(200).json({
@@ -184,6 +185,7 @@ app.use('/api/offers', offerRoutes);
 app.use('/api/partners', partnerRoutes);
 app.use('/api/charging-bookings', chargingBookingRoutes);
 app.use('/api/charging-enquiries', chargingEnquiryRoutes);
+app.use('/api/contact', contactRoutes);
 
 // 404 handler
 app.use(notFound);

@@ -29,7 +29,7 @@ export default function AdminAuthLayout({ children }) {
           transition={{ duration: 8, repeat: Infinity }}
         />
 
-        {/* Blue Glow - Bottom Left */}
+        {/* Green Glow - Bottom Left */}
         <motion.div
           className="absolute bottom-32 left-32 w-80 h-80 bg-slate-600 rounded-full opacity-15 blur-3xl"
           animate={{
@@ -39,7 +39,7 @@ export default function AdminAuthLayout({ children }) {
           transition={{ duration: 10, repeat: Infinity, delay: 1 }}
         />
 
-        {/* Purple Glow - Center */}
+        {/* Green Glow - Center */}
         <motion.div
           className="absolute top-1/2 right-1/3 w-72 h-72 bg-slate-700 rounded-full opacity-10 blur-3xl"
           animate={{

@@ -63,7 +63,7 @@ const ChargingBookingDashboard = () => {
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.phone.match(/^[6-9]\d{9}$/)) newErrors.phone = 'Valid 10-digit phone required';
+    if (!formData.phone.match(/^(\+91|0)?[6-9]\d{9}$/)) newErrors.phone = 'Valid phone number required';
     if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) newErrors.email = 'Valid email is required';
     if (!formData.city.trim()) newErrors.city = 'City is required';
     if (!formData.message.trim()) newErrors.message = 'Message is required';
@@ -177,7 +177,7 @@ const ChargingBookingDashboard = () => {
   const getStatusColor = (status) => {
     const colors = {
       pending: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300',
-      contacted: 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300',
+      contacted: 'bg-green-100 text-green-700 dark:bg-emerald-900 dark:text-emerald-300',
       resolved: 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300',
       cancelled: 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300',
     };
@@ -188,16 +188,16 @@ const ChargingBookingDashboard = () => {
     <AdminLayout>
       <div className="space-y-6">
         {/* Header Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-lg p-8 text-white">
+        <div className="bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg shadow-lg p-8 text-white">
           <div className="flex justify-between items-start">
             <div>
               <h1 className="text-4xl font-bold mb-2">Charging Station Enquiries</h1>
-              <p className="text-blue-100">Manage and respond to customer enquiries</p>
+              <p className="text-green-50">Manage and respond to customer enquiries</p>
             </div>
             <div className="flex gap-3">
               <button
                 onClick={() => toggleModal()}
-                className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold transition-all"
+                className="flex items-center gap-2 bg-green-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold transition-all"
               >
                 <Plus size={20} />
                 New Enquiry
@@ -205,7 +205,7 @@ const ChargingBookingDashboard = () => {
               <button
                 onClick={() => fetchEnquiries()}
                 disabled={loading}
-                className="flex items-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-semibold transition-all disabled:opacity-50"
+                className="flex items-center gap-2 bg-white text-green-600 hover:bg-green-50 px-6 py-3 rounded-lg font-semibold transition-all disabled:opacity-50"
               >
                 <RefreshCw size={20} className={loading ? 'animate-spin' : ''} />
                 Refresh
@@ -236,7 +236,7 @@ const ChargingBookingDashboard = () => {
                   setFilterStatus(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
               >
                 <option value="">All Status</option>
                 <option value="pending">Pending</option>
@@ -246,9 +246,9 @@ const ChargingBookingDashboard = () => {
               </select>
             </div>
             <div className="flex items-end">
-              <div className="bg-blue-50 dark:bg-blue-900 px-4 py-2 rounded-lg w-full">
+              <div className="bg-green-50 dark:bg-emerald-900 px-4 py-2 rounded-lg w-full">
                 <p className="text-sm text-gray-600 dark:text-gray-400">Total Enquiries</p>
-                <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{enquiries.length}</p>
+                <p className="text-2xl font-bold text-green-600 dark:text-emerald-400">{enquiries.length}</p>
               </div>
             </div>
             <div className="flex items-end">
@@ -273,7 +273,7 @@ const ChargingBookingDashboard = () => {
         {/* Loading State */}
         {loading && (
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-12 text-center">
-            <Loader size={48} className="mx-auto text-blue-600 dark:text-blue-400 animate-spin mb-4" />
+            <Loader size={48} className="mx-auto text-green-600 dark:text-emerald-400 animate-spin mb-4" />
             <p className="text-gray-600 dark:text-gray-400 text-lg">Loading enquiries...</p>
           </div>
         )}
@@ -321,7 +321,7 @@ const ChargingBookingDashboard = () => {
 
                       {/* Enquiry Type */}
                       <td className="px-6 py-4">
-                        <span className="inline-block px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full capitalize">
+                        <span className="inline-block px-3 py-1 text-xs font-semibold bg-green-100 text-green-700 dark:bg-emerald-900 dark:text-emerald-300 rounded-full capitalize">
                           {enquiry.enquiryType}
                         </span>
                       </td>
@@ -351,7 +351,7 @@ const ChargingBookingDashboard = () => {
                       <td className="px-6 py-4 flex gap-2">
                         <button
                           onClick={() => handleEdit(enquiry)}
-                          className="text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900 p-2 rounded transition"
+                          className="text-green-600 dark:text-emerald-400 hover:bg-green-50 dark:hover:bg-emerald-900 p-2 rounded transition"
                           title="Edit enquiry"
                         >
                           <Edit2 size={18} />
@@ -399,7 +399,7 @@ const ChargingBookingDashboard = () => {
                 onClick={() => setCurrentPage(page)}
                 className={`px-4 py-2 rounded-lg font-medium transition ${
                   currentPage === page
-                    ? 'bg-blue-600 text-white shadow-md'
+                    ? 'bg-emerald-600 text-white shadow-md'
                     : 'bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700'
                 }`}
               >
@@ -422,7 +422,7 @@ const ChargingBookingDashboard = () => {
             <div className="absolute inset-0 bg-[#022c22]/60 backdrop-blur-sm" onClick={toggleModal}></div>
             <div className="bg-white dark:bg-slate-800 w-full max-w-2xl rounded-2xl shadow-2xl relative z-10 overflow-hidden">
               {/* Modal Header */}
-              <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-6 text-white flex justify-between items-center">
+              <div className="bg-gradient-to-r from-emerald-600 to-emerald-700 p-6 text-white flex justify-between items-center">
                 <h2 className="text-2xl font-bold">
                   {editingId ? 'Edit Enquiry' : 'New Enquiry'}
                 </h2>
@@ -446,7 +446,7 @@ const ChargingBookingDashboard = () => {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Full name"
-                      className={`w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition ${
+                      className={`w-full border p-3 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none transition ${
                         errors.name ? 'border-red-500' : 'border-slate-300'
                       }`}
                     />
@@ -462,7 +462,7 @@ const ChargingBookingDashboard = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="10-digit number"
-                      className={`w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition ${
+                      className={`w-full border p-3 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none transition ${
                         errors.phone ? 'border-red-500' : 'border-slate-300'
                       }`}
                     />
@@ -478,7 +478,7 @@ const ChargingBookingDashboard = () => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="email@example.com"
-                      className={`w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition ${
+                      className={`w-full border p-3 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none transition ${
                         errors.email ? 'border-red-500' : 'border-slate-300'
                       }`}
                     />
@@ -494,7 +494,7 @@ const ChargingBookingDashboard = () => {
                       value={formData.city}
                       onChange={handleChange}
                       placeholder="City name"
-                      className={`w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition ${
+                      className={`w-full border p-3 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none transition ${
                         errors.city ? 'border-red-500' : 'border-slate-300'
                       }`}
                     />
@@ -508,7 +508,7 @@ const ChargingBookingDashboard = () => {
                       id="enquiryType"
                       value={formData.enquiryType}
                       onChange={handleChange}
-                      className="w-full border border-slate-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition"
+                      className="w-full border border-slate-300 p-3 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none transition"
                     >
                       <option value="general">General</option>
                       <option value="installation">Installation</option>
@@ -526,7 +526,7 @@ const ChargingBookingDashboard = () => {
                       id="status"
                       value={formData.status}
                       onChange={handleChange}
-                      className="w-full border border-slate-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition"
+                      className="w-full border border-slate-300 p-3 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none transition"
                     >
                       <option value="pending">Pending</option>
                       <option value="contacted">Contacted</option>
@@ -544,7 +544,7 @@ const ChargingBookingDashboard = () => {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Enter your enquiry message"
-                      className={`w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition ${
+                      className={`w-full border p-3 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none transition ${
                         errors.message ? 'border-red-500' : 'border-slate-300'
                       }`}
                     ></textarea>
@@ -556,7 +556,7 @@ const ChargingBookingDashboard = () => {
                 <div className="flex gap-4 pt-4">
                   <button
                     type="submit"
-                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-lg transition"
+                    className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg shadow-lg transition"
                   >
                     {editingId ? 'Update Enquiry' : 'Submit Enquiry'}
                   </button>

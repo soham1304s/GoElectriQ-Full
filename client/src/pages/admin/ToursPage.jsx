@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Search, Eye, CheckCircle, XCircle, DollarSign, Clock, AlertTriangle } from 'lucide-react';
 import AdminLayout from './AdminLayout';
 import { getAllTourBookings, updateTourBookingStatus, collectTourPayment } from '../../services/adminService';
+import api from '../../services/api';
 
 const ToursPage = () => {
   const [tours, setTours] = useState([]);
@@ -51,13 +52,8 @@ const ToursPage = () => {
         // Fetch actual payment data for all tours in parallel
         console.log('💳 Fetching actual payment data for all tours...');
         const paymentPromises = tourData.map(tour =>
-          fetch(`/api/admin/tour-bookings/${tour._id}/payments`, {
-            headers: {
-              'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-          })
-            .then(res => res.json())
-            .then(data => {
+          api.get(`/admin/tour-bookings/${tour._id}/payments`)
+            .then(({ data }) => {
               if (data.success) {
                 return { tourId: tour._id, paymentData: data.data };
               }
@@ -258,12 +254,7 @@ const ToursPage = () => {
       const fetchPayments = async () => {
         try {
           console.log(`💳 Fetching actual payments for tour ${selectedTour._id}...`);
-          const response = await fetch(`/api/admin/tour-bookings/${selectedTour._id}/payments`, {
-            headers: {
-              'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-          });
-          const data = await response.json();
+          const { data } = await api.get(`/admin/tour-bookings/${selectedTour._id}/payments`);
           if (data.success) {
             setActualPayments(prev => ({
               ...prev,
@@ -291,7 +282,7 @@ const ToursPage = () => {
             </div>
             <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-2">
               Total: <span className="font-bold text-green-600">{pagination.total}</span> tour bookings | 
-              <span className="font-bold text-blue-600 ml-2">
+              <span className="font-bold text-green-600 ml-2">
                 💳 {tours.filter(t => getActualPaidAmount(t) > 0).length} with 20% Advance
               </span>
               {lastUpdated && <span className="ml-3 text-xs text-gray-500">(Updated: {lastUpdated.toLocaleTimeString()})</span>}
@@ -343,7 +334,7 @@ const ToursPage = () => {
               onClick={() => setAdvancePaymentOnly(!advancePaymentOnly)}
               className={`px-4 py-2 rounded-lg font-semibold text-sm transition ${
                 advancePaymentOnly
-                  ? 'bg-blue-500 hover:bg-blue-600 text-white'
+                  ? 'bg-green-500 hover:bg-emerald-600 text-white'
                   : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500 text-gray-900 dark:text-white'
               }`}
               title={advancePaymentOnly ? 'Showing: Tours with 20% advance payment only' : 'Showing: All tours'}
@@ -357,7 +348,7 @@ const ToursPage = () => {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
           {loading && tours.length === 0 ? (
             <div className="p-8 text-center">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mb-4"></div>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-500 mb-4"></div>
               <p className="text-gray-500">Loading tour bookings...</p>
             </div>
           ) : filteredTours.filter(t => statusFilter === 'all' || t.status === statusFilter).length === 0 ? (
@@ -392,14 +383,14 @@ const ToursPage = () => {
                       </td>
                       <td className="px-4 py-3 text-gray-600 dark:text-gray-400">{tour?.user?.name || 'N/A'}</td>
                       <td className="px-4 py-3 text-gray-600 dark:text-gray-400">
-                        <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-sm font-semibold">
+                        <span className="px-2 py-1 bg-green-100 dark:bg-emerald-900/30 text-green-700 dark:text-emerald-300 rounded text-sm font-semibold">
                           {tour?.carType?.toUpperCase() || 'N/A'}
                         </span>
                       </td>
                       <td className="px-4 py-3 text-gray-600 dark:text-gray-400">{getTourLocation(tour)}</td>
                       <td className="px-4 py-3">
                         <div className="flex flex-col gap-1">
-                          <span className="text-blue-600 dark:text-blue-400 font-bold">₹{getActualPaidAmount(tour)}/₹{getTotalPrice(tour)}</span>
+                          <span className="text-green-600 dark:text-emerald-400 font-bold">₹{getActualPaidAmount(tour)}/₹{getTotalPrice(tour)}</span>
                           <span className={`text-xs px-2 py-1 rounded w-fit font-semibold ${tour.paymentStatus === 'paid' || getActualPaidAmount(tour) >= getTotalPrice(tour) ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300' : getActualPaidAmount(tour) > 0 ? 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300' : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300'}`}>
                             {getActualPaidAmount(tour) === 0 ? '❌ NOT PAID' :
                              getActualPaidAmount(tour) >= getTotalPrice(tour) ? '✓ FULLY PAID' :
@@ -410,7 +401,7 @@ const ToursPage = () => {
                       <td className="px-4 py-3 text-center">
                         <button
                           onClick={() => setSelectedTour(tour)}
-                          className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 inline-flex items-center gap-1"
+                          className="text-emerald-500 hover:text-green-700 dark:text-emerald-400 dark:hover:text-emerald-300 inline-flex items-center gap-1"
                         >
                           <Eye size={18} />
                           <span className="text-xs font-medium">View</span>
@@ -460,7 +451,7 @@ const ToursPage = () => {
               </div>
 
               {/* Booking Timeline */}
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-700">
+              <div className="bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/20 dark:to-green-900/20 p-4 rounded-lg border border-green-200 dark:border-emerald-700">
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-3">📅 Booking Timeline</h3>
                 <div className="grid grid-cols-3 gap-3">
                   <div>
@@ -548,39 +539,39 @@ const ToursPage = () => {
                 <h3 className="font-semibold text-gray-900 dark:text-white">💰 Payment Information</h3>
                 
                 {/* Detailed Pricing Breakdown */}
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/10 p-4 rounded-lg border border-blue-200 dark:border-blue-700">
-                  <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-300 mb-3">📊 Complete Price Breakdown</h4>
+                <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/20 dark:to-emerald-900/10 p-4 rounded-lg border border-green-200 dark:border-emerald-700">
+                  <h4 className="text-sm font-semibold text-green-900 dark:text-emerald-300 mb-3">📊 Complete Price Breakdown</h4>
                   <div className="space-y-2 text-sm">
                     <div>
-                      <p className="text-blue-600 dark:text-blue-400 text-xs font-semibold mb-2">Package Details:</p>
-                      <p className="text-blue-800 dark:text-blue-300 text-xs">Title: {selectedTour.package?.title}</p>
-                      <p className="text-blue-800 dark:text-blue-300 text-xs">Base Price: ₹{selectedTour.package?.basePrice || 'N/A'}</p>
+                      <p className="text-green-600 dark:text-emerald-400 text-xs font-semibold mb-2">Package Details:</p>
+                      <p className="text-green-800 dark:text-emerald-300 text-xs">Title: {selectedTour.package?.title}</p>
+                      <p className="text-green-800 dark:text-emerald-300 text-xs">Base Price: ₹{selectedTour.package?.basePrice || 'N/A'}</p>
                     </div>
-                    <div className="border-t border-blue-300 dark:border-blue-600 pt-2">
-                      <p className="text-blue-600 dark:text-blue-400 text-xs font-semibold mb-2">Car Type Pricing from Package:</p>
+                    <div className="border-t border-green-300 dark:border-emerald-600 pt-2">
+                      <p className="text-green-600 dark:text-emerald-400 text-xs font-semibold mb-2">Car Type Pricing from Package:</p>
                       <div className="space-y-1 text-xs">
                         {/* Show Economy */}
                         {selectedTour.package?.pricing?.economy !== undefined && (
-                          <div className={`p-2 rounded ${selectedTour.carType === 'economy' ? 'bg-green-100 dark:bg-green-900/30' : 'bg-white dark:bg-blue-900/20'}`}>
-                            <span className="text-emerald-800 dark:text-emerald-300">Economy:</span>
-                            <span className="font-bold text-blue-900 dark:text-blue-200 ml-2">₹{selectedTour.package?.pricing?.economy}</span>
+                          <div className={`p-2 rounded ${selectedTour.carType === 'economy' ? 'bg-green-100 dark:bg-green-900/30' : 'bg-white dark:bg-emerald-900/20'}`}>
+                            <span className="text-green-800 dark:text-emerald-300">Economy:</span>
+                            <span className="font-bold text-green-900 dark:text-emerald-200 ml-2">₹{selectedTour.package?.pricing?.economy}</span>
                             {selectedTour.carType === 'economy' && <span className="ml-2 text-green-600 font-bold">✓ SELECTED</span>}
                           </div>
                         )}
                         {/* Show Premium */}
                         {selectedTour.package?.pricing?.premium !== undefined && (
-                          <div className={`p-2 rounded ${selectedTour.carType === 'premium' ? 'bg-green-100 dark:bg-green-900/30' : 'bg-white dark:bg-blue-900/20'}`}>
-                            <span className="text-emerald-800 dark:text-emerald-300">Premium:</span>
-                            <span className="font-bold text-blue-900 dark:text-blue-200 ml-2">₹{selectedTour.package?.pricing?.premium}</span>
+                          <div className={`p-2 rounded ${selectedTour.carType === 'premium' ? 'bg-green-100 dark:bg-green-900/30' : 'bg-white dark:bg-emerald-900/20'}`}>
+                            <span className="text-green-800 dark:text-emerald-300">Premium:</span>
+                            <span className="font-bold text-green-900 dark:text-emerald-200 ml-2">₹{selectedTour.package?.pricing?.premium}</span>
                             {selectedTour.carType === 'premium' && <span className="ml-2 text-green-600 font-bold">✓ SELECTED</span>}
                           </div>
                         )}
                       </div>
                     </div>
-                    <div className="border-t-2 border-blue-400 dark:border-blue-500 pt-2 mt-2">
+                    <div className="border-t-2 border-emerald-400 dark:border-emerald-500 pt-2 mt-2">
                       <div className="flex justify-between">
-                        <span className="text-blue-900 dark:text-blue-300 font-bold">SELECTED CAR PRICE ({selectedTour.carType?.toUpperCase()}):</span>
-                        <span className="text-lg font-bold text-blue-600 dark:text-blue-400">
+                        <span className="text-green-900 dark:text-emerald-300 font-bold">SELECTED CAR PRICE ({selectedTour.carType?.toUpperCase()}):</span>
+                        <span className="text-lg font-bold text-green-600 dark:text-emerald-400">
                           ₹{getTotalPrice(selectedTour)}
                         </span>
                       </div>
@@ -598,9 +589,9 @@ const ToursPage = () => {
                     <p className={`text-xs font-bold mb-1 ${getTotalPrice(selectedTour) - getActualPaidAmount(selectedTour) > 0 ? 'text-orange-700 dark:text-orange-400' : 'text-green-700 dark:text-green-400'}`}>⏳ PENDING</p>
                     <p className={`text-2xl font-bold ${getTotalPrice(selectedTour) - getActualPaidAmount(selectedTour) > 0 ? 'text-orange-600 dark:text-orange-400' : 'text-green-600 dark:text-green-400'}`}>₹{Math.max(0, getTotalPrice(selectedTour) - getActualPaidAmount(selectedTour))}</p>
                   </div>
-                  <div className="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg border border-purple-200 dark:border-purple-700">
-                    <p className="text-xs font-bold text-purple-700 dark:text-purple-400 mb-1">📊 PAID%</p>
-                    <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">{getTotalPrice(selectedTour) > 0 ? Math.round((getActualPaidAmount(selectedTour) / getTotalPrice(selectedTour)) * 100) : 0}%</p>
+                  <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-700">
+                    <p className="text-xs font-bold text-green-700 dark:text-green-400 mb-1">📊 PAID%</p>
+                    <p className="text-2xl font-bold text-green-600 dark:text-green-400">{getTotalPrice(selectedTour) > 0 ? Math.round((getActualPaidAmount(selectedTour) / getTotalPrice(selectedTour)) * 100) : 0}%</p>
                   </div>
                 </div>
 
@@ -623,7 +614,7 @@ const ToursPage = () => {
                   <span className="text-sm font-bold text-gray-700 dark:text-gray-300">Booking Status:</span>
                   <span className={`text-sm font-bold px-4 py-2 rounded-full ${
                     selectedTour.status === 'confirmed' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300' :
-                    selectedTour.status === 'completed' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300' :
+                    selectedTour.status === 'completed' ? 'bg-green-100 text-green-700 dark:bg-emerald-900/30 dark:text-emerald-300' :
                     selectedTour.status === 'cancelled' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300' :
                     'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300'
                   }`}>
@@ -637,7 +628,7 @@ const ToursPage = () => {
                   <div className="space-y-2 text-sm text-amber-900 dark:text-amber-200">
                     <div className="flex justify-between">
                       <span>Total Package Cost (Car Type: {selectedTour.carType?.toUpperCase()}):</span>
-                      <span className="font-bold text-lg text-blue-600 dark:text-blue-400">₹{getTotalPrice(selectedTour)}</span>
+                      <span className="font-bold text-lg text-green-600 dark:text-emerald-400">₹{getTotalPrice(selectedTour)}</span>
                     </div>
                     <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400">
                       <span>(Old booking stored: ₹{getPaidAmount(selectedTour)}/₹{selectedTour.pricing?.totalAmount})</span>
@@ -675,11 +666,11 @@ const ToursPage = () => {
 
                 {/* Payment Transaction History */}
                 {actualPayments[selectedTour._id]?.payments && actualPayments[selectedTour._id].payments.length > 0 && (
-                  <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 p-4 rounded-lg">
-                    <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-300 mb-3">💳 Payment Transaction History</h4>
+                  <div className="bg-green-50 dark:bg-emerald-900/20 border border-green-200 dark:border-emerald-700 p-4 rounded-lg">
+                    <h4 className="text-sm font-semibold text-green-900 dark:text-emerald-300 mb-3">💳 Payment Transaction History</h4>
                     <div className="space-y-2">
                       {actualPayments[selectedTour._id].payments.map((payment, idx) => (
-                        <div key={idx} className="bg-white dark:bg-blue-900/30 p-3 rounded flex justify-between items-center">
+                        <div key={idx} className="bg-white dark:bg-emerald-900/30 p-3 rounded flex justify-between items-center">
                           <div className="flex-1">
                             <p className="text-sm font-semibold text-gray-900 dark:text-white">₹{payment.amount}</p>
                             <p className="text-xs text-gray-500 dark:text-gray-400">
@@ -703,7 +694,7 @@ const ToursPage = () => {
               {/* Admin Actions - APPROVAL & REJECTION */}
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl border-2 border-gray-100 dark:border-gray-700 shadow-lg space-y-6">
                 <div className="flex items-center gap-3 border-b border-gray-100 dark:border-gray-700 pb-4">
-                  <div className="w-1 h-6 bg-blue-600 rounded-full"></div>
+                  <div className="w-1 h-6 bg-emerald-600 rounded-full"></div>
                   <h3 className="font-black text-gray-900 dark:text-white uppercase tracking-wider">🛠️ Admin Control Panel</h3>
                 </div>
 
@@ -731,7 +722,7 @@ const ToursPage = () => {
                     {selectedTour.status === 'confirmed' && (
                       <button
                         onClick={() => handleUpdateStatus(selectedTour._id, 'completed')}
-                        className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-xl transition-all font-black uppercase tracking-widest shadow-lg shadow-blue-500/20 transform hover:scale-105"
+                        className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-4 rounded-xl transition-all font-black uppercase tracking-widest shadow-lg shadow-emerald-500/20 transform hover:scale-105"
                       >
                         <CheckCircle size={20} /> Mark as Completed
                       </button>
@@ -760,12 +751,12 @@ const ToursPage = () => {
                     {!showManualPayment ? (
                       <button
                         onClick={() => setShowManualPayment(true)}
-                        className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-800 hover:to-indigo-800 text-white px-6 py-4 rounded-xl transition-all font-black uppercase tracking-widest shadow-xl transform hover:scale-[1.02]"
+                        className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-700 to-emerald-700 hover:from-emerald-800 hover:to-emerald-800 text-white px-6 py-4 rounded-xl transition-all font-black uppercase tracking-widest shadow-xl transform hover:scale-[1.02]"
                       >
                         <DollarSign size={20} /> Collect Manual Payment
                       </button>
                     ) : (
-                      <div className="bg-gray-50 dark:bg-gray-900/50 p-6 rounded-2xl border-2 border-blue-200 dark:border-blue-800 space-y-4 animate-in slide-in-from-top duration-300">
+                      <div className="bg-gray-50 dark:bg-gray-900/50 p-6 rounded-2xl border-2 border-green-200 dark:border-emerald-800 space-y-4 animate-in slide-in-from-top duration-300">
                         <div className="flex items-center justify-between mb-2">
                           <h4 className="font-black text-gray-900 dark:text-white text-sm uppercase tracking-wider">Payment Collection Form</h4>
                           <button onClick={() => setShowManualPayment(false)} className="text-gray-400 hover:text-gray-600">
@@ -781,7 +772,7 @@ const ToursPage = () => {
                               value={manualPaymentData.amount}
                               onChange={(e) => setManualPaymentData({...manualPaymentData, amount: e.target.value})}
                               placeholder={`Max: ₹${getTotalPrice(selectedTour) - getActualPaidAmount(selectedTour)}`}
-                              className="w-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 font-bold text-gray-900 dark:text-white focus:border-blue-500 outline-none transition-all"
+                              className="w-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 font-bold text-gray-900 dark:text-white focus:border-emerald-500 outline-none transition-all"
                             />
                           </div>
                           <div className="space-y-1">
@@ -789,7 +780,7 @@ const ToursPage = () => {
                             <select
                               value={manualPaymentData.method}
                               onChange={(e) => setManualPaymentData({...manualPaymentData, method: e.target.value})}
-                              className="w-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 font-bold text-gray-900 dark:text-white focus:border-blue-500 outline-none transition-all"
+                              className="w-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 font-bold text-gray-900 dark:text-white focus:border-emerald-500 outline-none transition-all"
                             >
                               <option value="cash">Cash</option>
                               <option value="upi">UPI / Scanner</option>
@@ -805,7 +796,7 @@ const ToursPage = () => {
                             value={manualPaymentData.notes}
                             onChange={(e) => setManualPaymentData({...manualPaymentData, notes: e.target.value})}
                             placeholder="e.g., Collected by driver at pickup"
-                            className="w-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 font-medium text-gray-900 dark:text-white focus:border-blue-500 outline-none transition-all h-20 resize-none"
+                            className="w-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 font-medium text-gray-900 dark:text-white focus:border-emerald-500 outline-none transition-all h-20 resize-none"
                           />
                         </div>
 

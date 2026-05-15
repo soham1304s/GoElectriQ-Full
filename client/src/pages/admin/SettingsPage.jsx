@@ -108,7 +108,7 @@ const SettingsPage = () => {
       <div className="space-y-6 sm:space-y-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center gap-3 px-4 sm:px-0">
-          <Settings className="text-blue-500 flex-shrink-0" size={28} />
+          <Settings className="text-emerald-500 flex-shrink-0" size={28} />
           <div className="flex-1">
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Settings</h1>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-1">
@@ -120,7 +120,7 @@ const SettingsPage = () => {
         {/* Admin Profile Information */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 sm:p-6 lg:p-8">
           <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 flex items-center gap-2">
-            <UserIcon size={20} className="text-blue-500 flex-shrink-0" />
+            <UserIcon size={20} className="text-emerald-500 flex-shrink-0" />
             Profile Information
           </h2>
           {adminProfile ? (
@@ -147,7 +147,7 @@ const SettingsPage = () => {
                   Role
                 </label>
                 <div className="px-3 sm:px-4 py-2 sm:py-3 bg-gray-100 dark:bg-gray-700 rounded-lg min-h-[2.75rem] sm:min-h-[3.25rem] flex items-center">
-                  <span className="inline-block px-2 sm:px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-xs sm:text-sm font-semibold uppercase">
+                  <span className="inline-block px-2 sm:px-3 py-1 bg-green-100 dark:bg-emerald-900 text-green-700 dark:text-emerald-300 rounded-full text-xs sm:text-sm font-semibold uppercase">
                     {adminProfile.role}
                   </span>
                 </div>
@@ -200,7 +200,7 @@ const SettingsPage = () => {
                   value={passwordForm.currentPassword}
                   onChange={handlePasswordChange}
                   placeholder="Enter your current password"
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 pr-10"
                 />
                 <button
                   type="button"
@@ -224,7 +224,7 @@ const SettingsPage = () => {
                   value={passwordForm.newPassword}
                   onChange={handlePasswordChange}
                   placeholder="Enter your new password"
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 pr-10"
                 />
                 <button
                   type="button"
@@ -248,7 +248,7 @@ const SettingsPage = () => {
                   value={passwordForm.confirmPassword}
                   onChange={handlePasswordChange}
                   placeholder="Confirm your new password"
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 pr-10"
                 />
                 <button
                   type="button"
@@ -269,11 +269,11 @@ const SettingsPage = () => {
             </button>
           </form>
 
-          <div className="mt-6 sm:mt-8 p-3 sm:p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-700">
-            <h3 className="text-xs sm:text-sm font-semibold text-blue-900 dark:text-blue-300 mb-2">
+          <div className="mt-6 sm:mt-8 p-3 sm:p-4 bg-green-50 dark:bg-emerald-900/20 rounded-lg border border-green-200 dark:border-emerald-700">
+            <h3 className="text-xs sm:text-sm font-semibold text-green-900 dark:text-emerald-300 mb-2">
               Password Requirements:
             </h3>
-            <ul className="text-xs sm:text-sm text-blue-800 dark:text-blue-400 space-y-1">
+            <ul className="text-xs sm:text-sm text-green-800 dark:text-emerald-400 space-y-1">
               <li>• At least 6 characters long</li>
               <li>• Must be different from your current password</li>
               <li>• Confirm the new password in both fields</li>

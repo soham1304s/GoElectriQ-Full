@@ -95,7 +95,7 @@ export default function ForgotPasswordPage() {
           </button>
 
           <p className="mt-8 text-center text-[10px] font-black text-slate-400 uppercase tracking-widest">
-            Remembered Key? <Link to="/login" className="text-emerald-600 hover:text-emerald-700 ml-1">Establish Link</Link>
+            Remembered Key? <Link to="/login" className="text-green-600 hover:text-green-700 ml-1">Establish Link</Link>
           </p>
         </form>
       ) : (
@@ -105,7 +105,7 @@ export default function ForgotPasswordPage() {
             animate={{ scale: 1, opacity: 1 }}
             className="flex justify-center"
           >
-            <div className="p-6 bg-emerald-50 text-emerald-500 rounded-[2rem] border border-emerald-100">
+            <div className="p-6 bg-green-50 text-emerald-500 rounded-[2rem] border border-green-100">
               <CheckCircle size={48} />
             </div>
           </motion.div>

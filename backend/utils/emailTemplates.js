@@ -11,13 +11,13 @@ export const bookingConfirmationEmail = (booking, user) => {
         <style>
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+          .header { background: linear-gradient(135deg, #10b981 0%, #047857 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
           .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
           .booking-details { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
           .detail-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; }
-          .detail-label { font-weight: bold; color: #667eea; }
-          .total { font-size: 20px; color: #667eea; font-weight: bold; }
-          .button { background: #667eea; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 20px 0; }
+          .detail-label { font-weight: bold; color: #10b981; }
+          .total { font-size: 20px; color: #10b981; font-weight: bold; }
+          .button { background: #10b981; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 20px 0; }
           .footer { text-align: center; padding: 20px; color: #777; font-size: 12px; }
         </style>
       </head>
@@ -100,7 +100,7 @@ export const bookingConfirmationEmail = (booking, user) => {
         <style>
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+          .header { background: linear-gradient(135deg, #10b981 0%, #047857 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
           .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
           .driver-card { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center; }
           .driver-photo { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 15px; }
@@ -196,11 +196,11 @@ export const bookingConfirmationEmail = (booking, user) => {
         <style>
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; text-align: center; border-radius: 10px 10px 0 0; }
+          .header { background: linear-gradient(135deg, #10b981 0%, #047857 100%); color: white; padding: 40px; text-align: center; border-radius: 10px 10px 0 0; }
           .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
           .features { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
           .feature { background: white; padding: 15px; border-radius: 8px; text-align: center; }
-          .button { background: #667eea; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 20px 0; }
+          .button { background: #10b981; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 20px 0; }
         </style>
       </head>
       <body>
@@ -257,9 +257,9 @@ export const bookingConfirmationEmail = (booking, user) => {
         <style>
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: #667eea; color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+          .header { background: #10b981; color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
           .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
-          .button { background: #667eea; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 20px 0; }
+          .button { background: #10b981; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 20px 0; }
           .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; }
         </style>
       </head>
@@ -278,7 +278,7 @@ export const bookingConfirmationEmail = (booking, user) => {
             </center>
             
             <p>Or copy and paste this link in your browser:</p>
-            <p style="word-break: break-all; color: #667eea;">${resetUrl}</p>
+            <p style="word-break: break-all; color: #10b981;">${resetUrl}</p>
             
             <div class="warning">
               <p><strong>⚠️ Security Notice:</strong></p>
@@ -304,9 +304,9 @@ export const bookingConfirmationEmail = (booking, user) => {
         <style>
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: #667eea; color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+          .header { background: #10b981; color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
           .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
-          .button { background: #667eea; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 20px 0; }
+          .button { background: #10b981; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 20px 0; }
         </style>
       </head>
       <body>

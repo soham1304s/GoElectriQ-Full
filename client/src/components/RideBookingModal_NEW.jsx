@@ -353,14 +353,14 @@ export default function RideBookingModal({
           {/* Route Summary */}
           <div className="bg-gradient-to-r from-emerald-50 to-emerald-50 dark:from-gray-700 dark:to-gray-600 rounded-lg p-4 space-y-3">
             <div className="flex gap-3">
-              <MapPin className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
+              <MapPin className="w-5 h-5 text-green-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
               <div className="flex-1">
                 <p className="text-sm text-gray-600 dark:text-gray-400">Pickup</p>
                 <p className="font-semibold text-gray-900 dark:text-white">{pickupLocation}</p>
               </div>
             </div>
             <div className="flex gap-3">
-              <MapPin className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
+              <MapPin className="w-5 h-5 text-green-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
               <div className="flex-1">
                 <p className="text-sm text-gray-600 dark:text-gray-400">Destination</p>
                 <p className="font-semibold text-gray-900 dark:text-white">{destination}</p>
@@ -391,7 +391,7 @@ export default function RideBookingModal({
           <div className="grid grid-cols-2 gap-4">
             <div className={`rounded-lg p-4 border-2 transition-all ${calculatedDistance > 0
               ? 'bg-green-50 dark:bg-green-900/30 border-green-300 dark:border-green-700'
-              : 'bg-emerald-50 dark:bg-emerald-900/30 border-emerald-300 dark:border-emerald-700'
+              : 'bg-green-50 dark:bg-emerald-900/30 border-green-300 dark:border-emerald-700'
               }`}>
               <div className="flex items-start justify-between">
                 <div>
@@ -408,7 +408,7 @@ export default function RideBookingModal({
 
             <div className={`rounded-lg p-4 border-2 transition-all ${calculatedDuration > 0
               ? 'bg-green-50 dark:bg-green-900/30 border-green-300 dark:border-green-700'
-              : 'bg-emerald-50 dark:bg-emerald-900/30 border-emerald-300 dark:border-emerald-700'
+              : 'bg-green-50 dark:bg-emerald-900/30 border-green-300 dark:border-emerald-700'
               }`}>
               <div className="flex items-start justify-between">
                 <div>
@@ -451,9 +451,9 @@ export default function RideBookingModal({
                 })}
               </div>
             ) : (
-              <div className="bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-700 rounded-lg p-4 flex items-center gap-3">
-                <Loader2 className="w-5 h-5 text-emerald-600 animate-spin" />
-                <p className="text-sm text-emerald-800 dark:text-emerald-400">
+              <div className="bg-green-50 dark:bg-emerald-900/30 border border-green-200 dark:border-emerald-700 rounded-lg p-4 flex items-center gap-3">
+                <Loader2 className="w-5 h-5 text-green-600 animate-spin" />
+                <p className="text-sm text-green-800 dark:text-emerald-400">
                   Loading car types... Please wait.
                 </p>
               </div>
@@ -494,12 +494,12 @@ export default function RideBookingModal({
           </div>
 
           {/* Estimated Fare with 20% Advance Payment Breakdown */}
-          <div className="bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-700 rounded-lg p-4">
+          <div className="bg-green-50 dark:bg-emerald-900/30 border border-green-200 dark:border-emerald-700 rounded-lg p-4">
             <div className="flex gap-3 mb-3">
-              <Info className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
+              <Info className="w-5 h-5 text-green-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-semibold text-emerald-900 dark:text-emerald-300">Fare Breakdown</p>
-                <p className="text-sm text-emerald-800 dark:text-emerald-400 mt-1">
+                <p className="font-semibold text-green-900 dark:text-emerald-300">Fare Breakdown</p>
+                <p className="text-sm text-green-800 dark:text-emerald-400 mt-1">
                   Pay 20% advance now, balance after ride completion.
                 </p>
               </div>

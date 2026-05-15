@@ -135,7 +135,7 @@ export default function ResetPasswordPage() {
             animate={{ scale: 1, opacity: 1 }}
             className="flex justify-center"
           >
-            <div className="p-6 bg-emerald-50 text-emerald-500 rounded-[2rem] border border-emerald-100">
+            <div className="p-6 bg-green-50 text-emerald-500 rounded-[2rem] border border-green-100">
               <CheckCircle size={48} />
             </div>
           </motion.div>

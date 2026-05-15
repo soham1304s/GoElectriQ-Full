@@ -146,7 +146,7 @@ export const sendOTPEmail = async (email, otp, userName) => {
         <style>
           body { font-family: Arial, sans-serif; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .otp { font-size: 32px; font-weight: bold; color: #667eea; text-align: center; padding: 20px; background: #f0f0f0; border-radius: 8px; }
+          .otp { font-size: 32px; font-weight: bold; color: #10b981; text-align: center; padding: 20px; background: #f0f0f0; border-radius: 8px; }
         </style>
       </head>
       <body>

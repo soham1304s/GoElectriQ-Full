@@ -13,6 +13,7 @@ import {
   approveChargingStation,
   rejectChargingStation,
   getDriverStatus,
+  getCabStatus,
 } from '../controllers/partnerController.js';
 import { protect } from '../middleware/auth.js';
 import { isAdmin } from '../middleware/roleCheck.js';
@@ -75,6 +76,7 @@ router.get('/charging-stations', getApprovedChargingStations);
  * @access  Private (Authenticated User)
  */
 router.get('/driver/status', protect, getDriverStatus);
+router.get('/cab/status', protect, getCabStatus);
 
 // =================== ADMIN ROUTES ===================
 

@@ -484,12 +484,12 @@ export default function AirportRidePage() {
             {/* Header Section */}
             <div className="mb-10 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-semibold text-xs mb-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 dark:bg-emerald-900/30 text-green-700 dark:text-emerald-300 font-semibold text-xs mb-4">
                   <Plane size={14} />
                   <span>100% Electric Airport Transfers</span>
                 </div>
                 <h1 className={`text-4xl font-black tracking-tight md:text-5xl ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                  Airport <span className="text-emerald-600">Transfers</span>
+                  Airport <span className="text-green-600">Transfers</span>
                 </h1>
                 <p className={`mt-3 text-base md:text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                   Premium, zero-emission rides to and from Jaipur International Airport.
@@ -517,25 +517,25 @@ export default function AirportRidePage() {
                       type="button"
                       onClick={() => setRideType('pickup')}
                       className={`group relative rounded-2xl border p-5 text-left transition-all overflow-hidden ${rideType === 'pickup'
-                        ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/10 shadow-sm ring-1 ring-emerald-500'
+                        ? 'border-emerald-500 bg-green-50 dark:bg-emerald-900/10 shadow-sm ring-1 ring-emerald-500'
                         : isDark
                           ? 'border-zinc-800 bg-zinc-800/50 hover:border-zinc-600 hover:bg-zinc-800'
                           : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'
                         }`}
                     >
                       {rideType === 'pickup' && (
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-bl-[100px] -z-0"></div>
+                        <div className="absolute top-0 right-0 w-16 h-16 bg-green-100 dark:bg-emerald-900/30 rounded-bl-[100px] -z-0"></div>
                       )}
                       <div className="relative z-10">
                         <div className="flex items-center gap-3 mb-3">
-                          <div className={`p-2.5 rounded-xl ${rideType === 'pickup' ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-500'}`}>
+                          <div className={`p-2.5 rounded-xl ${rideType === 'pickup' ? 'bg-green-100 dark:bg-emerald-900/50 text-green-600 dark:text-emerald-400' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-500'}`}>
                             <MapPin className="h-5 w-5" />
                           </div>
-                          <span className={`font-bold text-base ${rideType === 'pickup' ? 'text-emerald-600 dark:text-emerald-400' : isDark ? 'text-white' : 'text-slate-900'}`}>
+                          <span className={`font-bold text-base ${rideType === 'pickup' ? 'text-green-600 dark:text-emerald-400' : isDark ? 'text-white' : 'text-slate-900'}`}>
                             From Airport
                           </span>
                         </div>
-                        <p className={`text-sm ${rideType === 'pickup' ? 'text-emerald-700 dark:text-emerald-500' : isDark ? 'text-zinc-400' : 'text-slate-600'}`}>
+                        <p className={`text-sm ${rideType === 'pickup' ? 'text-green-700 dark:text-emerald-500' : isDark ? 'text-zinc-400' : 'text-slate-600'}`}>
                           Travel from airport to your destination
                         </p>
                       </div>
@@ -545,25 +545,25 @@ export default function AirportRidePage() {
                       type="button"
                       onClick={() => setRideType('drop')}
                       className={`group relative rounded-2xl border p-5 text-left transition-all overflow-hidden ${rideType === 'drop'
-                        ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/10 shadow-sm ring-1 ring-emerald-500'
+                        ? 'border-emerald-500 bg-green-50 dark:bg-emerald-900/10 shadow-sm ring-1 ring-emerald-500'
                         : isDark
                           ? 'border-zinc-800 bg-zinc-800/50 hover:border-zinc-600 hover:bg-zinc-800'
                           : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'
                         }`}
                     >
                       {rideType === 'drop' && (
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-bl-[100px] -z-0"></div>
+                        <div className="absolute top-0 right-0 w-16 h-16 bg-green-100 dark:bg-emerald-900/30 rounded-bl-[100px] -z-0"></div>
                       )}
                       <div className="relative z-10">
                         <div className="flex items-center gap-3 mb-3">
-                          <div className={`p-2.5 rounded-xl ${rideType === 'drop' ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-500'}`}>
+                          <div className={`p-2.5 rounded-xl ${rideType === 'drop' ? 'bg-green-100 dark:bg-emerald-900/50 text-green-600 dark:text-emerald-400' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-500'}`}>
                             <Plane className="h-5 w-5" />
                           </div>
-                          <span className={`font-bold text-base ${rideType === 'drop' ? 'text-emerald-600 dark:text-emerald-400' : isDark ? 'text-white' : 'text-slate-900'}`}>
+                          <span className={`font-bold text-base ${rideType === 'drop' ? 'text-green-600 dark:text-emerald-400' : isDark ? 'text-white' : 'text-slate-900'}`}>
                             To Airport
                           </span>
                         </div>
-                        <p className={`text-sm ${rideType === 'drop' ? 'text-emerald-700 dark:text-emerald-500' : isDark ? 'text-zinc-400' : 'text-slate-600'}`}>
+                        <p className={`text-sm ${rideType === 'drop' ? 'text-green-700 dark:text-emerald-500' : isDark ? 'text-zinc-400' : 'text-slate-600'}`}>
                           Travel from your location to airport
                         </p>
                       </div>
@@ -621,7 +621,7 @@ export default function AirportRidePage() {
                           type="button"
                           onClick={handleFetchCurrentLocation}
                           disabled={fetchingLocation}
-                          className={`rounded-xl p-3.5 flex-shrink-0 transition-all border ${fetchingLocation ? 'bg-slate-100 border-slate-200 cursor-not-allowed text-slate-400' : isDark ? 'border-zinc-700 bg-zinc-800 hover:bg-zinc-700 text-emerald-400' : 'border-slate-200 bg-slate-50 hover:bg-slate-100 text-emerald-600'}`}
+                          className={`rounded-xl p-3.5 flex-shrink-0 transition-all border ${fetchingLocation ? 'bg-slate-100 border-slate-200 cursor-not-allowed text-slate-400' : isDark ? 'border-zinc-700 bg-zinc-800 hover:bg-zinc-700 text-emerald-400' : 'border-slate-200 bg-slate-50 hover:bg-slate-100 text-green-600'}`}
                           title="Use current location"
                         >
                           {fetchingLocation ? (
@@ -640,7 +640,7 @@ export default function AirportRidePage() {
                   <div>
                     <label className={`mb-2.5 block text-sm font-bold ${isDark ? 'text-gray-200' : 'text-slate-800'}`}>Travel Date</label>
                     <div className="relative group">
-                      <Calendar className={`pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isDark ? 'text-zinc-500 group-focus-within:text-emerald-400' : 'text-slate-400 group-focus-within:text-emerald-600'}`} />
+                      <Calendar className={`pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isDark ? 'text-zinc-500 group-focus-within:text-emerald-400' : 'text-slate-400 group-focus-within:text-green-600'}`} />
                       <input
                         type="date"
                         min={minDate}
@@ -653,7 +653,7 @@ export default function AirportRidePage() {
                   <div>
                     <label className={`mb-2.5 block text-sm font-bold ${isDark ? 'text-gray-200' : 'text-slate-800'}`}>Departure Time</label>
                     <div className="relative group">
-                      <Clock3 className={`pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isDark ? 'text-zinc-500 group-focus-within:text-emerald-400' : 'text-slate-400 group-focus-within:text-emerald-600'}`} />
+                      <Clock3 className={`pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isDark ? 'text-zinc-500 group-focus-within:text-emerald-400' : 'text-slate-400 group-focus-within:text-green-600'}`} />
                       <input
                         type="time"
                         value={selectedTime}
@@ -675,19 +675,19 @@ export default function AirportRidePage() {
                         type="button"
                         onClick={() => setSelectedCar(car.id)}
                         className={`group relative rounded-2xl border p-5 text-left transition-all overflow-hidden ${selectedCar === car.id
-                          ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/10 shadow-sm ring-1 ring-emerald-500'
+                          ? 'border-emerald-500 bg-green-50 dark:bg-emerald-900/10 shadow-sm ring-1 ring-emerald-500'
                           : isDark
                             ? 'border-zinc-800 bg-zinc-800/50 hover:border-zinc-600 hover:bg-zinc-800'
                             : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'
                           }`}
                       >
                         {selectedCar === car.id && (
-                          <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-bl-[100px] -z-0"></div>
+                          <div className="absolute top-0 right-0 w-16 h-16 bg-green-100 dark:bg-emerald-900/30 rounded-bl-[100px] -z-0"></div>
                         )}
 
                         <div className="relative z-10">
                           <div className="mb-4 flex items-center justify-between">
-                            <div className={`p-2 rounded-xl ${selectedCar === car.id ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-500'}`}>
+                            <div className={`p-2 rounded-xl ${selectedCar === car.id ? 'bg-green-100 dark:bg-emerald-900/50 text-green-600 dark:text-emerald-400' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-500'}`}>
                               <CarTaxiFront className="h-6 w-6" />
                             </div>
                             <span className={`rounded-full px-2.5 py-1 text-xs font-bold ${selectedCar === car.id ? 'bg-emerald-600 text-white' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-600'}`}>
@@ -695,7 +695,7 @@ export default function AirportRidePage() {
                             </span>
                           </div>
                           <p className={`font-bold text-lg ${isDark ? 'text-white' : 'text-slate-900'}`}>{car.name}</p>
-                          <p className={`text-sm mt-1 ${selectedCar === car.id ? 'text-emerald-600 dark:text-emerald-400' : isDark ? 'text-zinc-500' : 'text-slate-500'}`}>
+                          <p className={`text-sm mt-1 ${selectedCar === car.id ? 'text-green-600 dark:text-emerald-400' : isDark ? 'text-zinc-500' : 'text-slate-500'}`}>
                             Perfect for your journey
                           </p>
                         </div>
@@ -721,8 +721,8 @@ export default function AirportRidePage() {
                     <div className="flex items-center justify-between">
                       <span className={`font-medium ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>Ride Type</span>
                       <span className={`font-bold px-2 py-1 rounded-md text-xs ${rideType === 'pickup'
-                        ? isDark ? 'bg-emerald-900/30 text-emerald-300' : 'bg-emerald-100 text-emerald-700'
-                        : isDark ? 'bg-emerald-900/30 text-emerald-300' : 'bg-emerald-100 text-emerald-700'
+                        ? isDark ? 'bg-emerald-900/30 text-emerald-300' : 'bg-green-100 text-green-700'
+                        : isDark ? 'bg-emerald-900/30 text-emerald-300' : 'bg-green-100 text-green-700'
                         }`}>
                         {rideType === 'pickup' ? 'From Airport' : 'To Airport'}
                       </span>
@@ -766,14 +766,14 @@ export default function AirportRidePage() {
                       <span className={`text-2xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>{formatMoney(totalAmount)}</span>
                     </div>
 
-                    <div className={`p-4 rounded-xl ${isDark ? 'bg-emerald-900/10 border border-emerald-900/30' : 'bg-emerald-50 border border-emerald-100'}`}>
+                    <div className={`p-4 rounded-xl ${isDark ? 'bg-emerald-900/10 border border-emerald-900/30' : 'bg-green-50 border border-green-100'}`}>
                       <div className="flex items-center justify-between mb-1">
-                        <span className="font-bold text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5">
+                        <span className="font-bold text-green-700 dark:text-emerald-400 flex items-center gap-1.5">
                           <CheckCircle2 size={16} /> Pay Now (20%)
                         </span>
-                        <span className="text-xl font-black text-emerald-700 dark:text-emerald-400">{formatMoney(advancePayment)}</span>
+                        <span className="text-xl font-black text-green-700 dark:text-emerald-400">{formatMoney(advancePayment)}</span>
                       </div>
-                      <div className="flex items-center justify-between text-sm mt-3 pt-3 border-t border-emerald-200 dark:border-emerald-800/50">
+                      <div className="flex items-center justify-between text-sm mt-3 pt-3 border-t border-green-200 dark:border-emerald-800/50">
                         <span className={`font-medium ${isDark ? 'text-zinc-400' : 'text-slate-600'}`}>Balance (Due later)</span>
                         <span className={`font-bold ${isDark ? 'text-zinc-300' : 'text-slate-700'}`}>{formatMoney(totalAmount - advancePayment)}</span>
                       </div>

@@ -397,12 +397,12 @@ export default function IntercityRidePage() {
           {/* Header Section */}
           <div className="mb-10 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-semibold text-xs mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 dark:bg-emerald-900/30 text-green-700 dark:text-emerald-300 font-semibold text-xs mb-4">
                 <MapPin size={14} />
                 <span>100% Electric Intercity Travel</span>
               </div>
               <h1 className={`text-4xl font-black tracking-tight md:text-5xl ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                Intercity <span className="text-emerald-600">Rides</span>
+                Intercity <span className="text-green-600">Rides</span>
               </h1>
               <p className={`mt-3 text-base md:text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                 Premium, long-distance travel between cities in zero-emission comfort.
@@ -423,7 +423,7 @@ export default function IntercityRidePage() {
               <div className="mb-8">
                 <label className={`mb-2.5 block text-sm font-bold ${isDark ? 'text-gray-200' : 'text-slate-800'}`}>Choose Route</label>
                 <div className="relative group">
-                  <Navigation className={`pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isDark ? 'text-zinc-500 group-focus-within:text-emerald-400' : 'text-slate-400 group-focus-within:text-emerald-600'}`} />
+                  <Navigation className={`pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isDark ? 'text-zinc-500 group-focus-within:text-emerald-400' : 'text-slate-400 group-focus-within:text-green-600'}`} />
                   <select
                     value={selectedRoute}
                     onChange={(e) => setSelectedRoute(e.target.value)}
@@ -483,7 +483,7 @@ export default function IntercityRidePage() {
                 <div>
                   <label className={`mb-2.5 block text-sm font-bold ${isDark ? 'text-gray-200' : 'text-slate-800'}`}>Travel Date</label>
                   <div className="relative group">
-                    <Calendar className={`pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isDark ? 'text-zinc-500 group-focus-within:text-emerald-400' : 'text-slate-400 group-focus-within:text-emerald-600'}`} />
+                    <Calendar className={`pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isDark ? 'text-zinc-500 group-focus-within:text-emerald-400' : 'text-slate-400 group-focus-within:text-green-600'}`} />
                     <input
                       type="date"
                       min={minDate}
@@ -496,7 +496,7 @@ export default function IntercityRidePage() {
                 <div>
                   <label className={`mb-2.5 block text-sm font-bold ${isDark ? 'text-gray-200' : 'text-slate-800'}`}>Departure Time</label>
                   <div className="relative group">
-                    <Clock3 className={`pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isDark ? 'text-zinc-500 group-focus-within:text-emerald-400' : 'text-slate-400 group-focus-within:text-emerald-600'}`} />
+                    <Clock3 className={`pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isDark ? 'text-zinc-500 group-focus-within:text-emerald-400' : 'text-slate-400 group-focus-within:text-green-600'}`} />
                     <input
                       type="time"
                       value={selectedTime}
@@ -518,19 +518,19 @@ export default function IntercityRidePage() {
                       type="button"
                       onClick={() => setSelectedCar(car.id)}
                       className={`group relative rounded-2xl border p-5 text-left transition-all overflow-hidden ${selectedCar === car.id
-                        ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/10 shadow-sm ring-1 ring-emerald-500'
+                        ? 'border-emerald-500 bg-green-50 dark:bg-emerald-900/10 shadow-sm ring-1 ring-emerald-500'
                         : isDark
                           ? 'border-zinc-800 bg-zinc-800/50 hover:border-zinc-600 hover:bg-zinc-800'
                           : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'
                         }`}
                     >
                       {selectedCar === car.id && (
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-bl-[100px] -z-0"></div>
+                        <div className="absolute top-0 right-0 w-16 h-16 bg-green-100 dark:bg-emerald-900/30 rounded-bl-[100px] -z-0"></div>
                       )}
 
                       <div className="relative z-10">
                         <div className="mb-4 flex items-center justify-between">
-                          <div className={`p-2 rounded-xl ${selectedCar === car.id ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-500'}`}>
+                          <div className={`p-2 rounded-xl ${selectedCar === car.id ? 'bg-green-100 dark:bg-emerald-900/50 text-green-600 dark:text-emerald-400' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-500'}`}>
                             <CarTaxiFront className="h-6 w-6" />
                           </div>
                           <span className={`rounded-full px-2.5 py-1 text-xs font-bold ${selectedCar === car.id ? 'bg-emerald-600 text-white' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-600'}`}>
@@ -538,7 +538,7 @@ export default function IntercityRidePage() {
                           </span>
                         </div>
                         <p className={`font-bold text-lg ${isDark ? 'text-white' : 'text-slate-900'}`}>{car.name}</p>
-                        <p className={`text-sm mt-1 font-semibold ${selectedCar === car.id ? 'text-emerald-600 dark:text-emerald-400' : isDark ? 'text-zinc-500' : 'text-slate-500'}`}>
+                        <p className={`text-sm mt-1 font-semibold ${selectedCar === car.id ? 'text-green-600 dark:text-emerald-400' : isDark ? 'text-zinc-500' : 'text-slate-500'}`}>
                           ₹{Math.round(car.additionalCharge * estimatedDistance)} / ride
                         </p>
                       </div>
@@ -598,14 +598,14 @@ export default function IntercityRidePage() {
                     <span className={`text-2xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>{formatMoney(totalAmount)}</span>
                   </div>
 
-                  <div className={`p-4 rounded-xl ${isDark ? 'bg-emerald-900/10 border border-emerald-900/30' : 'bg-emerald-50 border border-emerald-100'}`}>
+                  <div className={`p-4 rounded-xl ${isDark ? 'bg-emerald-900/10 border border-emerald-900/30' : 'bg-green-50 border border-green-100'}`}>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="font-bold text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5">
+                      <span className="font-bold text-green-700 dark:text-emerald-400 flex items-center gap-1.5">
                         <CheckCircle2 size={16} /> Pay Now (20%)
                       </span>
-                      <span className="text-xl font-black text-emerald-700 dark:text-emerald-400">{formatMoney(advancePayment)}</span>
+                      <span className="text-xl font-black text-green-700 dark:text-emerald-400">{formatMoney(advancePayment)}</span>
                     </div>
-                    <div className="flex items-center justify-between text-sm mt-3 pt-3 border-t border-emerald-200 dark:border-emerald-800/50">
+                    <div className="flex items-center justify-between text-sm mt-3 pt-3 border-t border-green-200 dark:border-emerald-800/50">
                       <span className={`font-medium ${isDark ? 'text-zinc-400' : 'text-slate-600'}`}>Balance (Due later)</span>
                       <span className={`font-bold ${isDark ? 'text-zinc-300' : 'text-slate-700'}`}>{formatMoney(remainingAmount)}</span>
                     </div>

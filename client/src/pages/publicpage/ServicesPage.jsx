@@ -89,7 +89,7 @@ const ServicesPage = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="inline-flex items-center gap-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-[0.1em] mb-6"
+              className="inline-flex items-center gap-2 bg-green-100 dark:bg-emerald-900/30 text-green-700 dark:text-emerald-300 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-[0.1em] mb-6"
             >
               <MapPin size={14} /> Our Offerings
             </motion.div>
@@ -100,7 +100,7 @@ const ServicesPage = () => {
               className="text-3xl sm:text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 tracking-tight leading-tight"
             >
               Premium Mobility, <br className="hidden md:block" />
-              <span className="text-emerald-600">100% Electric.</span>
+              <span className="text-green-600">100% Electric.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -131,7 +131,7 @@ const ServicesPage = () => {
                     <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 dark:from-emerald-900/20 dark:to-emerald-900/10 rounded-bl-full transition-transform duration-500 translate-x-8 -translate-y-8 group-hover:translate-x-0 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 -z-0"></div>
 
                     <div className="relative z-10 flex flex-col h-full">
-                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 transition-transform duration-300 group-hover:scale-110">
+                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 bg-green-50 dark:bg-emerald-900/20 text-green-600 dark:text-emerald-400 transition-transform duration-300 group-hover:scale-110">
                         <Icon size={32} />
                       </div>
 
@@ -145,7 +145,7 @@ const ServicesPage = () => {
                       <ul className="space-y-4 mb-10 mt-auto">
                         {service.features.map(f => (
                           <li key={f} className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-zinc-300">
-                            <div className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+                            <div className="flex items-center justify-center w-5 h-5 rounded-full bg-green-100 dark:bg-emerald-900/30 text-green-600 dark:text-emerald-400">
                               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                               </svg>
@@ -210,7 +210,7 @@ const ServicesPage = () => {
               
               <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
                 <div>
-                  <div className="inline-flex items-center gap-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-8">
+                  <div className="inline-flex items-center gap-2 bg-green-100 dark:bg-emerald-900/30 text-green-700 dark:text-emerald-300 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-8">
                     <UserPlus size={14} /> Join the Revolution
                   </div>
                   <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 tracking-tight leading-tight">
@@ -229,7 +229,7 @@ const ServicesPage = () => {
                       { title: "Premium Brand", desc: "Drive the best-in-class EVs." }
                     ].map((item, i) => (
                       <div key={i} className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-zinc-800/50 border border-slate-100 dark:border-zinc-700 transition-colors hover:border-emerald-500/30">
-                        <div className="mt-1 w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+                        <div className="mt-1 w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
                         <div>
                           <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-1">{item.title}</h4>
                           <p className="text-xs text-slate-500 dark:text-zinc-400 font-medium">{item.desc}</p>
@@ -261,7 +261,7 @@ const ServicesPage = () => {
                   {/* Floating Stats */}
                   <div className="absolute top-8 left-8 z-20 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl p-6 rounded-3xl border border-white/20 shadow-2xl animate-bounce-slow">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-emerald-500/20">
+                      <div className="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-emerald-500/20">
                         <Zap size={24} fill="white" />
                       </div>
                       <div>

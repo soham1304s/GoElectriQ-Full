@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Edit2, Check, X, Plane, ParkingCircle, Save, AlertCircle, MapPin, BookOpen, Calendar, User, Phone, MapPinIcon, BarChart3, Home, ClipboardList, Car, Settings, Banknote, AlertTriangle } from 'lucide-react';
+import { Edit2, Check, X, Plane, ParkingCircle, Save, AlertCircle, MapPin, BookOpen, Calendar, User, Phone, BarChart3, Home, ClipboardList, Car, Settings, Banknote, AlertTriangle } from 'lucide-react';
 import AdminLayout from './AdminLayout';
 import { useTheme } from '../../context/ThemeContext';
 import { fetchCarRates } from '../../services/rateService';
@@ -161,7 +161,7 @@ const AirportRidesPage = () => {
   if (loading) {
     return (
       <AdminLayout>
-        <div className={`flex items-center justify-center min-h-screen ${isDark ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100'}`}>
+        <div className={`flex items-center justify-center min-h-screen ${isDark ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-gray-50 via-emerald-50 to-gray-100'}`}>
           <div className="text-center space-y-4">
             <div className="h-14 w-14 border-4 border-emerald-400 border-t-emerald-600 rounded-full animate-spin mx-auto"></div>
             <p className={`font-semibold text-lg ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>Loading Airport Rates...</p>
@@ -174,14 +174,14 @@ const AirportRidesPage = () => {
 
   return (
     <AdminLayout>
-      <div className={`min-h-screen ${isDark ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100'}`}>
+      <div className={`min-h-screen ${isDark ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-gray-50 via-emerald-50 to-gray-100'}`}>
         <div className="p-6 md:p-8">
           {/* Header */}
           <div className="mb-8">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-0">
               <div className="flex items-center gap-3">
-                <div className={`p-2 md:p-3 rounded-xl ${isDark ? 'bg-emerald-500/20' : 'bg-emerald-100'}`}>
-                  <Plane className={`h-6 md:h-8 w-6 md:w-8 ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`} />
+                <div className={`p-2 md:p-3 rounded-xl ${isDark ? 'bg-green-500/20' : 'bg-green-100'}`}>
+                  <Plane className={`h-6 md:h-8 w-6 md:w-8 ${isDark ? 'text-emerald-400' : 'text-green-600'}`} />
                 </div>
                 <div className="flex-1">
                   <h1 className={`text-2xl md:text-4xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
@@ -197,8 +197,8 @@ const AirportRidesPage = () => {
                 onClick={handleShowBookings}
                 className={`w-full md:w-auto px-4 md:px-5 py-3 rounded-xl font-semibold flex items-center justify-center md:justify-start gap-2 transition-all shadow-lg whitespace-nowrap ${
                   isDark
-                    ? 'bg-blue-600 hover:bg-blue-700 text-white hover:shadow-blue-500/50'
-                    : 'bg-blue-500 hover:bg-blue-600 text-white hover:shadow-blue-400/50'
+                    ? 'bg-emerald-600 hover:bg-emerald-700 text-white hover:shadow-emerald-500/50'
+                    : 'bg-green-500 hover:bg-emerald-600 text-white hover:shadow-emerald-400/50'
                 }`}
               >
                 <ClipboardList className="h-5 w-5 flex-shrink-0" />
@@ -213,7 +213,7 @@ const AirportRidesPage = () => {
               onClick={() => setRideType('pickup')}
               className={`flex-1 px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-300 ${
                 rideType === 'pickup'
-                  ? `${isDark ? 'bg-emerald-600 text-white shadow-lg' : 'bg-emerald-500 text-white shadow-lg'}`
+                  ? `${isDark ? 'bg-emerald-600 text-white shadow-lg' : 'bg-green-500 text-white shadow-lg'}`
                   : `${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`
               }`}
             >
@@ -224,7 +224,7 @@ const AirportRidesPage = () => {
               onClick={() => setRideType('drop')}
               className={`flex-1 px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-300 ${
                 rideType === 'drop'
-                  ? `${isDark ? 'bg-purple-600 text-white shadow-lg' : 'bg-purple-500 text-white shadow-lg'}`
+                  ? `${isDark ? 'bg-green-600 text-white shadow-lg' : 'bg-green-500 text-white shadow-lg'}`
                   : `${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`
               }`}
             >
@@ -235,7 +235,7 @@ const AirportRidesPage = () => {
 
           {/* Alerts */}
           {successMessage && (
-            <div className="mb-6 p-4 rounded-xl bg-emerald-500/20 border border-emerald-500 text-emerald-600 dark:bg-emerald-900/30 dark:border-emerald-600 dark:text-emerald-300 shadow-lg animate-pulse">
+            <div className="mb-6 p-4 rounded-xl bg-green-500/20 border border-emerald-500 text-green-600 dark:bg-emerald-900/30 dark:border-emerald-600 dark:text-emerald-300 shadow-lg animate-pulse">
               <div className="flex items-center gap-3">
                 <Check className="h-5 w-5" />
                 <span className="font-semibold">{successMessage}</span>
@@ -253,9 +253,9 @@ const AirportRidesPage = () => {
           )}
 
           {/* Current Pricing Info */}
-          <div className={`mb-8 rounded-2xl p-6 border-2 shadow-xl ${isDark ? 'border-blue-500/50 bg-gradient-to-br from-blue-900/20 to-blue-800/10 backdrop-blur-sm' : 'border-blue-300 bg-gradient-to-br from-blue-50 to-blue-100 backdrop-blur-sm'}`}>
-            <h3 className={`text-2xl font-bold mb-4 flex items-center gap-2 ${isDark ? 'text-blue-300' : 'text-blue-900'}`}>
-              <BarChart3 className="h-6 w-6 text-blue-500" /> {rideType === 'pickup' ? 'Pickup' : 'Drop'} Pricing Breakdown
+          <div className={`mb-8 rounded-2xl p-6 border-2 shadow-xl ${isDark ? 'border-emerald-500/50 bg-gradient-to-br from-emerald-900/20 to-emerald-800/10 backdrop-blur-sm' : 'border-green-300 bg-gradient-to-br from-emerald-50 to-emerald-100 backdrop-blur-sm'}`}>
+            <h3 className={`text-2xl font-bold mb-4 flex items-center gap-2 ${isDark ? 'text-emerald-300' : 'text-green-900'}`}>
+              <BarChart3 className="h-6 w-6 text-emerald-500" /> {rideType === 'pickup' ? 'Pickup' : 'Drop'} Pricing Breakdown
             </h3>
             <div className="grid gap-4 md:grid-cols-2">
               {carRates.map((rate) => {
@@ -269,7 +269,7 @@ const AirportRidesPage = () => {
 
                 return (
                   <div key={rate.id} className={`p-5 rounded-xl border-2 backdrop-blur-sm transition-all hover:shadow-lg ${isDark ? 'border-gray-700 bg-gray-800/80 hover:bg-gray-700/80' : 'border-gray-200 bg-white/80 hover:bg-white'}`}>
-                    <h4 className={`font-bold mb-4 text-xl flex items-center gap-2 ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>
+                    <h4 className={`font-bold mb-4 text-xl flex items-center gap-2 ${isDark ? 'text-emerald-400' : 'text-green-600'}`}>
                       {rate.id === 'economy' ? <Car className="h-5 w-5" /> : <ParkingCircle className="h-5 w-5" />} {rate.name}
                       <span className={`text-sm px-2 py-1 rounded-lg ${isDark ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>
                         {rate.id}
@@ -310,8 +310,8 @@ const AirportRidesPage = () => {
               <p className={`text-sm font-bold flex items-center gap-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                 Editing <span className={`text-base px-3 py-1 rounded-lg font-bold ${
                   rideType === 'pickup'
-                    ? isDark ? 'text-emerald-400 bg-emerald-900/30' : 'text-emerald-600 bg-emerald-100'
-                    : isDark ? 'text-purple-400 bg-purple-900/30' : 'text-purple-600 bg-purple-100'
+                    ? isDark ? 'text-emerald-400 bg-emerald-900/30' : 'text-green-600 bg-green-100'
+                    : isDark ? 'text-green-400 bg-green-900/30' : 'text-green-600 bg-green-100'
                 }`}>
                   {rideType === 'pickup' ? 'Pickup Charges' : 'Drop Charges'}
                 </span>
@@ -364,7 +364,7 @@ const AirportRidesPage = () => {
                       {/* Capacity */}
                       <td className={`px-6 py-5 font-semibold ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                         <span className={`px-3 py-1 rounded-lg text-sm font-bold ${
-                          isDark ? 'bg-blue-900/30 text-blue-300' : 'bg-blue-100 text-blue-700'
+                          isDark ? 'bg-emerald-900/30 text-emerald-300' : 'bg-green-100 text-green-700'
                         }`}>
                           {rate.maxPassengers} Seats
                         </span>
@@ -373,7 +373,7 @@ const AirportRidesPage = () => {
                       {/* Fixed Charge */}
                       <td className={`px-6 py-5`}>
                         {editingId === rate.id ? (
-                          <div className="flex items-center gap-2 bg-emerald-100 dark:bg-emerald-900/30 px-3 py-2 rounded-lg">
+                          <div className="flex items-center gap-2 bg-green-100 dark:bg-emerald-900/30 px-3 py-2 rounded-lg">
                             <span className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>₹</span>
                             <input
                               type="number"
@@ -389,7 +389,7 @@ const AirportRidesPage = () => {
                             />
                           </div>
                         ) : (
-                          <div className={`font-bold text-lg ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>
+                          <div className={`font-bold text-lg ${isDark ? 'text-emerald-400' : 'text-green-600'}`}>
                             ₹{fixedCharge}
                           </div>
                         )}
@@ -398,7 +398,7 @@ const AirportRidesPage = () => {
                       {/* Parking Charge */}
                       <td className={`px-6 py-5`}>
                         {editingId === rate.id ? (
-                          <div className="flex items-center gap-2 bg-purple-100 dark:bg-purple-900/30 px-3 py-2 rounded-lg">
+                          <div className="flex items-center gap-2 bg-green-100 dark:bg-green-900/30 px-3 py-2 rounded-lg">
                             <span className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>₹</span>
                             <input
                               type="number"
@@ -408,13 +408,13 @@ const AirportRidesPage = () => {
                               onChange={(e) => handleInputChange('parkingCharge', e.target.value)}
                               className={`w-24 px-2 py-2 rounded border-2 font-bold text-lg ${
                                 isDark
-                                  ? 'bg-gray-700 border-purple-600 text-white'
-                                  : 'bg-white border-purple-400 text-gray-900'
-                              } focus:outline-none focus:ring-2 focus:ring-purple-500`}
+                                  ? 'bg-gray-700 border-green-600 text-white'
+                                  : 'bg-white border-green-400 text-gray-900'
+                              } focus:outline-none focus:ring-2 focus:ring-green-500`}
                             />
                           </div>
                         ) : (
-                          <div className={`font-bold text-lg flex items-center gap-2 ${isDark ? 'text-purple-400' : 'text-purple-600'}`}>
+                          <div className={`font-bold text-lg flex items-center gap-2 ${isDark ? 'text-green-400' : 'text-green-600'}`}>
                             <ParkingCircle className="h-4 w-4" />
                             ₹{parkingCharge}
                           </div>
@@ -448,7 +448,7 @@ const AirportRidesPage = () => {
                           ) : (
                             <button
                               onClick={() => handleEdit(rate)}
-                              className="p-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-all hover:shadow-lg flex items-center gap-2 font-semibold"
+                              className="p-2 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white transition-all hover:shadow-lg flex items-center gap-2 font-semibold"
                               title="Edit"
                             >
                               <Edit2 className="h-4 w-4" />
@@ -467,21 +467,21 @@ const AirportRidesPage = () => {
           {/* Summary Section */}
           <div className="mt-8 grid md:grid-cols-2 gap-6">
             {/* How it works */}
-            <div className={`rounded-2xl border-2 p-6 shadow-xl ${isDark ? 'border-emerald-500/30 bg-gradient-to-br from-emerald-900/10 to-emerald-800/5' : 'border-emerald-300 bg-gradient-to-br from-emerald-50 to-emerald-100'}`}>
-              <h3 className={`text-xl font-bold mb-5 flex items-center gap-2 ${isDark ? 'text-emerald-400' : 'text-emerald-700'}`}>
+            <div className={`rounded-2xl border-2 p-6 shadow-xl ${isDark ? 'border-emerald-500/30 bg-gradient-to-br from-emerald-900/10 to-emerald-800/5' : 'border-green-300 bg-gradient-to-br from-emerald-50 to-emerald-100'}`}>
+              <h3 className={`text-xl font-bold mb-5 flex items-center gap-2 ${isDark ? 'text-emerald-400' : 'text-green-700'}`}>
                 ✅ How Airport Pricing Works
               </h3>
               <ul className={`space-y-3 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                 <li className="flex gap-3">
-                  <span className={`font-bold text-lg px-2 py-0.5 rounded-lg min-w-fit ${isDark ? 'bg-emerald-600/30 text-emerald-400' : 'bg-emerald-200 text-emerald-700'}`}>1.</span>
+                  <span className={`font-bold text-lg px-2 py-0.5 rounded-lg min-w-fit ${isDark ? 'bg-emerald-600/30 text-emerald-400' : 'bg-green-200 text-green-700'}`}>1.</span>
                   <span className="pt-1"><strong>Fixed Flat Rate:</strong> Same charge for all Jaipur airport rides</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className={`font-bold text-lg px-2 py-0.5 rounded-lg min-w-fit ${isDark ? 'bg-blue-600/30 text-blue-400' : 'bg-blue-200 text-blue-700'}`}>2.</span>
+                  <span className={`font-bold text-lg px-2 py-0.5 rounded-lg min-w-fit ${isDark ? 'bg-emerald-600/30 text-emerald-400' : 'bg-green-200 text-green-700'}`}>2.</span>
                   <span className="pt-1"><strong>No Distance Calculation:</strong> Fixed amount applies everywhere in Jaipur</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className={`font-bold text-lg px-2 py-0.5 rounded-lg min-w-fit ${isDark ? 'bg-purple-600/30 text-purple-400' : 'bg-purple-200 text-purple-700'}`}>3.</span>
+                  <span className={`font-bold text-lg px-2 py-0.5 rounded-lg min-w-fit ${isDark ? 'bg-green-600/30 text-green-400' : 'bg-green-200 text-green-700'}`}>3.</span>
                   <span className="pt-1"><strong>Total Fare:</strong> Fixed Flat Rate + Parking Charge</span>
                 </li>
                 <li className="flex gap-3">
@@ -492,18 +492,18 @@ const AirportRidesPage = () => {
             </div>
 
             {/* Quick Stats */}
-            <div className={`rounded-2xl border-2 p-6 shadow-xl ${isDark ? 'border-blue-500/30 bg-gradient-to-br from-blue-900/10 to-blue-800/5' : 'border-blue-300 bg-gradient-to-br from-blue-50 to-blue-100'}`}>
-              <h3 className={`text-xl font-bold mb-5 flex items-center gap-2 ${isDark ? 'text-blue-400' : 'text-blue-700'}`}>
+            <div className={`rounded-2xl border-2 p-6 shadow-xl ${isDark ? 'border-emerald-500/30 bg-gradient-to-br from-emerald-900/10 to-emerald-800/5' : 'border-green-300 bg-gradient-to-br from-emerald-50 to-emerald-100'}`}>
+              <h3 className={`text-xl font-bold mb-5 flex items-center gap-2 ${isDark ? 'text-emerald-400' : 'text-green-700'}`}>
                 📊 Quick Reference
               </h3>
               <div className="space-y-3">
-                <div className={`p-4 rounded-xl border-2 ${isDark ? 'border-emerald-500/30 bg-emerald-900/20' : 'border-emerald-300 bg-emerald-50'}`}>
-                  <p className={`text-xs font-bold uppercase tracking-wide mb-1 ${isDark ? 'text-emerald-400' : 'text-emerald-700'}`}>Active Ride Types</p>
+                <div className={`p-4 rounded-xl border-2 ${isDark ? 'border-emerald-500/30 bg-emerald-900/20' : 'border-green-300 bg-green-50'}`}>
+                  <p className={`text-xs font-bold uppercase tracking-wide mb-1 ${isDark ? 'text-emerald-400' : 'text-green-700'}`}>Active Ride Types</p>
                   <p className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>2</p>
                   <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Pickup & Drop</p>
                 </div>
-                <div className={`p-4 rounded-xl border-2 ${isDark ? 'border-purple-500/30 bg-purple-900/20' : 'border-purple-300 bg-purple-50'}`}>
-                  <p className={`text-xs font-bold uppercase tracking-wide mb-1 ${isDark ? 'text-purple-400' : 'text-purple-700'}`}>Car Types</p>
+                <div className={`p-4 rounded-xl border-2 ${isDark ? 'border-green-500/30 bg-green-900/20' : 'border-green-300 bg-green-50'}`}>
+                  <p className={`text-xs font-bold uppercase tracking-wide mb-1 ${isDark ? 'text-green-400' : 'text-green-700'}`}>Car Types</p>
                   <p className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>2</p>
                   <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Economy & Premium</p>
                 </div>
@@ -523,13 +523,13 @@ const AirportRidesPage = () => {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className={`rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto ${isDark ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'}`}>
             {/* Modal Header */}
-            <div className={`sticky top-0 flex items-center justify-between p-6 border-b backdrop-blur-sm ${isDark ? 'border-gray-700 bg-gradient-to-r from-gray-900/95 via-blue-900/20 to-gray-900/95' : 'border-gray-200 bg-gradient-to-r from-white/95 via-blue-50/50 to-white/95'}`}>
+            <div className={`sticky top-0 flex items-center justify-between p-6 border-b backdrop-blur-sm ${isDark ? 'border-gray-700 bg-gradient-to-r from-gray-900/95 via-emerald-900/20 to-gray-900/95' : 'border-gray-200 bg-gradient-to-r from-white/95 via-emerald-50/50 to-white/95'}`}>
               <div className="flex items-center gap-4">
-                <div className={`p-3 rounded-xl ${isDark ? 'bg-blue-600/20 border border-blue-500/30' : 'bg-blue-100 border border-blue-300'}`}>
-                  <BookOpen className={`h-8 w-8 ${isDark ? 'text-blue-400' : 'text-blue-600'}`} />
+                <div className={`p-3 rounded-xl ${isDark ? 'bg-emerald-600/20 border border-emerald-500/30' : 'bg-green-100 border border-green-300'}`}>
+                  <BookOpen className={`h-8 w-8 ${isDark ? 'text-emerald-400' : 'text-green-600'}`} />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <h2 className={`text-3xl font-bold bg-gradient-to-r ${isDark ? 'from-blue-300 via-blue-400 to-blue-300 bg-clip-text text-transparent' : 'from-blue-600 via-blue-700 to-blue-600 bg-clip-text text-transparent'}`}>
+                  <h2 className={`text-3xl font-bold bg-gradient-to-r ${isDark ? 'from-emerald-300 via-emerald-400 to-emerald-300 bg-clip-text text-transparent' : 'from-emerald-600 via-emerald-700 to-emerald-600 bg-clip-text text-transparent'}`}>
                     Airport Ride Bookings
                   </h2>
                   <p className={`text-sm font-medium ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
@@ -554,7 +554,7 @@ const AirportRidesPage = () => {
               {bookingsLoading ? (
                 <div className="flex items-center justify-center py-12">
                   <div className="text-center space-y-3">
-                    <div className="h-10 w-10 border-4 border-blue-400 border-t-blue-600 rounded-full animate-spin mx-auto"></div>
+                    <div className="h-10 w-10 border-4 border-emerald-400 border-t-emerald-600 rounded-full animate-spin mx-auto"></div>
                     <p className={`font-semibold ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                       Loading bookings...
                     </p>
@@ -586,8 +586,8 @@ const AirportRidesPage = () => {
                         <div className="flex items-center gap-3">
                           <div className={`px-3 py-1 rounded-lg font-bold text-sm ${
                             booking.rideType === 'pickup'
-                              ? isDark ? 'bg-emerald-600/20 text-emerald-400' : 'bg-emerald-100 text-emerald-700'
-                              : isDark ? 'bg-purple-600/20 text-purple-400' : 'bg-purple-100 text-purple-700'
+                              ? isDark ? 'bg-emerald-600/20 text-emerald-400' : 'bg-green-100 text-green-700'
+                              : isDark ? 'bg-green-600/20 text-green-400' : 'bg-green-100 text-green-700'
                           }`}>
                             {booking.rideType === 'pickup' ? 'Pickup' : 'Drop'}
                           </div>
@@ -595,7 +595,7 @@ const AirportRidesPage = () => {
                             booking.paymentStatus === 'completed'
                               ? isDark ? 'bg-green-600/20 text-green-400' : 'bg-green-100 text-green-700'
                               : booking.paymentStatus === 'partial'
-                              ? isDark ? 'bg-blue-600/20 text-blue-400' : 'bg-blue-100 text-blue-700'
+                              ? isDark ? 'bg-emerald-600/20 text-emerald-400' : 'bg-green-100 text-green-700'
                               : isDark ? 'bg-orange-600/20 text-orange-400' : 'bg-orange-100 text-orange-700'
                           }`}>
                             {booking.paymentStatus?.charAt(0).toUpperCase() + booking.paymentStatus?.slice(1) || 'Pending'}
@@ -646,21 +646,21 @@ const AirportRidesPage = () => {
                         </div>
 
                         {/* Total Fare */}
-                        <div className={`p-3 rounded-lg ${isDark ? 'bg-emerald-900/20 border border-emerald-600/30' : 'bg-emerald-50 border border-emerald-300'}`}>
-                          <p className={`text-xs font-bold uppercase mb-1 ${isDark ? 'text-emerald-400' : 'text-emerald-700'}`}>
+                        <div className={`p-3 rounded-lg ${isDark ? 'bg-emerald-900/20 border border-emerald-600/30' : 'bg-green-50 border border-green-300'}`}>
+                          <p className={`text-xs font-bold uppercase mb-1 ${isDark ? 'text-emerald-400' : 'text-green-700'}`}>
                             <Banknote className="h-3 w-3 inline mr-1" /> Total Fare
                           </p>
-                          <p className={`text-lg font-bold ${isDark ? 'text-emerald-300' : 'text-emerald-700'}`}>
+                          <p className={`text-lg font-bold ${isDark ? 'text-emerald-300' : 'text-green-700'}`}>
                             ₹{booking.totalFare || 0}
                           </p>
                         </div>
 
                         {/* Paid Amount */}
-                        <div className={`p-3 rounded-lg ${isDark ? 'bg-blue-900/20 border border-blue-600/30' : 'bg-blue-50 border border-blue-300'}`}>
-                          <p className={`text-xs font-bold uppercase mb-1 ${isDark ? 'text-blue-400' : 'text-blue-700'}`}>
+                        <div className={`p-3 rounded-lg ${isDark ? 'bg-emerald-900/20 border border-emerald-600/30' : 'bg-green-50 border border-green-300'}`}>
+                          <p className={`text-xs font-bold uppercase mb-1 ${isDark ? 'text-emerald-400' : 'text-green-700'}`}>
                             ✅ Paid Amount
                           </p>
-                          <p className={`text-lg font-bold ${isDark ? 'text-blue-300' : 'text-blue-700'}`}>
+                          <p className={`text-lg font-bold ${isDark ? 'text-emerald-300' : 'text-green-700'}`}>
                             ₹{booking.paidAmount || 0}
                           </p>
                         </div>
@@ -680,18 +680,18 @@ const AirportRidesPage = () => {
                       {(booking.pickupLocation || booking.dropLocation) && (
                         <div className="mt-4 pt-4 border-t" style={{borderColor: isDark ? 'rgba(55, 65, 81, 0.5)' : 'rgba(209, 213, 219, 0.5)'}}>
                           <p className={`text-xs font-bold uppercase mb-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                            <MapPinIcon className="h-3 w-3 inline mr-1" />
+                            <MapPin className="h-3 w-3 inline mr-1" />
                             Location Details
                           </p>
                           <div className="flex gap-3 text-sm">
                             {booking.pickupLocation && (
                               <span className={isDark ? 'text-gray-400' : 'text-gray-600'}>
-                                <MapPinIcon className="h-4 w-4 inline mr-1" /> <strong>From:</strong> {booking.pickupLocation}
+                                <MapPin className="h-4 w-4 inline mr-1" /> <strong>From:</strong> {booking.pickupLocation}
                               </span>
                             )}
                             {booking.dropLocation && (
                               <span className={isDark ? 'text-gray-400' : 'text-gray-600'}>
-                                <MapPinIcon className="h-4 w-4 inline mr-1" /> <strong>To:</strong> {booking.dropLocation}
+                                <MapPin className="h-4 w-4 inline mr-1" /> <strong>To:</strong> {booking.dropLocation}
                               </span>
                             )}
                           </div>

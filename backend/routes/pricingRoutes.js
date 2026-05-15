@@ -59,41 +59,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:cabType', async (req, res) => {
-  try {
-    const cabType = (req.params.cabType || '').toLowerCase();
-    const pricing = await Pricing.findOne({ cabType, isActive: true });
-
-    if (pricing) {
-      return res.json({
-        success: true,
-        data: normalizePricing(pricing),
-        source: 'database',
-      });
-    }
-
-    const fallback = defaultPricingByCabType[cabType];
-    if (!fallback) {
-      return res.status(404).json({
-        success: false,
-        message: 'Pricing not found for selected cab type',
-      });
-    }
-
-    res.json({
-      success: true,
-      data: fallback,
-      source: 'default',
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Error fetching cab pricing data',
-      error: error.message,
-    });
-  }
-});
-
 /**
  * GET /rates
  * Get all rates formatted for frontend app (mobile/web client)
@@ -225,6 +190,41 @@ router.post('/app/rates', async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Error updating rates',
+      error: error.message,
+    });
+  }
+});
+
+router.get('/:cabType', async (req, res) => {
+  try {
+    const cabType = (req.params.cabType || '').toLowerCase();
+    const pricing = await Pricing.findOne({ cabType, isActive: true });
+
+    if (pricing) {
+      return res.json({
+        success: true,
+        data: normalizePricing(pricing),
+        source: 'database',
+      });
+    }
+
+    const fallback = defaultPricingByCabType[cabType];
+    if (!fallback) {
+      return res.status(404).json({
+        success: false,
+        message: 'Pricing not found for selected cab type',
+      });
+    }
+
+    res.json({
+      success: true,
+      data: fallback,
+      source: 'default',
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching cab pricing data',
       error: error.message,
     });
   }

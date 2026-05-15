@@ -18,7 +18,7 @@ export default function CabPartnerDashboard() {
   const statusOptions = ['pending', 'approved', 'rejected', 'active', 'inactive'];
   const statusColors = {
     pending: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200',
-    approved: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200',
+    approved: 'bg-green-100 text-green-800 dark:bg-emerald-900/30 dark:text-emerald-200',
     rejected: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-200',
     active: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-200',
     inactive: 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-200',
@@ -147,7 +147,7 @@ export default function CabPartnerDashboard() {
       <AdminLayout>
         <div className="flex items-center justify-center h-screen">
           <div className="text-center">
-            <div className="w-12 h-12 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mx-auto mb-4"></div>
+            <div className="w-12 h-12 border-4 border-green-200 border-t-emerald-600 rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-gray-600 dark:text-gray-400">Loading cab partners...</p>
           </div>
         </div>
@@ -178,7 +178,7 @@ export default function CabPartnerDashboard() {
                 <p className="text-sm text-gray-600 dark:text-gray-400">Total Applications</p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">{partners.length}</p>
               </div>
-              <Users className="w-8 h-8 text-blue-600" />
+              <Users className="w-8 h-8 text-green-600" />
             </div>
           </div>
           <div className="bg-white dark:bg-slate-800 rounded-lg p-4 shadow">
@@ -235,7 +235,7 @@ export default function CabPartnerDashboard() {
                 onClick={() => setFilterStatus(status)}
                 className={`px-4 py-2 rounded-lg text-sm font-semibold transition ${
                   filterStatus === status
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-emerald-600 text-white'
                     : 'bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-slate-600'
                 }`}
               >
@@ -274,7 +274,7 @@ export default function CabPartnerDashboard() {
                         {partner.vehicleDetails?.model || 'N/A'}
                       </td>
                       <td className="px-4 py-3 text-gray-600 dark:text-gray-400">
-                        <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-2 py-1 rounded text-xs">
+                        <span className="bg-green-100 dark:bg-emerald-900/30 text-green-800 dark:text-emerald-200 px-2 py-1 rounded text-xs">
                           {partner.vehicleDetails?.evType || 'N/A'}
                         </span>
                       </td>
@@ -316,7 +316,7 @@ export default function CabPartnerDashboard() {
                               setEditingId(partner._id);
                               setEditStatus(partner.status);
                             }}
-                            className="p-1 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded transition text-blue-600"
+                            className="p-1 hover:bg-green-100 dark:hover:bg-emerald-900/30 rounded transition text-green-600"
                             title="Edit status"
                           >
                             <Edit className="w-4 h-4" />

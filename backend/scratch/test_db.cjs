@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('dotenv').config({ path: 'backend/.env' });
 
 const uri = process.env.MONGODB_URI;
-console.log('Connecting to:', uri);
+console.log('Connecting to:', uri ? uri.replace(/\/\/[^:]+:[^@]+@/, '//***:***@') : 'MONGODB_URI is not set');
 
 mongoose.connect(uri)
   .then(() => {

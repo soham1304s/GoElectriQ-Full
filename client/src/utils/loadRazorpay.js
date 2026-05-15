@@ -18,12 +18,7 @@ export const loadRazorpaySdk = () => {
     script.src = 'https://checkout.razorpay.com/v1/checkout.js';
     script.async = true;
     
-    // Suppress non-critical console warnings from Razorpay SDK
-    const originalWarn = console.warn;
-    const originalError = console.error;
-    
     script.onload = () => {
-      // Restore console methods after SDK loads
       if (window.Razorpay) {
         resolve(true);
         return;

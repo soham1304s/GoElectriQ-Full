@@ -17,7 +17,7 @@ export default function AuthButton({
     admin: 'bg-[#022c22] hover:bg-black text-white',
     outline: theme === 'light'
       ? 'border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-50'
-      : 'border-2 border-purple-500 text-purple-400 dark:hover:bg-purple-900/20',
+      : 'border-2 border-green-500 text-green-400 dark:hover:bg-green-900/20',
   };
 
   return (

@@ -166,7 +166,7 @@ const AdminLayout = ({ children }) => {
               {/* SECTION HEADER */}
               <button
                 onClick={() => toggleMenu(section.title)}
-                className="w-full flex justify-between items-center px-4 py-2 font-semibold text-emerald-400/80 hover:text-emerald-100 hover:bg-emerald-800/30 rounded-lg transition text-sm uppercase tracking-wide"
+                className="w-full flex justify-between items-center px-4 py-2 font-semibold text-emerald-400/80 hover:text-green-50 hover:bg-emerald-800/30 rounded-lg transition text-sm uppercase tracking-wide"
               >
                 {section.title}
 

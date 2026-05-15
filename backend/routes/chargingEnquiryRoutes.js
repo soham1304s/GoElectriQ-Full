@@ -5,6 +5,7 @@ import {
   getChargingEnquiry,
   updateChargingEnquiry,
   deleteChargingEnquiry,
+  getMyChargingEnquiries,
 } from '../controllers/chargingEnquiryController.js';
 import { protect } from '../middleware/auth.js';
 import { isAdmin } from '../middleware/roleCheck.js';
@@ -18,6 +19,7 @@ const router = express.Router();
  * @access  Public (No auth required)
  */
 router.post('/', createChargingEnquiry);
+router.get('/my-enquiries', protect, getMyChargingEnquiries);
 
 /**
  * @route   GET /api/charging-enquiries

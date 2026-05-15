@@ -26,7 +26,7 @@ export const createChargingEnquiry = async (req, res) => {
     }
 
     // Validate phone
-    const phoneRegex = /^[6-9]\d{9}$/;
+    const phoneRegex = /^(\+91|0)?[6-9]\d{9}$/;
     if (!phoneRegex.test(phone)) {
       console.log('❌ Validation failed: Invalid phone format');
       return res.status(400).json({
@@ -240,6 +240,33 @@ export const deleteChargingEnquiry = async (req, res) => {
       success: false,
       message: 'Failed to delete enquiry',
       error: error.message,
+    });
+  }
+};
+/**
+ * @desc    Get current user's charging enquiries
+ * @route   GET /api/charging-enquiries/my-enquiries
+ * @access  Private (Authenticated User)
+ */
+export const getMyChargingEnquiries = async (req, res) => {
+  try {
+    const enquiries = await ChargingEnquiry.find({
+      $or: [
+        { email: req.user.email },
+        { phone: req.user.phone }
+      ]
+    }).sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      data: enquiries
+    });
+  } catch (error) {
+    console.error('Error fetching my enquiries:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching your charging enquiries',
+      error: error.message
     });
   }
 };

@@ -16,6 +16,10 @@ import {
 } from 'lucide-react';
 import LocationPickerComponent from '../LocationPickerComponent.jsx';
 
+const MotionDiv = motion.div;
+const MotionH2 = motion.h2;
+const MotionP = motion.p;
+
 const MacBookShowcase = ({ darkMode, isHero = false }) => {
   const navigate = useNavigate();
   const { scrollYProgress } = useScroll();
@@ -57,7 +61,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
   const features = [
     { icon: <Zap size={20} className="text-emerald-500" />, title: "Instant Booking", desc: "Get a ride in seconds" },
     { icon: <Shield size={20} className="text-emerald-500" />, title: "Secure Travel", desc: "Verified drivers only" },
-    { icon: <Clock size={20} className="text-purple-500" />, title: "24/7 Support", desc: "We are always here" },
+    { icon: <Clock size={20} className="text-green-500" />, title: "24/7 Support", desc: "We are always here" },
   ];
 
   const content = (
@@ -86,23 +90,23 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
       {/* Background Decor */}
       {!isHero && (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-7xl pointer-events-none">
-          <div className={`absolute top-0 left-1/4 w-96 h-96 rounded-full blur-[120px] ${darkMode ? 'bg-emerald-500/10' : 'bg-emerald-500/5'}`} />
-          <div className={`absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-[120px] ${darkMode ? 'bg-emerald-500/10' : 'bg-emerald-500/5'}`} />
+          <div className={`absolute top-0 left-1/4 w-96 h-96 rounded-full blur-[120px] ${darkMode ? 'bg-green-500/10' : 'bg-green-500/5'}`} />
+          <div className={`absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-[120px] ${darkMode ? 'bg-green-500/10' : 'bg-green-500/5'}`} />
         </div>
       )}
 
       <div className={`${isHero ? 'w-full' : 'max-w-7xl mx-auto px-4'} relative z-10`}>
         {!isHero && (
           <div className="text-center mb-16 md:mb-24">
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-4"
+              className="inline-flex items-center gap-2 bg-green-500/10 text-green-600 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-4"
             >
               Digital Ecosystem
-            </motion.div>
-            <motion.h2
+            </MotionDiv>
+            <MotionH2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -110,9 +114,9 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
               className={`text-4xl md:text-6xl font-black ${darkMode ? 'text-white' : 'text-slate-900'} mb-6 tracking-tight`}
             >
               Manage Your Journey <br />
-              On <span className="text-emerald-600">Any Device.</span>
-            </motion.h2>
-            <motion.p
+              On <span className="text-green-600">Any Device.</span>
+            </MotionH2>
+            <MotionP
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -120,12 +124,12 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
               className={`max-w-2xl mx-auto text-lg md:text-xl font-medium ${darkMode ? 'text-gray-400' : 'text-slate-500'}`}
             >
               Our seamless multi-platform experience allows you to book, track, and manage your electric rides from your desktop or mobile with absolute ease.
-            </motion.p>
+            </MotionP>
           </div>
         )}
 
         {/* Device Showcase Container */}
-        <motion.div
+        <MotionDiv
           style={{ rotateX, scale, opacity }}
           className="relative perspective-2000"
         >
@@ -134,7 +138,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
             {/* The Screen / Chassis */}
             <div className={`relative rounded-t-[2.5rem] p-2 md:p-3 shadow-2xl transition-all duration-700 ${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-slate-300 border-slate-400'} border-x-4 border-t-4`}>
               {/* Screen Content */}
-              <div className={`relative aspect-[4/3] rounded-[1.2rem] md:rounded-[1.5rem] overflow-hidden ${darkMode ? 'bg-[#022c22]' : 'bg-white shadow-inner'}`}>
+              <div className={`relative flex aspect-[4/3] flex-col rounded-[1.2rem] md:rounded-[1.5rem] overflow-hidden ${darkMode ? 'bg-[#022c22]' : 'bg-white shadow-inner'}`}>
                 {/* Simulated UI Navbar */}
                 <div className={`h-10 border-b flex items-center px-4 justify-between ${darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-slate-50 border-slate-200'}`}>
                   <div className="flex gap-1.5">
@@ -149,10 +153,10 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                 </div>
 
                 {/* Smart Booking UI Content */}
-                <div className={`p-5 md:p-6 h-full flex flex-col ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                <div className={`min-h-0 flex-1 p-4 md:p-5 flex flex-col ${darkMode ? 'text-white' : 'text-slate-900'}`}>
                   {/* Header */}
-                  <div className="mb-4">
-                    <div className={`inline-flex items-center gap-1.5 ${darkMode ? 'bg-emerald-500/10 text-emerald-400' : 'bg-emerald-50 text-emerald-600'} px-2.5 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest mb-2`}>
+                  <div className="mb-3">
+                    <div className={`inline-flex items-center gap-1.5 ${darkMode ? 'bg-green-500/10 text-emerald-400' : 'bg-green-50 text-green-600'} px-2.5 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest mb-2`}>
                       <Zap size={10} className="fill-current animate-pulse" /> Smart Booking
                     </div>
                     <h3 className="text-xl md:text-2xl font-black tracking-tight mb-0.5">Plan Your Perfect Ride</h3>
@@ -160,12 +164,12 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                   </div>
 
                   {/* Service Toggle */}
-                  <div className={`flex p-1 rounded-xl mb-4 max-w-sm ${darkMode ? 'bg-slate-800' : 'bg-slate-100'}`}>
+                  <div className={`flex p-1 rounded-xl mb-3 max-w-sm ${darkMode ? 'bg-slate-800' : 'bg-slate-100'}`}>
                     {['Local Ride', 'Intercity Ride', 'Airport'].map((type) => (
                       <button
                         key={type}
                         onClick={() => setActiveTab(type === 'Intercity Ride' ? 'Intercity' : type)}
-                        className={`flex-1 py-2 rounded-lg text-xs font-black transition-all ${(activeTab === type || (activeTab === 'Intercity' && type === 'Intercity Ride'))
+                        className={`flex-1 py-1.5 rounded-lg text-xs font-black transition-all ${(activeTab === type || (activeTab === 'Intercity' && type === 'Intercity Ride'))
                           ? 'bg-emerald-600 text-white shadow-md scale-105'
                           : 'text-slate-500 hover:text-slate-700 hover:scale-105'
                           }`}
@@ -176,15 +180,15 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                   </div>
 
                   {/* Input Fields */}
-                  <div className="space-y-3 mb-4 relative z-[60]">
-                    <div className="flex flex-col gap-3">
+                  <div className="space-y-2 mb-3 relative z-[60]">
+                    <div className="flex flex-col gap-2">
                       <LocationPickerComponent
                         value={pickup.address}
                         onChange={(val) => setPickup({ ...pickup, address: val })}
                         onSelectLocation={(loc) => setPickup(loc)}
                         placeholder="Pickup location"
                         darkMode={darkMode}
-                        inputClassName="!py-3 !rounded-xl !text-sm !font-bold"
+                        inputClassName="!py-2.5 !rounded-xl !text-sm !font-bold"
                       />
                       <LocationPickerComponent
                         value={dest.address}
@@ -192,15 +196,15 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                         onSelectLocation={(loc) => setDest(loc)}
                         placeholder="Destination"
                         darkMode={darkMode}
-                        inputClassName="!py-3 !rounded-xl !text-sm !font-bold"
+                        inputClassName="!py-2.5 !rounded-xl !text-sm !font-bold"
                       />
                     </div>
                   </div>
 
                   {/* Date & Time */}
-                  <div className="grid grid-cols-2 gap-3 mb-5 relative z-[50]">
-                    <div className={`relative flex items-center gap-2 p-3 rounded-xl border transition-all ${darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-slate-50 border-slate-100 shadow-sm'}`}>
-                      <Calendar size={16} className="text-purple-500" />
+                  <div className="grid grid-cols-2 gap-3 mb-3 relative z-[50]">
+                    <div className={`relative flex items-center gap-2 p-2.5 rounded-xl border transition-all ${darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-slate-50 border-slate-100 shadow-sm'}`}>
+                      <Calendar size={16} className="text-green-500" />
                       <input
                         type="date"
                         value={bookingDate}
@@ -208,7 +212,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                         className="bg-transparent border-none outline-none text-sm font-bold text-slate-900 dark:text-white w-full cursor-pointer [color-scheme:light]"
                       />
                     </div>
-                    <div className={`relative flex items-center gap-2 p-3 rounded-xl border transition-all ${darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-slate-50 border-slate-100 shadow-sm'}`}>
+                    <div className={`relative flex items-center gap-2 p-2.5 rounded-xl border transition-all ${darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-slate-50 border-slate-100 shadow-sm'}`}>
                       <Clock size={16} className="text-emerald-500" />
                       <input
                         type="time"
@@ -223,7 +227,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                   <button
                     onClick={handleSearch}
                     disabled={isSearching}
-                    className="w-full py-4 md:py-4 rounded-[1.2rem] bg-emerald-600 text-white font-black text-xs md:text-sm shadow-lg shadow-emerald-500/20 hover:scale-[1.01] active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-70 mt-auto"
+                    className="w-full py-3 md:py-3 rounded-[1.1rem] bg-emerald-600 text-white font-black text-xs md:text-sm shadow-lg shadow-emerald-500/20 hover:scale-[1.01] active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-70 mt-auto"
                   >
                     {isSearching ? (
                       <div className="flex items-center gap-2">
@@ -247,7 +251,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
           </div>
 
           {/* Floating iPhone Frame - Mobile Only */}
-          <motion.div
+          <MotionDiv
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -309,7 +313,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                         onClick={() => setActiveTab(type.id)}
                         className={`flex min-h-[38px] min-w-0 items-center justify-center gap-1.5 rounded-2xl px-1.5 text-[6.5px] font-extrabold transition-all ${activeTab === type.id
                           ? 'bg-[#022c22] text-white shadow-md shadow-slate-900/20'
-                          : 'text-slate-500 hover:bg-slate-50 hover:text-emerald-600'
+                          : 'text-slate-500 hover:bg-slate-50 hover:text-green-600'
                           }`}
                       >
                         <span className={`flex-shrink-0 ${activeTab === type.id ? 'text-emerald-300' : 'text-slate-400'}`}>
@@ -323,10 +327,10 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                   {/* Route Inputs */}
                   <div className="relative z-[60] mb-3 shrink-0 rounded-[1.35rem] border border-slate-200 bg-white p-2.5 shadow-sm shadow-slate-200/70">
                     {/* Connection Line */}
-                    <div className="pointer-events-none absolute left-[24px] top-[50px] bottom-[50px] w-px border-l border-dashed border-emerald-300" />
+                    <div className="pointer-events-none absolute left-[24px] top-[50px] bottom-[50px] w-px border-l border-dashed border-green-300" />
 
                     <div className="relative flex min-h-[52px] items-center gap-2.5">
-                      <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                      <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-green-50 text-green-600">
                         <div className="h-3 w-3 rounded-full border-[2.5px] border-emerald-500" />
                       </div>
                       <div className="min-w-0 flex-1">
@@ -342,13 +346,13 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                           inputClassName="!p-0 !h-auto !bg-transparent !text-[9px] !font-bold !text-slate-900 placeholder:!text-slate-400 border-none ring-0 focus:ring-0"
                         />
                       </div>
-                      <button type="button" className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-xl bg-slate-50 text-emerald-600 transition-colors hover:bg-emerald-50">
+                      <button type="button" className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-xl bg-slate-50 text-green-600 transition-colors hover:bg-green-50">
                         <LocateFixed size={14} />
                       </button>
                     </div>
 
                     <div className="relative mt-2 flex min-h-[52px] items-center gap-2.5 border-t border-slate-100 pt-2">
-                      <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                      <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-green-50 text-green-600">
                         <MapPin size={14} className="fill-current" />
                       </div>
                       <div className="min-w-0 flex-1">
@@ -364,7 +368,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                           inputClassName="!p-0 !h-auto !bg-transparent !text-[9px] !font-bold !text-slate-900 placeholder:!text-slate-400 border-none ring-0 focus:ring-0"
                         />
                       </div>
-                      <button type="button" className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-xl bg-slate-50 text-emerald-600 transition-colors hover:bg-emerald-50">
+                      <button type="button" className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-xl bg-slate-50 text-green-600 transition-colors hover:bg-green-50">
                         <LocateFixed size={14} />
                       </button>
                     </div>
@@ -375,7 +379,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                     <label className="rounded-[1rem] border border-slate-200 bg-white px-2.5 py-1.5 shadow-sm shadow-slate-200/70">
                       <span className="mb-1 flex items-center justify-between text-[6px] font-black uppercase tracking-wider text-slate-500">
                         Date
-                        <Calendar size={12} className="text-emerald-600" />
+                        <Calendar size={12} className="text-green-600" />
                       </span>
                       <input
                         type="date"
@@ -387,7 +391,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                     <label className="rounded-[1rem] border border-slate-200 bg-white px-2.5 py-1.5 shadow-sm shadow-slate-200/70">
                       <span className="mb-1 flex items-center justify-between text-[6px] font-black uppercase tracking-wider text-slate-500">
                         Time
-                        <Clock size={12} className="text-emerald-600" />
+                        <Clock size={12} className="text-green-600" />
                       </span>
                       <input
                         type="time"
@@ -416,14 +420,14 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                 </div>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </MotionDiv>
+        </MotionDiv>
 
         {/* Value Props Grid - Hidden in Hero Mode */}
         {!isHero && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-24 md:mt-32">
             {features.map((feature, i) => (
-              <motion.div
+              <MotionDiv
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -439,7 +443,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                 </div>
                 <h3 className={`text-xl font-black mb-2 ${darkMode ? 'text-white' : 'text-slate-900'}`}>{feature.title}</h3>
                 <p className={`font-medium ${darkMode ? 'text-gray-400' : 'text-slate-500'}`}>{feature.desc}</p>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
         )}

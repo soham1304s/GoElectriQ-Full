@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from 'react';
 import { Search, Trash2, Eye, Star, Plus, X as CloseIcon, Loader2 } from 'lucide-react';
 import AdminLayout from './AdminLayout';
 import { getAllFeedback, deleteFeedback, createFeedbackAdmin } from '../../services/adminService';
@@ -130,13 +131,13 @@ const FeedbackPage = () => {
                 placeholder="Search by name, email, or message..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-10 pr-4 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
             </div>
             <select
               value={ratingFilter}
               onChange={(e) => setRatingFilter(e.target.value)}
-              className="px-4 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-4 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
             >
               <option value="all">All Ratings</option>
               <option value="5">5 Stars</option>
@@ -190,7 +191,7 @@ const FeedbackPage = () => {
                   <div className="flex gap-2 flex-shrink-0">
                     <button
                       onClick={() => setSelectedFeedback(item)}
-                      className="p-2 text-blue-500 hover:text-blue-700 hover:bg-blue-50 dark:hover:bg-gray-700 rounded transition"
+                      className="p-2 text-emerald-500 hover:text-green-700 hover:bg-green-50 dark:hover:bg-gray-700 rounded transition"
                       title="View Details"
                     >
                       <Eye size={18} />
@@ -244,7 +245,7 @@ const FeedbackPage = () => {
               </div>
               <button
                 onClick={() => setSelectedFeedback(null)}
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition"
+                className="w-full bg-green-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg transition"
               >
                 Close
               </button>

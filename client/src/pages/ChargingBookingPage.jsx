@@ -22,6 +22,7 @@ import {
 import { useTheme } from "../context/ThemeContext";
 import Footer from '../components/Footer.jsx';
 import SEO from '../components/SEO.jsx';
+import api from '../services/api';
 
 const ChargingBookingPage = () => {
   const { theme } = useTheme();
@@ -47,12 +48,12 @@ const ChargingBookingPage = () => {
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.phone.match(/^[6-9]\d{9}$/))
-      newErrors.phone = "Valid 10-digit phone required";
+    if (!formData.phone.match(/^(\+91|0)?[6-9]\d{9}$/))
+      newErrors.phone = "Valid phone number required";
     if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/))
       newErrors.email = "Valid email is required";
     if (!formData.city.trim()) newErrors.city = "City is required";
-    if (!formData.address.trim()) newErrors.address = "Address is required";
+    if (!formData.address.trim()) newErrors.address = "Requirement details are required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -80,18 +81,7 @@ const ChargingBookingPage = () => {
         status: 'pending'
       };
 
-      const token = localStorage.getItem('token');
-      const response = await fetch(`${API_BASE_URL}/api/charging-enquiries`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(token && { 'Authorization': `Bearer ${token}` })
-        },
-        body: JSON.stringify(enquiryData)
-      });
-
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.message || 'Failed to submit enquiry');
+      const response = await api.post('/charging-enquiries', enquiryData);
 
       alert('✅ Thank you! Your EV Charging enquiry has been received. Our team will contact you within 1 hour.');
       setFormData({
@@ -104,7 +94,7 @@ const ChargingBookingPage = () => {
       });
       setIsModalOpen(false);
     } catch (error) {
-      alert('Error: ' + error.message);
+      alert('Error: ' + (error.response?.data?.message || error.message));
     } finally {
       setLoading(false);
     }
@@ -168,15 +158,15 @@ const ChargingBookingPage = () => {
         <section className="max-w-7xl mx-auto px-4 mb-24 md:mb-32">
           <div className="relative rounded-[3rem] md:rounded-[4rem] overflow-hidden bg-[#022c22] p-8 md:p-20 text-center text-white">
             <div className="absolute top-0 right-0 w-full h-full opacity-20 pointer-events-none">
-              <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-500/30 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
-              <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+              <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-green-500/30 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
+              <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-green-500/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
             </div>
 
             <div className="relative z-10 max-w-4xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8 border border-emerald-500/20"
+                className="inline-flex items-center gap-2 bg-green-500/10 text-emerald-400 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8 border border-emerald-500/20"
               >
                 <Sparkles size={14} /> Power Infrastructure
               </motion.div>
@@ -186,7 +176,7 @@ const ChargingBookingPage = () => {
                 className="text-4xl md:text-7xl font-black mb-8 tracking-tight leading-tight"
               >
                 Electrifying the <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-400">Future of Energy.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-400">Future of Energy.</span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -225,7 +215,7 @@ const ChargingBookingPage = () => {
                 <div className="text-4xl font-black text-slate-100 dark:text-slate-800 absolute right-8 top-8 transition-colors group-hover:text-emerald-500/10">
                   {s.step}
                 </div>
-                <div className="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-8 transition-transform group-hover:scale-110">
+                <div className="w-14 h-14 rounded-2xl bg-green-50 dark:bg-emerald-900/20 flex items-center justify-center text-green-600 dark:text-emerald-400 mb-8 transition-transform group-hover:scale-110">
                   <s.icon size={28} />
                 </div>
                 <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">{s.title}</h3>
@@ -250,7 +240,7 @@ const ChargingBookingPage = () => {
                 transition={{ delay: i * 0.1 }}
                 className="group p-8 md:p-12 rounded-[3rem] bg-white dark:bg-[#022c22] border border-slate-100 dark:border-slate-800 hover:border-emerald-500/30 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-emerald-500/5 flex flex-col h-full"
               >
-                <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-10 group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-green-600 dark:text-emerald-400 mb-10 group-hover:scale-110 transition-transform">
                   <s.icon size={32} />
                 </div>
                 <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">{s.name}</h3>
@@ -259,7 +249,7 @@ const ChargingBookingPage = () => {
                 <ul className="space-y-4 mb-12 flex-grow">
                   {s.features.map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
-                      <div className="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                      <div className="w-5 h-5 rounded-full bg-green-100 dark:bg-emerald-900/30 text-green-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
                         <CheckCircle size={12} strokeWidth={3} />
                       </div>
                       {f}
@@ -270,7 +260,7 @@ const ChargingBookingPage = () => {
                 <div className="pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-6">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Protocol Cost</span>
-                    <span className="text-2xl font-black text-emerald-600 dark:text-emerald-400">{s.price}</span>
+                    <span className="text-2xl font-black text-green-600 dark:text-emerald-400">{s.price}</span>
                   </div>
                   <button
                     onClick={toggleModal}
@@ -288,7 +278,7 @@ const ChargingBookingPage = () => {
         <section className="max-w-5xl mx-auto px-4 mb-32">
           <motion.div 
             {...fadeIn}
-            className="p-8 md:p-12 rounded-[2.5rem] bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-500/20 flex flex-col md:flex-row gap-8 items-center"
+            className="p-8 md:p-12 rounded-[2.5rem] bg-green-50 dark:bg-emerald-900/10 border border-green-100 dark:border-emerald-500/20 flex flex-col md:flex-row gap-8 items-center"
           >
             <div className="w-20 h-20 rounded-3xl bg-emerald-600 text-white flex items-center justify-center shadow-xl shadow-emerald-500/20 shrink-0">
               <Shield size={40} />
@@ -400,6 +390,7 @@ const ChargingBookingPage = () => {
                           placeholder="9876543210"
                           className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 outline-none focus:border-emerald-500/50 transition-all font-bold text-slate-900 dark:text-white"
                         />
+                        {errors.phone && <p className="text-rose-500 text-[10px] font-bold ml-1">{errors.phone}</p>}
                       </div>
                       <div className="space-y-2">
                         <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Email</label>
@@ -411,6 +402,7 @@ const ChargingBookingPage = () => {
                           placeholder="john@example.com"
                           className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 outline-none focus:border-emerald-500/50 transition-all font-bold text-slate-900 dark:text-white"
                         />
+                        {errors.email && <p className="text-rose-500 text-[10px] font-bold ml-1">{errors.email}</p>}
                       </div>
                     </div>
 
@@ -425,6 +417,7 @@ const ChargingBookingPage = () => {
                           placeholder="Jaipur"
                           className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 outline-none focus:border-emerald-500/50 transition-all font-bold text-slate-900 dark:text-white"
                         />
+                        {errors.city && <p className="text-rose-500 text-[10px] font-bold ml-1">{errors.city}</p>}
                       </div>
                       <div className="space-y-2">
                         <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Protocol Type</label>
@@ -451,6 +444,7 @@ const ChargingBookingPage = () => {
                         placeholder="Tell us about your property type and vehicle..."
                         className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 outline-none focus:border-emerald-500/50 transition-all font-bold text-slate-900 dark:text-white resize-none"
                       ></textarea>
+                      {errors.address && <p className="text-rose-500 text-[10px] font-bold ml-1">{errors.address}</p>}
                     </div>
                   </div>
 

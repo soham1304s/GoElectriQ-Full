@@ -71,7 +71,7 @@ const Navbar = () => {
               <button
                 key={link.name}
                 onClick={link.action}
-                className={`text-sm font-black uppercase tracking-widest transition-all hover:text-emerald-600 ${
+                className={`text-sm font-black uppercase tracking-widest transition-all hover:text-green-600 ${
                   isScrolled ? "text-slate-600 dark:text-zinc-400" : "text-slate-900 dark:text-white"
                 }`}
               >
@@ -81,8 +81,8 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`text-sm font-black uppercase tracking-widest transition-all hover:text-emerald-600 ${isActive(link.path)
-                    ? "text-emerald-600"
+                className={`text-sm font-black uppercase tracking-widest transition-all hover:text-green-600 ${isActive(link.path)
+                    ? "text-green-600"
                     : isScrolled ? "text-slate-600 dark:text-zinc-400" : "text-slate-900 dark:text-white"
                   }`}
               >
@@ -100,7 +100,7 @@ const Navbar = () => {
                 onClick={() => navigate("/login")}
                 className={`px-6 py-2.5 rounded-xl text-sm font-black transition-all border ${
                   isScrolled 
-                    ? "border-emerald-600 text-emerald-600 hover:bg-emerald-50" 
+                    ? "border-emerald-600 text-green-600 hover:bg-green-50" 
                     : "border-slate-300 text-slate-800 bg-white/10 backdrop-blur-md hover:bg-white/20"
                 }`}
               >
@@ -130,7 +130,7 @@ const Navbar = () => {
             onClick={toggleTheme}
             className={`p-2.5 rounded-xl transition-all border ${
               isScrolled
-                ? "border-emerald-200 dark:border-zinc-800 text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-zinc-900"
+                ? "border-green-200 dark:border-zinc-800 text-green-600 dark:text-emerald-400 bg-green-50 dark:bg-zinc-900"
                 : "border-slate-300 dark:border-white/20 text-slate-800 dark:text-white bg-white/10 backdrop-blur-md"
             }`}
           >
@@ -148,7 +148,7 @@ const Navbar = () => {
           </button>
           <button
             onClick={() => setShowMobileMenu(!showMobileMenu)}
-            className="p-2 text-gray-700 dark:text-white hover:text-emerald-600"
+            className="p-2 text-gray-700 dark:text-white hover:text-green-600"
           >
             {showMobileMenu ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -167,7 +167,7 @@ const Navbar = () => {
                     link.action();
                     setShowMobileMenu(false);
                   }}
-                  className="text-lg font-semibold text-gray-800 dark:text-white text-left hover:text-emerald-600"
+                  className="text-lg font-semibold text-gray-800 dark:text-white text-left hover:text-green-600"
                 >
                   {link.name}
                 </button>
@@ -176,7 +176,7 @@ const Navbar = () => {
                   key={link.name}
                   to={link.path}
                   onClick={() => setShowMobileMenu(false)}
-                  className={`text-lg font-semibold ${isActive(link.path) ? "text-emerald-600" : "text-gray-800 dark:text-white"
+                  className={`text-lg font-semibold ${isActive(link.path) ? "text-green-600" : "text-gray-800 dark:text-white"
                     }`}
                 >
                   {link.name}
@@ -191,7 +191,7 @@ const Navbar = () => {
                       navigate("/login");
                       setShowMobileMenu(false);
                     }}
-                    className="flex items-center justify-center w-full px-4 py-3 border border-emerald-600 text-emerald-600 rounded-lg font-bold"
+                    className="flex items-center justify-center w-full px-4 py-3 border border-emerald-600 text-green-600 rounded-lg font-bold"
                   >
                     Login
                   </button>

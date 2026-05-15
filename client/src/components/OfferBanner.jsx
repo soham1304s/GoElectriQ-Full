@@ -121,8 +121,8 @@ const OfferBanner = () => {
                 }`}
               >
                 {/* Background Accent Gradients */}
-                <div className="absolute top-0 left-0 w-32 h-32 bg-emerald-500/20 blur-[60px] rounded-full -translate-x-1/2 -translate-y-1/2" />
-                <div className="absolute bottom-0 right-0 w-32 h-32 bg-emerald-500/10 blur-[60px] rounded-full translate-x-1/2 translate-y-1/2" />
+                <div className="absolute top-0 left-0 w-32 h-32 bg-green-500/20 blur-[60px] rounded-full -translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute bottom-0 right-0 w-32 h-32 bg-green-500/10 blur-[60px] rounded-full translate-x-1/2 translate-y-1/2" />
 
                 {/* Header */}
                 <div className="relative h-32 bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center overflow-hidden">
@@ -249,8 +249,8 @@ const OfferBanner = () => {
 
                       {/* Progress Indicator */}
                       <div className="flex gap-2 mb-4">
-                        <div className="h-1 flex-1 bg-emerald-500 rounded-full"></div>
-                        <div className="h-1 flex-1 bg-emerald-500 rounded-full"></div>
+                        <div className="h-1 flex-1 bg-green-500 rounded-full"></div>
+                        <div className="h-1 flex-1 bg-green-500 rounded-full"></div>
                         <div className={`h-1 flex-1 rounded-full ${isDark ? 'bg-slate-700' : 'bg-slate-300'}`}></div>
                       </div>
 

@@ -74,7 +74,7 @@ const AboutUsPage = () => {
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6"
+            className="inline-flex items-center gap-2 bg-green-500/10 text-green-600 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6"
           >
             Redefining Mobility
           </motion.div>
@@ -85,7 +85,7 @@ const AboutUsPage = () => {
             className="text-4xl sm:text-5xl md:text-8xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter"
           >
             Clean Travel. <br />
-            <span className="text-emerald-600">Smart Future.</span>
+            <span className="text-green-600">Smart Future.</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -99,8 +99,8 @@ const AboutUsPage = () => {
 
         {/* Decorative elements */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none -z-10">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] animate-pulse delay-700" />
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-green-500/10 rounded-full blur-[120px] animate-pulse" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-green-500/10 rounded-full blur-[120px] animate-pulse delay-700" />
         </div>
       </section>
 
@@ -119,7 +119,7 @@ const AboutUsPage = () => {
               </div>
               {/* Floating badge */}
               <div className="absolute -bottom-4 -right-4 md:-bottom-8 md:-right-8 bg-white dark:bg-slate-800 p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] shadow-2xl border border-slate-100 dark:border-slate-700 max-w-[180px] md:max-w-[240px]">
-                <div className="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white mb-4 shadow-lg shadow-emerald-500/20">
+                <div className="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center text-white mb-4 shadow-lg shadow-emerald-500/20">
                   <Award size={24} />
                 </div>
                 <p className="text-sm font-black text-slate-900 dark:text-white leading-tight">Leading the EV Revolution in India</p>
@@ -143,11 +143,11 @@ const AboutUsPage = () => {
 
               <div className="grid grid-cols-2 gap-6">
                 <div className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700">
-                  <h4 className="text-3xl font-black text-emerald-600 mb-1">0</h4>
+                  <h4 className="text-3xl font-black text-green-600 mb-1">0</h4>
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Emissions</p>
                 </div>
                 <div className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700">
-                  <h4 className="text-3xl font-black text-emerald-600 mb-1">100%</h4>
+                  <h4 className="text-3xl font-black text-green-600 mb-1">100%</h4>
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Electric</p>
                 </div>
               </div>
@@ -164,7 +164,7 @@ const AboutUsPage = () => {
               {...fadeIn}
               className="p-12 rounded-[3rem] bg-white dark:bg-slate-800 shadow-xl border border-slate-100 dark:border-slate-700 group hover:-translate-y-2 transition-all duration-500"
             >
-              <div className="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg shadow-emerald-500/20 group-hover:rotate-12 transition-transform">
+              <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg shadow-emerald-500/20 group-hover:rotate-12 transition-transform">
                 <Target size={32} />
               </div>
               <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Our Mission</h3>
@@ -178,7 +178,7 @@ const AboutUsPage = () => {
               transition={{ delay: 0.2 }}
               className="p-12 rounded-[3rem] bg-white dark:bg-slate-800 shadow-xl border border-slate-100 dark:border-slate-700 group hover:-translate-y-2 transition-all duration-500"
             >
-              <div className="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg shadow-emerald-500/20 group-hover:-rotate-12 transition-transform">
+              <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg shadow-emerald-500/20 group-hover:-rotate-12 transition-transform">
                 <Eye size={32} />
               </div>
               <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Our Vision</h3>
@@ -207,7 +207,7 @@ const AboutUsPage = () => {
                 className="p-10 rounded-[3rem] glass-card border border-slate-100 dark:border-slate-800"
               >
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 ${
-                  v.color === 'emerald' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-red-500/10 text-red-500'
+                  v.color === 'emerald' ? 'bg-green-500/10 text-emerald-500' : 'bg-red-500/10 text-red-500'
                 }`}>
                   {v.icon}
                 </div>

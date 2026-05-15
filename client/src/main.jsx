@@ -8,7 +8,11 @@ import { AuthProvider } from './context/AuthContext.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
 import { HelmetProvider } from 'react-helmet-async'
 
-const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || 'YOUR_GOOGLE_CLIENT_ID'
+const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || ''
+const isGoogleOAuthConfigured =
+  googleClientId &&
+  googleClientId !== 'YOUR_GOOGLE_CLIENT_ID' &&
+  !googleClientId.toLowerCase().includes('your_google_client_id')
 
 // Suppress non-critical feature detection warnings from third-party scripts
 if (typeof window !== 'undefined') {
@@ -52,7 +56,7 @@ if (typeof window !== 'undefined') {
 }
 
 // Warn if Google Client ID is not configured
-if (googleClientId === 'YOUR_GOOGLE_CLIENT_ID') {
+if (!isGoogleOAuthConfigured) {
   console.warn(
     'Google OAuth Client ID not configured. Please set VITE_GOOGLE_CLIENT_ID in .env file. ' +
     'See .env.example for setup instructions.'
@@ -71,20 +75,27 @@ const AppWithProviders = () => (
 // which causes multiple API calls hitting rate limiters
 const isDevelopment = import.meta.env.DEV
 const Wrapper = isDevelopment ? ({ children }) => children : StrictMode
+const MaybeGoogleOAuthProvider = ({ children }) => (
+  isGoogleOAuthConfigured ? (
+    <GoogleOAuthProvider
+      clientId={googleClientId}
+      onScriptTagProps={{
+        async: true,
+        defer: true,
+        nonce: undefined,
+      }}
+    >
+      {children}
+    </GoogleOAuthProvider>
+  ) : children
+)
 
 createRoot(document.getElementById('root')).render(
   <Wrapper>
     <ThemeProvider>
-      <GoogleOAuthProvider
-        clientId={googleClientId}
-        onScriptTagProps={{
-          async: true,
-          defer: true,
-          nonce: undefined,
-        }}
-      >
+      <MaybeGoogleOAuthProvider>
         <AppWithProviders />
-      </GoogleOAuthProvider>
+      </MaybeGoogleOAuthProvider>
     </ThemeProvider>
   </Wrapper>,
 )

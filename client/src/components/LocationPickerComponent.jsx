@@ -275,11 +275,11 @@ export default function LocationPickerComponent({
                   onClick={() => handleSelectSuggestion(s)}
                   onMouseEnter={() => setSelectedIndex(i)}
                   className={`w-full text-left rounded-xl transition-all flex items-start mb-1 last:mb-0 ${compact ? 'px-3 py-2 gap-2' : 'px-4 py-3 gap-3'} ${selectedIndex === i
-                    ? darkMode ? 'bg-emerald-500/10 text-emerald-400' : 'bg-emerald-50 text-emerald-700'
+                    ? darkMode ? 'bg-green-500/10 text-emerald-400' : 'bg-green-50 text-green-700'
                     : darkMode ? 'text-zinc-300 hover:bg-zinc-800' : 'text-slate-700 hover:bg-slate-50'
                     }`}
                 >
-                  <div className={`mt-0.5 rounded-lg ${compact ? 'p-1.5' : 'p-1.5'} ${selectedIndex === i ? 'bg-emerald-500/20' : darkMode ? 'bg-zinc-800' : 'bg-slate-100'}`}>
+                  <div className={`mt-0.5 rounded-lg ${compact ? 'p-1.5' : 'p-1.5'} ${selectedIndex === i ? 'bg-green-500/20' : darkMode ? 'bg-zinc-800' : 'bg-slate-100'}`}>
                     {s.isPopular && !value ? <Star size={compact ? 12 : 14} className="text-amber-500 fill-amber-500" /> : <MapPin size={compact ? 12 : 14} className={selectedIndex === i ? 'text-emerald-500' : 'text-slate-400'} />}
                   </div>
                   <div className="flex-1 min-w-0">

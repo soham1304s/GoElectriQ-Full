@@ -358,7 +358,7 @@ export default function PartnerRegistrationModal({ isOpen, onClose, partnerType 
           {step === 2 && (
             <div className="text-center py-6">
               <div className="mb-8">
-                <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-inner">
+                <div className="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-inner">
                   <CreditCard size={32} />
                 </div>
                 <h3 className="text-2xl font-bold text-[#212121] mb-2">Registration Payment</h3>
@@ -373,11 +373,11 @@ export default function PartnerRegistrationModal({ isOpen, onClose, partnerType 
                   </div>
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-gray-500 font-medium">Processing Fee</span>
-                    <span className="text-emerald-600 font-bold uppercase tracking-tighter">Included</span>
+                    <span className="text-green-600 font-bold uppercase tracking-tighter">Included</span>
                   </div>
                   <div className="pt-4 border-t border-gray-200 flex justify-between items-center">
                     <span className="text-[#212121] font-black uppercase tracking-tight">Total Amount</span>
-                    <span className="text-3xl font-black text-emerald-600">₹{registrationFees[partnerType]?.amount}</span>
+                    <span className="text-3xl font-black text-green-600">₹{registrationFees[partnerType]?.amount}</span>
                   </div>
                 </div>
               </div>
@@ -437,13 +437,13 @@ export default function PartnerRegistrationModal({ isOpen, onClose, partnerType 
                   Welcome to the <span className="font-bold text-[#008000]">GoElectriQ</span> family. Your application has been received and your payment is verified.
                 </p>
                 
-                <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-4 flex items-center gap-4 text-left">
-                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-emerald-600 shadow-sm shrink-0">
+                <div className="bg-green-50 border border-green-100 rounded-xl p-4 flex items-center gap-4 text-left">
+                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-green-600 shadow-sm shrink-0">
                     <Clock size={20} />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-emerald-900">Review in Progress</p>
-                    <p className="text-xs text-emerald-700">Our team will verify your documents within 24-48 hours.</p>
+                    <p className="text-sm font-bold text-green-900">Review in Progress</p>
+                    <p className="text-xs text-green-700">Our team will verify your documents within 24-48 hours.</p>
                   </div>
                 </div>
 

@@ -27,9 +27,8 @@ import apiConfig from '../config/api.config.json';
 
 const StatusBadge = ({ children, type = 'emerald' }) => {
   const colors = {
-    emerald: 'bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20',
-    teal: 'bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20',
-    violet: 'bg-violet-50 text-violet-600 border-violet-100 dark:bg-violet-500/10 dark:text-violet-400 dark:border-violet-500/20',
+    emerald: 'bg-green-50 text-green-600 border-green-100 dark:bg-green-500/10 dark:text-emerald-400 dark:border-emerald-500/20',
+    green: 'bg-green-50 text-green-600 border-green-100 dark:bg-green-500/10 dark:text-green-400 dark:border-green-500/20',
     amber: 'bg-amber-50 text-amber-600 border-amber-100 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20',
   };
   return (
@@ -74,8 +73,8 @@ export default function DriverPartnerPage() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) return { ok: false, text: 'Invalid email node address.' };
     if (!formData.phone.trim()) return { ok: false, text: 'Contact matrix required.' };
-    const phoneRegex = new RegExp(`^[${apiConfig.driver.phoneStartDigits.join('')}]\\d{${apiConfig.driver.maxPhoneLength - 1}}$`);
-    if (!phoneRegex.test(formData.phone)) return { ok: false, text: 'Invalid communication channel.' };
+    const phoneRegex = /^(\+91|0)?[6-9]\d{9}$/;
+    if (!phoneRegex.test(formData.phone)) return { ok: false, text: 'Invalid contact number format.' };
     if (!formData.experience) return { ok: false, text: 'Experience telemetry required.' };
     if (!formData.licenseUpload) return { ok: false, text: 'Legal authorization document required.' };
     return { ok: true };
@@ -127,13 +126,13 @@ export default function DriverPartnerPage() {
         
         {/* ===== HERO SECTION ===== */}
         <div className="relative bg-[#022c22] rounded-[4rem] p-12 md:p-20 text-white overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[120px] -mr-48 -mt-48" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[100px] -ml-48 -mb-48" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-green-500/10 rounded-full blur-[120px] -mr-48 -mt-48" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-green-500/10 rounded-full blur-[100px] -ml-48 -mb-48" />
           
           <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Node Expansion</span>
               </div>
               <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
@@ -145,13 +144,13 @@ export default function DriverPartnerPage() {
               
               <div className="flex flex-wrap gap-4 mb-12">
                 <StatusBadge type="emerald">Weekly Payouts</StatusBadge>
-                <StatusBadge type="teal">Zero Fuel Cost</StatusBadge>
-                <StatusBadge type="violet">Flexible Grid</StatusBadge>
+                <StatusBadge type="emerald">Zero Fuel Cost</StatusBadge>
+                <StatusBadge type="green">Flexible Grid</StatusBadge>
               </div>
 
               <button
                 onClick={() => setShowModal(true)}
-                className="group px-12 py-6 bg-emerald-500 text-white rounded-3xl font-black text-xs uppercase tracking-[0.2em] hover:bg-emerald-600 transition-all shadow-xl shadow-emerald-500/20 active:scale-[0.98] flex items-center gap-4"
+                className="group px-12 py-6 bg-green-500 text-white rounded-3xl font-black text-xs uppercase tracking-[0.2em] hover:bg-emerald-600 transition-all shadow-xl shadow-emerald-500/20 active:scale-[0.98] flex items-center gap-4"
               >
                 Initiate Onboarding
                 <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -161,7 +160,7 @@ export default function DriverPartnerPage() {
             <div className="hidden lg:block relative">
               <div className="bg-white/5 backdrop-blur-3xl rounded-[3rem] p-10 border border-white/10">
                 <div className="flex items-center gap-4 mb-10">
-                  <div className="p-4 bg-emerald-500/20 text-emerald-400 rounded-2xl">
+                  <div className="p-4 bg-green-500/20 text-emerald-400 rounded-2xl">
                     <ShieldCheck size={32} />
                   </div>
                   <div>
@@ -199,7 +198,7 @@ export default function DriverPartnerPage() {
               sub: '8-10 Hours Operational',
               icon: Calendar,
               color: 'text-emerald-500',
-              bg: 'bg-emerald-50'
+              bg: 'bg-green-50'
             },
             { 
               title: 'Weekly Cycle', 
@@ -207,7 +206,7 @@ export default function DriverPartnerPage() {
               sub: '5-6 Days Active',
               icon: Zap,
               color: 'text-emerald-500',
-              bg: 'bg-emerald-50',
+              bg: 'bg-green-50',
               popular: true
             },
             { 
@@ -215,8 +214,8 @@ export default function DriverPartnerPage() {
               value: `₹${apiConfig.driver.earningsMonthly.min.toLocaleString()} - ₹${apiConfig.driver.earningsMonthly.max.toLocaleString()}`, 
               sub: 'Performance Optimized',
               icon: Award,
-              color: 'text-violet-500',
-              bg: 'bg-violet-50'
+              color: 'text-green-500',
+              bg: 'bg-green-50'
             }
           ].map((stat, idx) => (
             <motion.div
@@ -232,7 +231,7 @@ export default function DriverPartnerPage() {
                   <StatusBadge type="emerald">Optimal</StatusBadge>
                 </div>
               )}
-              <div className={`p-5 ${stat.bg} dark:bg-emerald-500/10 ${stat.color} dark:text-emerald-400 rounded-2xl w-fit mb-8`}>
+              <div className={`p-5 ${stat.bg} dark:bg-green-500/10 ${stat.color} dark:text-emerald-400 rounded-2xl w-fit mb-8`}>
                 <stat.icon size={28} />
               </div>
               <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">{stat.title}</p>
@@ -292,11 +291,11 @@ export default function DriverPartnerPage() {
               >
                 {/* Modal Header */}
                 <div className="bg-[#022c22] p-10 md:p-14 text-white relative">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                   <div className="relative z-10">
                     <div className="flex justify-between items-start mb-6">
                       <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full" />
+                        <div className="w-2 h-2 bg-green-500 rounded-full" />
                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Onboarding Initiation</span>
                       </div>
                       <button onClick={() => setShowModal(false)} className="p-2 hover:bg-white/10 rounded-xl transition-colors">
@@ -315,7 +314,7 @@ export default function DriverPartnerPage() {
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
                         className={`mb-10 p-5 rounded-2xl flex items-center gap-4 ${
-                          message.type === 'success' ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' : 'bg-rose-50 text-rose-600 border border-rose-100'
+                          message.type === 'success' ? 'bg-green-50 text-green-600 border border-green-100' : 'bg-rose-50 text-rose-600 border border-rose-100'
                         }`}
                       >
                         {message.type === 'success' ? <CheckCircle size={20} /> : <AlertCircle size={20} />}
@@ -418,12 +417,12 @@ export default function DriverPartnerPage() {
                         />
                         <label
                           htmlFor="licenseInput"
-                          className="flex flex-col items-center justify-center w-full py-12 bg-slate-50 dark:bg-slate-800 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-[2rem] cursor-pointer hover:border-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-500/5 transition-all group"
+                          className="flex flex-col items-center justify-center w-full py-12 bg-slate-50 dark:bg-slate-800 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-[2rem] cursor-pointer hover:border-emerald-500 hover:bg-green-50 dark:hover:bg-green-500/5 transition-all group"
                         >
                           {filePreview ? (
                             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center">
                               <img src={filePreview} alt="Auth Preview" className="max-h-40 mx-auto mb-6 rounded-2xl shadow-xl" />
-                              <p className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Document Secured</p>
+                              <p className="text-[10px] font-black text-green-600 dark:text-emerald-400 uppercase tracking-widest">Document Secured</p>
                             </motion.div>
                           ) : (
                             <div className="text-center">

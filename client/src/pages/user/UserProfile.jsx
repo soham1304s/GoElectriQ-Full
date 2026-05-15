@@ -193,7 +193,7 @@ export default function UserProfile() {
                   <Mail size={14} className="text-emerald-500" />
                   {user?.email}
                 </div>
-                <div className="flex items-center gap-2 px-4 py-1.5 bg-emerald-50 rounded-full border border-emerald-100 text-emerald-600 text-xs font-bold uppercase tracking-widest">
+                <div className="flex items-center gap-2 px-4 py-1.5 bg-green-50 rounded-full border border-green-100 text-green-600 text-xs font-bold uppercase tracking-widest">
                   <ShieldCheck size={14} />
                   Verified Partner
                 </div>
@@ -209,7 +209,7 @@ export default function UserProfile() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="bg-emerald-50 border border-emerald-100 p-4 rounded-3xl flex items-center gap-4 text-emerald-600 shadow-sm"
+              className="bg-green-50 border border-green-100 p-4 rounded-3xl flex items-center gap-4 text-green-600 shadow-sm"
             >
               <CheckCircle2 size={20} />
               <p className="font-bold text-sm">{successMessage}</p>
@@ -394,7 +394,7 @@ export default function UserProfile() {
         {/* Security Summary Footer */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white p-6 rounded-[2rem] border border-slate-100 flex items-center gap-5">
-            <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-500 shrink-0">
+            <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-emerald-500 shrink-0">
               <ShieldCheck size={24} />
             </div>
             <div>
@@ -403,7 +403,7 @@ export default function UserProfile() {
             </div>
           </div>
           <div className="bg-white p-6 rounded-[2rem] border border-slate-100 flex items-center gap-5">
-            <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-500 shrink-0">
+            <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-emerald-500 shrink-0">
               <Calendar size={24} />
             </div>
             <div>
@@ -414,14 +414,14 @@ export default function UserProfile() {
             </div>
           </div>
           <div className="bg-white p-6 rounded-[2rem] border border-slate-100 flex items-center gap-5">
-            <div className="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-500 shrink-0">
+            <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-500 shrink-0">
               <User size={24} />
             </div>
             <div>
               <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Profile Completeness</p>
               <div className="flex items-center gap-3">
                 <div className="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-emerald-500 rounded-full" style={{ width: '85%' }} />
+                  <div className="h-full bg-green-500 rounded-full" style={{ width: '85%' }} />
                 </div>
                 <p className="text-xs font-black text-slate-800 uppercase tracking-tight">85%</p>
               </div>

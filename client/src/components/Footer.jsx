@@ -51,7 +51,7 @@ const Footer = ({ darkMode }) => {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#022c22] hover:bg-emerald-500 hover:text-white transition-all duration-300"
+                  className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#022c22] hover:bg-green-500 hover:text-white transition-all duration-300"
                 >
                   <item.Icon className="w-5 h-5" />
                 </a>
@@ -120,15 +120,15 @@ const Footer = ({ darkMode }) => {
               isDarkMode ? 'text-slate-400' : 'text-slate-600'
             }`}>
               <p className="flex items-center justify-center sm:justify-start gap-2">
-                <span className="w-1 h-1 bg-emerald-500 rounded-full" />
+                <span className="w-1 h-1 bg-green-500 rounded-full" />
                 Jaipur, Rajasthan
               </p>
               <a href="tel:+918107649476" className="flex items-center justify-center sm:justify-start gap-2 hover:text-emerald-500 transition">
-                <span className="w-1 h-1 bg-emerald-500 rounded-full" />
+                <span className="w-1 h-1 bg-green-500 rounded-full" />
                 +91 81076 49476
               </a>
               <a href="mailto:info@goelectriq.com" className="flex items-center justify-center sm:justify-start gap-2 hover:text-emerald-500 transition">
-                <span className="w-1 h-1 bg-emerald-500 rounded-full" />
+                <span className="w-1 h-1 bg-green-500 rounded-full" />
                 info@goelectriq.com
               </a>
             </div>
@@ -140,7 +140,7 @@ const Footer = ({ darkMode }) => {
                 placeholder="Updates via email"
                 className="flex-1 px-4 py-2 bg-transparent outline-none text-xs font-bold"
               />
-              <button className="p-2.5 bg-emerald-500 text-white rounded-xl hover:bg-emerald-600 transition shadow-lg shadow-emerald-500/20">
+              <button className="p-2.5 bg-green-500 text-white rounded-xl hover:bg-emerald-600 transition shadow-lg shadow-emerald-500/20">
                 <Send size={18} />
               </button>
             </div>

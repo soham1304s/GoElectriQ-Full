@@ -6,6 +6,7 @@ import { useTheme } from '../context/ThemeContext.jsx';
 import { createTourBooking } from '../services/packageService.js';
 import ridePaymentService from '../services/ridePaymentService.js';
 import GoogleMapComponent from './GoogleMapComponent.jsx';
+import LocationPickerComponent from './LocationPickerComponent.jsx';
 
 export default function TourBookingModal({ isOpen, onClose, tourName, packagePrice, packageId, carTypes = [], pricing = {} }) {
   const navigate = useNavigate();
@@ -29,10 +30,10 @@ export default function TourBookingModal({ isOpen, onClose, tourName, packagePri
   // Map car selection to pricing fields: economy, premium
   const getPriceForCarType = (carType) => {
     const priceMap = {
-      economy: pricing?.economy || packagePrice,
-      premium: pricing?.premium || packagePrice,
+      economy: pricing?.economy ?? packagePrice,
+      premium: pricing?.premium ?? packagePrice,
     };
-    return priceMap[carType] || packagePrice;
+    return priceMap[carType] ?? packagePrice;
   };
 
   const selectedCarPrice = getPriceForCarType(selectedCar);
@@ -207,7 +208,7 @@ export default function TourBookingModal({ isOpen, onClose, tourName, packagePri
               >
                 <div className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-[#0f172a]'}`}>Economy</div>
                 <div className="text-[#67fc59] font-semibold mt-1">
-                  ₹{pricing?.economy || packagePrice}
+                  ₹{getPriceForCarType('economy')}
                 </div>
                 <div className={`text-xs ${theme === 'dark' ? 'text-[#9ca3af]' : 'text-[#64748b]'} mt-2`}>Compact & Affordable</div>
               </button>
@@ -223,7 +224,7 @@ export default function TourBookingModal({ isOpen, onClose, tourName, packagePri
               >
                 <div className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-[#0f172a]'}`}>Premium</div>
                 <div className="text-[#67fc59] font-semibold mt-1">
-                  ₹{pricing?.premium || packagePrice}
+                  ₹{getPriceForCarType('premium')}
                 </div>
                 <div className={`text-xs ${theme === 'dark' ? 'text-[#9ca3af]' : 'text-[#64748b]'} mt-2`}>Luxury & Spacious</div>
               </button>

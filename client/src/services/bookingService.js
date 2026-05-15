@@ -23,7 +23,7 @@ export const cancelBooking = async (id, reason) => {
 };
 
 export const getDriverBookings = async () => {
-  const { data } = await api.get('/driver/my-bookings');
+  const { data } = await api.get('/drivers/my-bookings');
   return data;
 };
 

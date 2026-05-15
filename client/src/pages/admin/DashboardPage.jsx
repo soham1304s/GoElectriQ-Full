@@ -79,7 +79,7 @@ const DashboardPage = () => {
       icon: Users,
       link: '/admin/users',
       color: 'text-emerald-500',
-      bg: 'bg-emerald-500/10',
+      bg: 'bg-green-500/10',
       trend: '+12.5%',
     },
     {
@@ -88,8 +88,8 @@ const DashboardPage = () => {
       subtitle: 'Operational Units',
       icon: Car,
       link: '/admin/driver-bookings',
-      color: 'text-blue-500',
-      bg: 'bg-blue-500/10',
+      color: 'text-emerald-500',
+      bg: 'bg-green-500/10',
       trend: '+8.2%',
     },
     {
@@ -98,8 +98,8 @@ const DashboardPage = () => {
       subtitle: 'System Wide',
       icon: Calendar,
       link: '/admin/rides',
-      color: 'text-violet-500',
-      bg: 'bg-violet-500/10',
+      color: 'text-green-500',
+      bg: 'bg-green-500/10',
       trend: '+23.1%',
     },
     {
@@ -121,12 +121,12 @@ const DashboardPage = () => {
       <div className="max-w-[1600px] mx-auto space-y-10 pb-20">
         {/* Dynamic System Header */}
         <div className="relative flex flex-col lg:flex-row lg:items-center justify-between gap-8 bg-[#022c22] rounded-[3rem] p-10 md:p-14 text-white overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] -mr-48 -mt-48" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] -ml-48 -mb-48" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-green-500/10 rounded-full blur-[120px] -mr-48 -mt-48" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-green-500/10 rounded-full blur-[120px] -ml-48 -mb-48" />
           
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">System Command Center</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-black tracking-tighter mb-4">
@@ -146,7 +146,7 @@ const DashboardPage = () => {
               onClick={() => setAutoRefresh(!autoRefresh)}
               className={`flex items-center gap-3 px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all ${
                 autoRefresh
-                  ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20'
+                  ? 'bg-green-500 text-white shadow-lg shadow-emerald-500/20'
                   : 'bg-slate-800 text-slate-400'
               }`}
             >
@@ -246,7 +246,7 @@ const DashboardPage = () => {
           </div>
 
           <div className="lg:col-span-4 bg-[#022c22] rounded-[3rem] shadow-2xl p-10 md:p-14 text-white relative overflow-hidden flex flex-col justify-between">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
             
             <div className="relative z-10">
               <h2 className="text-2xl font-black tracking-tight mb-2">Ecosystem Split</h2>
@@ -268,7 +268,7 @@ const DashboardPage = () => {
                       dataKey="value"
                     >
                       <Cell fill="#10b981" />
-                      <Cell fill="#3b82f6" />
+                      <Cell fill="#10b981" />
                     </Pie>
                     <Tooltip 
                       contentStyle={{borderRadius: '20px', border: 'none', backgroundColor: '#0f172a', color: '#fff'}}
@@ -285,14 +285,14 @@ const DashboardPage = () => {
             <div className="relative z-10 space-y-4">
               <div className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5">
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <div className="w-2 h-2 rounded-full bg-green-500" />
                   <span className="text-xs font-bold text-slate-400">Direct Rides</span>
                 </div>
                 <span className="text-sm font-black">{analytics?.rideBookings || 0}</span>
               </div>
               <div className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5">
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-blue-500" />
+                  <div className="w-2 h-2 rounded-full bg-green-500" />
                   <span className="text-xs font-bold text-slate-400">Curated Tours</span>
                 </div>
                 <span className="text-sm font-black">{analytics?.tourBookings || 0}</span>
@@ -337,11 +337,11 @@ const DashboardPage = () => {
                       </td>
                       <td className="px-10 py-6">
                         <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest ${
-                          ride.status === 'completed' ? 'bg-emerald-50 text-emerald-600' : 
+                          ride.status === 'completed' ? 'bg-green-50 text-green-600' : 
                           ride.status === 'cancelled' ? 'bg-rose-50 text-rose-600' : 'bg-amber-50 text-amber-600'
                         }`}>
                           <div className={`w-1.5 h-1.5 rounded-full ${
-                            ride.status === 'completed' ? 'bg-emerald-500' : 
+                            ride.status === 'completed' ? 'bg-green-500' : 
                             ride.status === 'cancelled' ? 'bg-rose-500' : 'bg-amber-500'
                           }`} />
                           {ride.status}
@@ -362,9 +362,9 @@ const DashboardPage = () => {
               <h3 className="text-lg font-black text-slate-900 mb-8 tracking-tight uppercase tracking-widest text-[10px] text-slate-400">System Shortcuts</h3>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { icon: ShieldCheck, label: 'Security', color: 'text-blue-500', bg: 'bg-blue-50', link: '/admin/settings' },
-                  { icon: Globe, label: 'Regional', color: 'text-emerald-500', bg: 'bg-emerald-50', link: '/admin/pricing' },
-                  { icon: Layers, label: 'Assets', color: 'text-violet-500', bg: 'bg-violet-50', link: '/admin/packages' },
+                  { icon: ShieldCheck, label: 'Security', color: 'text-emerald-500', bg: 'bg-green-50', link: '/admin/settings' },
+                  { icon: Globe, label: 'Regional', color: 'text-emerald-500', bg: 'bg-green-50', link: '/admin/pricing' },
+                  { icon: Layers, label: 'Assets', color: 'text-green-500', bg: 'bg-green-50', link: '/admin/packages' },
                   { icon: Bell, label: 'Alerts', color: 'text-amber-500', bg: 'bg-amber-50', link: '/admin/feedback' }
                 ].map((item, idx) => (
                   <Link key={idx} to={item.link} className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-3xl hover:bg-slate-100 transition-all group">
@@ -377,13 +377,13 @@ const DashboardPage = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-indigo-600 to-violet-700 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden group">
+            <div className="bg-gradient-to-br from-emerald-600 to-green-700 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16" />
               <div className="relative z-10">
                 <Zap size={32} className="text-emerald-400 mb-6" />
                 <h3 className="text-2xl font-black mb-2 tracking-tight">Active Enquiries</h3>
-                <p className="text-indigo-100 text-sm font-medium mb-8 leading-relaxed opacity-80">There are {analytics?.chargingEnquiries || 0} pending charging station enquiries requiring administrative review.</p>
-                <Link to="/admin/charging-bookings" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-indigo-600 rounded-2xl font-black text-xs uppercase tracking-widest hover:shadow-2xl transition-all">
+                <p className="text-green-50 text-sm font-medium mb-8 leading-relaxed opacity-80">There are {analytics?.chargingEnquiries || 0} pending charging station enquiries requiring administrative review.</p>
+                <Link to="/admin/charging-bookings" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-green-600 rounded-2xl font-black text-xs uppercase tracking-widest hover:shadow-2xl transition-all">
                   Process Queue
                   <ArrowRight size={16} />
                 </Link>

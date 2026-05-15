@@ -238,7 +238,7 @@ const PricingPage = () => {
                     {carRates.length}
                   </p>
                 </div>
-                <div className="bg-emerald-500/20 p-3 sm:p-4 rounded-lg">
+                <div className="bg-green-500/20 p-3 sm:p-4 rounded-lg">
                   <DollarSign className="text-emerald-500 h-6 w-6 sm:h-8 sm:w-8" />
                 </div>
               </div>
@@ -254,8 +254,8 @@ const PricingPage = () => {
                     ₹{getAverageRate().toFixed(2)}/km
                   </p>
                 </div>
-                <div className="bg-blue-500/20 p-3 sm:p-4 rounded-lg">
-                  <TrendingUp className="text-blue-500 h-6 w-6 sm:h-8 sm:w-8" />
+                <div className="bg-green-500/20 p-3 sm:p-4 rounded-lg">
+                  <TrendingUp className="text-emerald-500 h-6 w-6 sm:h-8 sm:w-8" />
                 </div>
               </div>
             </div>
@@ -270,8 +270,8 @@ const PricingPage = () => {
                     ₹{getTotalRevenue().toFixed(2)}
                   </p>
                 </div>
-                <div className="bg-purple-500/20 p-3 sm:p-4 rounded-lg">
-                  <DollarSign className="text-purple-500 h-6 w-6 sm:h-8 sm:w-8" />
+                <div className="bg-green-500/20 p-3 sm:p-4 rounded-lg">
+                  <DollarSign className="text-green-500 h-6 w-6 sm:h-8 sm:w-8" />
                 </div>
               </div>
             </div>
@@ -383,14 +383,14 @@ const PricingPage = () => {
                           <div className="flex gap-1 sm:gap-2">
                             <button
                               onClick={() => handleEdit(rate)}
-                              className="p-1.5 sm:p-2 rounded bg-blue-500 hover:bg-blue-600 text-white transition-colors"
+                              className="p-1.5 sm:p-2 rounded bg-green-500 hover:bg-emerald-600 text-white transition-colors"
                               title="Edit"
                             >
                               <Edit2 className="h-3 w-3 sm:h-4 sm:w-4" />
                             </button>
                             <button
                               onClick={() => handleRateAdjustment(10, 'increase', rate.id)}
-                              className="p-1.5 sm:p-2 rounded bg-emerald-500 hover:bg-emerald-600 text-white transition-colors"
+                              className="p-1.5 sm:p-2 rounded bg-green-500 hover:bg-emerald-600 text-white transition-colors"
                               title="Increase 10%"
                             >
                               <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -421,7 +421,7 @@ const PricingPage = () => {
               <div className="space-y-2 sm:space-y-3">
                 <button
                   onClick={() => handleRateAdjustment(5, 'increase')}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-medium transition-colors"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm rounded-lg bg-green-500 hover:bg-emerald-600 text-white font-medium transition-colors"
                 >
                   Increase All by 5%
                 </button>

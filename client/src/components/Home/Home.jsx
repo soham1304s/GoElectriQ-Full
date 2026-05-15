@@ -19,7 +19,6 @@ import {
   Plane,
   Moon,
   Sun,
-  User,
   Loader,
   Locate,
   X,
@@ -52,42 +51,7 @@ import MacBookShowcase from "./MacBookShowcase.jsx";
 import SEO from "../SEO.jsx";
 import { getImageUrl } from "../../utils/imageUrl";
 
-
-const DEFAULT_AVATAR = '/review/image.png';
 const AIRPORT_LOCATION = { latitude: 26.8289, longitude: 75.8056 }; // Jaipur International Airport
-
-const ReviewAvatar = ({ profileImage, name, darkMode }) => {
-  const [imageError, setImageError] = useState(false);
-  const [showDefault, setShowDefault] = useState(!profileImage);
-
-  return (
-    <div className="flex-shrink-0">
-      {!showDefault && profileImage ? (
-        <img
-          src={getImageUrl(profileImage)}
-          alt={name}
-          className="w-12 h-12 rounded-full object-cover border-2 border-emerald-200 dark:border-emerald-400/30"
-          onError={() => {
-            setShowDefault(true);
-            setImageError(true);
-          }}
-        />
-      ) : (
-        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center border-2 border-emerald-200 dark:border-emerald-400/30 overflow-hidden">
-          <img
-            src={DEFAULT_AVATAR}
-            alt="default"
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              e.target.style.display = 'none';
-              e.target.parentElement.innerHTML = '<User size={16} className="text-white" />';
-            }}
-          />
-        </div>
-      )}
-    </div>
-  );
-};
 
 const GoelectriqLanding = () => {
   const navigate = useNavigate();
@@ -976,11 +940,11 @@ const GoelectriqLanding = () => {
       </div>
       <div className="p-6 flex-1 flex flex-col">
         <div className="flex items-center gap-2 mb-3">
-          <span className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${darkMode ? "bg-gray-700 text-emerald-400" : "bg-emerald-50 text-emerald-700"}`}>
+          <span className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${darkMode ? "bg-gray-700 text-emerald-400" : "bg-green-50 text-green-700"}`}>
             <Clock size={12} />
             {typeof tour.duration === "object" ? `${tour.duration.days || 1}d` : "4h"}
           </span>
-          <span className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${darkMode ? "bg-gray-700 text-emerald-400" : "bg-emerald-50 text-emerald-700"}`}>
+          <span className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${darkMode ? "bg-gray-700 text-emerald-400" : "bg-green-50 text-green-700"}`}>
             <Zap size={12} /> EV
           </span>
         </div>
@@ -1035,13 +999,13 @@ const GoelectriqLanding = () => {
       </div>
       <div className="p-6 flex-1 flex flex-col">
         <div className="flex flex-wrap gap-2 mb-4">
-          <span className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${darkMode ? "bg-gray-700 text-emerald-400" : "bg-emerald-50 text-emerald-700"}`}>
+          <span className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${darkMode ? "bg-gray-700 text-emerald-400" : "bg-green-50 text-green-700"}`}>
             <Clock size={12} />
             {typeof tour.duration === "object" && (tour.duration?.days !== undefined || tour.duration?.hours !== undefined)
               ? `${tour.duration.days || 1}d ${tour.duration.hours || 0}h`
               : typeof tour.duration === "string" ? tour.duration : "2 Days"}
           </span>
-          <span className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${darkMode ? "bg-gray-700 text-emerald-400" : "bg-emerald-50 text-emerald-700"}`}>
+          <span className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${darkMode ? "bg-gray-700 text-emerald-400" : "bg-green-50 text-green-700"}`}>
             <UserCheck size={12} /> Group Tour
           </span>
         </div>
@@ -1284,19 +1248,19 @@ const GoelectriqLanding = () => {
         >
           {/* Background Decorative Elements */}
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-emerald-500/5 to-transparent pointer-events-none" />
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-green-500/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-[1360px] mx-auto px-4 md:px-12 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-8 items-center relative z-10">
             <div className="space-y-8 text-left animate-slideUpFade">
               <div
-                className={`inline-flex items-center ${darkMode ? "bg-emerald-900/30 text-emerald-400 border-emerald-800/50" : "bg-emerald-50 text-emerald-700 border-emerald-100"} px-4 py-2 rounded-full text-xs font-black tracking-widest border shadow-sm transition-all`}
+                className={`inline-flex items-center ${darkMode ? "bg-emerald-900/30 text-emerald-400 border-emerald-800/50" : "bg-green-50 text-green-700 border-green-100"} px-4 py-2 rounded-full text-xs font-black tracking-widest border shadow-sm transition-all`}
               >
                 <Zap size={14} className="mr-2 fill-current" /> 100% ELECTRIC. 0% EMISSION.
               </div>
 
               <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[1.1] tracking-tight">
-                Ride <span className="text-emerald-600">Green.</span> <br />
-                Ride <span className="text-emerald-600">Smart.</span>
+                Ride <span className="text-green-600">Green.</span> <br />
+                Ride <span className="text-green-600">Smart.</span>
               </h1>
 
               <p
@@ -1325,7 +1289,7 @@ const GoelectriqLanding = () => {
               <div className="flex flex-wrap gap-6 pt-6">
                 {[
                   { label: "Safe & Secure", icon: <Leaf size={16} />, color: "emerald" },
-                  { label: "Eco-Friendly", icon: <Zap size={16} />, color: "teal" },
+                  { label: "Eco-Friendly", icon: <Zap size={16} />, color: "emerald" },
                   { label: "Affordable Rates", icon: <Wallet size={16} />, color: "emerald" }
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2">
@@ -1351,11 +1315,11 @@ const GoelectriqLanding = () => {
         <section className={`px-4 md:px-12 py-20 md:py-32 relative overflow-hidden ${darkMode ? "bg-[#0f172a]" : "bg-slate-50/50"}`}>
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="flex flex-col items-center text-center mb-20">
-              <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+              <div className="inline-flex items-center gap-2 bg-green-500/10 text-green-600 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-4">
                 Our Expertise
               </div>
               <h2 className={`text-3xl sm:text-4xl md:text-6xl font-black ${darkMode ? "text-white" : "text-slate-900"} mb-6`}>
-                Premium <span className="text-emerald-600">Electric</span> Mobility
+                Premium <span className="text-green-600">Electric</span> Mobility
               </h2>
               <div className="w-24 h-1.5 bg-emerald-600 rounded-full mb-8" />
               <p className={`max-w-2xl text-lg font-medium ${darkMode ? "text-gray-400" : "text-slate-500"}`}>
@@ -1384,16 +1348,16 @@ const GoelectriqLanding = () => {
                 {
                   icon: <MapPin size={32} />,
                   title: "Local Ride",
-                  sub: "Silent, zero-emission city travel at your fingertips.",
-                  color: "indigo",
+                  sub: "Silent, zero-emission city travel at your fingertips.In one click.",
+                  color: "emerald",
                   path: "/local-ride",
-                  gradient: "from-indigo-500 to-purple-500"
+                  gradient: "from-emerald-500 to-green-500"
                 },
                 {
                   icon: <Navigation size={32} />,
                   title: "Intercity Ride",
                   sub: "Long-distance electric travel without the carbon footprint.",
-                  color: "teal",
+                  color: "emerald",
                   path: "/intercity-ride",
                   gradient: "from-emerald-400 to-emerald-600"
                 },
@@ -1403,7 +1367,7 @@ const GoelectriqLanding = () => {
                   onClick={() => navigate(item.path)}
                   className={`group relative p-6 sm:p-8 md:p-10 rounded-[2rem] md:rounded-[3rem] cursor-pointer transition-all duration-500 ${darkMode
                     ? "bg-slate-800/40 border-slate-700/50 hover:bg-slate-800 hover:border-emerald-500/30"
-                    : "bg-white border-slate-100 hover:border-emerald-200 shadow-2xl shadow-slate-200/40 hover:shadow-emerald-200/20"
+                    : "bg-white border-slate-100 hover:border-green-200 shadow-2xl shadow-slate-200/40 hover:shadow-emerald-200/20"
                     } border`}
                 >
                   <div className={`w-20 h-20 rounded-[1.8rem] mb-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 bg-emerald-600 text-white shadow-lg`}>
@@ -1415,7 +1379,7 @@ const GoelectriqLanding = () => {
                   <p className={`text-base font-medium leading-relaxed mb-8 ${darkMode ? "text-gray-400" : "text-slate-500"}`}>
                     {item.sub}
                   </p>
-                  <div className="flex items-center text-sm font-black text-emerald-600 group-hover:gap-4 transition-all duration-300">
+                  <div className="flex items-center text-sm font-black text-green-600 group-hover:gap-4 transition-all duration-300">
                     Book Now <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
                   </div>
 
@@ -1435,11 +1399,11 @@ const GoelectriqLanding = () => {
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-10 gap-4">
             <div>
-              <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-4">
+              <div className="inline-flex items-center gap-2 bg-green-500/10 text-green-600 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-4">
                 Spiritual Journeys
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white">
-                Temple Tour <span className="text-emerald-600">Packages</span>
+                Temple Tour <span className="text-green-600">Packages</span>
               </h2>
               <p
                 className={`${darkMode ? "text-gray-400" : "text-gray-500"} mt-2 text-sm md:text-base transition-colors duration-300`}
@@ -1450,7 +1414,7 @@ const GoelectriqLanding = () => {
             <button
               type="button"
               onClick={() => navigate('/tours?type=temple_tour')}
-              className="flex items-center text-sm font-bold text-emerald-600 hover:text-emerald-600 transition gap-2 cursor-pointer"
+              className="flex items-center text-sm font-bold text-green-600 hover:text-green-600 transition gap-2 cursor-pointer"
             >
               View all packages <ChevronRight size={18} />
             </button>
@@ -1458,7 +1422,7 @@ const GoelectriqLanding = () => {
 
           {loadingTours ? (
             <div className="flex items-center justify-center min-h-64">
-              <Loader size={40} className="animate-spin text-emerald-600" />
+              <Loader size={40} className="animate-spin text-green-600" />
             </div>
           ) : toursError ? (
             <div
@@ -1544,11 +1508,11 @@ const GoelectriqLanding = () => {
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-10 gap-4">
             <div>
-              <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-4">
+              <div className="inline-flex items-center gap-2 bg-green-500/10 text-green-600 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-4">
                 Discover Rajasthan
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white">
-                Travel Tour <span className="text-emerald-600">Packages</span>
+                Travel Tour <span className="text-green-600">Packages</span>
               </h2>
               <p
                 className={`${darkMode ? "text-gray-400" : "text-gray-500"} mt-2 text-sm md:text-base transition-colors duration-300`}
@@ -1560,7 +1524,7 @@ const GoelectriqLanding = () => {
             <button
               type="button"
               onClick={() => navigate('/tours?type=travel_tour')}
-              className="flex items-center text-sm font-bold text-emerald-600 hover:text-emerald-600 transition gap-2 cursor-pointer"
+              className="flex items-center text-sm font-bold text-green-600 hover:text-green-600 transition gap-2 cursor-pointer"
             >
               View all packages <ChevronRight size={18} />
             </button>
@@ -1568,7 +1532,7 @@ const GoelectriqLanding = () => {
 
           {loadingTravelTours ? (
             <div className="flex items-center justify-center min-h-64">
-              <Loader size={40} className="animate-spin text-emerald-600" />
+              <Loader size={40} className="animate-spin text-green-600" />
             </div>
           ) : travelToursError ? (
             <div
@@ -1711,7 +1675,7 @@ const GoelectriqLanding = () => {
                   </span>
                   {selectedTourDetails.distance && (
                     <span className={`${darkMode ? "bg-gray-800" : "bg-gray-100"} px-4 py-2 rounded-full flex items-center gap-2`}>
-                      <Navigation size={16} className="text-purple-500" />
+                      <Navigation size={16} className="text-green-500" />
                       <MapPin size={14} /> {selectedTourDetails.distance} km
                     </span>
                   )}
@@ -1724,17 +1688,17 @@ const GoelectriqLanding = () => {
                 </div>
 
                 {/* Pricing Details - Compact */}
-                <div className={`p-3 rounded-lg border-2 ${darkMode ? "bg-gray-800/40 border-emerald-500/30" : "bg-emerald-50 border-emerald-200"}`}>
+                <div className={`p-3 rounded-lg border-2 ${darkMode ? "bg-gray-800/40 border-emerald-500/30" : "bg-green-50 border-green-200"}`}>
                   <div className="grid grid-cols-2 gap-2">
-                    <div className={`text-center p-3 rounded-lg ${darkMode ? "bg-emerald-900/30" : "bg-white"} border ${darkMode ? "border-emerald-500/40" : "border-emerald-300"}`}>
-                      <p className={`text-xs font-semibold ${darkMode ? "text-emerald-300" : "text-emerald-700"} mb-1 flex items-center gap-1`}><Car size={12} /> Economy</p>
-                      <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg">
+                    <div className={`text-center p-3 rounded-lg ${darkMode ? "bg-emerald-900/30" : "bg-white"} border ${darkMode ? "border-emerald-500/40" : "border-green-300"}`}>
+                      <p className={`text-xs font-semibold ${darkMode ? "text-emerald-300" : "text-green-700"} mb-1 flex items-center gap-1`}><Car size={12} /> Economy</p>
+                      <p className="font-bold text-green-600 dark:text-emerald-400 text-lg">
                         ₹{selectedTourDetails.pricing?.economy || selectedTourDetails.basePrice || 0}
                       </p>
                     </div>
-                    <div className={`text-center p-3 rounded-lg ${darkMode ? "bg-emerald-900/30" : "bg-white"} border ${darkMode ? "border-emerald-500/40" : "border-emerald-300"}`}>
-                      <p className={`text-xs font-semibold ${darkMode ? "text-emerald-300" : "text-emerald-700"} mb-1 flex items-center gap-1`}><Sparkles size={12} /> Premium</p>
-                      <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg">
+                    <div className={`text-center p-3 rounded-lg ${darkMode ? "bg-emerald-900/30" : "bg-white"} border ${darkMode ? "border-emerald-500/40" : "border-green-300"}`}>
+                      <p className={`text-xs font-semibold ${darkMode ? "text-emerald-300" : "text-green-700"} mb-1 flex items-center gap-1`}><Sparkles size={12} /> Premium</p>
+                      <p className="font-bold text-green-600 dark:text-emerald-400 text-lg">
                         ₹{selectedTourDetails.pricing?.premium || selectedTourDetails.basePrice || 0}
                       </p>
                     </div>
@@ -1743,8 +1707,8 @@ const GoelectriqLanding = () => {
 
                 {/* Short Description */}
                 {selectedTourDetails.shortDescription && (
-                  <div className={`p-5 rounded-xl ${darkMode ? "bg-emerald-900/20" : "bg-emerald-50"}`}>
-                    <h4 className={`font-bold text-base mb-3 ${darkMode ? "text-emerald-300" : "text-emerald-700"} flex items-center gap-2`}><Sparkles size={18} /> Overview</h4>
+                  <div className={`p-5 rounded-xl ${darkMode ? "bg-emerald-900/20" : "bg-green-50"}`}>
+                    <h4 className={`font-bold text-base mb-3 ${darkMode ? "text-emerald-300" : "text-green-700"} flex items-center gap-2`}><Sparkles size={18} /> Overview</h4>
                     <p className={`${darkMode ? "text-gray-300" : "text-gray-700"} text-sm leading-relaxed italic`}>
                       {selectedTourDetails.shortDescription}
                     </p>
@@ -1790,7 +1754,7 @@ const GoelectriqLanding = () => {
                       {selectedTourDetails.itinerary.map((item, idx) => (
                         <div key={idx} className={`p-4 rounded-lg ${darkMode ? "bg-gray-700/50" : "bg-white"} border-l-4 border-emerald-500`}>
                           <div className="flex justify-between items-start gap-2">
-                            <h5 className={`font-semibold text-sm ${darkMode ? "text-emerald-300" : "text-emerald-700"}`}>Day {item.day}</h5>
+                            <h5 className={`font-semibold text-sm ${darkMode ? "text-emerald-300" : "text-green-700"}`}>Day {item.day}</h5>
                             <span className={`text-xs px-2 py-1 rounded ${darkMode ? "bg-gray-600" : "bg-gray-200"}`}>{item.title}</span>
                           </div>
                           {item.description && (
@@ -1799,7 +1763,7 @@ const GoelectriqLanding = () => {
                           {item.activities && item.activities.length > 0 && (
                             <div className="mt-2 flex flex-wrap gap-2">
                               {item.activities.map((activity, aidx) => (
-                                <span key={aidx} className={`text-xs px-2 py-1 rounded-full ${darkMode ? "bg-emerald-900/40 text-emerald-300" : "bg-emerald-100 text-emerald-700"}`}>
+                                <span key={aidx} className={`text-xs px-2 py-1 rounded-full ${darkMode ? "bg-emerald-900/40 text-emerald-300" : "bg-green-100 text-green-700"}`}>
                                   {activity}
                                 </span>
                               ))}
@@ -1813,12 +1777,12 @@ const GoelectriqLanding = () => {
 
                 {/* Features */}
                 {selectedTourDetails.features && selectedTourDetails.features.length > 0 && (
-                  <div className={`p-5 rounded-xl ${darkMode ? "bg-purple-900/20" : "bg-purple-50"}`}>
-                    <h4 className={`font-bold text-base mb-4 text-purple-600 dark:text-purple-400 flex items-center gap-2`}><Star size={18} /> Special Features</h4>
+                  <div className={`p-5 rounded-xl ${darkMode ? "bg-green-900/20" : "bg-green-50"}`}>
+                    <h4 className={`font-bold text-base mb-4 text-green-600 dark:text-green-400 flex items-center gap-2`}><Star size={18} /> Special Features</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                       {selectedTourDetails.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center gap-2">
-                          <Check size={18} className="text-purple-500 flex-shrink-0" />
+                          <Check size={18} className="text-green-500 flex-shrink-0" />
                           <span className={`text-sm ${darkMode ? "text-gray-300" : "text-gray-700"}`}>{feature}</span>
                         </div>
                       ))}
@@ -1829,8 +1793,8 @@ const GoelectriqLanding = () => {
                 {/* Inclusions & Exclusions */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {selectedTourDetails.inclusions && selectedTourDetails.inclusions.length > 0 && (
-                    <div className={`p-5 rounded-xl ${darkMode ? "bg-emerald-900/20" : "bg-emerald-50"}`}>
-                      <h4 className={`font-bold text-base mb-3 text-emerald-600 dark:text-emerald-400 flex items-center gap-2`}><CheckCircle size={18} /> Inclusions</h4>
+                    <div className={`p-5 rounded-xl ${darkMode ? "bg-emerald-900/20" : "bg-green-50"}`}>
+                      <h4 className={`font-bold text-base mb-3 text-green-600 dark:text-emerald-400 flex items-center gap-2`}><CheckCircle size={18} /> Inclusions</h4>
                       <ul className="space-y-2">
                         {selectedTourDetails.inclusions.map((item, idx) => (
                           <li key={idx} className="flex items-start gap-2">
@@ -1860,7 +1824,7 @@ const GoelectriqLanding = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {selectedTourDetails.pickupLocations && selectedTourDetails.pickupLocations.length > 0 && (
                     <div className={`p-5 rounded-xl ${darkMode ? "bg-gray-800/60" : "bg-gray-50"}`}>
-                      <h4 className={`font-bold text-base mb-3 ${darkMode ? "text-emerald-300" : "text-emerald-700"}`}>Pickup Locations</h4>
+                      <h4 className={`font-bold text-base mb-3 ${darkMode ? "text-emerald-300" : "text-green-700"}`}>Pickup Locations</h4>
                       <ul className="space-y-2">
                         {selectedTourDetails.pickupLocations.map((location, idx) => (
                           <li key={idx} className="flex items-center gap-2">
@@ -1988,7 +1952,7 @@ const GoelectriqLanding = () => {
               {/* Header */}
               <div className={`sticky top-0 px-6 py-4 flex items-center justify-between border-b ${darkMode ? "bg-gray-800 border-gray-700" : "bg-slate-50 border-slate-200"}`}>
                 <div className="flex items-center gap-3">
-                  <Plane className={`${darkMode ? "text-emerald-400" : "text-emerald-600"}`} size={28} />
+                  <Plane className={`${darkMode ? "text-emerald-400" : "text-green-600"}`} size={28} />
                   <div>
                     <h2 className={`text-xl font-bold ${darkMode ? "text-white" : "text-slate-900"}`}>
                       Complete Airport Booking
@@ -2019,7 +1983,7 @@ const GoelectriqLanding = () => {
                   <p className={`text-sm font-semibold mb-2 ${darkMode ? "text-gray-300" : "text-slate-700"}`}>
                     {airportRideType === "pickup" ? <><MapPin size={16} /> Pickup from Airport → Destination:</> : <><MapPin size={16} /> Pickup Location → Airport:</>}
                   </p>
-                  <p className={`text-lg font-bold ${darkMode ? "text-emerald-400" : "text-emerald-600"}`}>
+                  <p className={`text-lg font-bold ${darkMode ? "text-emerald-400" : "text-green-600"}`}>
                     {airportLocation}
                   </p>
                 </div>
@@ -2066,7 +2030,7 @@ const GoelectriqLanding = () => {
                   </label>
                   {carsLoading ? (
                     <div className="flex items-center justify-center py-8">
-                      <Loader size={32} className={`animate-spin ${darkMode ? "text-emerald-400" : "text-emerald-600"}`} />
+                      <Loader size={32} className={`animate-spin ${darkMode ? "text-emerald-400" : "text-green-600"}`} />
                     </div>
                   ) : availableCarTypes.length === 0 ? (
                     <div className={`text-center py-6 ${darkMode ? "text-gray-400" : "text-slate-600"}`}>
@@ -2084,8 +2048,8 @@ const GoelectriqLanding = () => {
                             onClick={() => setSelectedCarType(car.id)}
                             className={`p-5 rounded-xl border-2 text-left transition ${selectedCarType === car.id
                               ? darkMode
-                                ? "border-emerald-500 bg-emerald-500/15"
-                                : "border-emerald-400 bg-emerald-50"
+                                ? "border-emerald-500 bg-green-500/15"
+                                : "border-emerald-400 bg-green-50"
                               : darkMode
                                 ? "border-slate-700 bg-slate-800/50 hover:border-slate-600"
                                 : "border-slate-300 bg-white hover:border-slate-400"
@@ -2093,7 +2057,7 @@ const GoelectriqLanding = () => {
                           >
                             <div className="flex justify-between items-start mb-3 gap-2">
                               <div className="flex-1">
-                                <p className={`font-bold text-base ${selectedCarType === car.id ? (darkMode ? "text-emerald-300" : "text-emerald-700") : (darkMode ? "text-white" : "text-slate-900")}`}>
+                                <p className={`font-bold text-base ${selectedCarType === car.id ? (darkMode ? "text-emerald-300" : "text-green-700") : (darkMode ? "text-white" : "text-slate-900")}`}>
                                   {car.name}
                                 </p>
                                 {car.description && (
@@ -2105,7 +2069,7 @@ const GoelectriqLanding = () => {
                               <span className={`text-sm font-bold px-3 py-1.5 rounded-lg whitespace-nowrap ${selectedCarType === car.id
                                 ? darkMode
                                   ? "bg-emerald-400/30 text-emerald-200"
-                                  : "bg-emerald-200 text-emerald-800"
+                                  : "bg-green-200 text-green-800"
                                 : darkMode
                                   ? "bg-slate-700 text-slate-300"
                                   : "bg-slate-200 text-slate-700"
@@ -2114,11 +2078,11 @@ const GoelectriqLanding = () => {
                               </span>
                             </div>
                             <div className="flex items-center gap-3 text-sm">
-                              <span className={`flex items-center gap-1 ${selectedCarType === car.id ? (darkMode ? "text-emerald-300/80" : "text-emerald-600/80") : (darkMode ? "text-gray-400" : "text-slate-600")}`}>
+                              <span className={`flex items-center gap-1 ${selectedCarType === car.id ? (darkMode ? "text-emerald-300/80" : "text-green-600/80") : (darkMode ? "text-gray-400" : "text-slate-600")}`}>
                                 <Users size={16} /> {car.passengers} Passengers
                               </span>
                               {car.capacity && (
-                                <span className={`flex items-center gap-1 ${selectedCarType === car.id ? (darkMode ? "text-emerald-300/80" : "text-emerald-600/80") : (darkMode ? "text-gray-400" : "text-slate-600")}`}>
+                                <span className={`flex items-center gap-1 ${selectedCarType === car.id ? (darkMode ? "text-emerald-300/80" : "text-green-600/80") : (darkMode ? "text-gray-400" : "text-slate-600")}`}>
                                   <Briefcase size={16} /> {car.capacity}
                                 </span>
                               )}
@@ -2129,7 +2093,7 @@ const GoelectriqLanding = () => {
                                   <span key={idx} className={`text-xs px-2 py-1 rounded-lg ${selectedCarType === car.id
                                     ? darkMode
                                       ? "bg-emerald-400/20 text-emerald-300"
-                                      : "bg-emerald-100 text-emerald-700"
+                                      : "bg-green-100 text-green-700"
                                     : darkMode
                                       ? "bg-slate-700/50 text-slate-300"
                                       : "bg-slate-100 text-slate-600"
@@ -2149,7 +2113,7 @@ const GoelectriqLanding = () => {
                 {/* Fare Summary */}
                 {selectedCarType && airportPricing[selectedCarType] && (
                   <div className={`p-5 rounded-xl border ${darkMode ? "bg-slate-800/50 border-slate-700" : "bg-slate-50 border-slate-300"}`}>
-                    <h3 className={`text-base font-bold mb-4 ${darkMode ? "text-emerald-300" : "text-emerald-700"}`}>
+                    <h3 className={`text-base font-bold mb-4 ${darkMode ? "text-emerald-300" : "text-green-700"}`}>
                       <Wallet size={18} /> Fare Breakdown
                     </h3>
                     <div className="space-y-3 text-sm">
@@ -2180,13 +2144,13 @@ const GoelectriqLanding = () => {
                           <>
                             <div className="flex justify-between items-center">
                               <span className={`font-bold ${darkMode ? "text-white" : "text-slate-900"}`}>Total Fare</span>
-                              <span className={`text-lg font-bold ${darkMode ? "text-emerald-400" : "text-emerald-600"}`}>
+                              <span className={`text-lg font-bold ${darkMode ? "text-emerald-400" : "text-green-600"}`}>
                                 ₹{totalFare.toLocaleString('en-IN')}
                               </span>
                             </div>
 
-                            <div className={`mt-3 p-3 rounded-lg ${darkMode ? "bg-emerald-500/10 border border-emerald-500/30" : "bg-emerald-50 border border-emerald-200"}`}>
-                              <p className={`text-xs font-semibold mb-2 ${darkMode ? "text-emerald-300" : "text-emerald-700"}`}>
+                            <div className={`mt-3 p-3 rounded-lg ${darkMode ? "bg-green-500/10 border border-emerald-500/30" : "bg-green-50 border border-green-200"}`}>
+                              <p className={`text-xs font-semibold mb-2 ${darkMode ? "text-emerald-300" : "text-green-700"}`}>
                                 20% Advance Payment Model
                               </p>
                               <div className="flex justify-between text-xs">
@@ -2266,7 +2230,7 @@ const GoelectriqLanding = () => {
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col items-center text-center mb-20">
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-4">
-                Your Journey in <span className="text-emerald-600">3 Simple Steps</span>
+                Your Journey in <span className="text-green-600">3 Simple Steps</span>
               </h2>
               <p className={`max-w-2xl ${darkMode ? "text-gray-400" : "text-slate-500"} font-medium`}>
                 We've streamlined the booking process to ensure you can get on the road in under 2 minutes.
@@ -2282,7 +2246,7 @@ const GoelectriqLanding = () => {
                 return (
                   <div key={i} className="relative z-10 flex flex-col items-center text-center group">
                     <div className={`w-24 h-24 rounded-full ${darkMode ? "bg-gray-700" : "bg-white"} shadow-2xl flex items-center justify-center mb-8 border-4 ${darkMode ? "border-emerald-500/20" : "border-emerald-50"} transition-all duration-500 group-hover:scale-110 group-hover:border-emerald-500`}>
-                      <Icon size={40} className="text-emerald-600" />
+                      <Icon size={40} className="text-green-600" />
                       <div className="absolute -top-2 -right-2 w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-full flex items-center justify-center font-black text-sm shadow-lg">
                         {item.step}
                       </div>
@@ -2303,13 +2267,13 @@ const GoelectriqLanding = () => {
           id="reviews"
           className={`py-16 md:py-20 px-4 md:px-12 ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-emerald-50 via-emerald-50 to-emerald-100"} transition-colors duration-300`}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-12 md:mb-16 text-emerald-600">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-12 md:mb-16 text-green-600">
             Traveler Reviews
           </h2>
 
           {loadingReviews ? (
             <div className="flex items-center justify-center min-h-64">
-              <Loader size={40} className="animate-spin text-emerald-600" />
+              <Loader size={40} className="animate-spin text-green-600" />
             </div>
           ) : reviewsError ? (
             <div
@@ -2345,20 +2309,17 @@ const GoelectriqLanding = () => {
                   >
                     "{review.feedback}"
                   </p>
-                  <div className="flex items-center gap-3">
-                    <ReviewAvatar profileImage={review.profileImage} name={review.name} darkMode={darkMode} />
-                    <div>
-                      <h5
-                        className={`font-bold text-sm md:text-base ${darkMode ? "text-gray-100" : ""} transition-colors duration-300`}
-                      >
-                        {review.name}
-                      </h5>
-                      <p
-                        className={`text-xs md:text-sm ${darkMode ? "text-gray-400" : "text-gray-500"} transition-colors duration-300`}
-                      >
-                        {new Date(review.createdAt).toLocaleDateString()}
-                      </p>
-                    </div>
+                  <div>
+                    <h5
+                      className={`font-bold text-sm md:text-base ${darkMode ? "text-gray-100" : "text-slate-900"} transition-colors duration-300`}
+                    >
+                      {review.name}
+                    </h5>
+                    <p
+                      className={`text-xs md:text-sm ${darkMode ? "text-gray-400" : "text-gray-500"} transition-colors duration-300`}
+                    >
+                      {new Date(review.createdAt).toLocaleDateString()}
+                    </p>
                   </div>
                   <div
                     className={`absolute top-6 right-6 opacity-30 ${darkMode ? "text-gray-600" : "text-gray-100"} transition-colors duration-300`}

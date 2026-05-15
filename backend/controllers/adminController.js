@@ -1299,7 +1299,7 @@ export const completeRideBooking = async (req, res) => {
 export const collectRemainingPayment = async (req, res) => {
   try {
     const { id } = req.params;
-    const { paymentMethod = 'cash', notes = '', paidAmount } = req.body;
+    const { paymentMethod = 'cash', notes = '', paidAmount, razorpayPaymentId } = req.body;
     const adminId = req.user.id;
 
     const booking = await Booking.findById(id)
@@ -1346,6 +1346,7 @@ export const collectRemainingPayment = async (req, res) => {
       lastPaymentAmount: collectAmount,
       collectedBy: adminId,
       collectionNotes: notes,
+      razorpayPaymentId: razorpayPaymentId || booking.paymentDetails?.razorpayPaymentId
     };
 
     await booking.save();
@@ -1353,13 +1354,14 @@ export const collectRemainingPayment = async (req, res) => {
     // Create payment record
     const payment = new Payment({
       booking: booking._id,
-      user: booking.user._id,
+      user: booking.user?._id,
       amount: collectAmount,
       currency: 'INR',
       paymentMethod: paymentMethod,
       paymentType: 'ride_booking',
       status: 'success',
-      transactionId: `MANUAL_${booking.bookingId}_${Date.now()}`,
+      razorpayPaymentId: razorpayPaymentId,
+      transactionId: razorpayPaymentId || `MANUAL_${booking.bookingId}_${Date.now()}`,
       paidAt: new Date(),
       paymentDetails: {
         method: paymentMethod,

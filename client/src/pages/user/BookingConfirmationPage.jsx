@@ -58,7 +58,7 @@ export default function BookingConfirmationPage() {
     const fetchBooking = async () => {
       try {
         let bookingId = params.bookingId;
-        
+
         // If no bookingId in params, try to get from query string (?id=...)
         if (!bookingId) {
           const queryParams = new URLSearchParams(location.search);
@@ -251,9 +251,9 @@ export default function BookingConfirmationPage() {
         title: "Ride Completed",
         icon: CheckCircle,
         bgColor: "from-emerald-50 to-emerald-50",
-        borderColor: "border-emerald-200",
+        borderColor: "border-green-200",
         badgeColor: "bg-emerald-600",
-        textColor: "text-emerald-900",
+        textColor: "text-green-900",
         badgeText: "text-white",
         message: "Thank you for riding with us!",
         iconColor: "text-white",
@@ -283,10 +283,10 @@ export default function BookingConfirmationPage() {
       ongoing: {
         title: "Ride in Progress",
         icon: AlertCircle,
-        bgColor: "from-purple-50 to-indigo-50",
-        borderColor: "border-purple-200",
-        badgeColor: "bg-purple-600",
-        textColor: "text-purple-900",
+        bgColor: "from-emerald-50 to-green-50",
+        borderColor: "border-green-200",
+        badgeColor: "bg-green-600",
+        textColor: "text-green-900",
         badgeText: "text-white",
         message: "Your ride is currently on the way!",
         iconColor: "text-white",
@@ -306,7 +306,7 @@ export default function BookingConfirmationPage() {
       completed: "from-emerald-600 to-emerald-600",
       cancelled: "from-red-600 to-rose-600",
       pending: "from-yellow-600 to-amber-600",
-      ongoing: "from-purple-600 to-indigo-600",
+      ongoing: "from-emerald-600 to-green-600",
     };
     return colors[status] || colors.pending;
   };
@@ -316,10 +316,10 @@ export default function BookingConfirmationPage() {
     const status = booking.status?.toLowerCase() || "pending";
     const colors = {
       confirmed: "bg-green-50 hover:bg-green-100",
-      completed: "bg-emerald-50 hover:bg-emerald-100",
+      completed: "bg-green-50 hover:bg-green-100",
       cancelled: "bg-red-50 hover:bg-red-100",
       pending: "bg-yellow-50 hover:bg-yellow-100",
-      ongoing: "bg-purple-50 hover:bg-purple-100",
+      ongoing: "bg-green-50 hover:bg-green-100",
     };
     return colors[status] || colors.pending;
   };
@@ -329,10 +329,10 @@ export default function BookingConfirmationPage() {
     const status = booking.status?.toLowerCase() || "pending";
     const colors = {
       confirmed: "text-green-600",
-      completed: "text-emerald-600",
+      completed: "text-green-600",
       cancelled: "text-red-600",
       pending: "text-yellow-600",
-      ongoing: "text-purple-600",
+      ongoing: "text-green-600",
     };
     return colors[status] || colors.pending;
   };
@@ -346,8 +346,8 @@ export default function BookingConfirmationPage() {
           message?.includes("Redirecting") && (
             <div
               className={`mb-6 p-4 rounded-lg border-2 ${booking.status?.toLowerCase() === "cancelled"
-                  ? "bg-red-50 border-red-200 text-red-700"
-                  : "bg-emerald-50 border-emerald-200 text-emerald-700"
+                ? "bg-red-50 border-red-200 text-red-700"
+                : "bg-green-50 border-green-200 text-green-700"
                 }`}
             >
               <div className="flex items-center gap-3">
@@ -371,7 +371,7 @@ export default function BookingConfirmationPage() {
         {/* Success Header - Professional Invoice Style */}
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden mb-8 print:shadow-none print:border-gray-200">
           <div className={`h-2 bg-gradient-to-r ${getTableHeaderColor()}`} />
-          
+
           <div className="p-8">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
               <div className="flex items-center gap-5">
@@ -387,7 +387,7 @@ export default function BookingConfirmationPage() {
                   </h1>
                   <div className="flex items-center gap-2 mt-1 text-gray-500">
                     <span className="text-sm font-medium">Booking ID:</span>
-                    <span className="text-sm font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">
+                    <span className="text-sm font-mono font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded">
                       {booking.bookingId}
                     </span>
                   </div>
@@ -414,18 +414,18 @@ export default function BookingConfirmationPage() {
 
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-gray-50 rounded-2xl border border-gray-100">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-emerald-600">
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-green-600">
                   <ShieldCheck size={20} />
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Payment Status</p>
-                  <p className={`text-sm font-bold ${booking.paymentStatus?.toLowerCase() === 'paid' ? 'text-emerald-600' : 'text-orange-600'}`}>
+                  <p className={`text-sm font-bold ${booking.paymentStatus?.toLowerCase() === 'paid' ? 'text-green-600' : 'text-orange-600'}`}>
                     {booking.paymentStatus?.toUpperCase() || 'PENDING'}
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-emerald-600">
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-green-600">
                   <Calendar size={20} />
                 </div>
                 <div>
@@ -436,7 +436,7 @@ export default function BookingConfirmationPage() {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-emerald-600">
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-green-600">
                   <MapPin size={20} />
                 </div>
                 <div>
@@ -474,16 +474,16 @@ export default function BookingConfirmationPage() {
                   <td className="px-6 py-4">
                     <span
                       className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${booking.status?.toLowerCase() === "confirmed"
+                        ? "bg-green-100 text-green-700"
+                        : booking.status?.toLowerCase() === "completed"
                           ? "bg-green-100 text-green-700"
-                          : booking.status?.toLowerCase() === "completed"
-                            ? "bg-emerald-100 text-emerald-700"
-                            : booking.status?.toLowerCase() === "cancelled"
-                              ? "bg-red-100 text-red-700"
-                              : booking.status?.toLowerCase() === "pending"
-                                ? "bg-yellow-100 text-yellow-700"
-                                : booking.status?.toLowerCase() === "ongoing"
-                                  ? "bg-purple-100 text-purple-700"
-                                  : "bg-gray-100 text-gray-700"
+                          : booking.status?.toLowerCase() === "cancelled"
+                            ? "bg-red-100 text-red-700"
+                            : booking.status?.toLowerCase() === "pending"
+                              ? "bg-yellow-100 text-yellow-700"
+                              : booking.status?.toLowerCase() === "ongoing"
+                                ? "bg-green-100 text-green-700"
+                                : "bg-gray-100 text-gray-700"
                         }`}
                     >
                       {booking.status?.toLowerCase() === "confirmed" && "●"}
@@ -511,8 +511,8 @@ export default function BookingConfirmationPage() {
                   <td className="px-6 py-4">
                     <span
                       className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${booking.paymentStatus?.toLowerCase() === "paid"
-                          ? "bg-green-100 text-green-700"
-                          : "bg-yellow-100 text-yellow-700"
+                        ? "bg-green-100 text-green-700"
+                        : "bg-yellow-100 text-yellow-700"
                         }`}
                     >
                       {booking.paymentStatus?.toUpperCase() || "PENDING"}

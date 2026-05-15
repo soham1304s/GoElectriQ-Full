@@ -93,7 +93,7 @@ export default function ReviewsPage() {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="inline-flex items-center gap-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8"
+              className="inline-flex items-center gap-2 bg-green-100 dark:bg-emerald-900/30 text-green-700 dark:text-emerald-300 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8"
             >
               <Sparkles size={14} /> The Wall of Love
             </motion.div>
@@ -153,7 +153,7 @@ export default function ReviewsPage() {
                 >
                   <div className="h-full p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] bg-white dark:bg-[#022c22] border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-500/5 flex flex-col relative overflow-hidden">
                     {/* Quote Icon Background */}
-                    <div className="absolute -right-4 -top-4 text-slate-50 dark:text-slate-800/50 group-hover:text-emerald-50 dark:group-hover:text-emerald-900/10 transition-colors duration-500">
+                    <div className="absolute -right-4 -top-4 text-slate-50 dark:text-slate-800/50 group-hover:text-emerald-50 dark:group-hover:text-green-900/10 transition-colors duration-500">
                       <Quote size={120} />
                     </div>
 
@@ -189,7 +189,7 @@ export default function ReviewsPage() {
             viewport={{ once: true }}
             className="mt-20 p-10 md:p-20 rounded-[3rem] md:rounded-[4rem] bg-[#022c22] text-center relative overflow-hidden group shadow-2xl"
           >
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700"></div>
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-green-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700"></div>
 
             <div className="relative z-10 max-w-2xl mx-auto">
               <h2 className="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">Your Voice Matters.</h2>

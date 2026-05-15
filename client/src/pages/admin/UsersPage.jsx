@@ -141,7 +141,7 @@ const UsersPage = () => {
               Users Management
             </h1>
             <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mt-1">
-              Total Users: <span className="font-bold text-blue-600">{pagination.total}</span>
+              Total Users: <span className="font-bold text-green-600">{pagination.total}</span>
               {lastUpdated && (
                 <span className="block md:inline md:ml-3 text-xs text-gray-500 mt-1 md:mt-0">
                   (Last updated: {lastUpdated.toLocaleTimeString()})
@@ -163,7 +163,7 @@ const UsersPage = () => {
             </button>
             <button
               onClick={downloadCSV}
-              className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-3 md:px-4 py-2 rounded-lg transition text-sm md:text-base"
+              className="flex items-center gap-2 bg-green-500 hover:bg-emerald-600 text-white px-3 md:px-4 py-2 rounded-lg transition text-sm md:text-base"
             >
               <Download size={16} className="md:w-4 md:h-4" />
               <span className="hidden md:inline">Export CSV</span>
@@ -182,7 +182,7 @@ const UsersPage = () => {
                 placeholder="Search by name, email, phone..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 md:pl-10 pr-4 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-9 md:pl-10 pr-4 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
             </div>
 
@@ -190,7 +190,7 @@ const UsersPage = () => {
             <select
               value={roleFilter}
               onChange={(e) => setRoleFilter(e.target.value)}
-              className="px-3 md:px-4 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 md:px-4 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
             >
               <option value="all">All Roles</option>
               <option value="user">User</option>
@@ -202,7 +202,7 @@ const UsersPage = () => {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-3 md:px-4 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 md:px-4 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
             >
               <option value="all">All Status</option>
               <option value="active">Active</option>
@@ -258,7 +258,7 @@ const UsersPage = () => {
                       <td className="px-4 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 dark:text-gray-400">{user.email}</td>
                       <td className="px-4 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 dark:text-gray-400">{user.phone}</td>
                       <td className="px-4 md:px-6 py-3 md:py-4">
-                        <span className="px-2 md:px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">
+                        <span className="px-2 md:px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700 dark:bg-emerald-900 dark:text-emerald-300">
                           {user.role}
                         </span>
                       </td>
@@ -285,7 +285,7 @@ const UsersPage = () => {
                       <td className="px-4 md:px-6 py-3 md:py-4 text-center space-x-1 md:space-x-2">
                         <button
                           onClick={() => setSelectedUser(user)}
-                          className="text-blue-500 hover:text-blue-700 transition inline-block"
+                          className="text-emerald-500 hover:text-green-700 transition inline-block"
                         >
                           <Eye size={16} className="md:w-4 md:h-4" />
                         </button>
@@ -336,7 +336,7 @@ const UsersPage = () => {
                           {user.email}
                         </td>
                         <td className="px-2 py-2">
-                          <span className="px-1.5 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 whitespace-nowrap">
+                          <span className="px-1.5 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-700 dark:bg-emerald-900 dark:text-emerald-300 whitespace-nowrap">
                             {user.role}
                           </span>
                         </td>
@@ -355,7 +355,7 @@ const UsersPage = () => {
                         <td className="px-2 py-2 text-center space-x-1">
                           <button
                             onClick={() => setSelectedUser(user)}
-                            className="text-blue-500 hover:text-blue-700 transition inline-block"
+                            className="text-emerald-500 hover:text-green-700 transition inline-block"
                             title="View"
                           >
                             <Eye size={14} />
@@ -427,7 +427,7 @@ const UsersPage = () => {
               </div>
               <button
                 onClick={() => setSelectedUser(null)}
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 md:py-3 rounded-lg transition text-sm md:text-base font-medium"
+                className="w-full bg-green-500 hover:bg-emerald-600 text-white px-4 py-2 md:py-3 rounded-lg transition text-sm md:text-base font-medium"
               >
                 Close
               </button>

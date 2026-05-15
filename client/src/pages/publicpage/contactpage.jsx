@@ -15,10 +15,18 @@ import {
 } from 'lucide-react';
 import Footer from '../../components/Footer.jsx';
 import SEO from '../../components/SEO.jsx';
+import api from '../../services/api';
 
 const ContactPage = () => {
   const [openFaq, setOpenFaq] = useState(null);
-  const [formState, setFormState] = useState('idle'); // idle, sending, success
+  const [formState, setFormState] = useState('idle'); // idle, sending, success, error
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: 'General Inquiry',
+    message: ''
+  });
+  const [errorMessage, setErrorMessage] = useState('');
 
   const contactMethods = [
     {
@@ -43,7 +51,7 @@ const ContactPage = () => {
       subText: 'Rajasthan, India - 302017',
       href: '#',
       icon: MapPin,
-      color: 'purple'
+      color: 'green'
     },
   ];
 
@@ -66,10 +74,33 @@ const ContactPage = () => {
     },
   ];
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { id, name, value } = e.target;
+    const fieldName = name || id;
+    setFormData(prev => ({ ...prev, [fieldName]: value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormState('sending');
-    setTimeout(() => setFormState('success'), 1500);
+    setErrorMessage('');
+    
+    try {
+      await api.post('/contact', formData);
+      setFormState('success');
+      setFormData({
+        name: '',
+        email: '',
+        subject: 'General Inquiry',
+        message: ''
+      });
+      setTimeout(() => setFormState('idle'), 5000);
+    } catch (error) {
+      console.error('Contact form error:', error);
+      setFormState('error');
+      setErrorMessage(error.response?.data?.message || 'Failed to send message. Please try again.');
+      setTimeout(() => setFormState('idle'), 5000);
+    }
   };
 
   const fadeIn = {
@@ -94,7 +125,7 @@ const ContactPage = () => {
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6"
+            className="inline-flex items-center gap-2 bg-green-500/10 text-green-600 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6"
           >
             Support Center
           </motion.div>
@@ -129,24 +160,38 @@ const ContactPage = () => {
                     <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Full Name</label>
                     <input 
                       type="text" 
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
                       required
                       placeholder="John Doe"
-                      className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-[#022c22]/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-emerald-500/50 transition-all font-bold text-sm"
+                      className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-[#022c22]/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-emerald-500/50 transition-all font-bold text-sm text-slate-900 dark:text-white"
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Email Address</label>
                     <input 
                       type="email" 
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       required
                       placeholder="john@example.com"
-                      className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-[#022c22]/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-emerald-500/50 transition-all font-bold text-sm"
+                      className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-[#022c22]/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-emerald-500/50 transition-all font-bold text-sm text-slate-900 dark:text-white"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Subject</label>
-                  <select className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-[#022c22]/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-emerald-500/50 transition-all font-bold text-sm appearance-none">
+                  <select 
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-[#022c22]/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-emerald-500/50 transition-all font-bold text-sm appearance-none text-slate-900 dark:text-white"
+                  >
                     <option>General Inquiry</option>
                     <option>Booking Issue</option>
                     <option>Partner with Us</option>
@@ -156,12 +201,20 @@ const ContactPage = () => {
                 <div className="space-y-2">
                   <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Message</label>
                   <textarea 
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     rows="5"
                     required
                     placeholder="How can we help you today?"
-                    className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-[#022c22]/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-emerald-500/50 transition-all font-bold text-sm resize-none"
+                    className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-[#022c22]/50 border border-slate-100 dark:border-slate-700 outline-none focus:border-emerald-500/50 transition-all font-bold text-sm resize-none text-slate-900 dark:text-white"
                   ></textarea>
                 </div>
+
+                {formState === 'error' && (
+                  <p className="text-rose-500 text-xs font-bold ml-1">{errorMessage}</p>
+                )}
 
                 <button 
                   type="submit"
@@ -188,7 +241,7 @@ const ContactPage = () => {
                   className="block p-8 rounded-[2.5rem] bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-xl hover:-translate-y-2 transition-all duration-500 group"
                 >
                   <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${
-                    m.color === 'emerald' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-purple-500/10 text-purple-500'
+                    m.color === 'emerald' ? 'bg-green-500/10 text-emerald-500' : 'bg-green-500/10 text-green-500'
                   }`}>
                     <Icon size={24} />
                   </div>
@@ -265,7 +318,7 @@ const ContactPage = () => {
       <section className="py-24 md:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <motion.div {...fadeIn} className="flex flex-col items-center">
-            <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-500 mb-8">
+            <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center text-emerald-500 mb-8">
               <Globe size={40} className="animate-spin-slow" />
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">Growing Every Day.</h2>

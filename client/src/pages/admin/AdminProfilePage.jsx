@@ -225,7 +225,7 @@ export default function AdminProfilePage() {
                         <h1 className="text-3xl md:text-4xl font-bold">{name || 'Admin'}</h1>
                         <button
                           onClick={() => setIsEditingName(true)}
-                          className="p-2 hover:bg-emerald-500 rounded-lg transition-colors"
+                          className="p-2 hover:bg-green-500 rounded-lg transition-colors"
                         >
                           <Edit2 className="w-5 h-5" />
                         </button>
@@ -236,7 +236,7 @@ export default function AdminProfilePage() {
                           type="text"
                           value={tempName}
                           onChange={(e) => setTempName(e.target.value)}
-                          className="text-3xl font-bold bg-emerald-500 text-white rounded px-3 py-1 focus:outline-none"
+                          className="text-3xl font-bold bg-green-500 text-white rounded px-3 py-1 focus:outline-none"
                           autoFocus
                         />
                         <button onClick={handleSaveName} className="p-2 bg-green-500 hover:bg-green-600 rounded-lg transition-colors">
@@ -248,11 +248,11 @@ export default function AdminProfilePage() {
                       </div>
                     )}
                   </div>
-                  <p className="text-emerald-100 flex items-center gap-2">
+                  <p className="text-green-50 flex items-center gap-2">
                     <Mail className="w-4 h-4" />
                     {email}
                   </p>
-                  <p className="text-emerald-100 mt-2 font-semibold">Admin User</p>
+                  <p className="text-green-50 mt-2 font-semibold">Admin User</p>
                 </div>
               </div>
             </div>
@@ -274,7 +274,7 @@ export default function AdminProfilePage() {
                       </div>
                       <button
                         onClick={() => setIsEditingPhone(true)}
-                        className="flex items-center gap-1 px-4 py-2 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-gray-600 rounded-lg transition-colors"
+                        className="flex items-center gap-1 px-4 py-2 text-green-600 dark:text-emerald-400 hover:bg-green-50 dark:hover:bg-gray-600 rounded-lg transition-colors"
                       >
                         <Edit2 className="w-4 h-4" /> Edit
                       </button>
@@ -338,7 +338,7 @@ export default function AdminProfilePage() {
                           type="password"
                           value={passwordData.currentPassword}
                           onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
-                          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-600 rounded-lg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-600 rounded-lg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                           placeholder="Enter current password"
                         />
                       </div>

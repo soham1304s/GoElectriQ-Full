@@ -147,7 +147,7 @@ export default function AdminLoginPage() {
 
         {/* Security Notice */}
         <motion.div
-          className={`mb-5 sm:mb-6 p-3 sm:p-4 rounded-lg sm:rounded-xl flex items-start gap-2 sm:gap-3 text-xs sm:text-sm ${theme === 'dark' ? 'bg-blue-900/20 border border-blue-800 text-blue-300' : 'bg-blue-50 border border-blue-200 text-blue-700'}`}
+          className={`mb-5 sm:mb-6 p-3 sm:p-4 rounded-lg sm:rounded-xl flex items-start gap-2 sm:gap-3 text-xs sm:text-sm ${theme === 'dark' ? 'bg-emerald-900/20 border border-emerald-800 text-emerald-300' : 'bg-green-50 border border-green-200 text-green-700'}`}
           variants={itemVariants}
         >
           <Shield className="flex-shrink-0 mt-0.5 w-4 h-4 sm:w-5 sm:h-5" size={16} />

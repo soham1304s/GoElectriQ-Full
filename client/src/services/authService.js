@@ -51,3 +51,11 @@ export async function resetPassword(token, password) {
   const { data } = await api.post(`/auth/reset-password/${token}`, { password });
   return data;
 }
+export async function getCabStatus() {
+  const { data } = await api.get('/partners/cab/status');
+  return data;
+}
+export async function getChargingStatus() {
+  const { data } = await api.get('/charging-enquiries/my-enquiries');
+  return data;
+}

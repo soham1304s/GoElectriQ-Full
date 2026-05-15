@@ -10,10 +10,17 @@ import {
   ShieldCheck, 
   Lock, 
   Mail,
-  User
+  User,
+  AlertCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AuthLayout from '../components/auth/AuthLayout';
+
+const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
+const isGoogleOAuthConfigured =
+  googleClientId &&
+  googleClientId !== 'YOUR_GOOGLE_CLIENT_ID' &&
+  !googleClientId.toLowerCase().includes('your_google_client_id');
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -38,18 +45,18 @@ export default function LoginPage() {
     try {
       const result = await authLogin(identifier, password);
       if (result.success) {
-        setSuccess('Authentication successful. Initializing session...');
-        setTimeout(() => navigate('/user/dashboard'), 1500);
+        setSuccess('Access granted. Initializing session...');
+        setTimeout(() => navigate('/user/dashboard'), 1000);
       } else {
-        if (result.message && result.message.includes('admin login page')) {
-          setError('Administrative credentials detected. Redirecting...');
-          setTimeout(() => navigate('/admin/login', { replace: true }), 2000);
+        if (result.message && result.message.toLowerCase().includes('admin')) {
+          setError('Admin detected. Redirecting...');
+          setTimeout(() => navigate('/admin/login'), 1500);
         } else {
-          setError(result.message || 'Invalid credentials. Please verify your identity.');
+          setError(result.message || 'Invalid credentials. Please try again.');
         }
       }
     } catch (err) {
-      setError('Neural link synchronization failed. Try again.');
+      setError('Connection failed. Please check your network.');
     } finally {
       setLoading(false);
     }
@@ -59,22 +66,15 @@ export default function LoginPage() {
     setLoading(true);
     setError('');
     try {
-      const idToken = credentialResponse?.credential;
-      if (!idToken) {
-        setError('Federated authentication failed.');
-        setLoading(false);
-        return;
-      }
-      
-      const result = await loginWithGoogle(idToken);
+      const result = await loginWithGoogle(credentialResponse?.credential);
       if (result.success) {
-        setSuccess('Federated link established. Initializing...');
-        setTimeout(() => navigate('/user/dashboard'), 1500);
+        setSuccess('Identity verified. Redirecting...');
+        setTimeout(() => navigate('/user/dashboard'), 1000);
       } else {
-        setError(result.message || 'Federated login sequence terminated.');
+        setError(result.message || 'Google authentication failed.');
       }
     } catch (err) {
-      setError('Neural link error. Resetting protocol.');
+      setError('Federated login error. Please try standard login.');
     } finally {
       setLoading(false);
     }
@@ -82,8 +82,8 @@ export default function LoginPage() {
 
   return (
     <AuthLayout 
-      title="System Access" 
-      subtitle="Enter credentials to establish link"
+      title="Welcome Back" 
+      subtitle="Sign in to your GoElectriQ account"
     >
       <AnimatePresence mode="wait">
         {error && (
@@ -91,12 +91,10 @@ export default function LoginPage() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="bg-rose-50 border border-rose-100 p-4 rounded-2xl flex items-center gap-3 mb-8"
+            className="bg-rose-50 border border-rose-100 p-3 rounded-xl flex items-center gap-3 mb-6"
           >
-            <div className="p-2 bg-rose-100 text-rose-500 rounded-xl">
-              <Lock size={16} />
-            </div>
-            <p className="text-xs font-black text-rose-600">{error}</p>
+            <AlertCircle className="text-rose-500 shrink-0" size={18} />
+            <p className="text-xs font-semibold text-rose-600">{error}</p>
           </motion.div>
         )}
         {success && (
@@ -104,29 +102,27 @@ export default function LoginPage() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="bg-emerald-50 border border-emerald-100 p-4 rounded-2xl flex items-center gap-3 mb-8"
+            className="bg-green-50 border border-green-100 p-3 rounded-xl flex items-center gap-3 mb-6"
           >
-            <div className="p-2 bg-emerald-100 text-emerald-500 rounded-xl">
-              <ShieldCheck size={16} />
-            </div>
-            <p className="text-xs font-black text-emerald-600">{success}</p>
+            <ShieldCheck className="text-emerald-500 shrink-0" size={18} />
+            <p className="text-xs font-semibold text-green-600">{success}</p>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <form onSubmit={handleLogin} className="space-y-6">
+      <form onSubmit={handleLogin} className="space-y-5">
         <div className="space-y-2">
-          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Email or Phone</label>
+          <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Email or Phone</label>
           <div className="relative group">
-            <div className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors">
               {identifier.includes('@') ? <Mail size={18} /> : <User size={18} />}
             </div>
             <input
               type="text"
-              placeholder="Email or Mobile Number"
+              placeholder="Enter your email or phone"
               value={identifier}
               onChange={(e) => setIdentifier(e.target.value)}
-              className="w-full pl-14 pr-8 py-4 lg:py-5 bg-slate-50 rounded-[1.5rem] border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all"
+              className="w-full pl-12 pr-4 py-3 bg-slate-50 rounded-xl border border-slate-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/5 text-sm font-medium transition-all outline-none"
               required
             />
           </div>
@@ -134,11 +130,11 @@ export default function LoginPage() {
 
         <div className="space-y-2">
           <div className="flex justify-between items-center px-1">
-            <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Secret Key</label>
-            <Link to="/forgot-password" title="Initiate Protocol Recovery" className="text-[10px] font-black text-emerald-600 uppercase tracking-widest hover:text-emerald-700">Lost Key?</Link>
+            <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Password</label>
+            <Link to="/forgot-password" size="sm" className="text-[11px] font-bold text-green-600 hover:text-green-700 transition-colors">Forgot?</Link>
           </div>
           <div className="relative group">
-            <div className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors">
               <Lock size={18} />
             </div>
             <input
@@ -146,13 +142,13 @@ export default function LoginPage() {
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full pl-14 pr-16 py-4 lg:py-5 bg-slate-50 rounded-[1.5rem] border-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold transition-all"
+              className="w-full pl-12 pr-12 py-3 bg-slate-50 rounded-xl border border-slate-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/5 text-sm font-medium transition-all outline-none"
               required
             />
             <button 
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-6 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-900 transition-colors"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
             >
               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
@@ -162,43 +158,43 @@ export default function LoginPage() {
         <button 
           type="submit" 
           disabled={loading} 
-          className="w-full py-5 bg-[#022c22] text-white rounded-[1.5rem] font-black text-xs uppercase tracking-[0.2em] hover:bg-black transition-all shadow-2xl active:scale-[0.98] flex items-center justify-center gap-3"
+          className="w-full py-3.5 bg-slate-900 text-white rounded-xl font-bold text-sm hover:bg-black transition-all shadow-lg active:scale-[0.99] flex items-center justify-center gap-2 mt-2"
         >
           {loading ? (
-            <div className="flex items-center gap-3">
-              <Loader className="animate-spin" size={18} />
-              <span>Synchronizing...</span>
-            </div>
+            <Loader className="animate-spin" size={18} />
           ) : (
             <>
-              Establish Connection
+              Sign In
               <ArrowRight size={18} />
             </>
           )}
         </button>
       </form>
 
-      <div className="relative my-10 text-center">
-        <div className="absolute inset-0 flex items-center">
-          <div className="w-full border-t border-slate-100" />
-        </div>
-        <span className="relative px-6 bg-white text-[10px] font-black text-slate-400 uppercase tracking-widest">Global Auth</span>
-      </div>
+      {isGoogleOAuthConfigured && (
+        <>
+          <div className="relative my-8 text-center">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-slate-100" />
+            </div>
+            <span className="relative px-4 bg-white text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Social Access</span>
+          </div>
 
-      <div className="flex justify-center w-full px-4">
-        <div className="w-full max-w-[300px]">
-          <GoogleLogin
-            onSuccess={handleGoogleSuccess}
-            onError={() => setError('Google auth protocol failed.')}
-            text="continue_with"
-            shape="circle"
-            width="100%"
-          />
-        </div>
-      </div>
+          <div className="flex justify-center w-full">
+            <GoogleLogin
+              onSuccess={handleGoogleSuccess}
+              onError={() => setError('Google sign-in failed.')}
+              theme="outline"
+              shape="pill"
+              width="100%"
+            />
+          </div>
+        </>
+      )}
 
-      <p className="mt-12 text-center text-[10px] font-black text-slate-400 uppercase tracking-widest">
-        New Entity? <Link to="/register" className="text-emerald-600 hover:text-emerald-700 ml-1">Create Identity Node</Link>
+      <p className="mt-8 text-center text-sm text-slate-500">
+        Don't have an account? 
+        <Link to="/register" className="text-green-600 font-bold hover:underline ml-1.5">Create Account</Link>
       </p>
     </AuthLayout>
   );

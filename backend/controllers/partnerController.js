@@ -41,7 +41,7 @@ export const registerDriverPartner = async (req, res) => {
     }
 
     // Validate phone
-    const phoneRegex = /^[6-9]\d{9}$/;
+    const phoneRegex = /^(\+91|0)?[6-9]\d{9}$/;
     if (!phoneRegex.test(phone)) {
       return res.status(400).json({
         success: false,
@@ -142,7 +142,7 @@ export const registerCabPartner = async (req, res) => {
     }
 
     // Validate phone
-    const phoneRegex = /^[6-9]\d{9}$/;
+    const phoneRegex = /^(\+91|0)?[6-9]\d{9}$/;
     if (!phoneRegex.test(phone)) {
       return res.status(400).json({
         success: false,
@@ -251,7 +251,7 @@ export const registerChargingStation = async (req, res) => {
     }
 
     // Validate phone
-    const phoneRegex = /^[6-9]\d{9}$/;
+    const phoneRegex = /^(\+91|0)?[6-9]\d{9}$/;
     if (!phoneRegex.test(phone)) {
       console.log('❌ Validation failed: Invalid phone format');
       return res.status(400).json({
@@ -657,6 +657,41 @@ export const getDriverStatus = async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Error fetching driver application status',
+      error: error.message
+    });
+  }
+};
+/**
+ * @desc    Get current user's cab partner registration status
+ * @route   GET /api/partners/cab/status
+ * @access  Private (Authenticated User)
+ */
+export const getCabStatus = async (req, res) => {
+  try {
+    const cab = await CabPartner.findOne({
+      $or: [
+        { ownerEmail: req.user.email },
+        { phone: req.user.phone }
+      ]
+    }).select('ownerName ownerEmail phone vehicleModel evType status isApproved rejectionReason createdAt');
+
+    if (!cab) {
+      return res.status(200).json({
+        success: true,
+        data: null,
+        message: 'No cab partner application found for this user'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: cab
+    });
+  } catch (error) {
+    console.error('Error fetching cab status:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching cab partner status',
       error: error.message
     });
   }

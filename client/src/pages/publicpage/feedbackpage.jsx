@@ -109,7 +109,7 @@ export default function FeedbackPage() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="inline-flex items-center gap-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8"
+                  className="inline-flex items-center gap-2 bg-green-100 dark:bg-emerald-900/30 text-green-700 dark:text-emerald-300 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8"
                 >
                   <Sparkles size={14} /> Feedback Protocol
                 </motion.div>
@@ -144,7 +144,7 @@ export default function FeedbackPage() {
                     transition={{ delay: 0.2 + (i * 0.1) }}
                     className="flex gap-6 p-6 rounded-3xl bg-white dark:bg-[#022c22]/50 border border-slate-100 dark:border-slate-800 shadow-sm"
                   >
-                    <div className="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
+                    <div className="w-12 h-12 rounded-2xl bg-green-50 dark:bg-emerald-900/20 flex items-center justify-center text-green-600 dark:text-emerald-400 shrink-0">
                       <item.icon size={24} />
                     </div>
                     <div>
@@ -186,8 +186,8 @@ export default function FeedbackPage() {
                       exit={{ opacity: 0, scale: 0.9 }}
                       className="text-center py-20"
                     >
-                      <div className="w-24 h-24 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner shadow-emerald-500/20">
-                        <CheckCircle size={48} className="text-emerald-600 dark:text-emerald-400" />
+                      <div className="w-24 h-24 bg-green-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner shadow-emerald-500/20">
+                        <CheckCircle size={48} className="text-green-600 dark:text-emerald-400" />
                       </div>
                       <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Transmission Received.</h2>
                       <p className="text-xl text-slate-500 dark:text-slate-400 font-medium mb-12 max-w-md mx-auto">
@@ -254,7 +254,7 @@ export default function FeedbackPage() {
                             value={formData.mobile}
                             onChange={handleChange}
                             required
-                            pattern="[0-9]{10}"
+                            pattern="(\\+91|0)?[6-9][0-9]{9}"
                             className="w-full px-8 py-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 outline-none focus:border-emerald-500/50 transition-all font-bold text-slate-900 dark:text-white"
                             placeholder="9876543210"
                           />
@@ -308,7 +308,7 @@ export default function FeedbackPage() {
           <div className="mt-32">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-16">
               <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">Recent Transmissions</h2>
-              <Link to="/reviews" className="inline-flex items-center gap-2 text-emerald-600 font-black uppercase tracking-widest text-sm hover:gap-4 transition-all">
+              <Link to="/reviews" className="inline-flex items-center gap-2 text-green-600 font-black uppercase tracking-widest text-sm hover:gap-4 transition-all">
                 View All Reviews <ChevronRight size={18} />
               </Link>
             </div>
@@ -331,7 +331,7 @@ export default function FeedbackPage() {
                   >
                     <div className="flex justify-between items-start mb-6">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center font-black text-emerald-600 dark:text-emerald-400">
+                        <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center font-black text-green-600 dark:text-emerald-400">
                           {item.name.charAt(0)}
                         </div>
                         <div>

@@ -23,7 +23,7 @@ const cabPartnerSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please provide phone number'],
       trim: true,
-      match: [/^[6-9]\d{9}$/, 'Please provide a valid 10-digit phone number'],
+      match: [/^(\+91|0)?[6-9]\d{9}$/, 'Please provide a valid phone number'],
     },
     vehicleDetails: {
       evType: {

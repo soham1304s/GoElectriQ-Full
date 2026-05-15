@@ -23,7 +23,7 @@ const MapMockup = ({ pickupLocation, dropLocation, className = "" }) => {
       <div className="absolute top-4 left-4 right-4 flex justify-between items-start pointer-events-none">
         <div className="bg-slate-900/80 backdrop-blur-md border border-emerald-500/30 px-4 py-2 rounded-xl shadow-2xl animate-fadeIn">
           <div className="flex items-center gap-2 mb-1">
-            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             <span className="text-[10px] font-black text-emerald-400 uppercase tracking-widest">Active Route Visualization</span>
           </div>
           <p className="text-xs font-bold text-white max-w-[150px] truncate">
@@ -34,8 +34,8 @@ const MapMockup = ({ pickupLocation, dropLocation, className = "" }) => {
         {dropLocation && (
           <div className="bg-emerald-600/90 backdrop-blur-md px-4 py-2 rounded-xl shadow-2xl animate-fadeIn animate-delay-200">
             <div className="flex items-center gap-2 mb-1">
-              <Navigation size={10} className="text-emerald-100" />
-              <span className="text-[10px] font-black text-emerald-100 uppercase tracking-widest">Destination</span>
+              <Navigation size={10} className="text-green-50" />
+              <span className="text-[10px] font-black text-green-50 uppercase tracking-widest">Destination</span>
             </div>
             <p className="text-xs font-bold text-white max-w-[150px] truncate">
               {dropLocation}

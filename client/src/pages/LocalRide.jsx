@@ -392,12 +392,12 @@ export default function LocalRidePage() {
           {/* Header Section */}
           <div className="mb-6 flex flex-col items-start justify-between gap-4 text-left sm:mb-8 md:mb-10 md:flex-row md:items-center">
             <div className="w-full min-w-0">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-semibold text-xs mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 dark:bg-emerald-900/30 text-green-700 dark:text-emerald-300 font-semibold text-xs mb-4">
                 <Leaf size={14} />
                 <span>100% Electric Fleet</span>
               </div>
               <h1 className={`text-3xl font-black tracking-tight sm:text-4xl md:text-5xl ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                Local Ride <span className="text-emerald-600">Booking</span>
+                Local Ride <span className="text-green-600">Booking</span>
               </h1>
               <p className={`mt-3 text-sm leading-relaxed sm:text-base md:text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                 Quick, convenient, and zero-emission rides within your city.
@@ -440,7 +440,7 @@ export default function LocalRidePage() {
                       type="button"
                       onClick={detectPickupLocation}
                       disabled={isDetectingPickup}
-                      className={`flex h-[46px] w-[46px] flex-shrink-0 items-center justify-center rounded-xl border transition-all sm:h-[50px] sm:w-[50px] ${isDetectingPickup ? 'bg-slate-100 border-slate-200 cursor-not-allowed text-slate-400' : isDark ? 'border-zinc-700 bg-zinc-800 hover:bg-zinc-700 text-emerald-400' : 'border-slate-200 bg-slate-50 hover:bg-slate-100 text-emerald-600'}`}
+                      className={`flex h-[46px] w-[46px] flex-shrink-0 items-center justify-center rounded-xl border transition-all sm:h-[50px] sm:w-[50px] ${isDetectingPickup ? 'bg-slate-100 border-slate-200 cursor-not-allowed text-slate-400' : isDark ? 'border-zinc-700 bg-zinc-800 hover:bg-zinc-700 text-emerald-400' : 'border-slate-200 bg-slate-50 hover:bg-slate-100 text-green-600'}`}
                       title="Use current location"
                     >
                       {isDetectingPickup ? (
@@ -478,7 +478,7 @@ export default function LocalRidePage() {
                 <div>
                   <label className={`mb-2.5 block text-sm font-bold ${isDark ? 'text-gray-200' : 'text-slate-800'}`}>Date</label>
                   <div className="relative group">
-                    <Calendar className={`pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isDark ? 'text-zinc-500 group-focus-within:text-emerald-400' : 'text-slate-400 group-focus-within:text-emerald-600'}`} />
+                    <Calendar className={`pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isDark ? 'text-zinc-500 group-focus-within:text-emerald-400' : 'text-slate-400 group-focus-within:text-green-600'}`} />
                     <input
                       type="date"
                       min={minDate}
@@ -491,7 +491,7 @@ export default function LocalRidePage() {
                 <div>
                   <label className={`mb-2.5 block text-sm font-bold ${isDark ? 'text-gray-200' : 'text-slate-800'}`}>Time</label>
                   <div className="relative group">
-                    <Clock3 className={`pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isDark ? 'text-zinc-500 group-focus-within:text-emerald-400' : 'text-slate-400 group-focus-within:text-emerald-600'}`} />
+                    <Clock3 className={`pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isDark ? 'text-zinc-500 group-focus-within:text-emerald-400' : 'text-slate-400 group-focus-within:text-green-600'}`} />
                     <input
                       type="time"
                       value={selectedTime}
@@ -507,7 +507,7 @@ export default function LocalRidePage() {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <label className={`block text-sm font-bold ${isDark ? 'text-gray-200' : 'text-slate-800'}`}>Choose Vehicle</label>
-                  {ratesLoading && <span className="flex items-center gap-1 text-[11px] text-emerald-600 sm:text-xs"><Loader2 className="w-3 h-3 animate-spin" /> Updating rates</span>}
+                  {ratesLoading && <span className="flex items-center gap-1 text-[11px] text-green-600 sm:text-xs"><Loader2 className="w-3 h-3 animate-spin" /> Updating rates</span>}
                 </div>
 
                 <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
@@ -517,19 +517,19 @@ export default function LocalRidePage() {
                       type="button"
                       onClick={() => setSelectedCar(car.id)}
                       className={`group relative overflow-hidden rounded-2xl border p-4 text-left transition-all sm:p-5 ${selectedCar === car.id
-                        ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/10 shadow-sm ring-1 ring-emerald-500'
+                        ? 'border-emerald-500 bg-green-50 dark:bg-emerald-900/10 shadow-sm ring-1 ring-emerald-500'
                         : isDark
                           ? 'border-zinc-800 bg-zinc-800/50 hover:border-zinc-600 hover:bg-zinc-800'
                           : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'
                         }`}
                     >
                       {selectedCar === car.id && (
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-bl-[100px] -z-0"></div>
+                        <div className="absolute top-0 right-0 w-16 h-16 bg-green-100 dark:bg-emerald-900/30 rounded-bl-[100px] -z-0"></div>
                       )}
 
                       <div className="relative z-10">
                         <div className="mb-4 flex items-center justify-between">
-                          <div className={`p-2 rounded-xl ${selectedCar === car.id ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-500'}`}>
+                          <div className={`p-2 rounded-xl ${selectedCar === car.id ? 'bg-green-100 dark:bg-emerald-900/50 text-green-600 dark:text-emerald-400' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-500'}`}>
                             <CarTaxiFront className="h-6 w-6" />
                           </div>
                           <span className={`rounded-full px-2.5 py-1 text-xs font-bold ${selectedCar === car.id ? 'bg-emerald-600 text-white' : isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-slate-100 text-slate-600'}`}>
@@ -538,7 +538,7 @@ export default function LocalRidePage() {
                         </div>
                         <p className={`font-bold text-lg ${isDark ? 'text-white' : 'text-slate-900'}`}>{car.name}</p>
                         <div className="mt-1 flex items-baseline gap-1">
-                          <p className={`text-xl font-black ${selectedCar === car.id ? 'text-emerald-600 dark:text-emerald-400' : isDark ? 'text-zinc-300' : 'text-slate-700'}`}>
+                          <p className={`text-xl font-black ${selectedCar === car.id ? 'text-green-600 dark:text-emerald-400' : isDark ? 'text-zinc-300' : 'text-slate-700'}`}>
                             ₹{Math.round(car.additionalCharge * estimatedDistance).toLocaleString('en-IN')}
                           </p>
                           <span className={`text-xs font-medium ${isDark ? 'text-zinc-500' : 'text-slate-400'}`}>est. total</span>
@@ -606,14 +606,14 @@ export default function LocalRidePage() {
                     <span className={`text-xl font-black sm:text-2xl ${isDark ? 'text-white' : 'text-slate-900'}`}>{formatMoney(totalAmount)}</span>
                   </div>
 
-                  <div className={`rounded-xl p-3 sm:p-4 ${isDark ? 'bg-emerald-900/10 border border-emerald-900/30' : 'bg-emerald-50 border border-emerald-100'}`}>
+                  <div className={`rounded-xl p-3 sm:p-4 ${isDark ? 'bg-emerald-900/10 border border-emerald-900/30' : 'bg-green-50 border border-green-100'}`}>
                     <div className="mb-1 flex items-center justify-between gap-3">
-                      <span className="flex items-center gap-1.5 text-sm font-bold text-emerald-700 dark:text-emerald-400">
+                      <span className="flex items-center gap-1.5 text-sm font-bold text-green-700 dark:text-emerald-400">
                         <CheckCircle2 size={16} /> Pay Now (20%)
                       </span>
-                      <span className="text-lg font-black text-emerald-700 dark:text-emerald-400 sm:text-xl">{formatMoney(advancePayment)}</span>
+                      <span className="text-lg font-black text-green-700 dark:text-emerald-400 sm:text-xl">{formatMoney(advancePayment)}</span>
                     </div>
-                    <div className="flex items-center justify-between text-sm mt-3 pt-3 border-t border-emerald-200 dark:border-emerald-800/50">
+                    <div className="flex items-center justify-between text-sm mt-3 pt-3 border-t border-green-200 dark:border-emerald-800/50">
                       <span className={`font-medium ${isDark ? 'text-zinc-400' : 'text-slate-600'}`}>Balance (Due later)</span>
                       <span className={`font-bold ${isDark ? 'text-zinc-300' : 'text-slate-700'}`}>{formatMoney(remainingAmount)}</span>
                     </div>

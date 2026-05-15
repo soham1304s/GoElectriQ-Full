@@ -44,7 +44,7 @@ export default function PublicPricingPage() {
       />
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="text-center max-w-3xl mx-auto">
-          <p className="inline-flex items-center gap-2 px-4 py-1 rounded-full text-xs sm:text-sm font-semibold bg-white/90 text-emerald-700 border border-emerald-200">
+          <p className="inline-flex items-center gap-2 px-4 py-1 rounded-full text-xs sm:text-sm font-semibold bg-white/90 text-green-700 border border-green-200">
             <Sparkles size={14} /> Simple and fair pricing
           </p>
           <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white">
@@ -61,7 +61,7 @@ export default function PublicPricingPage() {
               key={plan.name}
               className={`rounded-3xl border p-6 sm:p-7 shadow-md transition-transform hover:-translate-y-1 ${
                 plan.featured
-                  ? 'bg-gradient-to-b from-emerald-500 to-emerald-600 text-white border-emerald-300'
+                  ? 'bg-gradient-to-b from-emerald-500 to-emerald-600 text-white border-green-300'
                   : 'bg-white/90 dark:bg-gray-900 dark:border-white/10 border-slate-200 text-slate-900 dark:text-white'
               }`}
             >
@@ -86,7 +86,7 @@ export default function PublicPricingPage() {
               <ul className="mt-6 space-y-3">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-2 text-sm">
-                    <Check size={16} className={plan.featured ? 'text-white' : 'text-emerald-600'} />
+                    <Check size={16} className={plan.featured ? 'text-white' : 'text-green-600'} />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -97,7 +97,7 @@ export default function PublicPricingPage() {
                 onClick={() => navigate(plan.ctaPath)}
                 className={`mt-7 w-full rounded-xl py-3 text-sm font-semibold transition ${
                   plan.featured
-                    ? 'bg-white text-emerald-700 hover:bg-emerald-50'
+                    ? 'bg-white text-green-700 hover:bg-green-50'
                     : 'bg-[#022c22] text-white dark:bg-white dark:text-slate-900 hover:opacity-90'
                 }`}
               >

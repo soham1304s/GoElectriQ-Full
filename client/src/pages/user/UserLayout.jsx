@@ -26,10 +26,10 @@ import {
 } from 'lucide-react';
 import logoDark from '../../assets/logo_dark.png';
 import logoLight from '../../assets/logo_light.png';
-import { 
-  getMyBookings, 
-  getDriverBookings, 
-  getMyTourBookings 
+import {
+  getMyBookings,
+  getDriverBookings,
+  getMyTourBookings
 } from '../../services/bookingService.js';
 import * as authService from '../../services/authService.js';
 import { useTheme } from '../../context/ThemeContext.jsx';
@@ -40,6 +40,7 @@ const UserLayout = ({ children }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [activeBooking, setActiveBooking] = useState(null);
+  const [hasApplications, setHasApplications] = useState(false);
   const [driverApp, setDriverApp] = useState(null);
   const navigate = useNavigate();
   const { logout, user } = useAuth();
@@ -92,17 +93,27 @@ const UserLayout = ({ children }) => {
       };
       fetchActiveRide();
 
-      const fetchDriverStatus = async () => {
+      const fetchApplicationStatuses = async () => {
         try {
-          const res = await authService.getDriverStatus();
-          if (res.success && res.data) {
-            setDriverApp(res.data);
+          const [driverRes, cabRes, chargingRes] = await Promise.all([
+            authService.getDriverStatus().catch(() => ({ success: false })),
+            authService.getCabStatus().catch(() => ({ success: false })),
+            authService.getChargingStatus().catch(() => ({ success: false }))
+          ]);
+
+          const hasAny = (driverRes.success && driverRes.data) ||
+            (cabRes.success && cabRes.data) ||
+            (chargingRes.success && chargingRes.data?.length > 0);
+
+          setHasApplications(hasAny);
+          if (driverRes.success && driverRes.data) {
+            setDriverApp(driverRes.data);
           }
         } catch (err) {
-          console.error('Error fetching driver status for layout:', err);
+          console.error('Error fetching statuses for layout:', err);
         }
       };
-      fetchDriverStatus();
+      fetchApplicationStatuses();
     }
   }, [user]);
 
@@ -111,7 +122,7 @@ const UserLayout = ({ children }) => {
     { path: '/user/tours', label: 'Tour Bookings', icon: Plane },
     { path: '/user/bookings', label: 'Payment History', icon: CheckCircle },
     { path: '/user/profile', label: 'Profile Settings', icon: User },
-    ...(driverApp ? [{ path: '/user/application-status', label: 'Application Status', icon: ShieldCheck }] : []),
+    ...(hasApplications ? [{ path: '/user/application-status', label: 'Application Status', icon: ShieldCheck }] : []),
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -195,7 +206,7 @@ const UserLayout = ({ children }) => {
                 <div className="flex justify-between items-start">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                      <div className="w-6 h-6 rounded-lg bg-green-500/20 flex items-center justify-center">
                         <Car size={12} className="text-emerald-400" />
                       </div>
                       <p className="text-[10px] font-black text-emerald-400 uppercase tracking-[0.2em]">Vehicle Fleet</p>
@@ -236,7 +247,7 @@ const UserLayout = ({ children }) => {
                     <span className="text-xs font-black text-white">{user?.totalRides || '128'} Rides</span>
                   </div>
                   <div className="flex items-center justify-end gap-1.5">
-                    <div className={`w-1.5 h-1.5 rounded-full shadow-[0_0_8px] ${user?.availability === 'offline' ? 'bg-rose-500 shadow-rose-500/50' : 'bg-emerald-500 shadow-emerald-500/50 animate-pulse'
+                    <div className={`w-1.5 h-1.5 rounded-full shadow-[0_0_8px] ${user?.availability === 'offline' ? 'bg-rose-500 shadow-rose-500/50' : 'bg-green-500 shadow-emerald-500/50 animate-pulse'
                       }`} />
                     <span className="text-[10px] font-black text-white uppercase tracking-wider">
                       {user?.availability || 'Available'}
@@ -255,7 +266,7 @@ const UserLayout = ({ children }) => {
               <div className="relative z-10 space-y-4">
                 <div className="flex justify-between items-start">
                   <div className="space-y-1">
-                    <p className="text-[10px] font-black text-emerald-100 uppercase tracking-[0.2em]">Active Trip</p>
+                    <p className="text-[10px] font-black text-green-50 uppercase tracking-[0.2em]">Active Trip</p>
                     <p className="text-sm font-black text-white tracking-tight">
                       {activeBooking.user?.name || `${activeBooking.user?.firstName || ''} ${activeBooking.user?.lastName || ''}`.trim() || 'Guest Customer'}
                     </p>
@@ -273,8 +284,8 @@ const UserLayout = ({ children }) => {
 
                 <div className="pt-3 border-t border-white/20">
                   <div className="flex justify-between items-center mb-2">
-                    <p className="text-[9px] font-bold text-emerald-100 uppercase">Trip Details</p>
-                    <span className={`text-[9px] font-black bg-white px-2 py-0.5 rounded-full uppercase ${activeBooking.status === 'ongoing' ? 'text-emerald-600' : 'text-amber-600'
+                    <p className="text-[9px] font-bold text-green-50 uppercase">Trip Details</p>
+                    <span className={`text-[9px] font-black bg-white px-2 py-0.5 rounded-full uppercase ${activeBooking.status === 'ongoing' ? 'text-green-600' : 'text-amber-600'
                       }`}>
                       {activeBooking.status}
                     </span>
@@ -307,7 +318,7 @@ const UserLayout = ({ children }) => {
                       {activeBooking.driver ? 'Your Driver' : 'Active Booking'}
                     </p>
                     <p className="text-sm font-black text-white tracking-tight">
-                      {activeBooking.rideType === 'tour' 
+                      {activeBooking.rideType === 'tour'
                         ? (activeBooking.package?.title || 'Active Tour Package')
                         : (activeBooking.driver ? activeBooking.driver.name : 'Searching for Driver...')}
                     </p>
@@ -340,7 +351,7 @@ const UserLayout = ({ children }) => {
                 <div className="pt-3 border-t border-white/20">
                   <div className="flex justify-between items-center mb-2">
                     <p className="text-[9px] font-bold text-white/80 uppercase">Trip Overview</p>
-                    <span className="text-[9px] font-black bg-white text-emerald-600 px-2 py-0.5 rounded-full uppercase">
+                    <span className="text-[9px] font-black bg-white text-green-600 px-2 py-0.5 rounded-full uppercase">
                       {activeBooking.status}
                     </span>
                   </div>
@@ -369,13 +380,13 @@ const UserLayout = ({ children }) => {
 
         <nav className="flex-1 px-4 py-4 space-y-1.5 overflow-y-auto">
           <p className="px-4 text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-4">Main Menu</p>
-          <Link to="/" className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group text-slate-500 hover:bg-slate-50 hover:text-emerald-600">
+          <Link to="/" className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group text-slate-500 hover:bg-slate-50 hover:text-green-600">
             <Home size={20} className="group-hover:scale-110 transition-transform" />
             <span className="font-medium">Landing Page</span>
             <ChevronRight size={14} className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
           </Link>
           {navItems.map((item) => (
-            <Link key={item.path} to={item.path} className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${isActive(item.path) ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-emerald-600 dark:hover:text-emerald-400'}`}>
+            <Link key={item.path} to={item.path} className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${isActive(item.path) ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-green-600 dark:hover:text-emerald-400'}`}>
               <item.icon size={20} className={`${isActive(item.path) ? '' : 'group-hover:scale-110 transition-transform'}`} />
               <span className="font-medium">{item.label}</span>
               {isActive(item.path) && <motion.div layoutId="activeNav" className="w-1 h-6 bg-white rounded-full ml-auto" />}
@@ -392,7 +403,7 @@ const UserLayout = ({ children }) => {
             {darkMode ? <Sun size={18} /> : <Moon size={18} />}
             {darkMode ? 'Light Mode' : 'Dark Mode'}
           </button>
-          
+
           <button onClick={handleLogout} className="w-full flex items-center justify-center gap-3 px-4 py-3.5 bg-rose-500/10 hover:bg-rose-500 text-rose-500 hover:text-white rounded-xl transition-all duration-300 font-bold text-sm">
             <LogOut size={18} />
             Logout Session
@@ -418,13 +429,13 @@ const UserLayout = ({ children }) => {
             <div className="relative">
               <button onClick={() => setNotificationsOpen(!notificationsOpen)} className="relative p-2.5 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all">
                 <Bell size={20} />
-                <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-emerald-500 rounded-full border-2 border-white dark:border-slate-900" />
+                <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-green-500 rounded-full border-2 border-white dark:border-slate-900" />
               </button>
               {notificationsOpen && (
                 <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700 overflow-hidden z-50">
                   <div className="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
                     <h3 className="font-bold text-slate-900 dark:text-white">Notifications</h3>
-                    <span className="text-[10px] bg-emerald-100 text-emerald-600 px-2 py-0.5 rounded-full font-bold">NEW</span>
+                    <span className="text-[10px] bg-green-100 text-green-600 px-2 py-0.5 rounded-full font-bold">NEW</span>
                   </div>
                   <div className="p-6 text-center">
                     <div className="w-12 h-12 bg-slate-50 dark:bg-[#022c22] rounded-full flex items-center justify-center mx-auto mb-3">
@@ -448,8 +459,8 @@ const UserLayout = ({ children }) => {
                   {user?.role === 'driver' ? 'Certified Partner' : 'Premium Member'}
                 </p>
               </div>
-              <div className={`w-10 h-10 rounded-full border-2 group-hover:border-slate-400 transition-colors duration-300 overflow-hidden shadow-md ${user?.role === 'driver' ? 'border-emerald-100' : 'border-emerald-100'}`}>
-                <div className={`w-full h-full flex items-center justify-center font-bold ${user?.role === 'driver' ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-emerald-600'}`}>
+              <div className={`w-10 h-10 rounded-full border-2 group-hover:border-slate-400 transition-colors duration-300 overflow-hidden shadow-md ${user?.role === 'driver' ? 'border-green-100' : 'border-green-100'}`}>
+                <div className={`w-full h-full flex items-center justify-center font-bold ${user?.role === 'driver' ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-green-600'}`}>
                   {user?.role === 'driver' ? user?.name?.charAt(0) : (user?.firstName?.charAt(0) || 'U')}
                 </div>
               </div>

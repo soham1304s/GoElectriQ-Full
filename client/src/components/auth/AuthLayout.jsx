@@ -4,77 +4,57 @@ import logo from '../../assets/logo_light.png';
 import logoWhite from '../../assets/logo_dark.png';
 import { useTheme } from '../../context/ThemeContext';
 
+const MotionDiv = motion.div;
+const MotionImg = motion.img;
+
 export default function AuthLayout({ children, title, subtitle, showSlider = true }) {
   const { theme } = useTheme();
   const darkMode = theme === 'dark';
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 md:p-8 overflow-hidden transition-colors duration-500">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-500/5 rounded-full blur-[120px] -mr-96 -mt-96 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[100px] -ml-48 -mb-48 pointer-events-none" />
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-[1200px] bg-white rounded-3xl sm:rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col lg:flex-row relative z-10 border border-slate-100"
+    <div className="min-h-screen w-full bg-slate-50 flex items-center justify-center p-0 sm:p-4 md:p-6 lg:p-8 overflow-hidden transition-colors duration-500 relative">
+      <MotionDiv
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="w-full min-h-screen sm:min-h-0 lg:h-[calc(100vh-4rem)] lg:min-h-[640px] lg:max-h-[820px] max-w-[1180px] bg-white sm:rounded-[2rem] shadow-[0_24px_70px_rgba(15,23,42,0.12)] overflow-hidden flex flex-col lg:flex-row relative z-10 border-none sm:border border-slate-100"
       >
-        {/* Visual Showcase - Left Side */}
+        {/* Visual Showcase - Left Side (Hidden on Mobile) */}
         {showSlider && (
-          <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-[#022c22] min-h-[400px] lg:min-h-full">
-            <div className="absolute inset-0 z-0">
-              <AuthImageSlider />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60 z-10" />
-            <div className="absolute bottom-16 left-16 right-16 z-20">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5 }}
-                className="flex items-center gap-3 mb-4"
-              >
-                <div className="w-12 h-0.5 bg-emerald-500 rounded-full" />
-                <span className="text-emerald-400 text-[10px] font-black uppercase tracking-[0.3em]">Future Ready</span>
-              </motion.div>
-              <h2 className="text-4xl font-black text-white tracking-tighter mb-4 leading-tight">
-                Synchronizing Jaipur with <span className="text-emerald-500">Sustainable</span> Mobility.
-              </h2>
-              <p className="text-slate-400 text-sm font-medium leading-relaxed max-w-sm">
-                Enter the ecosystem and manage your zero-emission journeys with precision and style.
-              </p>
-            </div>
+          <div className="hidden lg:flex lg:w-[46%] relative overflow-hidden bg-slate-950 h-full">
+            <AuthImageSlider />
           </div>
         )}
 
         {/* Form - Right Side */}
-        <div className={`w-full ${showSlider ? 'lg:w-1/2' : 'lg:w-full'} p-6 sm:p-10 md:p-16 lg:p-20 flex flex-col justify-center overflow-y-auto max-h-none lg:max-h-none`}>
-          <div className="mb-8 lg:mb-12">
-            <motion.img
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+        <div className={`w-full ${showSlider ? 'lg:w-[54%]' : 'lg:w-full'} min-h-screen sm:min-h-0 h-full flex flex-col bg-white overflow-hidden`}>
+          {/* Mobile Logo / Header - Compact */}
+          <div className="p-6 pb-0 sm:p-8 sm:pb-0 lg:p-12 lg:pb-0 flex flex-col items-center lg:items-start shrink-0">
+            <MotionImg
               src={darkMode ? logoWhite : logo}
               alt="GoElectriQ"
-              className="h-40 lg:h-48 w-auto mb-8 lg:mb-12 object-contain mx-auto lg:mx-0"
+              className="h-12 sm:h-16 lg:h-20 w-auto object-contain"
+              initial={{ y: -10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
             />
-            {title && <h1 className="text-2xl lg:text-4xl font-black text-slate-900 tracking-tighter mb-2 lg:mb-3 text-center lg:text-left">{title}</h1>}
-            {subtitle && <p className="text-slate-500 font-bold text-[10px] uppercase tracking-widest text-center lg:text-left">{subtitle}</p>}
+            <div className="mt-4 text-center lg:text-left">
+              <h1 className="text-2xl lg:text-3xl font-bold text-slate-900 tracking-tight">{title}</h1>
+              <p className="text-slate-500 text-xs font-medium tracking-wide mt-1">{subtitle}</p>
+            </div>
           </div>
 
-          {children}
+          {/* Scrollable Form Area - Scrollbar Hidden */}
+          <div className="flex-1 overflow-y-auto scrollbar-hide px-6 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-10">
+            {children}
+          </div>
         </div>
-      </motion.div>
+      </MotionDiv>
 
-      {/* Modern Badge */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="fixed bottom-10 left-10 hidden xl:flex items-center gap-3 px-6 py-3 bg-white/50 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl"
-      >
-        <div className="w-2 h-2 bg-emerald-500 rounded-full" />
-        <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Encryption Level: 256-BIT AES</span>
-      </motion.div>
+      {/* Security Footer - Subtle */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden lg:flex items-center gap-2 text-slate-400">
+        <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+        <span className="text-[9px] font-bold uppercase tracking-widest">Secure AES-256 Connection</span>
+      </div>
     </div>
   );
 }

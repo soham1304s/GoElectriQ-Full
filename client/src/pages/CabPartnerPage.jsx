@@ -28,9 +28,8 @@ import apiConfig from '../config/api.config.json';
 
 const StatusBadge = ({ children, type = 'emerald' }) => {
   const colors = {
-    emerald: 'bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20',
-    teal: 'bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20',
-    violet: 'bg-violet-50 text-violet-600 border-violet-100 dark:bg-violet-500/10 dark:text-violet-400 dark:border-violet-500/20',
+    emerald: 'bg-green-50 text-green-600 border-green-100 dark:bg-green-500/10 dark:text-emerald-400 dark:border-emerald-500/20',
+    green: 'bg-green-50 text-green-600 border-green-100 dark:bg-green-500/10 dark:text-green-400 dark:border-green-500/20',
     amber: 'bg-amber-50 text-amber-600 border-amber-100 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20',
   };
   return (
@@ -75,8 +74,8 @@ export default function CabPartnerPage() {
   const validateForm = () => {
     if (!formData.ownerName.trim()) return { ok: false, text: 'Fleet owner identity required.' };
     if (!formData.phone.trim()) return { ok: false, text: 'Contact matrix required.' };
-    const phoneRegex = new RegExp(`^[${apiConfig.cab.phoneStartDigits.join('')}]\\d{${apiConfig.cab.maxPhoneLength - 1}}$`);
-    if (!phoneRegex.test(formData.phone)) return { ok: false, text: 'Invalid communication channel.' };
+    const phoneRegex = /^(\+91|0)?[6-9]\d{9}$/;
+    if (!phoneRegex.test(formData.phone)) return { ok: false, text: 'Invalid contact number format.' };
     if (!formData.vehicleModel.trim()) return { ok: false, text: 'Vehicle telemetry required.' };
     if (!formData.evType) return { ok: false, text: 'EV node type required.' };
     if (!formData.rcUpload) return { ok: false, text: 'RC authorization document required.' };
@@ -131,13 +130,13 @@ export default function CabPartnerPage() {
         
         {/* ===== HERO SECTION ===== */}
         <div className="relative bg-[#022c22] rounded-[4rem] p-12 md:p-20 text-white overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[120px] -mr-48 -mt-48" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[100px] -ml-48 -mb-48" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-green-500/10 rounded-full blur-[120px] -mr-48 -mt-48" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-green-500/10 rounded-full blur-[100px] -ml-48 -mb-48" />
           
           <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Fleet Partnership</span>
               </div>
               <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
@@ -148,9 +147,9 @@ export default function CabPartnerPage() {
               </p>
               
               <div className="flex flex-wrap gap-4 mb-12">
-                <StatusBadge type="teal">Zero Commission Gap</StatusBadge>
+                <StatusBadge type="emerald">Zero Commission Gap</StatusBadge>
                 <StatusBadge type="emerald">Weekly Settlement</StatusBadge>
-                <StatusBadge type="violet">Asset Security</StatusBadge>
+                <StatusBadge type="green">Asset Security</StatusBadge>
               </div>
 
               <button
@@ -165,7 +164,7 @@ export default function CabPartnerPage() {
             <div className="hidden lg:block relative">
               <div className="bg-white/5 backdrop-blur-3xl rounded-[3rem] p-10 border border-white/10">
                 <div className="flex items-center gap-4 mb-10">
-                  <div className="p-4 bg-emerald-500/20 text-emerald-400 rounded-2xl">
+                  <div className="p-4 bg-green-500/20 text-emerald-400 rounded-2xl">
                     <ShieldCheck size={32} />
                   </div>
                   <div>
@@ -203,7 +202,7 @@ export default function CabPartnerPage() {
               sub: 'Per Successful Dispatch',
               icon: TrendingUp,
               color: 'text-emerald-500',
-              bg: 'bg-emerald-50'
+              bg: 'bg-green-50'
             },
             { 
               title: 'Monthly Trajectory', 
@@ -211,7 +210,7 @@ export default function CabPartnerPage() {
               sub: 'Full Network Utilization',
               icon: DollarSign,
               color: 'text-emerald-500',
-              bg: 'bg-emerald-50',
+              bg: 'bg-green-50',
               popular: true
             },
             { 
@@ -219,8 +218,8 @@ export default function CabPartnerPage() {
               value: `₹${apiConfig.cab.earningsDailyAverage.min.toLocaleString()} - ₹${apiConfig.cab.earningsDailyAverage.max.toLocaleString()}`, 
               sub: '8-Hour Activity Node',
               icon: Clock,
-              color: 'text-violet-500',
-              bg: 'bg-violet-50'
+              color: 'text-green-500',
+              bg: 'bg-green-50'
             }
           ].map((stat, idx) => (
             <motion.div
@@ -233,7 +232,7 @@ export default function CabPartnerPage() {
             >
               {stat.popular && (
                 <div className="absolute top-8 right-8">
-                  <StatusBadge type="teal">Peak ROI</StatusBadge>
+                  <StatusBadge type="emerald">Peak ROI</StatusBadge>
                 </div>
               )}
               <div className={`p-5 ${stat.bg} ${stat.color} rounded-2xl w-fit mb-8`}>
@@ -250,7 +249,7 @@ export default function CabPartnerPage() {
         <div className="grid lg:grid-cols-2 gap-8">
           <div className="bg-white dark:bg-slate-900 rounded-[4rem] p-12 shadow-sm border border-slate-100 dark:border-slate-800">
             <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter mb-10 flex items-center gap-4">
-              <div className="p-3 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl"><Zap size={24}/></div>
+              <div className="p-3 bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-emerald-400 rounded-2xl"><Zap size={24}/></div>
               Commission Protocol
             </h3>
             <div className="space-y-6">
@@ -264,7 +263,7 @@ export default function CabPartnerPage() {
                     <p className="text-sm font-black text-slate-900 dark:text-white mb-1">{item.label}</p>
                     <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{item.sub}</p>
                   </div>
-                  <div className="text-xl font-black text-emerald-600 dark:text-emerald-400">{item.value}</div>
+                  <div className="text-xl font-black text-green-600 dark:text-emerald-400">{item.value}</div>
                 </div>
               ))}
             </div>
@@ -272,7 +271,7 @@ export default function CabPartnerPage() {
 
           <div className="bg-white dark:bg-slate-900 rounded-[4rem] p-12 shadow-sm border border-slate-100 dark:border-slate-800">
             <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter mb-10 flex items-center gap-4">
-              <div className="p-3 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl"><Clock size={24}/></div>
+              <div className="p-3 bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-emerald-400 rounded-2xl"><Clock size={24}/></div>
               Settlement Protocol
             </h3>
             <div className="space-y-6">
@@ -286,7 +285,7 @@ export default function CabPartnerPage() {
                     <p className="text-sm font-black text-slate-900 dark:text-white mb-1">{item.label}</p>
                     <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{item.sub}</p>
                   </div>
-                  <div className="text-sm font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">{item.value}</div>
+                  <div className="text-sm font-black text-green-600 dark:text-emerald-400 uppercase tracking-widest">{item.value}</div>
                 </div>
               ))}
             </div>
@@ -313,11 +312,11 @@ export default function CabPartnerPage() {
               >
                 {/* Modal Header */}
                 <div className="bg-[#022c22] p-10 md:p-14 text-white relative">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                   <div className="relative z-10">
                     <div className="flex justify-between items-start mb-6">
                       <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full" />
+                        <div className="w-2 h-2 bg-green-500 rounded-full" />
                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Partnership Initiation</span>
                       </div>
                       <button onClick={() => setShowModal(false)} className="p-2 hover:bg-white/10 rounded-xl transition-colors">
@@ -336,7 +335,7 @@ export default function CabPartnerPage() {
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
                         className={`mb-10 p-5 rounded-2xl flex items-center gap-4 ${
-                          message.type === 'success' ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' : 'bg-rose-50 text-rose-600 border border-rose-100'
+                          message.type === 'success' ? 'bg-green-50 text-green-600 border border-green-100' : 'bg-rose-50 text-rose-600 border border-rose-100'
                         }`}
                       >
                         {message.type === 'success' ? <CheckCircle size={20} /> : <AlertCircle size={20} />}
@@ -439,12 +438,12 @@ export default function CabPartnerPage() {
                           />
                           <label
                             htmlFor="rcInput"
-                            className="flex flex-col items-center justify-center w-full py-10 bg-slate-50 dark:bg-slate-800 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-[2rem] cursor-pointer hover:border-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-500/5 transition-all group"
+                            className="flex flex-col items-center justify-center w-full py-10 bg-slate-50 dark:bg-slate-800 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-[2rem] cursor-pointer hover:border-emerald-500 hover:bg-green-50 dark:hover:bg-green-500/5 transition-all group"
                           >
                             {filePreview.rc ? (
                               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center">
                                 <img src={filePreview.rc} alt="RC Preview" className="max-h-32 mx-auto mb-4 rounded-2xl shadow-lg" />
-                                <p className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">RC Secured</p>
+                                <p className="text-[10px] font-black text-green-600 dark:text-emerald-400 uppercase tracking-widest">RC Secured</p>
                               </motion.div>
                             ) : (
                               <div className="text-center">
@@ -470,12 +469,12 @@ export default function CabPartnerPage() {
                           />
                           <label
                             htmlFor="insuranceInput"
-                            className="flex flex-col items-center justify-center w-full py-10 bg-slate-50 dark:bg-slate-800 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-[2rem] cursor-pointer hover:border-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-500/5 transition-all group"
+                            className="flex flex-col items-center justify-center w-full py-10 bg-slate-50 dark:bg-slate-800 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-[2rem] cursor-pointer hover:border-emerald-500 hover:bg-green-50 dark:hover:bg-green-500/5 transition-all group"
                           >
                             {filePreview.insurance ? (
                               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center">
                                 <img src={filePreview.insurance} alt="Insurance Preview" className="max-h-32 mx-auto mb-4 rounded-2xl shadow-lg" />
-                                <p className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Policy Secured</p>
+                                <p className="text-[10px] font-black text-green-600 dark:text-emerald-400 uppercase tracking-widest">Policy Secured</p>
                               </motion.div>
                             ) : (
                               <div className="text-center">

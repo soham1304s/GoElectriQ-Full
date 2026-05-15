@@ -23,13 +23,13 @@ export default function FormInput({
       <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">{label}</label>
       <div className="relative group">
         {/* Background Glow Effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-400 dark:from-purple-600 dark:to-indigo-600 rounded-xl opacity-0 group-focus-within:opacity-20 blur transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-400 dark:from-green-600 dark:to-emerald-600 rounded-xl opacity-0 group-focus-within:opacity-20 blur transition-opacity duration-300" />
 
         {/* Input Container */}
-        <div className="relative flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl transition-all duration-300 group-focus-within:border-yellow-500 dark:group-focus-within:border-purple-500 group-hover:border-gray-300 dark:group-hover:border-slate-600">
+        <div className="relative flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl transition-all duration-300 group-focus-within:border-yellow-500 dark:group-focus-within:border-green-500 group-hover:border-gray-300 dark:group-hover:border-slate-600">
           {/* Left Icon */}
           {icon && (
-            <div className="text-gray-400 dark:text-gray-500 group-focus-within:text-yellow-500 dark:group-focus-within:text-purple-500 transition-colors">
+            <div className="text-gray-400 dark:text-gray-500 group-focus-within:text-yellow-500 dark:group-focus-within:text-green-500 transition-colors">
               {icon}
             </div>
           )}
@@ -47,7 +47,7 @@ export default function FormInput({
 
           {/* Right Icon */}
           {rightIcon && (
-            <div className="text-gray-400 dark:text-gray-500 group-focus-within:text-yellow-500 dark:group-focus-within:text-purple-500 transition-colors">
+            <div className="text-gray-400 dark:text-gray-500 group-focus-within:text-yellow-500 dark:group-focus-within:text-green-500 transition-colors">
               {rightIcon}
             </div>
           )}

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Trash2, Edit2, RefreshCw, AlertCircle, Loader, CheckCircle, XCircle, Clock, Check, X } from 'lucide-react';
 import AdminLayout from './AdminLayout';
-import apiConfig from '../../config/api.config.json';
+import api from '../../services/api';
 
 const DriverBookingDashboard = () => {
   const [drivers, setDrivers] = useState([]);
@@ -38,15 +37,11 @@ const DriverBookingDashboard = () => {
       setLoading(true);
       setError('');
 
-      let url = `${apiConfig.api.baseUrl}/admin/drivers?page=${currentPage}&limit=10`;
-      if (filterStatus) {
-        url += `&status=${filterStatus}`;
-      }
-
-      const token = localStorage.getItem('token');
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const response = await api.get('/admin/drivers', {
+        params: {
+          page: currentPage,
+          limit: 10,
+          ...(filterStatus ? { status: filterStatus } : {}),
         },
       });
 
@@ -87,12 +82,7 @@ const DriverBookingDashboard = () => {
     }
 
     try {
-      const token = localStorage.getItem('token');
-      await axios.delete(`${apiConfig.api.baseUrl}/admin/drivers/${driverId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await api.delete(`/admin/drivers/${driverId}`);
 
       console.log('✅ Driver deleted:', driverId);
       fetchDrivers();
@@ -105,16 +95,7 @@ const DriverBookingDashboard = () => {
   // Update status
   const handleUpdateStatus = async (driverId, status) => {
     try {
-      const token = localStorage.getItem('token');
-      await axios.patch(
-        `${apiConfig.api.baseUrl}/admin/drivers/${driverId}/status`,
-        { status },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await api.patch(`/admin/drivers/${driverId}/status`, { status });
 
       console.log('✅ Driver status updated:', driverId, status);
       setEditingId(null);
@@ -147,16 +128,7 @@ const DriverBookingDashboard = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const token = localStorage.getItem('token');
-      await axios.put(
-        `${apiConfig.api.baseUrl}/admin/drivers/${selectedDriver._id}`,
-        editForm,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await api.put(`/admin/drivers/${selectedDriver._id}`, editForm);
 
       setIsEditModalOpen(false);
       fetchDrivers();
@@ -173,7 +145,7 @@ const DriverBookingDashboard = () => {
       pending: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300',
       approved: 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300',
       rejected: 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300',
-      active: 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300',
+      active: 'bg-green-100 text-green-700 dark:bg-emerald-900 dark:text-emerald-300',
       inactive: 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300',
     };
     return colors[status] || 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300';
@@ -194,16 +166,16 @@ const DriverBookingDashboard = () => {
     <AdminLayout>
       <div className="space-y-6">
         {/* Header Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-lg p-6 md:p-8 text-white">
+        <div className="bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg shadow-lg p-6 md:p-8 text-white">
           <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
             <div className="flex-1">
               <h1 className="text-3xl md:text-4xl font-bold mb-2">Driver Applications</h1>
-              <p className="text-sm md:text-base text-blue-100">Manage and review driver partner applications</p>
+              <p className="text-sm md:text-base text-green-50">Manage and review driver partner applications</p>
             </div>
             <button
               onClick={() => fetchDrivers()}
               disabled={loading}
-              className="flex items-center justify-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-4 md:px-6 py-2 md:py-3 rounded-lg font-semibold transition-all disabled:opacity-50 w-full md:w-auto"
+              className="flex items-center justify-center gap-2 bg-white text-green-600 hover:bg-green-50 px-4 md:px-6 py-2 md:py-3 rounded-lg font-semibold transition-all disabled:opacity-50 w-full md:w-auto"
             >
               <RefreshCw size={20} className={loading ? 'animate-spin' : ''} />
               <span className="text-sm md:text-base">Refresh</span>
@@ -233,7 +205,7 @@ const DriverBookingDashboard = () => {
                   setFilterStatus(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
               >
                 <option value="">All Status</option>
                 <option value="pending">Pending</option>
@@ -244,9 +216,9 @@ const DriverBookingDashboard = () => {
               </select>
             </div>
             <div className="flex items-end">
-              <div className="bg-blue-50 dark:bg-blue-900 px-4 py-2 rounded-lg w-full">
+              <div className="bg-green-50 dark:bg-emerald-900 px-4 py-2 rounded-lg w-full">
                 <p className="text-sm text-gray-600 dark:text-gray-400">Total Applications</p>
-                <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{drivers.length}</p>
+                <p className="text-2xl font-bold text-green-600 dark:text-emerald-400">{drivers.length}</p>
               </div>
             </div>
             <div className="flex items-end">
@@ -263,7 +235,7 @@ const DriverBookingDashboard = () => {
         {/* Loading State */}
         {loading && (
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-12 text-center">
-            <Loader size={48} className="mx-auto text-blue-600 dark:text-blue-400 animate-spin mb-4" />
+            <Loader size={48} className="mx-auto text-green-600 dark:text-emerald-400 animate-spin mb-4" />
             <p className="text-gray-600 dark:text-gray-400 text-lg">Loading drivers...</p>
           </div>
         )}
@@ -299,7 +271,7 @@ const DriverBookingDashboard = () => {
                       <td className="px-3 md:px-6 py-4 whitespace-nowrap">
                         <a
                           href={`mailto:${driver.email}`}
-                          className="text-blue-600 dark:text-blue-400 hover:underline text-xs md:text-sm"
+                          className="text-green-600 dark:text-emerald-400 hover:underline text-xs md:text-sm"
                           title={driver.email}
                         >
                           {driver.email.length > 20 ? driver.email.substring(0, 17) + '...' : driver.email}
@@ -310,7 +282,7 @@ const DriverBookingDashboard = () => {
                       <td className="px-3 md:px-6 py-4 whitespace-nowrap">
                         <a
                           href={`tel:${driver.phone}`}
-                          className="text-blue-600 dark:text-blue-400 hover:underline text-xs md:text-sm font-medium"
+                          className="text-green-600 dark:text-emerald-400 hover:underline text-xs md:text-sm font-medium"
                         >
                           {driver.phone}
                         </a>
@@ -323,7 +295,7 @@ const DriverBookingDashboard = () => {
                             href={driver.documents.licensePhoto}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-600 dark:text-blue-400 hover:underline text-xs md:text-sm font-medium"
+                            className="text-green-600 dark:text-emerald-400 hover:underline text-xs md:text-sm font-medium"
                           >
                             View
                           </a>
@@ -339,7 +311,7 @@ const DriverBookingDashboard = () => {
                             <select
                               value={newStatus}
                               onChange={(e) => setNewStatus(e.target.value)}
-                              className="px-2 py-1 text-xs md:text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              className="px-2 py-1 text-xs md:text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                             >
                               <option value="">Select</option>
                               <option value="pending">Pending</option>
@@ -350,7 +322,7 @@ const DriverBookingDashboard = () => {
                             </select>
                             <button
                               onClick={() => handleUpdateStatus(driver._id, newStatus)}
-                              className="px-2 py-1 text-xs md:text-sm bg-blue-600 hover:bg-blue-700 text-white rounded font-medium transition"
+                              className="px-2 py-1 text-xs md:text-sm bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition"
                             >
                               <Check size={14} />
                             </button>
@@ -374,7 +346,7 @@ const DriverBookingDashboard = () => {
                                 setEditingId(driver._id);
                                 setNewStatus(driver.status);
                               }}
-                              className="text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900 p-1 rounded transition"
+                              className="text-green-600 dark:text-emerald-400 hover:bg-green-50 dark:hover:bg-emerald-900 p-1 rounded transition"
                               title="Edit status"
                             >
                               <Edit2 size={14} />
@@ -402,7 +374,7 @@ const DriverBookingDashboard = () => {
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => handleEdit(driver)}
-                            className="text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900 p-2 rounded transition"
+                            className="text-green-600 dark:text-emerald-400 hover:bg-green-50 dark:hover:bg-emerald-900 p-2 rounded transition"
                             title="Edit profile"
                           >
                             <Edit2 size={16} />
@@ -451,7 +423,7 @@ const DriverBookingDashboard = () => {
                 onClick={() => setCurrentPage(page)}
                 className={`px-4 py-2 rounded-lg font-medium transition ${
                   currentPage === page
-                    ? 'bg-blue-600 text-white shadow-md'
+                    ? 'bg-emerald-600 text-white shadow-md'
                     : 'bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700'
                 }`}
               >
@@ -472,7 +444,7 @@ const DriverBookingDashboard = () => {
         {isEditModalOpen && (
           <div className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center p-4">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden">
-              <div className="px-6 py-4 bg-blue-600 text-white flex justify-between items-center">
+              <div className="px-6 py-4 bg-emerald-600 text-white flex justify-between items-center">
                 <h3 className="text-xl font-bold">Edit Driver Details</h3>
                 <button onClick={() => setIsEditModalOpen(false)}>
                   <X size={24} />
@@ -592,7 +564,7 @@ const DriverBookingDashboard = () => {
                   </button>
                   <button
                     type="submit"
-                    className="px-8 py-2 rounded-lg bg-blue-600 text-white font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-600/20"
+                    className="px-8 py-2 rounded-lg bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition shadow-lg shadow-emerald-600/20"
                   >
                     Save Changes
                   </button>

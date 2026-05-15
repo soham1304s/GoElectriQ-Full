@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CheckCircle, XCircle, Clock, MapPin, User, PhoneIcon, AlertCircle, RefreshCw } from 'lucide-react';
+import { CheckCircle, XCircle, Clock, MapPin, User, Phone, AlertCircle, RefreshCw } from 'lucide-react';
 import AdminLayout from './AdminLayout';
 
 export default function RidesPage() {
@@ -227,12 +227,12 @@ export default function RidesPage() {
     } else if (notesLower.includes('upi') || notesLower.includes('online')) {
       return {
         label: 'Online Payment',
-        color: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200'
+        color: 'bg-green-100 text-green-800 dark:bg-emerald-900/30 dark:text-emerald-200'
       };
     } else if (notesLower.includes('bank') || notesLower.includes('transfer')) {
       return {
         label: 'Bank Transfer',
-        color: 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-200'
+        color: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-200'
       };
     }
     return null;
@@ -273,7 +273,7 @@ export default function RidesPage() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`px-4 py-3 font-medium whitespace-nowrap border-b-2 transition ${activeTab === tab.id
-                ? 'border-blue-500 text-blue-600'
+                ? 'border-emerald-500 text-green-600'
                 : 'border-transparent text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                 }`}
             >
@@ -285,7 +285,7 @@ export default function RidesPage() {
         {/* Refresh Button */}
         <button
           onClick={() => fetchBookings(activeTab)}
-          className="mb-4 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg flex items-center gap-2 transition"
+          className="mb-4 px-4 py-2 bg-green-500 hover:bg-emerald-600 text-white rounded-lg flex items-center gap-2 transition"
         >
           <RefreshCw size={18} />
           Refresh
@@ -295,7 +295,7 @@ export default function RidesPage() {
         {loading && (
           <div className="text-center py-12">
             <div className="inline-block animate-spin">
-              <RefreshCw size={32} className="text-blue-500" />
+              <RefreshCw size={32} className="text-emerald-500" />
             </div>
             <p className="mt-4 text-gray-600 dark:text-gray-400">Loading bookings...</p>
           </div>
@@ -336,7 +336,7 @@ export default function RidesPage() {
                 <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg mb-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex items-start gap-3">
-                      <User size={20} className="text-blue-500 mt-1" />
+                      <User size={20} className="text-emerald-500 mt-1" />
                       <div>
                         <p className="text-sm text-gray-600 dark:text-gray-400">User</p>
                         <p className="font-semibold text-gray-900 dark:text-white">
@@ -345,7 +345,7 @@ export default function RidesPage() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <PhoneIcon size={20} className="text-blue-500 mt-1" />
+                      <Phone size={20} className="text-emerald-500 mt-1" />
                       <div>
                         <p className="text-sm text-gray-600 dark:text-gray-400">Contact</p>
                         <p className="font-semibold text-gray-900 dark:text-white">
@@ -577,7 +577,7 @@ export default function RidesPage() {
                   {activeTab === 'confirmed' && (
                     <button
                       onClick={() => openModal(booking, 'manual-complete')}
-                      className="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg flex items-center gap-2 transition"
+                      className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg flex items-center gap-2 transition"
                     >
                       <CheckCircle size={18} />
                       Mark as Complete (Manual Payment)
@@ -586,7 +586,7 @@ export default function RidesPage() {
                   {activeTab === 'paid' && (
                     <button
                       onClick={() => openModal(booking, 'complete')}
-                      className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg flex items-center gap-2 transition"
+                      className="px-4 py-2 bg-green-500 hover:bg-emerald-600 text-white rounded-lg flex items-center gap-2 transition"
                     >
                       <CheckCircle size={18} />
                       Mark as Complete
@@ -698,7 +698,7 @@ export default function RidesPage() {
                   value={completionNotes}
                   onChange={(e) => setCompletionNotes(e.target.value)}
                   placeholder="Enter completion notes (optional)..."
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   rows="4"
                 />
                 <div className="flex gap-3">
@@ -710,7 +710,7 @@ export default function RidesPage() {
                   </button>
                   <button
                     onClick={() => handleCompleteRide(selectedBooking._id)}
-                    className="flex-1 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition"
+                    className="flex-1 px-4 py-2 bg-green-500 hover:bg-emerald-600 text-white rounded-lg transition"
                   >
                     Complete
                   </button>
@@ -728,9 +728,9 @@ export default function RidesPage() {
                 </p>
 
                 {/* Amount Display */}
-                <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-4 mb-4">
-                  <p className="text-sm text-blue-700 dark:text-blue-300 font-semibold mb-2">Total Amount Due:</p>
-                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                <div className="bg-green-50 dark:bg-emerald-900/30 border border-green-200 dark:border-emerald-700 rounded-lg p-4 mb-4">
+                  <p className="text-sm text-green-700 dark:text-emerald-300 font-semibold mb-2">Total Amount Due:</p>
+                  <p className="text-2xl font-bold text-green-600 dark:text-emerald-400">
                     ₹{selectedBooking.pricing?.fixedCharge && selectedBooking.pricing?.parkingCharge
                       ? (parseFloat(selectedBooking.pricing.fixedCharge) + parseFloat(selectedBooking.pricing.parkingCharge)).toFixed(2)
                       : selectedBooking.pricing?.totalFare?.toFixed(2) || '0.00'}
@@ -747,7 +747,7 @@ export default function RidesPage() {
                     value={manualPaymentAmount}
                     onChange={(e) => setManualPaymentAmount(e.target.value)}
                     placeholder="Enter amount received"
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white mb-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white mb-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                     min="0"
                   />
                   <p className="text-xs text-gray-500 dark:text-gray-400">Enter the exact amount you received from the customer</p>
@@ -761,7 +761,7 @@ export default function RidesPage() {
                   <select 
                     value={manualPaymentMethod}
                     onChange={(e) => setManualPaymentMethod(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500"
                   >
                     <option value="">Select payment method</option>
                     <option value="cash">Cash</option>
@@ -781,7 +781,7 @@ export default function RidesPage() {
                     value={completionNotes}
                     onChange={(e) => setCompletionNotes(e.target.value)}
                     placeholder="e.g., Cash collected, Bank Ref: TXN12345, UPI ID: xyz@bank, etc..."
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white mb-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white mb-4 focus:outline-none focus:ring-2 focus:ring-green-500"
                     rows="3"
                   />
                 </div>
@@ -800,7 +800,7 @@ export default function RidesPage() {
                   </button>
                   <button
                     onClick={() => handleCompleteRide(selectedBooking._id)}
-                    className="flex-1 px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition"
+                    className="flex-1 px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition"
                   >
                     Complete (Manual)
                   </button>

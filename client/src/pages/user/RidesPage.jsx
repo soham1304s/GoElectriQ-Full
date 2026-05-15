@@ -26,6 +26,9 @@ import { useAuth } from '../../context/AuthContext.jsx';
 import { ridePaymentService } from '../../services/ridePaymentService.js';
 import { toast } from 'react-hot-toast';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL.replace(/\/+$/, '')}/api` : '/api');
+
 export default function RidesPage() {
   const { user } = useAuth();
   const [bookings, setBookings] = useState([]);
@@ -107,7 +110,7 @@ export default function RidesPage() {
 
   const fetchDriverStatus = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || '/api'}/partners/driver/status`, {
+      const response = await fetch(`${API_BASE_URL}/partners/driver/status`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       const data = await response.json();
@@ -164,7 +167,7 @@ export default function RidesPage() {
     if (!cancelReason.trim()) return;
     setCancelling(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || '/api'}/bookings/${selectedRideForCancel._id}/cancel`, {
+      const response = await fetch(`${API_BASE_URL}/bookings/${selectedRideForCancel._id}/cancel`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -231,14 +234,14 @@ export default function RidesPage() {
                     </div>
                     <button
                       onClick={() => navigate('/user/application-status')}
-                      className="px-10 py-5 bg-white text-emerald-600 rounded-2xl font-black text-sm hover:shadow-2xl transition-all active:scale-95 whitespace-nowrap"
+                      className="px-10 py-5 bg-white text-green-600 rounded-2xl font-black text-sm hover:shadow-2xl transition-all active:scale-95 whitespace-nowrap"
                     >
                       Enter Driver Dashboard
                     </button>
                   </div>
                 </div>
               ) : driverApp.status === 'pending' && (
-                <div className="bg-blue-600 rounded-[3rem] p-10 text-white shadow-2xl relative overflow-hidden group">
+                <div className="bg-emerald-600 rounded-[3rem] p-10 text-white shadow-2xl relative overflow-hidden group">
                   <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
                     <div className="flex items-center gap-8">
                       <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-[2rem] flex items-center justify-center shadow-inner animate-pulse">
@@ -248,14 +251,14 @@ export default function RidesPage() {
                         <div className="flex items-center gap-3 mb-2">
                           <h2 className="text-3xl font-black tracking-tight">Profile Under Review</h2>
                         </div>
-                        <p className="text-blue-50 text-sm font-medium max-w-lg leading-relaxed opacity-90">
+                        <p className="text-emerald-50 text-sm font-medium max-w-lg leading-relaxed opacity-90">
                           Our verification engine is currently validating your credentials. Expected synchronization completion within 24-48 hours.
                         </p>
                       </div>
                     </div>
                     <button
                       onClick={() => navigate('/user/application-status')}
-                      className="px-10 py-5 bg-white text-blue-600 rounded-2xl font-black text-sm hover:shadow-2xl transition-all whitespace-nowrap"
+                      className="px-10 py-5 bg-white text-green-600 rounded-2xl font-black text-sm hover:shadow-2xl transition-all whitespace-nowrap"
                     >
                       Monitor Progress
                     </button>
@@ -290,12 +293,12 @@ export default function RidesPage() {
           </div>
 
           <div className="lg:col-span-4 grid grid-cols-1 gap-6">
-            <div className="bg-emerald-50 rounded-[2.5rem] p-8 border border-emerald-100 flex flex-col justify-between">
+            <div className="bg-green-50 rounded-[2.5rem] p-8 border border-green-100 flex flex-col justify-between">
               <div className="flex justify-between items-start">
-                <div className="p-3 bg-white rounded-2xl shadow-sm text-emerald-600">
+                <div className="p-3 bg-white rounded-2xl shadow-sm text-green-600">
                   <Leaf size={24} />
                 </div>
-                <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Impact Metric</span>
+                <span className="text-[10px] font-black text-green-600 uppercase tracking-widest">Impact Metric</span>
               </div>
               <div>
                 <p className="text-4xl font-black text-slate-900">{statsData.co2}kg</p>
@@ -351,7 +354,7 @@ export default function RidesPage() {
           <AnimatePresence mode='popLayout'>
             {filteredBookings.map((ride, idx) => {
               const isPendingPayment = ride.paymentStatus === 'pending';
-              const statusColor = ride.status === 'completed' ? 'text-emerald-500 bg-emerald-50' : 
+              const statusColor = ride.status === 'completed' ? 'text-emerald-500 bg-green-50' : 
                                ride.status === 'cancelled' ? 'text-rose-500 bg-rose-50' : 
                                'text-amber-500 bg-amber-50';
               return (
@@ -385,7 +388,7 @@ export default function RidesPage() {
                         <div className="flex flex-col items-center gap-2 pt-1.5">
                           <div className="w-3 h-3 rounded-full border-[3px] border-emerald-500 bg-white" />
                           <div className="w-0.5 flex-1 bg-slate-100 min-h-[40px] rounded-full" />
-                          <div className="w-3 h-3 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/50" />
+                          <div className="w-3 h-3 rounded-full bg-green-500 shadow-lg shadow-emerald-500/50" />
                         </div>
                         <div className="flex-1 space-y-6">
                           <div>
@@ -432,7 +435,7 @@ export default function RidesPage() {
                         {isPendingPayment && ride.status !== 'cancelled' ? (
                           <button
                             onClick={() => handlePayAdvance(ride)}
-                            className="px-6 py-3.5 bg-emerald-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-600 transition-all shadow-lg active:scale-95 flex items-center gap-2"
+                            className="px-6 py-3.5 bg-green-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-600 transition-all shadow-lg active:scale-95 flex items-center gap-2"
                           >
                             <CreditCard size={14} />
                             Settlement
@@ -469,7 +472,7 @@ export default function RidesPage() {
             <p className="text-slate-500 font-medium max-w-sm mx-auto">Your journey log is currently empty. Initiate your first carbon-neutral mission today.</p>
             <button 
               onClick={() => navigate('/services')}
-              className="mt-8 px-10 py-5 bg-emerald-500 text-white rounded-2xl font-black text-sm hover:bg-emerald-600 transition-all shadow-2xl"
+              className="mt-8 px-10 py-5 bg-green-500 text-white rounded-2xl font-black text-sm hover:bg-emerald-600 transition-all shadow-2xl"
             >
               Start Your First Journey
             </button>

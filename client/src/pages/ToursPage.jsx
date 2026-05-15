@@ -41,12 +41,26 @@ export default function ToursPage() {
   };
 
   const handleCategoryChange = (category) => {
+    const nextParams = new URLSearchParams(searchParams);
     if (category === 'all') {
-      searchParams.delete('type');
+      nextParams.delete('type');
     } else {
-      searchParams.set('type', category);
+      nextParams.set('type', category);
     }
-    setSearchParams(searchParams);
+    setSearchParams(nextParams);
+  };
+
+  const getStartingPrice = (pkg) => {
+    const prices = [
+      pkg?.basePrice,
+      pkg?.price,
+      pkg?.pricing?.economy,
+      pkg?.pricing?.premium,
+    ]
+      .map((price) => Number(price))
+      .filter((price) => Number.isFinite(price) && price > 0);
+
+    return prices.length > 0 ? Math.min(...prices) : 0;
   };
 
   // Fallback data if no packages are in database
@@ -100,16 +114,16 @@ export default function ToursPage() {
       {/* Hero Section */}
       <div className="relative pt-24 pb-16 md:pt-28 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-emerald-600/5 dark:bg-emerald-500/10 mix-blend-multiply dark:mix-blend-lighten" />
+          <div className="absolute inset-0 bg-emerald-600/5 dark:bg-green-500/10 mix-blend-multiply dark:mix-blend-lighten" />
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl opacity-50" />
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6 border border-emerald-200 dark:border-emerald-800/50">
+          <div className="inline-flex items-center gap-2 bg-green-100 dark:bg-emerald-900/30 text-green-700 dark:text-emerald-300 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6 border border-green-200 dark:border-emerald-800/50">
             <Zap size={14} className="fill-current" /> Zero Emission Tours
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tight mb-6">
-            Electric <span className="text-emerald-600">Tour Packages</span>
+            Electric <span className="text-green-600">Tour Packages</span>
           </h1>
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10 font-medium">
             Experience premium, whisper-quiet tours in our top-of-the-line electric cabs. Heritage, nature, and skyline drives.
@@ -134,7 +148,7 @@ export default function ToursPage() {
                   onClick={() => handleCategoryChange(cat.id)}
                   className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${
                     categoryFilter === cat.id
-                      ? 'bg-white dark:bg-zinc-700 text-emerald-600 dark:text-emerald-400 shadow-md'
+                      ? 'bg-white dark:bg-zinc-700 text-green-600 dark:text-emerald-400 shadow-md'
                       : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
@@ -169,7 +183,7 @@ export default function ToursPage() {
         
         {searchTerm && (
           <div className="mt-4 flex justify-center">
-            <span className="px-4 py-1.5 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 rounded-full text-xs font-bold border border-emerald-100 dark:border-emerald-800">
+            <span className="px-4 py-1.5 bg-green-50 dark:bg-emerald-900/20 text-green-600 dark:text-emerald-400 rounded-full text-xs font-bold border border-green-100 dark:border-emerald-800">
               Found {filteredPackages.length} results for "{searchTerm}"
             </span>
           </div>
@@ -224,7 +238,7 @@ export default function ToursPage() {
                 {/* Card Body */}
                 <div className="p-6 md:p-8 flex flex-col flex-grow">
                   {/* Title */}
-                  <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-4 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-4 group-hover:text-green-600 dark:group-hover:text-emerald-400 transition-colors">
                     {pkg.title}
                   </h3>
 
@@ -250,7 +264,7 @@ export default function ToursPage() {
                     <div>
                       <p className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider mb-0.5">Starting From</p>
                       <div className="text-2xl font-black text-slate-900 dark:text-white">
-                        ₹{pkg.basePrice || pkg.price}
+                        ₹{getStartingPrice(pkg).toLocaleString('en-IN')}
                       </div>
                     </div>
                     <button 
@@ -289,7 +303,7 @@ export default function ToursPage() {
           onClose={() => setIsModalOpen(false)}
           tourName={selectedPackage.title}
           packageId={selectedPackage._id}
-          packagePrice={selectedPackage.basePrice}
+          packagePrice={getStartingPrice(selectedPackage)}
           pricing={selectedPackage.pricing}
         />
       )}

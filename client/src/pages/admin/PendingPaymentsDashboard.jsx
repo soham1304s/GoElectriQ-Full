@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, Fragment } from 'react';
 import { 
   Search, 
   AlertCircle, 
@@ -23,8 +23,11 @@ import {
 import AdminLayout from './AdminLayout';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAuth } from '../../context/AuthContext';
+import { ridePaymentService } from '../../services/ridePaymentService';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL.replace(/\/+$/, '')}/api` : '/api');
 
 const PendingPaymentsDashboard = () => {
   const [pendingPayments, setPendingPayments] = useState([]);
@@ -108,14 +111,62 @@ const PendingPaymentsDashboard = () => {
     if (!selectedBooking || !collectAmount) return;
 
     setSubmitting(true);
+    setErrorMessage('');
+    setSuccessMessage('');
+
     try {
+      let paymentPayload = {
+        paymentMethod,
+        notes,
+        paidAmount: parseFloat(collectAmount),
+      };
+
+      if (paymentMethod === 'razorpay') {
+        // 1. Create Razorpay Order
+        const orderResponse = await ridePaymentService.createRidePaymentOrder({
+          bookingId: selectedBooking._id,
+          amount: parseFloat(collectAmount),
+          rideType: selectedBooking.rideType || 'standard',
+          pickupLocation: selectedBooking.pickupLocation?.address || 'Admin Office',
+          dropLocation: selectedBooking.dropLocation?.address || 'Admin Office',
+        });
+
+        if (!orderResponse.success) {
+          throw new Error(orderResponse.message || 'Failed to create payment order');
+        }
+
+        // 2. Initiate Razorpay Payment
+        const razorpayResponse = await ridePaymentService.initiateRazorpayPayment(
+          orderResponse.data,
+          {
+            name: selectedBooking.user?.name || 'Customer',
+            email: selectedBooking.user?.email || '',
+            phone: selectedBooking.user?.phone || '',
+          },
+          { rideType: selectedBooking.rideType || 'standard' }
+        );
+
+        // 3. Verify Razorpay Payment
+        const verifyResponse = await ridePaymentService.verifyRidePayment({
+          razorpay_order_id: razorpayResponse.razorpay_order_id,
+          razorpay_payment_id: razorpayResponse.razorpay_payment_id,
+          razorpay_signature: razorpayResponse.razorpay_signature,
+          paymentId: orderResponse.data.paymentId
+        });
+
+        if (!verifyResponse.success) {
+          throw new Error('Payment verification failed');
+        }
+
+        // Add verification details to the final record
+        paymentPayload.razorpayPaymentId = razorpayResponse.razorpay_payment_id;
+        paymentPayload.notes = `${notes} (Razorpay ID: ${razorpayResponse.razorpay_payment_id})`.trim();
+      }
+
+      // 4. Record payment in admin controller
       const paymentResponse = await axios.post(
         `${API_BASE_URL}/admin/bookings/${selectedBooking._id}/collect-payment`,
-        {
-          paymentMethod,
-          notes,
-          paidAmount: parseFloat(collectAmount),
-        },
+        paymentPayload,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         }
@@ -140,9 +191,11 @@ const PendingPaymentsDashboard = () => {
         }, 2000);
       }
     } catch (error) {
-      setErrorMessage(error.response?.data?.message || 'Transaction failed');
+      console.error('Payment Error:', error);
+      setErrorMessage(error.message || error.response?.data?.message || 'Transaction failed');
+    } finally {
+      setSubmitting(false);
     }
-    setSubmitting(false);
   };
 
   const totalOutstanding = filteredPayments.reduce((sum, p) => sum + p.remainingAmount, 0);
@@ -154,14 +207,14 @@ const PendingPaymentsDashboard = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
             <h1 className="text-3xl md:text-4xl font-black tracking-tight text-slate-900 mb-2">
-              Payment <span className="text-emerald-600">Reconciliation</span>
+              Payment <span className="text-green-600">Reconciliation</span>
             </h1>
             <p className="text-slate-500 font-medium">Manage and finalize outstanding balances for completed journeys.</p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="px-4 py-2 bg-emerald-50 rounded-2xl border border-emerald-100 flex items-center gap-2">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-widest text-emerald-600">Live Sync Enabled</span>
+            <div className="px-4 py-2 bg-green-50 rounded-2xl border border-green-100 flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="text-[10px] font-black uppercase tracking-widest text-green-600">Live Sync Enabled</span>
             </div>
             <button
               onClick={() => fetchPendingPayments(1)}
@@ -176,7 +229,7 @@ const PendingPaymentsDashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600">
+              <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-600">
                 <Banknote size={24} />
               </div>
               <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Outstanding</span>
@@ -252,7 +305,7 @@ const PendingPaymentsDashboard = () => {
               <tbody className="divide-y divide-slate-100">
                 <AnimatePresence>
                   {filteredPayments.map((booking) => (
-                    <React.Fragment key={booking._id}>
+                    <Fragment key={booking._id}>
                       <motion.tr
                         layout
                         initial={{ opacity: 0 }}
@@ -267,7 +320,7 @@ const PendingPaymentsDashboard = () => {
                         </td>
                         <td className="px-6 py-6">
                           <p className="text-sm font-black text-slate-900 tracking-tight">{booking.bookingId}</p>
-                          <p className="text-[10px] font-black text-emerald-600 uppercase mt-1 tracking-tighter">{booking.rideType}</p>
+                          <p className="text-[10px] font-black text-green-600 uppercase mt-1 tracking-tighter">{booking.rideType}</p>
                         </td>
                         <td className="px-6 py-6">
                           <div className="flex items-center gap-3">
@@ -330,7 +383,7 @@ const PendingPaymentsDashboard = () => {
                                   </div>
                                   <div className="flex justify-between pt-2 border-t border-slate-50">
                                     <p className="text-[10px] font-black text-slate-900 uppercase">{booking.distance?.toFixed(1)} KM Total</p>
-                                    <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">{booking.cabType}</p>
+                                    <p className="text-[10px] font-black text-green-600 uppercase tracking-widest">{booking.cabType}</p>
                                   </div>
                                 </div>
                               </div>
@@ -345,7 +398,7 @@ const PendingPaymentsDashboard = () => {
                                     <span>Total Fare</span>
                                     <span className="text-slate-900">₹{booking.totalFare}</span>
                                   </div>
-                                  <div className="flex justify-between text-xs font-bold text-emerald-600">
+                                  <div className="flex justify-between text-xs font-bold text-green-600">
                                     <span>Advance Collected</span>
                                     <span>- ₹{booking.paidAmount}</span>
                                   </div>
@@ -378,7 +431,7 @@ const PendingPaymentsDashboard = () => {
                           </td>
                         </motion.tr>
                       )}
-                    </React.Fragment>
+                    </Fragment>
                   ))}
                 </AnimatePresence>
               </tbody>
@@ -442,7 +495,7 @@ const PendingPaymentsDashboard = () => {
                           onClick={() => setPaymentMethod(method.id)}
                           className={`flex items-center gap-3 p-4 rounded-2xl border-2 transition-all font-bold text-sm ${
                             paymentMethod === method.id 
-                            ? 'border-emerald-500 bg-emerald-50 text-emerald-700 shadow-inner' 
+                            ? 'border-emerald-500 bg-green-50 text-green-700 shadow-inner' 
                             : 'border-slate-100 bg-white text-slate-500 hover:border-slate-200'
                           }`}
                         >

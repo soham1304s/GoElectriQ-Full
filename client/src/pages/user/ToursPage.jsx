@@ -162,7 +162,7 @@ export default function ToursPage() {
   const getStatusConfig = (status) => {
     switch (status?.toLowerCase()) {
       case 'completed':
-        return { color: 'text-emerald-500', bg: 'bg-emerald-500/10', icon: CheckCircle, label: 'Completed' };
+        return { color: 'text-emerald-500', bg: 'bg-green-500/10', icon: CheckCircle, label: 'Completed' };
       case 'confirmed':
         return { color: 'text-amber-500', bg: 'bg-amber-500/10', icon: CheckCircle, label: 'Confirmed' };
       case 'cancelled':
@@ -212,15 +212,15 @@ export default function ToursPage() {
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
               <div className="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-center shadow-sm">
-                <p className="text-emerald-600 text-2xl font-black mb-1">{statsData.total}</p>
+                <p className="text-green-600 text-2xl font-black mb-1">{statsData.total}</p>
                 <p className="text-slate-500 text-[10px] uppercase font-bold tracking-widest">Total Bookings</p>
               </div>
               <div className="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-center shadow-sm">
-                <p className="text-emerald-600 text-2xl font-black mb-1">{statsData.completed}</p>
+                <p className="text-green-600 text-2xl font-black mb-1">{statsData.completed}</p>
                 <p className="text-slate-500 text-[10px] uppercase font-bold tracking-widest">Completed</p>
               </div>
               <div className="bg-slate-50 border border-slate-100 rounded-3xl p-6 text-center shadow-sm hidden md:block">
-                <p className="text-emerald-600 text-2xl font-black mb-1">{statsData.pending}</p>
+                <p className="text-green-600 text-2xl font-black mb-1">{statsData.pending}</p>
                 <p className="text-slate-500 text-[10px] uppercase font-bold tracking-widest">Awaiting</p>
               </div>
             </div>
@@ -310,7 +310,7 @@ export default function ToursPage() {
 
                       <div className="space-y-6 mb-8">
                         <div className="flex gap-4">
-                          <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shrink-0">
+                          <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 shrink-0">
                             <Plane size={24} />
                           </div>
                           <div>
@@ -342,14 +342,14 @@ export default function ToursPage() {
                       <div className="flex items-center justify-between border-t border-slate-100 pt-6">
                         <div>
                           <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Total Fare</p>
-                          <p className="text-xl font-black text-emerald-600">₹{getTotalPrice(tour)}</p>
+                          <p className="text-xl font-black text-green-600">₹{getTotalPrice(tour)}</p>
                         </div>
 
                         <div className="flex gap-2">
                           {!isPaid && tour.status !== 'cancelled' ? (
                             <button
                               onClick={() => handlePayAdvance(tour)}
-                              className="px-6 py-3 bg-emerald-500 text-white rounded-2xl text-xs font-black hover:scale-105 active:scale-95 transition-all shadow-lg shadow-emerald-500/30 flex items-center gap-2"
+                              className="px-6 py-3 bg-green-500 text-white rounded-2xl text-xs font-black hover:scale-105 active:scale-95 transition-all shadow-lg shadow-emerald-500/30 flex items-center gap-2"
                             >
                               <CreditCard size={14} />
                               Pay 20%

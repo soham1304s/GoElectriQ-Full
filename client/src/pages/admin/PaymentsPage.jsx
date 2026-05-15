@@ -16,7 +16,9 @@ import {
   Filter,
   RefreshCw,
   Clock,
-  X
+  X,
+  Mail,
+  Phone
 } from 'lucide-react';
 import AdminLayout from './AdminLayout';
 import { getAllPayments } from '../../services/adminService';
@@ -33,7 +35,8 @@ const PaymentsPage = () => {
   const [autoRefresh, setAutoRefresh] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
   
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ||
+    (import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL.replace(/\/+$/, '')}/api` : '/api');
   const token = localStorage.getItem('token');
 
   const fetchPayments = async (page = 1) => {
@@ -71,7 +74,9 @@ const PaymentsPage = () => {
         
         if (ridesResponse.ok) {
           const ridesData = await ridesResponse.json();
-          let rides = ridesData.data || [];
+          const rides = Array.isArray(ridesData.data)
+            ? ridesData.data
+            : (ridesData.data?.bookings || ridesData.bookings || []);
           
           const manualPayments = rides
             .filter(ride => {
@@ -148,7 +153,7 @@ const PaymentsPage = () => {
 
   const getStatusConfig = (status) => {
     switch(status) {
-      case 'success': return { bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-100', icon: CheckCircle };
+      case 'success': return { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-100', icon: CheckCircle };
       case 'pending': return { bg: 'bg-amber-50', text: 'text-amber-700', border: 'border-amber-100', icon: Clock };
       case 'failed': return { bg: 'bg-rose-50', text: 'text-rose-700', border: 'border-rose-100', icon: AlertCircle };
       default: return { bg: 'bg-slate-50', text: 'text-slate-700', border: 'border-slate-100', icon: AlertCircle };
@@ -158,7 +163,7 @@ const PaymentsPage = () => {
   const getMethodBadge = (payment) => {
     if (payment.razorpayPaymentId) {
       const method = payment.paymentDetails?.method || payment.paymentMethod || 'card';
-      return { label: `Razorpay - ${method.toUpperCase()} (20%)`, bg: 'bg-blue-50 text-blue-700 border-blue-100' };
+      return { label: `Razorpay - ${method.toUpperCase()} (20%)`, bg: 'bg-green-50 text-green-700 border-green-100' };
     }
     const method = payment.paymentMethod?.toUpperCase() || 'MANUAL';
     return { label: `${method} (80%)`, bg: 'bg-slate-50 text-slate-700 border-slate-100' };
@@ -192,7 +197,7 @@ const PaymentsPage = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
             <h1 className="text-3xl md:text-4xl font-black tracking-tight text-slate-900 mb-2">
-              Transaction <span className="text-emerald-600">Ledger</span>
+              Transaction <span className="text-green-600">Ledger</span>
             </h1>
             <p className="text-slate-500 font-medium">Real-time monitoring of global payment activities and settlement status.</p>
           </div>
@@ -200,7 +205,7 @@ const PaymentsPage = () => {
             <button
               onClick={() => setAutoRefresh(!autoRefresh)}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all ${
-                autoRefresh ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20' : 'bg-slate-200 text-slate-500'
+                autoRefresh ? 'bg-green-500 text-white shadow-lg shadow-emerald-500/20' : 'bg-slate-200 text-slate-500'
               }`}
             >
               <div className={`w-1.5 h-1.5 rounded-full ${autoRefresh ? 'bg-white animate-pulse' : 'bg-slate-400'}`} />
@@ -219,9 +224,9 @@ const PaymentsPage = () => {
         {/* Financial Analytics Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/40 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 -mr-8 -mt-8 rounded-full transition-transform group-hover:scale-110" />
+            <div className="absolute top-0 right-0 w-24 h-24 bg-green-500/5 -mr-8 -mt-8 rounded-full transition-transform group-hover:scale-110" />
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600">
+              <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-600">
                 <TrendingUp size={24} />
               </div>
               <ArrowUpRight size={16} className="text-emerald-500" />
@@ -234,7 +239,7 @@ const PaymentsPage = () => {
 
           <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/40">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
+              <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-600">
                 <CreditCard size={24} />
               </div>
             </div>
@@ -258,7 +263,7 @@ const PaymentsPage = () => {
 
           <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/40">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600">
+              <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-600">
                 <ShieldCheck size={24} />
               </div>
             </div>
@@ -370,7 +375,7 @@ const PaymentsPage = () => {
                         <td className="px-8 py-6 text-center">
                           <button
                             onClick={() => setSelectedPayment(p)}
-                            className="p-2.5 text-slate-400 hover:text-emerald-500 hover:bg-emerald-50 rounded-xl transition-all"
+                            className="p-2.5 text-slate-400 hover:text-emerald-500 hover:bg-green-50 rounded-xl transition-all"
                           >
                             <Eye size={20} />
                           </button>
@@ -427,7 +432,7 @@ const PaymentsPage = () => {
                         <p className="text-xs font-bold text-slate-500 mb-1">Amount Settled</p>
                         <p className="text-4xl font-black text-slate-900">₹{selectedPayment.amount}</p>
                         <div className="mt-4 flex items-center gap-2">
-                          <div className={`w-2 h-2 rounded-full ${selectedPayment.status === 'success' ? 'bg-emerald-500' : 'bg-rose-500'}`} />
+                          <div className={`w-2 h-2 rounded-full ${selectedPayment.status === 'success' ? 'bg-green-500' : 'bg-rose-500'}`} />
                           <p className="text-[10px] font-black text-slate-800 uppercase tracking-widest">{selectedPayment.status}</p>
                         </div>
                       </div>
@@ -437,7 +442,7 @@ const PaymentsPage = () => {
                       <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Network Metadata</p>
                       <div className="space-y-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-blue-500">
+                          <div className="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center text-emerald-500">
                             <CreditCard size={18} />
                           </div>
                           <div>
@@ -468,7 +473,7 @@ const PaymentsPage = () => {
                           </div>
                           <div>
                             <p className="text-sm font-black text-slate-900">{selectedPayment.user?.name}</p>
-                            <p className="text-xs font-bold text-emerald-600 uppercase tracking-tighter">Verified Identity</p>
+                            <p className="text-xs font-bold text-green-600 uppercase tracking-tighter">Verified Identity</p>
                           </div>
                         </div>
                         <div className="space-y-2 border-t border-slate-50 pt-4">
@@ -486,7 +491,7 @@ const PaymentsPage = () => {
 
                     <div>
                       <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Gateway Status</p>
-                      <div className={`p-4 rounded-2xl border text-xs font-bold ${selectedPayment.status === 'success' ? 'bg-emerald-50 border-emerald-100 text-emerald-700' : 'bg-rose-50 border-rose-100 text-rose-700'}`}>
+                      <div className={`p-4 rounded-2xl border text-xs font-bold ${selectedPayment.status === 'success' ? 'bg-green-50 border-green-100 text-green-700' : 'bg-rose-50 border-rose-100 text-rose-700'}`}>
                         {selectedPayment.status === 'success' ? 'Settlement synchronized with global network.' : 'Transaction verification failed at gateway level.'}
                       </div>
                     </div>

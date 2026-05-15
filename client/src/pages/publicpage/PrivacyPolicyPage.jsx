@@ -13,8 +13,8 @@ export default function PrivacyPolicyPage() {
 
         {/* Page Title */}
         <div className="text-center mb-8 sm:mb-12">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Shield className="w-8 h-8 sm:w-10 sm:h-10 text-emerald-600" />
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Shield className="w-8 h-8 sm:w-10 sm:h-10 text-green-600" />
           </div>
           <h1 className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-[#212121]'}`}>
             Privacy Policy
@@ -25,10 +25,10 @@ export default function PrivacyPolicyPage() {
         </div>
 
         {/* Privacy Policy Content */}
-        <div className={`rounded-2xl shadow-lg p-6 sm:p-8 mb-8 border ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-emerald-100'}`}>
+        <div className={`rounded-2xl shadow-lg p-6 sm:p-8 mb-8 border ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-green-100'}`}>
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
-              <FileText className="w-5 h-5 text-emerald-600" />
+            <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+              <FileText className="w-5 h-5 text-green-600" />
             </div>
             <h2 className={`text-xl sm:text-2xl font-bold ${isDark ? 'text-white' : 'text-[#212121]'}`}>Privacy Policy</h2>
           </div>
@@ -74,7 +74,7 @@ export default function PrivacyPolicyPage() {
           </p>
           <Link
             to="/contact"
-            className="inline-block bg-white text-emerald-700 px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-emerald-50 transition-colors text-sm sm:text-base"
+            className="inline-block bg-white text-green-700 px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors text-sm sm:text-base"
           >
             Contact Us
           </Link>

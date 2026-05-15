@@ -218,13 +218,13 @@ const PackagesPage = () => {
                 placeholder="Search by title or location..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
             </div>
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
             >
               <option value="all">All Categories</option>
               <option value="travel_tour">Travel Tour</option>
@@ -270,18 +270,18 @@ const PackagesPage = () => {
                     </span>
                     <div className="flex flex-col items-end gap-1">
                       <span className="text-gray-500 dark:text-gray-400 text-xs">from</span>
-                      <span className="font-bold text-blue-500 text-base sm:text-lg lg:text-xl">₹{Math.min(pkg.pricing?.economy || 0, pkg.pricing?.premium || 0)}</span>
+                      <span className="font-bold text-emerald-500 text-base sm:text-lg lg:text-xl">₹{Math.min(pkg.pricing?.economy || 0, pkg.pricing?.premium || 0)}</span>
                     </div>
                   </div>
                   {/* Car Type Pricing */}
                   <div className="grid grid-cols-2 gap-2 pt-2 border-t border-gray-200 dark:border-gray-700">
                     <div className="text-center">
                       <p className="text-gray-600 dark:text-gray-400 text-xs font-semibold">Economy</p>
-                      <p className="font-bold text-blue-600 dark:text-blue-400 text-sm">₹{pkg.pricing?.economy || 0}</p>
+                      <p className="font-bold text-green-600 dark:text-emerald-400 text-sm">₹{pkg.pricing?.economy || 0}</p>
                     </div>
                     <div className="text-center">
                       <p className="text-gray-600 dark:text-gray-400 text-xs font-semibold">Premium</p>
-                      <p className="font-bold text-blue-600 dark:text-blue-400 text-sm">₹{pkg.pricing?.premium || 0}</p>
+                      <p className="font-bold text-green-600 dark:text-emerald-400 text-sm">₹{pkg.pricing?.premium || 0}</p>
                     </div>
                   </div>
                   {pkg.discount?.percentage > 0 && (
@@ -292,7 +292,7 @@ const PackagesPage = () => {
                   <div className="flex gap-2 pt-2 flex-wrap">
                     <button
                       onClick={() => setSelectedPackage(pkg)}
-                      className="flex-1 min-w-16 text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 transition flex items-center justify-center gap-1 py-1.5 sm:py-2 font-medium text-xs sm:text-sm rounded hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                      className="flex-1 min-w-16 text-emerald-500 hover:text-green-700 dark:hover:text-emerald-400 transition flex items-center justify-center gap-1 py-1.5 sm:py-2 font-medium text-xs sm:text-sm rounded hover:bg-green-50 dark:hover:bg-emerald-900/20"
                     >
                       <Eye size={14} className="sm:w-4 sm:h-4" />
                       <span className="hidden sm:inline">View</span>
@@ -338,7 +338,7 @@ const PackagesPage = () => {
                       placeholder="Enter package title"
                       value={formData.title}
                       onChange={handleInputChange}
-                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                       required
                     />
                   </div>
@@ -350,7 +350,7 @@ const PackagesPage = () => {
                       placeholder="Enter location"
                       value={formData.location}
                       onChange={handleInputChange}
-                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                       required
                     />
                   </div>
@@ -360,7 +360,7 @@ const PackagesPage = () => {
                       name="tourCategory"
                       value={formData.tourCategory}
                       onChange={handleInputChange}
-                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     >
                       <option value="travel_tour">Travel Tour</option>
                       <option value="temple_tour">Temple Tour</option>
@@ -378,7 +378,7 @@ const PackagesPage = () => {
                         ...prev,
                         duration: { ...prev.duration, days: e.target.value }
                       }))}
-                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     />
                   </div>
                   <div>
@@ -392,7 +392,7 @@ const PackagesPage = () => {
                         ...prev,
                         duration: { ...prev.duration, hours: e.target.value }
                       }))}
-                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     />
                   </div>
                   <div>
@@ -406,7 +406,7 @@ const PackagesPage = () => {
                         ...prev,
                         discount: { ...prev.discount, percentage: e.target.value }
                       }))}
-                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     />
                   </div>
                   <div>
@@ -419,7 +419,7 @@ const PackagesPage = () => {
                         ...prev,
                         pricing: { ...prev.pricing, economy: e.target.value }
                       }))}
-                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     />
                   </div>
                   <div>
@@ -432,7 +432,7 @@ const PackagesPage = () => {
                         ...prev,
                         pricing: { ...prev.pricing, premium: e.target.value }
                       }))}
-                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     />
                   </div>
                 </div>
@@ -454,7 +454,7 @@ const PackagesPage = () => {
                     placeholder="Enter a short description (shown in package cards)"
                     value={formData.shortDescription}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
                 <div>
@@ -465,13 +465,13 @@ const PackagesPage = () => {
                     value={formData.description}
                     onChange={handleInputChange}
                     rows="3"
-                    className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                    className="w-full px-3 sm:px-4 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
                   />
                 </div>
                 <div className="flex gap-2 sm:gap-4 pt-2 sm:pt-4 flex-col sm:flex-row">
                   <button
                     type="submit"
-                    className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition font-semibold shadow-lg text-sm sm:text-base"
+                    className="flex-1 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition font-semibold shadow-lg text-sm sm:text-base"
                   >
                     {editingId ? 'Update Package' : 'Create Package'}
                   </button>
@@ -524,11 +524,11 @@ const PackagesPage = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="bg-gray-50 dark:bg-gray-700/30 p-3 rounded-lg">
                     <p className="text-gray-600 dark:text-gray-400 text-xs">Economy</p>
-                    <p className="font-bold text-blue-600 dark:text-blue-400 text-lg">₹{selectedPackage.pricing?.economy || 0}</p>
+                    <p className="font-bold text-green-600 dark:text-emerald-400 text-lg">₹{selectedPackage.pricing?.economy || 0}</p>
                   </div>
                   <div className="bg-gray-50 dark:bg-gray-700/30 p-3 rounded-lg">
                     <p className="text-gray-600 dark:text-gray-400 text-xs">Premium</p>
-                    <p className="font-bold text-blue-600 dark:text-blue-400 text-lg">₹{selectedPackage.pricing?.premium || 0}</p>
+                    <p className="font-bold text-green-600 dark:text-emerald-400 text-lg">₹{selectedPackage.pricing?.premium || 0}</p>
                   </div>
                 </div>
               </div>
@@ -538,7 +538,7 @@ const PackagesPage = () => {
               </div>
               <button
                 onClick={() => setSelectedPackage(null)}
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2.5 sm:py-3 rounded-lg transition font-semibold text-sm sm:text-base"
+                className="w-full bg-green-500 hover:bg-emerald-600 text-white px-4 py-2.5 sm:py-3 rounded-lg transition font-semibold text-sm sm:text-base"
               >
                 Close
               </button>

@@ -163,7 +163,7 @@ const OffersPage = () => {
         <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
           <div className="flex-1">
             <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-              <Gift className="w-6 h-6 md:w-8 md:h-8 text-emerald-600" />
+              <Gift className="w-6 h-6 md:w-8 md:h-8 text-green-600" />
               Manage Offers
             </h1>
             <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm md:text-base">
@@ -225,7 +225,7 @@ const OffersPage = () => {
                       <td className="hidden md:table-cell px-6 py-4 text-sm text-gray-600 dark:text-gray-400 max-w-xs truncate">
                         {offer.description}
                       </td>
-                      <td className="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                      <td className="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-semibold text-green-600 dark:text-emerald-400">
                         {offer.discountPercentage}%
                       </td>
                       <td className="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm">
@@ -243,7 +243,7 @@ const OffersPage = () => {
                       <td className="px-3 md:px-6 py-3 md:py-4 text-sm space-x-1 md:space-x-2 flex">
                         <button
                           onClick={() => handleOpenModal(offer)}
-                          className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors p-1"
+                          className="text-green-600 hover:text-green-800 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors p-1"
                           title="Edit offer"
                         >
                           <Edit2 className="w-4 h-4 md:w-5 md:h-5" />
@@ -380,7 +380,7 @@ const OffersPage = () => {
                   name="isActive"
                   checked={formData.isActive}
                   onChange={handleInputChange}
-                  className="w-4 h-4 rounded border-gray-300 text-emerald-600 focus:ring-2 focus:ring-emerald-500"
+                  className="w-4 h-4 rounded border-gray-300 text-green-600 focus:ring-2 focus:ring-emerald-500"
                 />
                 <label htmlFor="isActive" className="text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300">
                   Activate immediately

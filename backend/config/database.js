@@ -32,14 +32,16 @@ const connectDB = async () => {
     
     // Mongoose 7+ defaults to strictQuery: true, but explicitly setting it is good practice
     mongoose.set('strictQuery', false);
+    mongoose.set('bufferCommands', false);
 
     const conn = await mongoose.connect(uri, {
+      dbName: 'goelectriq',
       serverSelectionTimeoutMS: 20000, // Increase timeout for live mode
       connectTimeoutMS: 30000,
       socketTimeoutMS: 45000,
       maxPoolSize: 10,
       minPoolSize: 2,
-      family: 4, // Force IPv4 to avoid potential Railway network issues
+      family: 4, // Force IPv4 to avoid potential network issues with some hosting providers
     });
 
     console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
@@ -70,6 +72,8 @@ const connectDB = async () => {
       console.error("💀 Production environment detected. Terminating process to trigger restart.");
       process.exit(1);
     }
+
+    throw error;
   }
 };
 
