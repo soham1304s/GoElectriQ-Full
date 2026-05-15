@@ -69,7 +69,7 @@ const AboutUsPage = () => {
       />
     <div className="pt-24 md:pt-28 overflow-hidden transition-colors duration-500 dark:bg-[#020617]">
       {/* Hero Section */}
-      <section className="relative px-4 mb-24 md:mb-32">
+      <section className="relative px-4 mb-12 md:mb-16">
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -105,7 +105,7 @@ const AboutUsPage = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-24 md:py-32 relative">
+      <section className="py-12 md:py-16 relative">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeIn} className="relative group">
@@ -157,7 +157,7 @@ const AboutUsPage = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-24 md:py-32 bg-slate-50 dark:bg-[#022c22]/50">
+      <section className="py-12 md:py-16 bg-slate-50 dark:bg-[#022c22]/50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div 
@@ -191,7 +191,7 @@ const AboutUsPage = () => {
       </section>
 
       {/* Core Values */}
-      <section className="py-24 md:py-32">
+      <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">Built on Values.</h2>
@@ -222,7 +222,7 @@ const AboutUsPage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 md:py-32 bg-[#022c22] relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-[#022c22] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,#10b981_0%,transparent_50%)]" />
         </div>
@@ -250,7 +250,7 @@ const AboutUsPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 md:py-32 px-4">
+      <section className="py-12 md:py-16 px-4">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
