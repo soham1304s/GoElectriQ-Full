@@ -3,78 +3,65 @@ import dotenv from "dotenv";
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Load env if not already loaded (e.g. when running this file directly)
+// Load env if not already loaded
 if (!process.env.MONGODB_URI && !process.env.MONGO_URI) {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   dotenv.config({ path: path.join(__dirname, '../.env') });
+}
+
+// Global cache for serverless environment
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
 }
 
 /**
  * Connect to MongoDB database
  */
 const connectDB = async () => {
-  try {
-    const uri = process.env.MONGODB_URI || process.env.MONGO_URI;
+  if (cached.conn) {
+    return cached.conn;
+  }
 
-    if (!uri) {
-      console.error("❌ ERROR: MONGODB_URI/MONGO_URI is not defined in environment variables.");
-      console.log("   Available Env Vars (Keys):", Object.keys(process.env).filter(k => !k.includes('SECRET') && !k.includes('KEY') && !k.includes('TOKEN') && !k.includes('PASS')));
-      
-      if (process.env.NODE_ENV === 'production') {
-        process.exit(1);
-      }
-      return;
-    }
+  const uri = process.env.MONGODB_URI || process.env.MONGO_URI;
 
-    // Obfuscate URI for logging
-    const safeUri = uri.replace(/\/\/[^:]+:[^@]+@/, '//***:***@');
-    console.log(`🔍 Attempting MongoDB connection: ${safeUri}`);
-    
-    // Mongoose 7+ defaults to strictQuery: true, but explicitly setting it is good practice
+  if (!uri) {
+    console.error("❌ ERROR: MONGODB_URI is not defined.");
+    if (process.env.NODE_ENV === 'production') process.exit(1);
+    return;
+  }
+
+  if (!cached.promise) {
     mongoose.set('strictQuery', false);
+    
+    // On Vercel, we must await the connection before any model operation
     mongoose.set('bufferCommands', false);
 
-    const conn = await mongoose.connect(uri, {
+    const opts = {
       dbName: 'goelectriq',
-      serverSelectionTimeoutMS: 20000, // Increase timeout for live mode
+      serverSelectionTimeoutMS: 20000,
       connectTimeoutMS: 30000,
-      socketTimeoutMS: 45000,
       maxPoolSize: 10,
-      minPoolSize: 2,
-      family: 4, // Force IPv4 to avoid potential network issues with some hosting providers
+      family: 4,
+    };
+
+    console.log(`🔍 Connecting to MongoDB (Serverless Mode)...`);
+    cached.promise = mongoose.connect(uri, opts).then((m) => {
+      console.log(`✅ MongoDB Connected: ${m.connection.host}`);
+      return m;
     });
-
-    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
-    console.log(`📊 Database: ${conn.connection.name}`);
-    console.log(`🚀 Readiness: OK`);
-
-    mongoose.connection.on("error", (err) => {
-      console.error("❌ MongoDB runtime connection error:", err.message);
-    });
-
-    mongoose.connection.on("disconnected", () => {
-      console.log("⚠️ MongoDB connection lost. Attempting to reconnect...");
-    });
-
-  } catch (error) {
-    console.error(`❌ CRITICAL ERROR connecting to MongoDB: ${error.name}`);
-    console.error(`📝 Message: ${error.message}`);
-    
-    if (error.name === 'MongoNetworkError') {
-      console.error("💡 Hint: This usually means the IP is not whitelisted or the database is unreachable.");
-    } else if (error.name === 'MongoParseError') {
-      console.error("💡 Hint: Check your connection string format.");
-    } else if (error.message.includes('authentication failed')) {
-      console.error("💡 Hint: Check your database username and password.");
-    }
-    
-    if (process.env.NODE_ENV === 'production') {
-      console.error("💀 Production environment detected. Terminating process to trigger restart.");
-      process.exit(1);
-    }
-
-    throw error;
   }
+
+  try {
+    cached.conn = await cached.promise;
+  } catch (e) {
+    cached.promise = null;
+    console.error(`❌ MongoDB Connection Error: ${e.message}`);
+    throw e;
+  }
+
+  return cached.conn;
 };
 
 export default connectDB;

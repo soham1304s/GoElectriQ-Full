@@ -53,8 +53,23 @@ const app = express();
 // Enable trust proxy for rate limiting behind a load balancer (Render/Vercel)
 app.set('trust proxy', 1);
 
-// Connect to database
+// Connect to database (Initial trigger)
 connectDB();
+
+// Database connection middleware for Vercel
+// Ensures each request waits for the DB connection to be ready
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: 'Database connection failed',
+      error: err.message
+    });
+  }
+});
 
 // Diagnostic logs for environment variables (obfuscated)
 console.log('📡 Environment Diagnostic:');
