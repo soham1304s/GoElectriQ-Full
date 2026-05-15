@@ -6,10 +6,18 @@ import fs from 'fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const uploadDir = path.join(__dirname, '../uploads/images');
+// On Vercel, we must use /tmp for any local file operations
+const isVercel = process.env.VERCEL || process.env.NOW_BUILDER;
+const uploadDir = isVercel 
+  ? '/tmp/uploads/images' 
+  : path.join(__dirname, '../uploads/images');
 
 if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+  try {
+    fs.mkdirSync(uploadDir, { recursive: true });
+  } catch (error) {
+    console.warn('Warning: Could not create upload directory:', error.message);
+  }
 }
 
 const storage = multer.diskStorage({

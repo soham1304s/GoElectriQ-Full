@@ -193,16 +193,19 @@ app.use(notFound);
 // Error handler
 app.use(errorHandler);
 
-// Start server
-const PORT = process.env.PORT || 5000;
+// Start server only if not on Vercel
+const isVercel = process.env.VERCEL || process.env.NOW_BUILDER;
 
-const server = app.listen(PORT, () => {
-  console.log('\n🚀 ======================================');
-  console.log(`   Server running in ${process.env.NODE_ENV} mode`);
-  console.log(`   Port: ${PORT}`);
-  console.log(`   URL: http://localhost:${PORT}`);
-  console.log('======================================\n');
-});
+if (!isVercel) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log('\n🚀 ======================================');
+    console.log(`   Server running in ${process.env.NODE_ENV} mode`);
+    console.log(`   Port: ${PORT}`);
+    console.log(`   URL: http://localhost:${PORT}`);
+    console.log('======================================\n');
+  });
+}
 
 // Graceful shutdown function
 const gracefulShutdown = async (signal) => {
