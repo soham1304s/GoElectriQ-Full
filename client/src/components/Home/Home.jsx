@@ -1203,17 +1203,43 @@ const GoelectriqLanding = () => {
       50% { transform: translateY(-20px); }
     }
 
-    .animate-slideUpFade {
-      animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    @keyframes shimmer {
+      0% { transform: translateX(-150%) skewX(-15deg); }
+      100% { transform: translateX(150%) skewX(-15deg); }
     }
 
-    .animate-fadeIn {
-      animation: fadeIn 1s ease forwards;
+    @keyframes iconFly {
+      0%, 100% { transform: translate(0, 0) rotate(45deg); }
+      25% { transform: translate(2px, -2px) rotate(45deg); }
+      50% { transform: translate(0, -4px) rotate(45deg); }
+      75% { transform: translate(-2px, -2px) rotate(45deg); }
     }
 
-    .animate-float {
-      animation: float 5s ease-in-out infinite;
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
     }
+
+    @keyframes iconBounceFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes iconDart {
+      0%, 100% { transform: translate(0, 0); }
+      20% { transform: translate(6px, -6px); }
+      40% { transform: translate(0, 0); }
+    }
+
+    .animate-slideUpFade { animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fadeIn { animation: fadeIn 1s ease forwards; }
+    .animate-float { animation: float 5s ease-in-out infinite; }
+    .animate-shimmer { animation: shimmer 2s infinite; }
+    
+    .animate-icon-fly { animation: iconFly 3s ease-in-out infinite; }
+    .animate-icon-pulse { animation: iconPulse 2.5s ease-in-out infinite; }
+    .animate-icon-bounce { animation: iconBounceFloat 2.5s ease-in-out infinite; }
+    .animate-icon-dart { animation: iconDart 3s ease-in-out infinite; }
 
     .service-card-glow {
       transition: all 0.5s ease;
@@ -1311,7 +1337,6 @@ const GoelectriqLanding = () => {
           </div>
         </header>
         {/* Services Categories Redesigned */}
-        {/* Services Categories Redesigned */}
         <section className={`px-4 md:px-12 py-20 md:py-32 relative overflow-hidden ${darkMode ? "bg-[#0f172a]" : "bg-slate-50/50"}`}>
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="flex flex-col items-center text-center mb-20">
@@ -1330,7 +1355,7 @@ const GoelectriqLanding = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
-                  icon: <Plane className="rotate-45" size={32} />,
+                  icon: <Plane className="animate-icon-fly" size={28} />,
                   title: "Airport Ride",
                   sub: "Reliable airport transfers to and from Jaipur International Airport.",
                   color: "emerald",
@@ -1338,7 +1363,7 @@ const GoelectriqLanding = () => {
                   gradient: "from-emerald-500 to-emerald-500"
                 },
                 {
-                  icon: <Landmark size={32} />,
+                  icon: <Landmark className="animate-icon-pulse" size={28} />,
                   title: "Tour Package",
                   sub: "Immersive guided tours through the heritage of the Pink City.",
                   color: "emerald",
@@ -1346,7 +1371,7 @@ const GoelectriqLanding = () => {
                   gradient: "from-emerald-500 to-emerald-500"
                 },
                 {
-                  icon: <MapPin size={32} />,
+                  icon: <MapPin className="animate-icon-bounce" size={28} />,
                   title: "Local Ride",
                   sub: "Silent, zero-emission city travel at your fingertips.In one click.",
                   color: "emerald",
@@ -1354,7 +1379,7 @@ const GoelectriqLanding = () => {
                   gradient: "from-emerald-500 to-green-500"
                 },
                 {
-                  icon: <Navigation size={32} />,
+                  icon: <Navigation className="animate-icon-dart" size={28} />,
                   title: "Intercity Ride",
                   sub: "Long-distance electric travel without the carbon footprint.",
                   color: "emerald",
@@ -1365,26 +1390,38 @@ const GoelectriqLanding = () => {
                 <div
                   key={i}
                   onClick={() => navigate(item.path)}
-                  className={`group relative p-6 sm:p-8 md:p-10 rounded-[2rem] md:rounded-[3rem] cursor-pointer transition-all duration-500 ${darkMode
-                    ? "bg-slate-800/40 border-slate-700/50 hover:bg-slate-800 hover:border-emerald-500/30"
-                    : "bg-white border-slate-100 hover:border-green-200 shadow-2xl shadow-slate-200/40 hover:shadow-emerald-200/20"
-                    } border`}
+                  className={`group relative p-8 sm:p-10 rounded-[2.5rem] cursor-pointer transition-all duration-500 ease-out animate-slideUpFade opacity-0 flex flex-col h-full ${
+                    darkMode
+                      ? "bg-slate-800/80 border-slate-700/50 hover:bg-slate-800 hover:border-emerald-500/50 shadow-xl shadow-black/20"
+                      : "bg-white border-transparent hover:border-emerald-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(16,185,129,0.15)] hover:-translate-y-2"
+                  } border`}
+                  style={{ animationDelay: `${i * 150}ms`, animationFillMode: 'forwards' }}
                 >
-                  <div className={`w-20 h-20 rounded-[1.8rem] mb-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 bg-emerald-600 text-white shadow-lg`}>
-                    {item.icon}
+                  {/* Animated Background Glow */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 rounded-[2.5rem] pointer-events-none`} />
+
+                  <div className={`w-[72px] h-[72px] rounded-[1.8rem] mb-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-sm group-hover:shadow-emerald-500/30 ${darkMode ? "bg-emerald-500/20 text-emerald-400" : "bg-[#00985f] text-white"} relative overflow-hidden`}>
+                    {/* Icon Shine Effect */}
+                    <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute inset-0 -translate-x-[150%] animate-shimmer bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+                    </div>
+                    <div className="transition-transform duration-500 group-hover:-rotate-12 group-hover:scale-110 relative z-10">
+                      {item.icon}
+                    </div>
                   </div>
-                  <h3 className={`text-2xl font-black mb-4 ${darkMode ? "text-white" : "text-slate-900"}`}>
+                  
+                  <h3 className={`text-[22px] font-black mb-3 transition-colors duration-300 ${darkMode ? "text-white group-hover:text-emerald-400" : "text-[#0f172a] group-hover:text-[#00985f]"}`}>
                     {item.title}
                   </h3>
-                  <p className={`text-base font-medium leading-relaxed mb-8 ${darkMode ? "text-gray-400" : "text-slate-500"}`}>
+                  
+                  <p className={`text-[15px] font-medium leading-[1.6] mb-8 flex-grow ${darkMode ? "text-gray-400" : "text-[#64748b]"}`}>
                     {item.sub}
                   </p>
-                  <div className="flex items-center text-sm font-black text-green-600 group-hover:gap-4 transition-all duration-300">
-                    Book Now <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  
+                  <div className="flex items-center text-[15px] font-black text-[#00985f] group-hover:gap-2 transition-all duration-300 mt-auto">
+                    Book Now 
+                    <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </div>
-
-                  {/* Hover Glow Effect */}
-                  <div className={`absolute -inset-2 bg-emerald-600 opacity-0 group-hover:opacity-[0.03] blur-2xl rounded-[4rem] transition-opacity duration-500`} />
                 </div>
               ))}
             </div>
