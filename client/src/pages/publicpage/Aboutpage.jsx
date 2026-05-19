@@ -93,7 +93,7 @@ const AboutUsPage = () => {
             transition={{ delay: 0.2 }}
             className="max-w-3xl mx-auto text-lg md:text-2xl text-slate-500 dark:text-gray-400 font-medium leading-relaxed"
           >
-            Go ElectriQ is more than a cab service. We are a movement towards sustainable, quiet, and premium urban transportation.
+            XYZ is more than a cab service. We are a movement towards sustainable, quiet, and premium urban transportation.
           </motion.p>
         </div>
 
@@ -133,7 +133,7 @@ const AboutUsPage = () => {
                 </h2>
                 <div className="space-y-4 text-lg text-slate-600 dark:text-gray-400 font-medium leading-relaxed">
                   <p>
-                    Founded in 2024, Go ElectriQ was born from a simple realization: urban transportation was becoming too loud, too polluted, and too inefficient.
+                    Founded in 2024, XYZ was born from a simple realization: urban transportation was becoming too loud, too polluted, and too inefficient.
                   </p>
                   <p>
                     We set out to create a mobility solution that doesn't just get you from A to B, but does so with a conscience. By utilizing a 100% electric fleet, we've eliminated the noise and the emissions, leaving only the comfort.
