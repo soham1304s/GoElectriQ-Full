@@ -23,8 +23,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { useTheme } from '../../context/ThemeContext.jsx';
-import logoDark from '../../assets/logo_dark.png';
-import logoLight from '../../assets/logo_light.png';
+
 
 const AdminLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -131,11 +130,7 @@ const AdminLayout = ({ children }) => {
           className="p-6 border-b border-emerald-800/50 flex justify-center hover:bg-emerald-800/30 transition"
         >
           <div className="flex flex-col items-center">
-            <img
-              src={darkMode ? logoDark : logoLight}
-              alt="GoElectriQ"
-              className="h-40 md:h-48 w-auto object-contain mb-2"
-            />
+            <span className="text-4xl font-black tracking-widest text-emerald-600 dark:text-emerald-400 py-8 mb-2">XYZ</span>
           </div>
         </button>
 

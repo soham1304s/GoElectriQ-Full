@@ -209,7 +209,7 @@ const ApplicationStatusPage = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
             <h1 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight mb-2">Application Hub</h1>
-            <p className="text-slate-500 font-medium">Monitor your integration protocols across the GoElectriQ network.</p>
+            <p className="text-slate-500 font-medium">Monitor your integration protocols across the XYZ network.</p>
           </div>
           
           <div className="flex bg-white dark:bg-slate-900 p-1.5 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
@@ -287,7 +287,7 @@ const EmptyState = ({ type, link }) => (
       <Activity size={32} className="text-slate-300" />
     </div>
     <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-4">No {type} Protocol Found.</h3>
-    <p className="text-slate-500 dark:text-slate-400 mb-10 max-w-sm mx-auto font-medium">Initiate your integration with the GoElectriQ grid to monitor status here.</p>
+    <p className="text-slate-500 dark:text-slate-400 mb-10 max-w-sm mx-auto font-medium">Initiate your integration with the XYZ grid to monitor status here.</p>
     <button
       onClick={() => window.location.href = link}
       className="inline-flex items-center gap-3 px-8 py-4 bg-emerald-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-500/20"

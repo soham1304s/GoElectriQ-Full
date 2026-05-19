@@ -2,8 +2,7 @@ import React from 'react';
 import { Facebook, Instagram, Send, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext.jsx';
-import logoLight from '../assets/logo_light.png';
-import logoDark from '../assets/logo_dark.png';
+
 
 const Footer = ({ darkMode }) => {
   const { theme } = useTheme();
@@ -27,11 +26,7 @@ const Footer = ({ darkMode }) => {
 
           {/* Brand */}
           <div className="col-span-2 sm:col-span-1 flex flex-col items-center sm:items-start space-y-3 lg:space-y-4">
-            <img 
-              src={isDarkMode ? logoDark : logoLight} 
-              alt="GoElectriQ" 
-              className="h-40 lg:h-39 w-auto object-contain"
-            />
+            <span className="text-3xl font-black tracking-widest text-emerald-600 dark:text-emerald-400 py-4 block">XYZ</span>
 
             <p className={`text-xs lg:text-sm leading-relaxed max-w-xs ${
               isDarkMode ? 'text-slate-400' : 'text-slate-600'
@@ -127,9 +122,9 @@ const Footer = ({ darkMode }) => {
                 <span className="w-1 h-1 bg-green-500 rounded-full" />
                 +91 81076 49476
               </a>
-              <a href="mailto:info@goelectriq.com" className="flex items-center justify-center sm:justify-start gap-2 hover:text-emerald-500 transition">
+              <a href="mailto:info@xyz.com" className="flex items-center justify-center sm:justify-start gap-2 hover:text-emerald-500 transition">
                 <span className="w-1 h-1 bg-green-500 rounded-full" />
-                info@goelectriq.com
+                info@xyz.com
               </a>
             </div>
 
@@ -153,7 +148,7 @@ const Footer = ({ darkMode }) => {
         {/* Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6 text-[10px] font-black uppercase tracking-widest">
           <p className={`${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`}>
-            © 2026 Goelectriq
+            © 2026 XYZ
           </p>
 
           <p className={`flex items-center gap-2 ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`}>

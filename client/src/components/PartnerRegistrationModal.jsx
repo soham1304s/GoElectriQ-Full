@@ -362,7 +362,7 @@ export default function PartnerRegistrationModal({ isOpen, onClose, partnerType 
                   <CreditCard size={32} />
                 </div>
                 <h3 className="text-2xl font-bold text-[#212121] mb-2">Registration Payment</h3>
-                <p className="text-gray-500">Secure your spot as a GoElectriQ {partnerType.replace('-', ' ')} partner</p>
+                <p className="text-gray-500">Secure your spot as a XYZ {partnerType.replace('-', ' ')} partner</p>
               </div>
 
               <div className="max-w-sm mx-auto bg-gray-50 rounded-[2rem] p-8 border border-gray-100 shadow-sm mb-8">
@@ -434,7 +434,7 @@ export default function PartnerRegistrationModal({ isOpen, onClose, partnerType 
               
               <div className="max-w-md mx-auto space-y-4">
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  Welcome to the <span className="font-bold text-[#008000]">GoElectriQ</span> family. Your application has been received and your payment is verified.
+                  Welcome to the <span className="font-bold text-[#008000]">XYZ</span> family. Your application has been received and your payment is verified.
                 </p>
                 
                 <div className="bg-green-50 border border-green-100 rounded-xl p-4 flex items-center gap-4 text-left">

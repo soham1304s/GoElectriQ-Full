@@ -8,7 +8,7 @@ const slides = [
     fallback: "/auth-bg.png",
     eyebrow: "Jaipur EV Network",
     title: "Clean electric mobility, made effortless.",
-    description: "Book reliable EV rides and manage every trip from one secure GoElectriQ account."
+    description: "Book reliable EV rides and manage every trip from one secure XYZ account."
   },
   {
     image: "/auth-bg.png",
@@ -20,7 +20,7 @@ const slides = [
     image: "/auth-bg-2.png",
     eyebrow: "Smart Journeys",
     title: "Purpose-built for everyday electric travel.",
-    description: "From airport rides to local routes, GoElectriQ keeps the experience simple and polished."
+    description: "From airport rides to local routes, XYZ keeps the experience simple and polished."
   }
 ];
 
@@ -77,7 +77,7 @@ export default function AuthImageSlider() {
         <div className="flex items-center justify-between gap-6">
           <div className="flex items-center gap-2 text-white">
             <BatteryCharging size={18} className="text-emerald-300" />
-            <span className="text-xs font-bold uppercase tracking-[0.24em]">GoElectriQ</span>
+            <span className="text-xs font-bold uppercase tracking-[0.24em]">XYZ</span>
           </div>
 
           <div className="flex items-center gap-2" aria-label="Auth showcase slides">

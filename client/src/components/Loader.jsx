@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logoDark from '../assets/logo_dark.png';
+
 
 const MotionDiv = motion.div;
 const MotionSpan = motion.span;
@@ -92,11 +92,7 @@ export default function Loader() {
 
               {/* Main Logo */}
               <div className="relative w-32 h-32 md:w-48 md:h-48 flex items-center justify-center">
-                <img 
-                  src={logoDark} // Using dark logo for the dark intro theme
-                  alt="GoElectriQ Logo" 
-                  className="w-full h-full object-contain relative z-10 drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]"
-                />
+                <span className="text-5xl md:text-7xl font-black tracking-widest text-emerald-500 relative z-10 drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]">XYZ</span>
                 
                 {/* Inner Power Core Glow */}
                 <MotionDiv 
@@ -153,7 +149,7 @@ export default function Loader() {
                 transition={{ delay: 0.5 }}
                 className="text-center text-[8px] font-bold text-slate-600 uppercase tracking-[0.2em]"
               >
-                GoElectriQ Energy Systems &copy; 2026
+                XYZ Energy Systems &copy; 2026
               </MotionP>
             </div>
           </div>

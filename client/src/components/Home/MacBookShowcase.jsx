@@ -147,7 +147,7 @@ const MacBookShowcase = ({ darkMode, isHero = false }) => {
                     <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
                   </div>
                   <div className={`text-[9px] font-bold px-3 py-0.5 rounded-full ${darkMode ? 'bg-slate-700 text-slate-300' : 'bg-white text-slate-500 shadow-sm'}`}>
-                    goelectriq.com
+                    xyz.com
                   </div>
                   <div className="w-8" />
                 </div>

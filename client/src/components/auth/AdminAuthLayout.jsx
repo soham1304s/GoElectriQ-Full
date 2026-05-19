@@ -137,7 +137,7 @@ export default function AdminAuthLayout({ children }) {
 
       {/* Corner Watermark */}
       <div className="absolute bottom-4 right-4 text-slate-700 opacity-30 text-sm">
-        GoElectriQ Admin
+        XYZ Admin
       </div>
     </div>
   );

@@ -50,7 +50,7 @@ export const partnerPaymentService = {
         key: orderData.keyId,
         amount: orderData.amount,
         currency: orderData.currency,
-        name: 'GoElectriQ',
+        name: 'XYZ',
         description: 'Partner Registration Fee',
         order_id: orderData.orderId,
         prefill: {

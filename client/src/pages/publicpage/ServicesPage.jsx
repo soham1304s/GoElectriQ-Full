@@ -169,7 +169,7 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        {/* Why Go Electric Section */}
+        {/* Why XYZ Section */}
         <section className="py-24 md:py-32 bg-emerald-950 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(52,211,153,0.08)_0%,transparent_70%)] pointer-events-none" />
           <div className="max-w-7xl mx-auto px-4 relative z-10 text-center text-white">

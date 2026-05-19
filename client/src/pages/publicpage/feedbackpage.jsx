@@ -93,9 +93,9 @@ export default function FeedbackPage() {
   return (
     <>
       <SEO
-        title="Share Your Feedback - GoElectriQ"
-        description="Help us shape the future of electric mobility. Share your thoughts, suggestions, or concerns with the GoElectriQ team."
-        keywords="GoElectriQ feedback, customer review, ride experience, electric taxi suggestions"
+        title="Share Your Feedback - XYZ"
+        description="Help us shape the future of electric mobility. Share your thoughts, suggestions, or concerns with the XYZ team."
+        keywords="XYZ feedback, customer review, ride experience, electric taxi suggestions"
         url="/feedback"
       />
       <div className="min-h-screen bg-[#fafafa] dark:bg-[#020617] pt-24 md:pt-28 font-['Inter',sans-serif]">

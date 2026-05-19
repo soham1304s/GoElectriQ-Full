@@ -13,8 +13,7 @@ import {
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useTheme } from "../context/ThemeContext.jsx";
-import logo from "../assets/logo_light.png";
-import logoWhite from "../assets/logo_dark.png";
+
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -61,7 +60,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src={darkMode ? logoWhite : logo} alt="GoElectric" className="h-16 md:h-20 w-auto object-contain" />
+          <span className="text-2xl font-black tracking-widest text-emerald-600 dark:text-emerald-400">XYZ</span>
         </Link>
 
         {/* Desktop Nav Links */}

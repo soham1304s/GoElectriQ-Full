@@ -1,5 +1,5 @@
 {
-  "_comment": "GoElectriQ Configuration File - Used across the application",
+  "_comment": "XYZ Configuration File - Used across the application",
   
   "api": {
     "_comment": "API Configuration - Used by all API calls",
@@ -24,7 +24,7 @@
 
   "app": {
     "_comment": "Application Metadata",
-    "name": "GoElectriQ",
+    "name": "XYZ",
     "version": "1.0.0",
     "environment": "development"
   },

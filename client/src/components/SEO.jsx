@@ -1,9 +1,9 @@
 import { Helmet } from 'react-helmet-async';
 
 const SEO = ({ title, description, keywords, image, url }) => {
-  const siteName = 'GoElectriQ';
+  const siteName = 'XYZ';
   const fullTitle = title ? `${title} | ${siteName}` : siteName;
-  const defaultDescription = 'GoElectriQ - Premium Electric Cab Booking & Tour Packages. Eco-friendly, reliable, and affordable electric vehicle rides for local and intercity travel.';
+  const defaultDescription = 'XYZ - Premium Electric Cab Booking & Tour Packages. Eco-friendly, reliable, and affordable electric vehicle rides for local and intercity travel.';
   const defaultImage = '/og-image.png'; // Make sure this exists in public folder
   const siteUrl = window.location.origin;
 
@@ -13,7 +13,7 @@ const SEO = ({ title, description, keywords, image, url }) => {
       <title>{fullTitle}</title>
       <meta name="description" content={description || defaultDescription} />
       <meta name="keywords" content={keywords || 'electric cab, ev booking, tour packages, eco-friendly travel, intercity cab, airport pickup'} />
-      <meta name="author" content="GoElectriQ Team" />
+      <meta name="author" content="XYZ Team" />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />

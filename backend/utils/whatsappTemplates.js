@@ -27,7 +27,7 @@ Payment Status: ${booking.paymentStatus?.toUpperCase()}
 
 ⏰ Awaiting payment confirmation...
 
-- GoElectriQ Admin
+- XYZ Admin
     `.trim();
   }
   
@@ -53,7 +53,7 @@ Distance: ${booking.distance?.toFixed(2) || 'N/A'} km
 Please complete your payment to confirm the ride.
 Driver will be assigned after payment confirmation.
 
-Thank you for choosing GoElectriQ! 🌿
+Thank you for choosing XYZ! 🌿
 
 For support: 📞 Contact us in app
     `.trim();
@@ -84,7 +84,7 @@ Payment Status: ${booking.paymentStatus?.toUpperCase()}
 
 ⏰ Awaiting payment confirmation...
 
-- GoElectriQ Admin
+- XYZ Admin
     `.trim();
   }
   
@@ -111,7 +111,7 @@ Payment Option: ${booking.paymentOption?.toUpperCase()}
 Please complete your payment to confirm the tour.
 Our team will confirm your tour after payment.
 
-Thank you for choosing GoElectriQ! 🌿
+Thank you for choosing XYZ! 🌿
 
 For support: 📞 Contact us in app
     `.trim();
@@ -140,7 +140,7 @@ Time: ${booking.scheduledTime || 'N/A'}
 
 📲 *Next Step:* Assign driver to this booking
 
-- GoElectriQ Admin
+- XYZ Admin
     `.trim();
   }
   
@@ -168,9 +168,9 @@ Distance: ${booking.distance?.toFixed(2) || 'N/A'} km
 Your driver will be assigned shortly.
 You'll receive driver details 30 minutes before pickup time.
 
-Thank you for choosing GoElectriQ! 🌿
+Thank you for choosing XYZ! 🌿
 
-- GoElectriQ Team
+- XYZ Team
     `.trim();
 };
 
@@ -197,7 +197,7 @@ Pickup: ${booking.pickupLocation || 'N/A'}
 
 📲 *Next Step:* Send tour confirmation details to customer
 
-- GoElectriQ Admin
+- XYZ Admin
     `.trim();
   }
   
@@ -223,9 +223,9 @@ Pickup Location: ${booking.pickupLocation || 'N/A'}
 Your tour is now confirmed!
 Our team will send you detailed itinerary and contact information shortly.
 
-Thank you for choosing GoElectriQ! 🌿
+Thank you for choosing XYZ! 🌿
 
-- GoElectriQ Team
+- XYZ Team
     `.trim();
 };
 

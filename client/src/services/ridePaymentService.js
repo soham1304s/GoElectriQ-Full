@@ -92,7 +92,7 @@ export const ridePaymentService = {
         key: orderData.keyId,
         amount: orderData.amount,
         currency: orderData.currency,
-        name: 'GoElectriQ',
+        name: 'XYZ',
         description: description,
         order_id: orderData.orderId,
         prefill: {

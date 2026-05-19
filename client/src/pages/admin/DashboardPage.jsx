@@ -133,7 +133,7 @@ const DashboardPage = () => {
               Operational <span className="text-emerald-400">Intelligence</span>
             </h1>
             <p className="text-slate-400 text-lg max-w-xl font-medium leading-relaxed">
-              Global oversight of the GoElectriQ EV ecosystem. Real-time telemetry and financial analytics synchronized across all nodes.
+              Global oversight of the XYZ EV ecosystem. Real-time telemetry and financial analytics synchronized across all nodes.
             </p>
           </div>
 

@@ -83,7 +83,7 @@ export default function LoginPage() {
   return (
     <AuthLayout 
       title="Welcome Back" 
-      subtitle="Sign in to your GoElectriQ account"
+      subtitle="Sign in to your XYZ account"
     >
       <AnimatePresence mode="wait">
         {error && (

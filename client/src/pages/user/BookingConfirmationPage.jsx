@@ -200,13 +200,13 @@ export default function BookingConfirmationPage() {
   }
 
   const handleShare = () => {
-    const text = `I just booked a ${booking.rideType} ride with GoElectriQ! Booking ID: ${booking.bookingId}`;
+    const text = `I just booked a ${booking.rideType} ride with XYZ! Booking ID: ${booking.bookingId}`;
 
     // Check if Web Share API is supported
     if (navigator.share && typeof navigator.share === "function") {
       navigator
         .share({
-          title: "GoElectriQ Booking",
+          title: "XYZ Booking",
           text: text,
         })
         .catch((err) => {
@@ -226,7 +226,7 @@ export default function BookingConfirmationPage() {
   };
 
   const fallbackShare = () => {
-    const text = `I just booked a ${booking.rideType} ride with GoElectriQ! Booking ID: ${booking.bookingId}`;
+    const text = `I just booked a ${booking.rideType} ride with XYZ! Booking ID: ${booking.bookingId}`;
     navigator.clipboard.writeText(text);
     alert("Booking details copied to clipboard!");
   };
@@ -758,7 +758,7 @@ export default function BookingConfirmationPage() {
 
         {/* Footer Info */}
         <div className="mt-8 text-center text-gray-600 text-sm">
-          <p>Need help? Contact support at support@goelectriq.com</p>
+          <p>Need help? Contact support at support@xyz.com</p>
           <p className="mt-2">
             Booking confirmation has been sent to your email
           </p>

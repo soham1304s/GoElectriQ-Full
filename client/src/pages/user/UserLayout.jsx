@@ -24,8 +24,7 @@ import {
   Sun,
   Moon
 } from 'lucide-react';
-import logoDark from '../../assets/logo_dark.png';
-import logoLight from '../../assets/logo_light.png';
+
 import {
   getMyBookings,
   getDriverBookings,
@@ -159,11 +158,7 @@ const UserLayout = ({ children }) => {
       >
         <div className="h-14 md:h-16 flex items-center px-6 border-b border-slate-100 dark:border-slate-800 justify-between">
           <Link to="/" className="flex items-center group">
-            <img
-              src={darkMode ? logoDark : logoLight}
-              alt="GoElectriQ Logo"
-              className="h-16 sm:h-20 md:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-            />
+            <span className="text-3xl font-black tracking-widest text-emerald-600 dark:text-emerald-400 py-4 transition-transform duration-300 group-hover:scale-105">XYZ</span>
           </Link>
           {isMobile && (
             <button onClick={() => setSidebarOpen(false)} className="p-2 text-slate-400 hover:text-emerald-500 transition">

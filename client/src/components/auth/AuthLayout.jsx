@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import AuthImageSlider from '../AuthImageSlider';
-import logo from '../../assets/logo_light.png';
-import logoWhite from '../../assets/logo_dark.png';
+
 import { useTheme } from '../../context/ThemeContext';
 
 const MotionDiv = motion.div;
@@ -30,13 +29,13 @@ export default function AuthLayout({ children, title, subtitle, showSlider = tru
         <div className={`w-full ${showSlider ? 'lg:w-[54%]' : 'lg:w-full'} min-h-screen sm:min-h-0 h-full flex flex-col bg-white overflow-hidden`}>
           {/* Mobile Logo / Header - Compact */}
           <div className="p-6 pb-0 sm:p-8 sm:pb-0 lg:p-12 lg:pb-0 flex flex-col items-center lg:items-start shrink-0">
-            <MotionImg
-              src={darkMode ? logoWhite : logo}
-              alt="GoElectriQ"
-              className="h-20 sm:h-16 lg:h-20 w-auto object-contain"
+            <MotionDiv
+              className="text-3xl font-black tracking-widest text-emerald-600 dark:text-emerald-400 mb-4"
               initial={{ y: -10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-            />
+            >
+              XYZ
+            </MotionDiv>
             <div className="mt-4 text-center lg:text-left">
               <h1 className="text-2xl lg:text-3xl font-bold text-slate-900 tracking-tight">{title}</h1>
               <p className="text-slate-500 text-xs font-medium tracking-wide mt-1">{subtitle}</p>

@@ -147,7 +147,7 @@ const ChargingBookingPage = () => {
   return (
     <>
       <SEO 
-        title="EV Charging Infrastructure - GoElectriQ Power Hub"
+        title="EV Charging Infrastructure - XYZ Power Hub"
         description="Jaipur's leading EV charging installation service. Professional AC/DC charger setup for homes, societies, and businesses."
         keywords="EV charger installation Jaipur, electric vehicle charging station, home EV charger, commercial charging infrastructure"
         url="/charging"
@@ -303,7 +303,7 @@ const ChargingBookingPage = () => {
             {[
               { q: "Standard deployment time?", a: "Residential setups are completed within 4-6 hours. Enterprise/Society deployments typically range from 48-72 hours based on civil requirements." },
               { q: "Hardware Compatibility?", a: "Our protocols support all major CCS2 and Type 2 vehicles including Tata, MG, BYD, and Hyundai fleets." },
-              { q: "Weatherproof Standards?", a: "All GoElectriQ infrastructure is IP66 rated for complete outdoor resilience against rain and dust." },
+              { q: "Weatherproof Standards?", a: "All XYZ infrastructure is IP66 rated for complete outdoor resilience against rain and dust." },
               { q: "Post-Deployment Support?", a: "We provide 24/7 remote diagnostics and 24-hour on-site resolution guarantees for all maintenance protocol subscribers." }
             ].map((faq, idx) => (
               <div

@@ -241,7 +241,7 @@ export default function AdminLoginPage() {
           </p>
           <p className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'}`}>
             For security issues, contact{' '}
-            <span className={theme === 'dark' ? 'text-gray-400' : 'text-gray-700'}>support@goelectriq.com</span>
+            <span className={theme === 'dark' ? 'text-gray-400' : 'text-gray-700'}>support@xyz.com</span>
           </p>
         </div>
       </motion.div>

@@ -228,7 +228,7 @@ export default function RidesPage() {
                           <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-[10px] font-black uppercase tracking-widest">Verified</span>
                         </div>
                         <p className="text-emerald-50 text-sm font-medium max-w-lg leading-relaxed opacity-90">
-                          Your driver profile is fully synchronized. You are now authorized to accept missions within the GoElectriQ EV ecosystem.
+                          Your driver profile is fully synchronized. You are now authorized to accept missions within the XYZ EV ecosystem.
                         </p>
                       </div>
                     </div>

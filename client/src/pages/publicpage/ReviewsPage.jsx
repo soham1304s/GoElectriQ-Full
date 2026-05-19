@@ -82,9 +82,9 @@ export default function ReviewsPage() {
   return (
     <>
       <SEO
-        title="Rider Reviews - Real Experiences with GoElectriQ"
-        description="Discover what our community says about Jaipur's most premium electric mobility service. Read verified testimonials from GoElectriQ riders."
-        keywords="GoElectriQ reviews, electric cab feedback, Jaipur taxi testimonials, premium EV ride reviews"
+        title="Rider Reviews - Real Experiences with XYZ"
+        description="Discover what our community says about Jaipur's most premium electric mobility service. Read verified testimonials from XYZ riders."
+        keywords="XYZ reviews, electric cab feedback, Jaipur taxi testimonials, premium EV ride reviews"
         url="/reviews"
       />
       <div className="min-h-screen bg-[#fafafa] dark:bg-[#020617] pt-24 md:pt-28 font-['Inter',sans-serif]">
@@ -194,7 +194,7 @@ export default function ReviewsPage() {
             <div className="relative z-10 max-w-2xl mx-auto">
               <h2 className="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">Your Voice Matters.</h2>
               <p className="text-lg md:text-xl text-slate-400 font-medium mb-12">
-                Every review helps us refine the future of mobility. Shared your GoElectriQ experience today.
+                Every review helps us refine the future of mobility. Shared your XYZ experience today.
               </p>
               <button
                 onClick={() => navigate('/feedback')}

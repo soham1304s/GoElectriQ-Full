@@ -53,7 +53,7 @@ import { getImageUrl } from "../../utils/imageUrl";
 
 const AIRPORT_LOCATION = { latitude: 26.8289, longitude: 75.8056 }; // Jaipur International Airport
 
-const GoelectriqLanding = () => {
+const XYZLanding = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
@@ -147,7 +147,7 @@ const GoelectriqLanding = () => {
   useEffect(() => {
     const hashSection = location.hash ? location.hash.slice(1) : "";
     const storedSection =
-      sessionStorage.getItem("goelectriq-scroll-target") || "";
+      sessionStorage.getItem("XYZ-scroll-target") || "";
     const targetSection =
       hashSection || location.state?.scrollTo || storedSection;
     if (!targetSection) {
@@ -160,7 +160,7 @@ const GoelectriqLanding = () => {
         section.scrollIntoView({ behavior: "smooth", block: "start" });
       }
 
-      sessionStorage.removeItem("goelectriq-scroll-target");
+      sessionStorage.removeItem("XYZ-scroll-target");
 
       // Clean old state-based navigation while preserving hash-based deep links.
       if (location.state?.scrollTo && !hashSection) {
@@ -1292,7 +1292,7 @@ const GoelectriqLanding = () => {
               <p
                 className={`${darkMode ? "text-gray-400" : "text-slate-600"} max-w-xl text-lg md:text-xl font-medium leading-relaxed`}
               >
-                Go Electric Cabs is your premium eco-friendly ride partner in the Pink City.
+                XYZ Cabs is your premium eco-friendly ride partner in the Pink City.
                 Experience comfortable, reliable, and sustainable transport for the modern traveler.
               </p>
 
@@ -2374,4 +2374,4 @@ const GoelectriqLanding = () => {
     </>
   );
 };
-export default GoelectriqLanding;
+export default XYZLanding;
