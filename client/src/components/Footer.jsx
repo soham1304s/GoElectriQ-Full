@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Instagram, Send, Zap } from 'lucide-react';
+import { Send, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext.jsx';
 
@@ -35,23 +35,6 @@ const Footer = ({ darkMode }) => {
               sustainable mobility for everyone.
             </p>
 
-            {/* Social */}
-            <div className="flex gap-4 pt-2">
-              {[
-                { Icon: Facebook, url: 'https://www.facebook.com/share/1Dx1cu8G8u/?mibextid=wwXIfr' },
-                { Icon: Instagram, url: 'https://www.instagram.com/go_electriq_cabs?igsh=dGh3MWV0NGc2YzZj&utm_source=qr' }
-              ].map((item, i) => (
-                <a
-                  key={i}
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#022c22] hover:bg-green-500 hover:text-white transition-all duration-300"
-                >
-                  <item.Icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Services */}
@@ -111,22 +94,7 @@ const Footer = ({ darkMode }) => {
               Stay Connected
             </h4>
 
-            <div className={`space-y-1.5 lg:space-y-3 text-sm font-bold mb-8 ${
-              isDarkMode ? 'text-slate-400' : 'text-slate-600'
-            }`}>
-              <p className="flex items-center justify-center sm:justify-start gap-2">
-                <span className="w-1 h-1 bg-green-500 rounded-full" />
-                Jaipur, Rajasthan
-              </p>
-              <a href="tel:+918107649476" className="flex items-center justify-center sm:justify-start gap-2 hover:text-emerald-500 transition">
-                <span className="w-1 h-1 bg-green-500 rounded-full" />
-                +91 81076 49476
-              </a>
-              <a href="mailto:info@xyz.com" className="flex items-center justify-center sm:justify-start gap-2 hover:text-emerald-500 transition">
-                <span className="w-1 h-1 bg-green-500 rounded-full" />
-                info@xyz.com
-              </a>
-            </div>
+
 
             {/* Newsletter */}
             <div className="w-full max-w-xs flex items-center p-1 bg-slate-100 dark:bg-[#022c22] rounded-2xl border border-slate-200 dark:border-slate-800">
@@ -151,9 +119,7 @@ const Footer = ({ darkMode }) => {
             © 2026 XYZ
           </p>
 
-          <p className={`flex items-center gap-2 ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`}>
-            Made with <Zap size={18} className="text-emerald-500 animate-pulse" /> for Jaipur
-          </p>
+
 
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="hover:text-emerald-500 transition">

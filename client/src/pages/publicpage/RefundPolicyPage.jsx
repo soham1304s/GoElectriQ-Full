@@ -45,10 +45,10 @@ export default function RefundPolicyPage() {
 
             <h3 className={`text-base sm:text-lg font-semibold mt-6 mb-3 ${isDark ? 'text-white' : 'text-[#212121]'}`}>Refund Process</h3>
             <p>
-              Once a refund request is approved, the amount will be credited to your original payment method within 5–7 business days. For cash payments, refunds will be credited to your Go ElectrQ wallet for future use. We reserve the right to investigate refund requests and may require additional information or evidence.
+              Once a refund request is approved, the amount will be credited to your original payment method within 5–7 business days. For cash payments, refunds will be credited to your XYZ wallet for future use. We reserve the right to investigate refund requests and may require additional information or evidence.
             </p>
             <p>
-              Partial refunds may be issued in cases where the service was partially completed or if only a portion of the charges were incorrect. Final decisions on refund requests rest with Go ElectrQ management.
+              Partial refunds may be issued in cases where the service was partially completed or if only a portion of the charges were incorrect. Final decisions on refund requests rest with XYZ management.
             </p>
           </div>
         </div>

@@ -35,7 +35,7 @@ export default function TermsAndConditionsPage() {
 
           <div className={`space-y-4 leading-relaxed text-sm sm:text-base ${isDark ? 'text-gray-300' : 'text-[#64748b]'}`}>
             <p>
-              By using Go ElectrQ services, you agree to comply with these terms and conditions. Please read them carefully before using our platform.
+              By using XYZ services, you agree to comply with these terms and conditions. Please read them carefully before using our platform.
             </p>
 
             <h3 className={`text-base sm:text-lg font-semibold mt-6 mb-3 ${isDark ? 'text-white' : 'text-[#212121]'}`}>User Eligibility</h3>

@@ -42,7 +42,7 @@ export default function DriverPartnerPolicyPage() {
 
           <div className={`space-y-4 leading-relaxed text-sm sm:text-base ${isDark ? 'text-gray-300' : 'text-[#64748b]'}`}>
             <p>
-              Our driver partners are the backbone of our service. This policy outlines the expectations and guidelines for all driver partners on the Go ElectrQ platform.
+              Our driver partners are the backbone of our service. This policy outlines the expectations and guidelines for all driver partners on the XYZ platform.
             </p>
 
             <h3 className={`text-base sm:text-lg font-semibold mt-6 mb-3 ${isDark ? 'text-white' : 'text-[#212121]'}`}>Partner Requirements</h3>
@@ -60,15 +60,15 @@ export default function DriverPartnerPolicyPage() {
 
             <h3 className={`text-base sm:text-lg font-semibold mt-6 mb-3 ${isDark ? 'text-white' : 'text-[#212121]'}`}>Vehicle Standards</h3>
             <p>
-              All vehicles must be electric and meet the minimum quality standards set by Go ElectrQ. Vehicles must be kept clean, well-maintained, and in roadworthy condition at all times. Air conditioning must be functional, and the vehicle must be free from unpleasant odors.
+              All vehicles must be electric and meet the minimum quality standards set by XYZ. Vehicles must be kept clean, well-maintained, and in roadworthy condition at all times. Air conditioning must be functional, and the vehicle must be free from unpleasant odors.
             </p>
             <p>
-              Drivers are responsible for timely charging of the vehicle to ensure no ride is cancelled due to low battery. Go ElectrQ may assist in identifying nearby charging stations when needed.
+              Drivers are responsible for timely charging of the vehicle to ensure no ride is cancelled due to low battery. XYZ may assist in identifying nearby charging stations when needed.
             </p>
 
             <h3 className={`text-base sm:text-lg font-semibold mt-6 mb-3 ${isDark ? 'text-white' : 'text-[#212121]'}`}>Earnings and Payments</h3>
             <p>
-              Driver partners earn a percentage of each fare as agreed upon during onboarding. Earnings are disbursed weekly to the registered bank account. Go ElectrQ retains a service commission as detailed in the partnership agreement. Incentives and bonuses are available for high-performing drivers.
+              Driver partners earn a percentage of each fare as agreed upon during onboarding. Earnings are disbursed weekly to the registered bank account. XYZ retains a service commission as detailed in the partnership agreement. Incentives and bonuses are available for high-performing drivers.
             </p>
 
             <h3 className={`text-base sm:text-lg font-semibold mt-6 mb-3 ${isDark ? 'text-white' : 'text-[#212121]'}`}>Safety Protocols</h3>
@@ -83,7 +83,7 @@ export default function DriverPartnerPolicyPage() {
 
             <h3 className={`text-base sm:text-lg font-semibold mt-6 mb-3 ${isDark ? 'text-white' : 'text-[#212121]'}`}>Support for Driver Partners</h3>
             <p>
-              Go ElectrQ is committed to supporting its driver partners. We provide 24/7 driver support, training resources, access to preferred charging stations, and assistance with vehicle-related queries. We value our drivers and strive to create a fair and rewarding work environment.
+              XYZ is committed to supporting its driver partners. We provide 24/7 driver support, training resources, access to preferred charging stations, and assistance with vehicle-related queries. We value our drivers and strive to create a fair and rewarding work environment.
             </p>
           </div>
         </div>
@@ -92,7 +92,7 @@ export default function DriverPartnerPolicyPage() {
         <div className="bg-emerald-600 rounded-2xl p-6 sm:p-8 text-center shadow-lg">
           <h2 className="text-xl sm:text-2xl font-bold mb-3 text-white">Interested in Becoming a Driver Partner?</h2>
           <p className="mb-6 text-white/90 text-sm sm:text-base">
-            Join our growing fleet of eco-friendly driver partners and earn with Go ElectrQ.
+            Join our growing fleet of eco-friendly driver partners and earn with XYZ.
           </p>
           <Link
             to="/partner"
